@@ -1,0 +1,566 @@
+/* ==========================================================================
+   000-myp-community Design System Tokens & Base Styles
+   Source of truth: 00-branding/design-system.md (verified against design-system.pdf)
+   ========================================================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter:wght@600&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  /* ------------------------------------------------------------------------
+     Typography Font Families
+     ------------------------------------------------------------------------ */
+  --font-family-heading-1: 'Inria Serif', serif;
+  --font-family-heading-2: 'Inter', sans-serif;
+  --font-family-body: 'Roboto', sans-serif;
+
+  /* ------------------------------------------------------------------------
+     Generic Colors
+     ------------------------------------------------------------------------ */
+  --color-page-bg: #FFFCF8;
+  --color-text: #000000;
+  --color-text-link: #02588E;
+  --color-border: #CCCCCC;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* ------------------------------------------------------------------------
+     Primary 1: MP-Green Scale
+     ------------------------------------------------------------------------ */
+  --color-mp-green-50: #F2FBF5;
+  --color-mp-green-100: #E5F6E9;
+  --color-mp-green-200: #CBEED5;
+  --color-mp-green-300: #98DCAB;
+  --color-mp-green-400: #66CB81;
+  --color-mp-green-500: #34B957;
+  --color-mp-green-default: #02A82D;
+  --color-mp-green-700: #018624;
+  --color-mp-green-800: #00651B;
+  --color-mp-green-900: #004213;
+
+  /* ------------------------------------------------------------------------
+     Primary 2: MP-Blue Scale
+     ------------------------------------------------------------------------ */
+  --color-mp-blue-50: #F5F7F8;
+  --color-mp-blue-100: #EBF0F2;
+  --color-mp-blue-200: #D7E1E3;
+  --color-mp-blue-300: #AFC4CB;
+  --color-mp-blue-400: #88A6B1;
+  --color-mp-blue-500: #608897;
+  --color-mp-blue-default: #396B7E;
+  --color-mp-blue-700: #2D5564;
+  --color-mp-blue-800: #22404B;
+  --color-mp-blue-900: #162B32;
+
+  /* ------------------------------------------------------------------------
+     Semantic Palettes
+     ------------------------------------------------------------------------ */
+  --color-success-bg: #E5F6E9;
+  --color-success-border: #28C841;
+  --color-success-text: #018624;
+
+  --color-error-bg: #FFE3E3;
+  --color-error-border: #E06764;
+  --color-error-text: #E13838;
+
+  --color-alert-bg: #FFF4E5;
+  --color-alert-border: #FCBE67;
+  --color-alert-text: #FB9302;
+
+  --color-edit-bg: #E8F2FD;
+  --color-edit-border: #5099EC;
+  --color-edit-text: #1E66BA;
+
+  /* ------------------------------------------------------------------------
+     Black / Neutral Scale
+     ------------------------------------------------------------------------ */
+  --color-black-50: #F2F2F2;
+  --color-black-100: #E4E4E4;
+  --color-black-200: #CCCCCC;
+  --color-black-300: #999999;
+  --color-black-400: #666666;
+  --color-black-500: #333333;
+  --color-black-default: #000000;
+
+  /* ------------------------------------------------------------------------
+     Component Tokens
+     ------------------------------------------------------------------------ */
+  --radius-button: 12px;
+  --radius-input: 12px;
+  --radius-tag: 12px;
+  --radius-accordion: 16px;
+  --radius-table: 0px;
+
+  --gap-button: 12px;
+  --gap-input: 12px;
+  --gap-table: 12px;
+}
+
+/* ==========================================================================
+   Typography Utility Classes
+   ========================================================================== */
+.font-hero-1 {
+  font-family: var(--font-family-heading-1);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 64px;
+  letter-spacing: -0.25px;
+}
+
+.font-hero-2 {
+  font-family: var(--font-family-heading-2);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+  letter-spacing: -0.25px;
+}
+
+.font-h1 {
+  font-family: var(--font-family-heading-1);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.25px;
+}
+
+.font-h2 {
+  font-family: var(--font-family-heading-1);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: -0.25px;
+}
+
+.font-h3 {
+  font-family: var(--font-family-heading-2);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0px;
+}
+
+.font-h4 {
+  font-family: var(--font-family-heading-2);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 0px;
+}
+
+.font-h5 {
+  font-family: var(--font-family-body);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
+
+.font-h6 {
+  font-family: var(--font-family-body);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 38px;
+  letter-spacing: 0px;
+}
+
+.font-body-text {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+}
+
+.font-body-large {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.font-body-small {
+  font-family: var(--font-family-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+.font-body-extra-small {
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+
+.font-paragraph-large {
+  font-family: var(--font-family-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
+
+.font-paragraph-medium {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+
+.font-paragraph-small {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.font-form-label {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: var(--color-black-default);
+}
+
+.font-form-label-large {
+  font-family: var(--font-family-body);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0px;
+  color: var(--color-black-default);
+}
+
+/* ==========================================================================
+   Base Component Styles
+   ========================================================================== */
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-button);
+  border-radius: var(--radius-button);
+  font-family: var(--font-family-body);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* Sizes */
+.btn-large {
+  height: 60px;
+  padding: 24px 20px;
+  font-size: 16px;
+}
+
+.btn-medium {
+  height: 50px;
+  padding: 20px 12px;
+  font-size: 14px;
+}
+
+.btn-small {
+  height: 40px;
+  padding: 12px 12px;
+  font-size: 12px;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--color-mp-green-700);
+  color: var(--color-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-mp-green-800);
+}
+
+.btn-primary:focus:not(:disabled) {
+  background-color: var(--color-mp-green-default);
+  outline: none;
+}
+
+.btn-primary:disabled {
+  background-color: var(--color-black-200);
+  color: var(--color-white);
+  cursor: not-allowed;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: var(--color-black-50);
+  color: var(--color-black-default);
+}
+
+.btn-secondary:hover:not(:disabled),
+.btn-secondary:focus:not(:disabled) {
+  background-color: var(--color-black-100);
+  outline: none;
+}
+
+.btn-secondary:disabled {
+  background-color: var(--color-black-200);
+  color: var(--color-white);
+  cursor: not-allowed;
+}
+
+/* Bordered Button */
+.btn-bordered {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-black-default);
+  color: var(--color-black-default);
+}
+
+.btn-bordered:hover:not(:disabled) {
+  background-color: var(--color-alert-bg);
+}
+
+.btn-bordered:focus:not(:disabled) {
+  background-color: var(--color-mp-blue-50);
+  outline: none;
+}
+
+.btn-bordered:disabled {
+  background-color: var(--color-black-200);
+  border: none;
+  color: var(--color-white);
+  cursor: not-allowed;
+}
+
+/* Icon Buttons */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.btn-icon.shape-circle {
+  border-radius: 50%;
+}
+
+.btn-icon.shape-square {
+  border-radius: var(--radius-button);
+}
+
+.btn-icon.btn-large {
+  width: 60px;
+  height: 60px;
+}
+
+.btn-icon.btn-medium {
+  width: 50px;
+  height: 50px;
+}
+
+.btn-icon.btn-small {
+  width: 40px;
+  height: 40px;
+}
+
+/* Form Controls */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-input);
+  height: 50px;
+  padding: 12px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+.input-field:focus-within {
+  border-color: var(--color-edit-border);
+}
+
+.input-field.is-error {
+  border-color: var(--color-error-border);
+}
+
+.input-field.is-disabled {
+  background-color: var(--color-black-50);
+  border-color: var(--color-border);
+  color: var(--color-black-400);
+  cursor: not-allowed;
+}
+
+.input-field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-black-default);
+}
+
+.input-field input::placeholder {
+  color: var(--color-black-300);
+}
+
+.input-label {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-black-default);
+}
+
+.input-mandatory {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-error-text);
+}
+
+.input-helper {
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-black-300);
+}
+
+/* Checkbox & Radio Controls */
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 50px;
+  padding: 12px;
+  box-sizing: border-box;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.control-row.state-default {
+  color: var(--color-black-400);
+}
+
+.control-row.state-active {
+  color: var(--color-black-default);
+}
+
+.control-row.state-disabled {
+  color: var(--color-black-300);
+  cursor: not-allowed;
+}
+
+/* Accordion */
+.accordion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 16px 12px;
+  border-radius: var(--radius-accordion);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-black-50);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-black-default);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.accordion-item.is-open {
+  background-color: var(--color-white);
+}
+
+.accordion-body {
+  padding: 16px 12px;
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-black-default);
+}
+
+/* Tags / Status Pills */
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 12px 8px;
+  border-radius: var(--radius-tag);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-black-default);
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+}
+
+.tag-badge.tag-neutral {
+  background-color: var(--color-black-50);
+  border-color: var(--color-border);
+}
+
+.tag-badge.tag-success {
+  background-color: var(--color-success-bg);
+  border-color: var(--color-success-border);
+}
+
+.tag-badge.tag-alert {
+  background-color: var(--color-alert-bg);
+  border-color: var(--color-alert-border);
+}
+
+.tag-badge.tag-in-progress {
+  background-color: var(--color-edit-bg);
+  border-color: var(--color-edit-border);
+}
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  height: 50px;
+  padding: 12px 12px;
+  background-color: var(--color-black-50);
+  border-bottom: 2px solid var(--color-success-border);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-black-default);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.data-table td {
+  height: 50px;
+  padding: 12px 12px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-black-default);
+  box-sizing: border-box;
+}
