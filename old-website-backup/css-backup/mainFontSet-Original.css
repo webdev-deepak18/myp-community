@@ -1,0 +1,37 @@
+body
+{
+        font-family:helvetica, arial, sans-serif;
+        font-size:83%;
+}
+
+#sfsPositionPath,
+#sfsSearchBoxText,
+#sfsSearchBoxButton,
+#sfsFooter,
+.naviText, .fontFaceL
+{
+        font-size:0.85em;
+}
+.fontFaceBig
+{
+        font-size:1.25em;
+}
+
+h1, h2, #sfsContentIn div.headline
+{
+    line-height:1.2em;
+font-size:30px;
+font-family:Trebuchet MS,Helvetica,Arial,Verdana,sans-serif;
+}
+
+.sfsIntroContainer h2
+{
+    line-height:1.2em;
+    font-size:1em;
+}
+
+#sfsContentIn h3
+{
+    line-height:1.2em;
+    font-size:1.2em;
+}

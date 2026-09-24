@@ -1,0 +1,1767 @@
+<!-- Official Design System Google Fonts (Inria Serif 700, Inter 600/700, Roboto 400/500/700) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,700;1,700&family=Inter:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       000-myp-community Official Design System Tokens
+       Source: 00-branding/tokens.css & 00-branding/design-system.md
+       ========================================================================== */
+    :root {
+      /* Typography Families */
+      --font-family-heading-1: 'Inria Serif', serif !important;
+      --font-family-heading-2: 'Inter', sans-serif !important;
+      --font-family-body: 'Roboto', sans-serif !important;
+
+      /* Generic Colors */
+      --color-page-bg: #FFFCF8 !important;
+      --color-text: #000000 !important;
+      --color-text-link: #02588E !important;
+      --color-border: #CCCCCC !important;
+      --color-white: #FFFFFF !important;
+      --color-black: #000000 !important;
+
+      /* Primary 1: MP-Green Scale */
+      --color-mp-green-50: #F2FBF5;
+      --color-mp-green-100: #E5F6E9;
+      --color-mp-green-200: #CBEED5;
+      --color-mp-green-300: #98DCAB;
+      --color-mp-green-400: #66CB81;
+      --color-mp-green-500: #34B957;
+      --color-mp-green-default: #02A82D;
+      --color-mp-green-700: #018624;
+      --color-mp-green-800: #00651B;
+      --color-mp-green-900: #004213;
+
+      /* Primary 2: MP-Blue Scale */
+      --color-mp-blue-50: #F5F7F8;
+      --color-mp-blue-100: #EBF0F2;
+      --color-mp-blue-200: #D7E1E3;
+      --color-mp-blue-300: #AFC4CB;
+      --color-mp-blue-400: #88A6B1;
+      --color-mp-blue-500: #608897;
+      --color-mp-blue-default: #396B7E;
+      --color-mp-blue-700: #2D5564;
+      --color-mp-blue-800: #22404B;
+      --color-mp-blue-900: #162B32;
+
+      /* Semantic Palettes */
+      --color-success-bg: #E5F6E9;
+      --color-success-border: #28C841;
+      --color-success-text: #018624;
+
+      --color-error-bg: #FFE3E3;
+      --color-error-border: #E06764;
+      --color-error-text: #E13838;
+
+      --color-alert-bg: #FFF4E5;
+      --color-alert-border: #FCBE67;
+      --color-alert-text: #FB9302;
+
+      --color-edit-bg: #E8F2FD;
+      --color-edit-border: #5099EC;
+      --color-edit-text: #1E66BA;
+
+      /* Black / Neutral Scale */
+      --color-black-50: #F2F2F2;
+      --color-black-100: #E4E4E4;
+      --color-black-200: #CCCCCC;
+      --color-black-300: #999999;
+      --color-black-400: #666666;
+      --color-black-500: #333333;
+      --color-black-default: #000000;
+
+      /* Component Metrics */
+      --radius-button: 12px;
+      --radius-input: 12px;
+      --radius-tag: 12px;
+      --radius-accordion: 16px;
+      --gap-button: 12px;
+    }
+
+    /* ==========================================================================
+       CMS Scoped Root Container
+       ========================================================================== */
+    #mp-features-embed {
+      font-family: var(--font-family-body);
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--color-black-default);
+      text-align: left;
+      background-color: var(--color-page-bg);
+      width: 100%;
+      position: relative;
+      -webkit-text-size-adjust: 100%;
+      box-sizing: border-box;
+      padding: 0;
+    }
+
+    #mp-features-embed *,
+    #mp-features-embed *::before,
+    #mp-features-embed *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    #mp-features-embed img,
+    #mp-features-embed svg {
+      vertical-align: middle;
+    }
+
+    #mp-features-embed .mp_container {
+      width: 100%;
+      max-width: 1200px;
+      padding-left: 24px;
+      padding-right: 24px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+
+    /* ==========================================================================
+       Hero Title & Device Banner
+       ========================================================================== */
+    /* H2: Inria Serif, 36px, Bold (700), LH: 44px, LS: -0.25px */
+    #mp-features-embed h2.mp_com_title,
+    #mp-features-embed h2.mp_com_title * {
+      font-family: var(--font-family-heading-1) !important;
+      font-size: 36px;
+      font-weight: 700 !important;
+      line-height: 44px;
+      letter-spacing: -0.25px;
+      color: var(--color-black-default) !important;
+      text-align: center;
+      width: 100%;
+      margin: 40px auto 16px auto;
+    }
+
+    #mp-features-embed h2.mp_com_title > span {
+      color: var(--color-mp-green-700) !important;
+      font-family: var(--font-family-heading-1) !important;
+      font-weight: 700 !important;
+    }
+
+    #mp-features-embed .mp_post {
+      width: 100%;
+      position: relative;
+      padding: 10px 0 0 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    #mp-features-embed .mp_post > img {
+      display: block;
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+    }
+
+    /* Primary CTA Button: Design System Spec (Medium, 50px, Pad 20px 12px, Radius 12px) */
+    #mp-features-embed .mp_community_btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 32px auto 16px auto;
+    }
+
+    #mp-features-embed .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--gap-button);
+      height: 50px;
+      padding: 20px 24px;
+      background-color: var(--color-mp-green-700) !important;
+      color: var(--color-white) !important;
+      border-radius: var(--radius-button) !important;
+      border: none !important;
+      font-family: var(--font-family-body) !important;
+      font-size: 14px;
+      font-weight: 500 !important;
+      cursor: pointer;
+      text-decoration: none !important;
+      transition: background-color 0.15s ease;
+    }
+
+    #mp-features-embed .btn-primary:hover {
+      background-color: var(--color-mp-green-800) !important;
+      color: var(--color-white) !important;
+    }
+
+    #mp-features-embed .btn-primary:focus {
+      background-color: var(--color-mp-green-default) !important;
+      outline: none;
+    }
+
+    /* ==========================================================================
+       Feature Cards Grid (18 Items)
+       ========================================================================== */
+    #mp-features-embed .mp_features_tagline {
+      font-family: var(--font-family-heading-2) !important;
+      font-size: 32px;
+      font-weight: 600 !important;
+      line-height: 40px;
+      letter-spacing: 0px;
+      color: var(--color-black-default) !important;
+      text-align: center;
+      width: 100%;
+      margin: 40px auto 0 auto;
+    }
+
+    #mp-features-embed .ft_card_wrapper {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    /* Card styling using MP-Green 50 subtle brand tint & MP-Green 200 border */
+    #mp-features-embed .ft_card {
+      width: 100%;
+      position: relative;
+      background-color: var(--color-mp-green-50);
+      border: 1px solid var(--color-mp-green-200);
+      padding: 28px 28px 24px 28px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    #mp-features-embed .ft_card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(1, 134, 36, 0.08);
+      border-color: var(--color-mp-green-300);
+    }
+
+    #mp-features-embed .ft_card_img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+    }
+
+    #mp-features-embed .ft_card_img > img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    #mp-features-embed .ft_info {
+      width: 100%;
+      padding: 20px 0 0 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    /* H4: Inter, 28px -> Scaled for card heading: Inter Semi Bold (600) */
+    #mp-features-embed .ft_info > h4 {
+      font-family: var(--font-family-heading-2) !important;
+      font-size: 20px;
+      font-weight: 600 !important;
+      line-height: 28px;
+      letter-spacing: 0px !important;
+      margin: 0 0 10px 0;
+      color: var(--color-black-default) !important;
+      text-transform: none !important;
+    }
+
+    /* Paragraph Medium: Roboto, 16px, Regular, LH: 28px (Clamped to 2 lines) */
+    #mp-features-embed .ft_info > p {
+      font-family: var(--font-family-body) !important;
+      font-size: 15px;
+      font-weight: 400 !important;
+      line-height: 24px;
+      letter-spacing: 0px !important;
+      margin: 0 0 16px 0;
+      color: var(--color-black-500) !important;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+    }
+
+    /* Icon button from Section 3.1: 40px Small Icon Button, MP-Green 700 */
+    #mp-features-embed .features_details_button {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-button);
+      background-color: var(--color-mp-green-700);
+      color: var(--color-white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      border: none;
+      transition: background-color 0.15s ease;
+      align-self: flex-start;
+    }
+
+    #mp-features-embed .features_details_button:hover {
+      background-color: var(--color-mp-green-800);
+    }
+
+    #mp-features-embed .features_details_button:focus {
+      background-color: var(--color-mp-green-default);
+      outline: none;
+    }
+
+    #mp-features-embed .features_details_button > svg {
+      fill: var(--color-white);
+    }
+
+    /* 18th Promo Card ("& much much more!") */
+    #mp-features-embed .ft_card_ad_1_col {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    #mp-features-embed .ft_card_ad_1_col .ft_card_img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    #mp-features-embed .ft_card_ad_1_col .ft_card_img img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    /* ==========================================================================
+       Client / Partner Logos Section
+       ========================================================================== */
+    #mp-features-embed .mp_comm_wrapper {
+      width: 100%;
+      position: relative;
+      margin-top: 80px;
+      margin-bottom: 70px;
+      text-align: center;
+    }
+
+    #mp-features-embed .mp_comm_wrapper h2.mp_com_title {
+      font-size: 30px;
+      line-height: 38px;
+    }
+
+    #mp-features-embed .mp_network_logobox {
+      width: 100%;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    #mp-features-embed .mp_logobox {
+      width: calc(16.666% - 12.5px);
+      height: 95px;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    #mp-features-embed .mp_logobox:hover {
+      border-color: var(--color-mp-green-700);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    #mp-features-embed .mp_logobox > img {
+      display: block;
+      max-width: 100%;
+      max-height: 48px;
+      object-fit: contain;
+    }
+
+
+    /* ==========================================================================
+       Modals & Overlay Styles (Brand Compliant Inputs & Radii)
+       ========================================================================== */
+    .mp-features-modal-overlay {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99998;
+      backdrop-filter: blur(2px);
+    }
+
+    .mp-features-modal-wrapper {
+      display: none;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .mp_splash_modal {
+      width: 100%;
+      max-width: 620px;
+      background: var(--color-white);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 32px;
+      font-family: var(--font-family-body);
+      box-sizing: border-box;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .mp_splash_modal.wide-detail-modal {
+      max-width: 800px;
+    }
+
+    .mp_splash_modal .mps_close,
+    .mp_splash_modal .mps_close_features {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      z-index: 2;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--color-black-50);
+      color: var(--color-black-500);
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .mp_splash_modal .mps_close:hover,
+    .mp_splash_modal .mps_close_features:hover {
+      background: var(--color-black-100);
+      color: var(--color-black-default);
+    }
+
+    .mp_splash_modal h4 {
+      font-family: var(--font-family-heading-2) !important;
+      font-size: 22px;
+      font-weight: 600 !important;
+      color: var(--color-black-default) !important;
+      line-height: 30px;
+      margin: 0 0 20px 0;
+      padding-right: 40px;
+      text-transform: none !important;
+    }
+
+    /* Contact Form Layout - Aligned with Section 3.2 Form Controls */
+    .mp_ipbox {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mp_ipbox .hrip {
+      width: 100%;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .mp_ipbox .hrip.mw50 {
+      width: calc(50% - 8px);
+    }
+
+    .mp_ipbox .hrip.mw100 {
+      width: 100%;
+    }
+
+    .mp_ipbox .hrip > label {
+      font-family: var(--font-family-body) !important;
+      font-size: 14px;
+      font-weight: 500 !important;
+      color: var(--color-black-default) !important;
+      margin-bottom: 6px;
+    }
+
+    .mp_ipbox .hrip > input[type="text"],
+    .mp_ipbox .hrip > input[type="email"],
+    .mp_ipbox .hrip > input[type="tel"],
+    .mp_ipbox .hrip > select {
+      width: 100%;
+      height: 50px;
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-input);
+      background: var(--color-white);
+      color: var(--color-black-default);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.15s ease;
+    }
+
+    .mp_ipbox .hrip > input:focus,
+    .mp_ipbox .hrip > select:focus {
+      border-color: var(--color-edit-border);
+    }
+
+    .mp_ipbox .hrip.fdrow {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-mp-green-700);
+      cursor: pointer;
+    }
+
+    .mp_ipbox .hrip.fdrow > label {
+      margin-bottom: 0;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .mp_ipbox .hrip span.error,
+    .mp_ipbox .hrip span.errorTickbox {
+      display: none;
+      font-size: 12px;
+      color: var(--color-error-text);
+      margin-top: 4px;
+    }
+
+    .mp_splash_modal .mps_success_info {
+      padding: 15px 0;
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--color-black-default);
+    }
+
+    /* Feature Details Modal Inside */
+    .mpFeaturesDetails_box {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      padding: 10px 0 0 0;
+    }
+
+    .mpFeaturesDetails_box .fd_info {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mpFeaturesDetails_box .fd_info h4 {
+      font-family: var(--font-family-heading-2) !important;
+      font-size: 24px;
+      font-weight: 600 !important;
+      color: var(--color-black-default) !important;
+      margin: 0;
+      padding-right: 0;
+      text-transform: none !important;
+    }
+
+    .mpFeaturesDetails_box .fd_info p {
+      font-family: var(--font-family-body) !important;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--color-black-500) !important;
+      margin: 0;
+    }
+
+    .mpFeaturesDetails_box .fd_img {
+      width: 50%;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+    }
+
+    .mpFeaturesDetails_box .fd_img > img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Scroll locking */
+    body.mp-freeze-scroll {
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
+
+    /* ==========================================================================
+       Responsive Breakpoints: Mobile, Tablet & Desktop Tiers
+       ========================================================================== */
+    @media screen and (max-width: 993px) {
+      #mp-features-embed .mp_features_tagline {
+        font-size: 26px;
+        line-height: 34px;
+        margin-top: 32px;
+      }
+      #mp-features-embed .ft_card_wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 30px;
+      }
+      #mp-features-embed .mp_logobox {
+        width: calc(33.333% - 10px);
+      }
+      .mpFeaturesDetails_box {
+        flex-direction: column-reverse;
+        gap: 20px;
+      }
+      .mpFeaturesDetails_box .fd_info,
+      .mpFeaturesDetails_box .fd_img {
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      #mp-features-embed .mp_features_tagline {
+        font-size: 22px;
+        line-height: 30px;
+        margin-top: 24px;
+      }
+      #mp-features-embed .ft_card_wrapper {
+        grid-template-columns: 1fr;
+        margin-top: 24px;
+      }
+      #mp-features-embed .mp_logobox {
+        width: calc(50% - 10px);
+      }
+      #mp-features-embed .mp_ipbox .hrip.mw50 {
+        width: 100%;
+      }
+      #mp-features-embed h2.mp_com_title {
+        font-size: 28px;
+        line-height: 36px;
+      }
+      .mp_splash_modal {
+        padding: 24px 18px;
+      }
+    }
+
+    /* ==========================================================================
+       Wide-Screen & Min-Width Responsive Breakpoints (Capped at 1440px)
+       Expands container gracefully to 1440px max width with balanced typography
+       ========================================================================== */
+
+    /* Medium to Large Desktop (min-width: 1200px) */
+    @media screen and (min-width: 1200px) {
+      #mp-features-embed .mp_container {
+        max-width: 1320px;
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+      #mp-features-embed h2.mp_com_title {
+        font-size: 38px;
+        line-height: 46px;
+      }
+      #mp-features-embed .mp_features_tagline {
+        font-size: 34px;
+        line-height: 42px;
+        margin-top: 48px;
+      }
+      #mp-features-embed .mp_post > img {
+        max-width: 1140px;
+      }
+      #mp-features-embed .ft_card_wrapper {
+        gap: 28px;
+        margin-top: 40px;
+      }
+      #mp-features-embed .ft_card {
+        padding: 28px 28px 24px 28px;
+      }
+      #mp-features-embed .ft_info > h4 {
+        font-size: 21px;
+        line-height: 29px;
+      }
+      #mp-features-embed .ft_info > p {
+        font-size: 15px;
+        line-height: 24px;
+        -webkit-line-clamp: 3;
+      }
+      #mp-features-embed .mp_logobox {
+        height: 100px;
+      }
+    }
+
+    /* Large Desktop - Maximum Width Ceiling (min-width: 1440px) */
+    @media screen and (min-width: 1440px) {
+      #mp-features-embed .mp_container {
+        max-width: 1440px;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+      #mp-features-embed h2.mp_com_title {
+        font-size: 40px;
+        line-height: 48px;
+        margin: 44px auto 18px auto;
+      }
+      #mp-features-embed .mp_features_tagline {
+        font-size: 36px;
+        line-height: 44px;
+        margin-top: 52px;
+      }
+      #mp-features-embed .mp_post > img {
+        max-width: 1240px;
+      }
+      #mp-features-embed .btn-primary {
+        height: 52px;
+        padding: 20px 28px;
+        font-size: 15px;
+      }
+      #mp-features-embed .ft_card_wrapper {
+        gap: 30px;
+        margin-top: 44px;
+      }
+      #mp-features-embed .ft_card {
+        padding: 30px 30px 26px 30px;
+        border-radius: 18px;
+      }
+      #mp-features-embed .ft_info {
+        padding: 22px 0 0 0;
+      }
+      #mp-features-embed .ft_info > h4 {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 10px;
+      }
+      #mp-features-embed .ft_info > p {
+        font-size: 15px;
+        line-height: 25px;
+        margin-bottom: 18px;
+        -webkit-line-clamp: 3;
+      }
+      #mp-features-embed .features_details_button {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+      }
+      #mp-features-embed .features_details_button > svg {
+        width: 17px;
+        height: 17px;
+      }
+      #mp-features-embed .mp_comm_wrapper {
+        margin-top: 80px;
+        margin-bottom: 75px;
+      }
+      #mp-features-embed .mp_comm_wrapper h2.mp_com_title {
+        font-size: 32px;
+        line-height: 40px;
+      }
+      #mp-features-embed .mp_logobox {
+        width: calc(14.285% - 13px);
+        height: 105px;
+        padding: 16px 20px;
+      }
+      #mp-features-embed .mp_logobox > img {
+        max-height: 50px;
+      }
+      .mp_splash_modal.wide-detail-modal {
+        max-width: 860px;
+      }
+    }
+  </style>
+
+  <!-- ========================================================================
+       Root Scoping Container for WYSIWYG / CMS Embed
+       Strictly adhering to 000-myp-community Brand Tokens & Design System
+       ======================================================================== -->
+  <div id="mp-features-embed" class="mp-features-embed">
+
+
+    <!-- Title & Banner Section -->
+    <div class="mp_container">
+      <h2 class="mp_com_title"><span>MyPeople</span> Features</h2>
+      <div class="mp_post">
+        <img src="https://mypeople.ai/images/mp_features_banner.png" alt="MyPeople Features Overview">
+      </div>
+    </div>
+
+    <!-- CTA Button: Design System Primary Button -->
+    <div class="mp_community_btn">
+      <button type="button" class="btn-primary" data-open-contact="">
+        <span>Book 30-Minute Discovery Call</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- 18 Features Card Grid -->
+    <div class="mp_container">
+      <h3 class="mp_features_tagline">One Platform. Every Capability Your Community Needs.</h3>
+      <div class="ft_card_wrapper">
+
+        <!-- 01: Site Designer -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_01.png" alt="Site Designer" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Site Designer</h4>
+            <p>From the comfort of a browser, create the community site of your dreams, with complete control over branding, layout, CSS and design to suit your specific objectives. Example Use Case: Create a full website that aligns with your existing brand.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal01" aria-label="View Site Designer details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 02: Content Management System -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_02.png" alt="Content Management System" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Content Management System</h4>
+            <p>Effortlessly create, manage, and share rich, SEO-optimized content effortlessly with our AI-enhanced WYSIWYG editor. Intuitive navigation and menus help curate your site.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal02" aria-label="View CMS details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 03: CRM -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_03.png" alt="Customer Relationship Management" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>CRM</h4>
+            <p>Complete system to track and score member interactions. It's an essential tool to enable your sales team and product managers to gain insight into member behavior, identify leads and close sales.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal03" aria-label="View CRM details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 04: Email Campaign Management -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_04.png" alt="Email Campaign Management" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Email Campaign Management</h4>
+            <p>Makes it easy to reach 100% of your community with campaigns. Target your sends by segmenting your members with demographic-specific queries.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal04" aria-label="View Email details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 05: Drive and File Manager -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_05.png" alt="Drive and File Manager" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Drive and File Manager</h4>
+            <p>Organize images, documents and resources for your community site in one easy-to-navigate area. Share important documents and manage community assets.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal05" aria-label="View Drive details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 06: Virtual Events & Webinars -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_06.png" alt="Virtual Events & Webinars" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Virtual Events &amp; Webinars</h4>
+            <p>Not only is it easy to host live events to engage and educate members, but MyPeople also offers virtual trade show floors, booths, auditoriums, video chats and one-on-one meetings.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal06" aria-label="View Events details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 07: Metrics & Analytics Dashboard -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_07.png" alt="Metrics & Analytics Dashboard" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Metrics &amp; Analytics Dashboard</h4>
+            <p>Gain insights into community engagement and growth through customizable dashboards, graphics and reports. Analyze member activity to identify trends and optimize content strategies.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal07" aria-label="View Metrics details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 08: Customizable User Profiles -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_08.png" alt="Customizable User Profiles" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Customizable User Profiles</h4>
+            <p>Allow members to showcase their skills, interests and expertise. Blockchain technology protects and validates ownership of profiles.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal08" aria-label="View Profiles details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 09: Blogs & Discussion Forums -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_09.png" alt="Blogs & Discussion Forums" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Blogs &amp; Discussion Forums</h4>
+            <p>Encourage knowledge sharing and conversations among members through content and threaded discussions. Built-in AI facilitates answers and engagement.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal09" aria-label="View Forums details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 10: Learning Management System -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_10.png" alt="Learning Management System" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Learning Management System</h4>
+            <p>Organize educational content and courses with a library of SCORM-compliant resources, including internal or third-party certification.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal10" aria-label="View LMS details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 11: Directories -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_11.png" alt="Directories" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Directories</h4>
+            <p>You can create directories of companies, products, services, associations and more on MyPeople, complete with reviews, ratings and customer feedback features.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal11" aria-label="View Directories details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 12: Online Forms & Polls -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_12.png" alt="Online Forms & Polls" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Online Forms &amp; Polls</h4>
+            <p>Gather valuable feedback directly from members and generate leads through customizable forms, polls and quizzes.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal12" aria-label="View Forms details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 13: Gamification -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_13.png" alt="Gamification" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Gamification</h4>
+            <p>Redeemable points, badging and leaderboards enable you to drive more engagement through rewards and recognition.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal13" aria-label="View Gamification details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 14: Storefront -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_14.png" alt="Storefront" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Storefront</h4>
+            <p>Organize educational content and courses with a library of SCORM-compliant resources, including internal or third-party certification. Offer exclusive products or services directly to members.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal14" aria-label="View Storefront details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 15: Affiliate Program -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_15.png" alt="Affiliate Program" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Affiliate Program</h4>
+            <p>Drive additional revenue and member engagement by enabling your members to refer your products to their networks, and benefit via earning a percentage of any sales or points.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal15" aria-label="View Affiliate details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 16: Online Advertising -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_16.png" alt="Online Advertising" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Online Advertising</h4>
+            <p>Popular community sites can be extremely attractive to advertisers. MyPeople has a built-in system to manage ad placement and scheduling on your site.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal16" aria-label="View Advertising details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 17: Moderation Tools & User Roles -->
+        <div class="ft_card">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_17.png" alt="Moderation Tools & User Roles" loading="lazy">
+          </div>
+          <div class="ft_info">
+            <h4>Moderation Tools &amp; User Roles</h4>
+            <p>Moderation system helps you ensure that your community site consistently provides a safe, positive and welcoming environment for your members.</p>
+            <button type="button" class="features_details_button" data-modal="mpFeaturesModal17" aria-label="View Moderation details">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 18: & much much more! Promo Card -->
+        <div class="ft_card_ad_1_col">
+          <div class="ft_card_img">
+            <img src="https://mypeople.ai/images/mp_features_18.png" alt="& much much more!" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Client / Partner Logos Section -->
+    <div class="mp_container">
+      <div class="mp_comm_wrapper">
+        <h2 class="mp_com_title">Organizations With Members in MyPeople Communities</h2>
+        <div class="mp_network_logobox">
+          <div class="mp_logobox">
+            <img alt="Google" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Google_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="TikTok" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/TikTok_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Instagram" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Instagram_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Twitter" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Twitter_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Walt Disney" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/WaltDisney_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="IBM" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/IBM_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Apple" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Apple_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="ADP" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/ADP_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Microsoft" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Microsoft_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="YouTube" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/YouTube_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Nestle" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Nestle_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Adidas" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Adidas_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Amazon" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Amazon_Logo.png" loading="lazy">
+          </div>
+          <div class="mp_logobox">
+            <img alt="Coca Cola" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/CocaCola_Logo.png" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  
+
+
+  <!-- ========================================================================
+       Modals & Dialog Overlays (Isolated Vanilla JavaScript)
+       ======================================================================== -->
+  <div class="mp-features-modal-overlay" id="mpModalOverlay"></div>
+
+  <!-- Splash / Contact / Book a Call Modal -->
+  <div class="mp-features-modal-wrapper" id="mpSplashModal">
+    <div class="mp_splash_modal">
+      <div class="mps_close" data-close-modal="" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+
+      <div id="mpSplashForm">
+        <h4>Fill out this quick form and we'll get back to you shortly</h4>
+        <form id="contactForm" onsubmit="return false;">
+          <div class="mp_ipbox">
+            <div class="hrip mw50">
+              <label for="mpFirstName">First Name</label>
+              <input type="text" name="firstName" id="mpFirstName" placeholder="First Name">
+              <span class="error" id="errFirstName">Please enter valid first name</span>
+            </div>
+            <div class="hrip mw50">
+              <label for="mpLastName">Last Name</label>
+              <input type="text" name="lastName" id="mpLastName" placeholder="Last Name">
+              <span class="error" id="errLastName">Please enter valid last name</span>
+            </div>
+            <div class="hrip mw50">
+              <label for="mpEmailId">Email Address</label>
+              <input type="email" name="email" id="mpEmailId" placeholder="Email Address">
+              <span class="error" id="errEmail">Please enter valid email</span>
+            </div>
+            <div class="hrip mw50">
+              <label for="mpPhoneNumber">Phone Number</label>
+              <input type="tel" name="phoneNumber" id="mpPhoneNumber" placeholder="Phone Number">
+              <span class="error" id="errPhone">Please enter valid phone number</span>
+            </div>
+            <div class="hrip mw100">
+              <label for="mpSubject">Subject</label>
+              <select name="subject" id="mpSubject">
+                <option value="" selected="" disabled="">Choose a subject line</option>
+                <option value="Like to start community">Like to start a community</option>
+                <option value="Like to join a community">Like to join a community</option>
+                <option value="Like to migrate a community">Like to migrate a community</option>
+                <option value="Learn more">Learn more</option>
+              </select>
+              <span class="error" id="errSubject">Please select a subject</span>
+            </div>
+            <div class="hrip fdrow">
+              <input type="checkbox" name="mptc" id="mpTc">
+              <label for="mpTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
+              <span class="error errorTickbox" id="errTc">Please check this tickbox</span>
+            </div>
+            <button type="button" class="btn-primary" id="mpSubmitForm" style="width: 100%; margin-top: 10px;">
+              <span>Submit</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 12.312 12" fill="currentColor">
+                <path d="M5.235,3.451l.61-.61a.657.657,0,0,1,.932,0L12.118,8.18a.657.657,0,0,1,0,.932L6.776,14.454a.657.657,0,0,1-.932,0l-.61-.61a.66.66,0,0,1,.011-.943L8.557,9.746H.659A.658.658,0,0,1,0,9.087V8.208a.658.658,0,0,1,.659-.659h7.9L5.246,4.394A.655.655,0,0,1,5.235,3.451Z" transform="translate(0 -2.647)" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Success message container -->
+      <div id="mpSuccessInfo" style="display: none;">
+        <h4>Thanks for being awesome!</h4>
+        <div class="mps_success_info">
+          We have received your message and would like to thank you for writing to us. One of our specialists will reach out shortly.
+        </div>
+        <button type="button" class="btn-primary" data-close-modal="" style="margin-top: 15px;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 01: Site Designer -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal01">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Site Designer</h4>
+          <p>From the comfort of a browser, create the community site of your dreams, with complete control over branding, layout, CSS and design to suit your specific objectives.</p>
+          <p><strong>Example Use Case:</strong> Create a full website that aligns with your existing brand and build a community that your audience will recognize and trust.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_01.png" alt="Site Designer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 02: CMS -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal02">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Content Management System</h4>
+          <p>Effortlessly create, manage, and share rich, SEO-optimized content effortlessly with our AI-enhanced WYSIWYG editor. Intuitive navigation and menus help curate your site.</p>
+          <p><strong>Example Use Case:</strong> Share company updates, articles, and member-generated content to keep your community engaged and informed.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_02.png" alt="Content Management System">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 03: CRM -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal03">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Customer Relationship Management</h4>
+          <p>Complete system to track and score member interactions. It's an essential tool to enable your sales team and product managers to gain insight into member behavior, identify leads and close sales.</p>
+          <p><strong>Example Use Case:</strong> Tailor communication and outreach based on member activity and interests.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_03.png" alt="CRM">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 04: Email Campaign Management -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal04">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Email Campaign Management</h4>
+          <p>Makes it easy to reach 100% of your community with campaigns. Target your sends by segmenting your members with demographic-specific queries.</p>
+          <p><strong>Example Use Case:</strong> Send newsletters, event invitations, and updates direct to member's inboxes.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_04.png" alt="Email Campaign Management">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 05: Drive and File Manager -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal05">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Drive and File Manager</h4>
+          <p>Organize images, documents and resources for your community site in one easy-to-navigate area.</p>
+          <p><strong>Example Use Case:</strong> Share important documents and manage community assets securely.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_05.png" alt="Drive and File Manager">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 06: Virtual Events & Webinars -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal06">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Virtual Events &amp; Webinars</h4>
+          <p>Not only is it easy to host live events to engage and educate members, but MyPeople also offers virtual trade show floors, booths, auditoriums, video chats and one-on-one meetings.</p>
+          <p><strong>Example Use Case:</strong> Create a series of webinars and virtual meetups that cater directly to member interests.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_06.png" alt="Virtual Events & Webinars">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 07: Metrics & Analytics Dashboard -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal07">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Metrics &amp; Analytics Dashboard</h4>
+          <p>Gain insights into community engagement and growth through customizable dashboards, graphics and reports.</p>
+          <p><strong>Example Use Case:</strong> Analyze member activity to identify trends, popular content, and optimize community engagement strategies.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_07.png" alt="Metrics & Analytics Dashboard">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 08: Customizable User Profiles -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal08">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Customizable User Profiles</h4>
+          <p>Allow members to showcase their skills, interests and expertise. Blockchain technology protects and validates ownership of profiles.</p>
+          <p><strong>Example Use Case:</strong> Foster deeper peer-to-peer networking, discovery, and member collaboration.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_08.png" alt="Customizable User Profiles">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 09: Blogs & Discussion Forums -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal09">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Blogs &amp; Discussion Forums</h4>
+          <p>Encourage knowledge sharing and conversations among members through content and threaded discussions. Built-in AI facilitates answers and engagement.</p>
+          <p><strong>Example Use Case:</strong> A dedicated, searchable space for Q&amp;A, industry discussions, tips, and peer support.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_09.png" alt="Blogs & Discussion Forums">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 10: LMS -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal10">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Learning Management System</h4>
+          <p>Organize educational content and courses with a library of SCORM-compliant resources, including internal or third-party certification.</p>
+          <p><strong>Example Use Case:</strong> Build paid or free structured learning tracks with certifications or credits for members.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_10.png" alt="Learning Management System">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 11: Directories -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal11">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Directories</h4>
+          <p>You can create directories of companies, products, services, associations and more on MyPeople, complete with reviews, ratings and customer feedback features.</p>
+          <p><strong>Example Use Case:</strong> Present members with vetted, ranked products and vendor recommendations relating to your site's focus.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_11.png" alt="Directories">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 12: Online Forms & Polls -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal12">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Online Forms &amp; Polls</h4>
+          <p>Gather valuable feedback directly from members and generate leads through customizable forms, polls and quizzes.</p>
+          <p><strong>Example Use Case:</strong> Conduct community surveys and seamlessly sync responses directly into your built-in CRM.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_12.png" alt="Online Forms & Polls">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 13: Gamification -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal13">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Gamification</h4>
+          <p>Redeemable points, badging and leaderboards enable you to drive more engagement through rewards and recognition.</p>
+          <p><strong>Example Use Case:</strong> Reward members for contributing content, answering questions, and attending live events.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_13.png" alt="Gamification">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 14: Storefront -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal14">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Storefront</h4>
+          <p>Organize educational content, digital downloads, courses, and merchandise with complete checkout and ticketing support.</p>
+          <p><strong>Example Use Case:</strong> Offer premium courses, digital products, or merchandise directly to your members.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_14.png" alt="Storefront">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 15: Affiliate Program -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal15">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Affiliate Program</h4>
+          <p>Drive additional revenue and member engagement by enabling your members to refer your products to their networks, and benefit via earning a percentage of any sales or points.</p>
+          <p><strong>Example Use Case:</strong> Implement automated affiliate links for members to easily advocate and share products they love.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_15.png" alt="Affiliate Program">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 16: Online Advertising -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal16">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Online Advertising</h4>
+          <p>Popular community sites can be extremely attractive to advertisers. MyPeople has a built-in system to manage ad placement and scheduling on your site.</p>
+          <p><strong>Example Use Case:</strong> Offer targeted, sponsor-friendly advertising inventory to industry partners looking to connect with your audience.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_16.png" alt="Online Advertising">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal 17: Moderation Tools -->
+  <div class="mp-features-modal-wrapper" id="mpFeaturesModal17">
+    <div class="mp_splash_modal wide-detail-modal">
+      <div class="mps_close_features" data-close-modal="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+        </svg>
+      </div>
+      <div class="mpFeaturesDetails_box">
+        <div class="fd_info">
+          <h4>Moderation Tools &amp; User Roles</h4>
+          <p>Moderation system helps you ensure that your community site consistently provides a safe, positive and welcoming environment for your members.</p>
+          <p><strong>Example Use Case:</strong> Empower trusted members with community manager roles to help curate content and foster constructive discussions.</p>
+        </div>
+        <div class="fd_img">
+          <img src="https://mypeople.ai/images/mp_features_17.png" alt="Moderation Tools & User Roles">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================
+       Vanilla JavaScript Controller (No jQuery Dependency)
+       ======================================================================== -->
+  
+  </div> <!-- End #mp-features-embed -->
+
+  <script>
+    (function () {
+      // Elements
+      const overlay = document.getElementById('mpModalOverlay');
+      const splashModal = document.getElementById('mpSplashModal');
+
+      // Helper: open modal
+      function openModal(modalEl) {
+        if (!modalEl) return;
+        overlay.style.display = 'block';
+        modalEl.style.display = 'flex';
+        document.body.classList.add('mp-freeze-scroll');
+      }
+
+      // Helper: close all modals
+      function closeAllModals() {
+        overlay.style.display = 'none';
+        const allModals = document.querySelectorAll('.mp-features-modal-wrapper');
+        allModals.forEach(m => m.style.display = 'none');
+        document.body.classList.remove('mp-freeze-scroll');
+      }
+
+      // Open Book a Call / Contact Modal (from Header, Banner, or anywhere)
+      const contactBtns = document.querySelectorAll('[data-open-contact]');
+      contactBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openModal(splashModal);
+        });
+      });
+
+      // Open Specific Feature Detail Modals
+      const featureDetailBtns = document.querySelectorAll('[data-modal]');
+      featureDetailBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = btn.getAttribute('data-modal');
+          const targetModal = document.getElementById(targetId);
+          if (targetModal) {
+            openModal(targetModal);
+          }
+        });
+      });
+
+      // Close button triggers
+      const closeButtons = document.querySelectorAll('[data-close-modal]');
+      closeButtons.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          closeAllModals();
+        });
+      });
+
+      // Overlay click dismiss
+      if (overlay) {
+        overlay.addEventListener('click', closeAllModals);
+      }
+
+      // Escape key dismiss
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeAllModals();
+        }
+      });
+
+      // Form validation helpers
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).toLowerCase());
+      }
+
+      const submitBtn = document.getElementById('mpSubmitForm');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function () {
+          let hasError = false;
+
+          const firstName = document.getElementById('mpFirstName');
+          const lastName = document.getElementById('mpLastName');
+          const email = document.getElementById('mpEmailId');
+          const phone = document.getElementById('mpPhoneNumber');
+          const subject = document.getElementById('mpSubject');
+          const tc = document.getElementById('mpTc');
+
+          // First Name
+          if (!firstName.value.trim()) {
+            document.getElementById('errFirstName').style.display = 'block';
+            hasError = true;
+          } else {
+            document.getElementById('errFirstName').style.display = 'none';
+          }
+
+          // Last Name
+          if (!lastName.value.trim()) {
+            document.getElementById('errLastName').style.display = 'block';
+            hasError = true;
+          } else {
+            document.getElementById('errLastName').style.display = 'none';
+          }
+
+          // Email
+          if (!email.value.trim() || !validateEmail(email.value)) {
+            document.getElementById('errEmail').style.display = 'block';
+            hasError = true;
+          } else {
+            document.getElementById('errEmail').style.display = 'none';
+          }
+
+          // Phone
+          if (!phone.value.trim() || phone.value.trim().length < 7) {
+            document.getElementById('errPhone').style.display = 'block';
+            hasError = true;
+          } else {
+            document.getElementById('errPhone').style.display = 'none';
+          }
+
+          // Subject
+          if (!subject.value) {
+            document.getElementById('errSubject').style.display = 'block';
+            hasError = true;
+          } else {
+            document.getElementById('errSubject').style.display = 'none';
+          }
+
+          // Checkbox Terms
+          if (!tc.checked) {
+            document.getElementById('errTc').style.display = 'block';
+            hasError = true;
+          } else {
+            document.getElementById('errTc').style.display = 'none';
+          }
+
+          if (!hasError) {
+            // Show success state
+            document.getElementById('mpSplashForm').style.display = 'none';
+            document.getElementById('mpSuccessInfo').style.display = 'block';
+          }
+        });
+      }
+    })();
+  </script>
