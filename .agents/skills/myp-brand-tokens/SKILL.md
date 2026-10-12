@@ -17,8 +17,8 @@ This skill provides the exact specifications, CSS variable tokens, and semantic 
 ## 1. Core Rule: Zero Token Invention
 - **Never hardcode ad-hoc hex codes or random padding/radii.**
 - Always reference CSS custom properties defined in [00-branding/tokens.css](file:///e:/HR/000-myp-community/00-branding/tokens.css).
-- Always include the official Google Fonts import:
-  `Inria Serif` (700 Bold), `Inter` (600 Semi Bold), and `Roboto` (400 Regular, 500 Medium, 700 Bold).
+- The official brand typography utilizes Google Fonts:
+  `Inria Serif` (700 Bold), `Inter` (600 Semi Bold), and `Roboto` (400 Regular, 500 Medium, 700 Bold). *(Note: Loaded centrally at the Master Story Template level `pages/templates/00_Myp-Community-Pages.html` and via `@import` in `00-branding/tokens.css`)*.
 - The page canvas background is always `#FFFCF8` (`var(--color-page-bg)`).
 
 ---
@@ -189,12 +189,39 @@ This skill provides the exact specifications, CSS variable tokens, and semantic 
 
 ---
 
-## 5. Pre-Commit Brand Audit Checklist
+## 5. Strict Content Fidelity & Zero Text Hallucination
+- **Zero Inventions**: Never invent text copy, marketing claims, metrics, or cards not present in the user's prompt or screenshot.
+- **Exact Copy Transcriptions**: Strictly use the exact text provided in the user's screenshots or source files.
+- **No Unrequested Extra Cards**: If the screenshot shows only a title and body text, render only those elements cleanly styled—do not add invented feature cards or unrequested filler content.
+
+---
+
+## 6. Pre-Commit Brand Audit Checklist
 Before submitting any new or modified HTML file:
-1. **Google Fonts Linked**: Verify `Inria Serif`, `Inter`, and `Roboto` are imported.
-2. **Zero Inventions**: Run a regex search for raw hex codes outside `:root`. Verify no `#2B323C` or legacy colors exist.
-3. **Canvas Background**: Verify the page canvas is `#FFFCF8`.
-4. **CTA Buttons**: Verify primary buttons use `var(--color-mp-green-700)` with `12px` border-radius.
-5. **Headings**: Verify H1/H2 use `var(--font-family-heading-1)` (Inria Serif) and H3/H4 use `var(--font-family-heading-2)` (Inter).
-6. **Scoping**: Verify all elements are enclosed within `#mp-[page-name]-embed`.
-7. **Container Width & Font Scaling**: Verify container width is capped at `1440px` (`max-width: 1200px` scaling to `1320px` at 1200px+ and `1440px` at 1440px+) with proportionally balanced typography.
+1. **Content Fidelity**: Verify that all headlines, subtext, and paragraphs match the EXACT text from the screenshot/prompt without any hallucinated text, extra cards, or invented metrics.
+2. **Google Fonts Linked**: Verify `Inria Serif`, `Inter`, and `Roboto` are imported.
+3. **Zero Inventions**: Run a regex search for raw hex codes outside `:root`. Verify no `#2B323C` or legacy colors exist.
+4. **Canvas Background**: Verify the page canvas is `#FFFCF8`.
+5. **CTA Buttons**: Verify primary buttons use `var(--color-mp-green-700)` with `12px` border-radius.
+6. **Headings**: Verify H1/H2 use `var(--font-family-heading-1)` (Inria Serif) and H3/H4 use `var(--font-family-heading-2)` (Inter).
+7. **Scoping**: Verify all elements are enclosed within `#mp-[page-name]-embed`.
+8. **Container Width & Font Scaling**: Verify container width is capped at `1440px` (`max-width: 1200px` scaling to `1320px` at 1200px+ and `1440px` at 1440px+) with proportionally balanced typography.
+
+---
+
+## 7. Live Story & Page URLs Directory (Quick Reference)
+
+For quick access and direct navigation (especially if CMS top-level menus are not working as expected), refer to [page-urls.md](file:///e:/HR/000-myp-community/page-urls.md) in the workspace root or the navigation hierarchy table below:
+
+| Navigation Item | Page / Sub-Item | Live Story / Page URL | Workspace HTML Source |
+| :--- | :--- | :--- | :--- |
+| **Logo (Home)** | **Logged in Home** | `https://www.myp.community/en/` | [`pages/home.html`](file:///e:/HR/000-myp-community/pages/home.html) |
+| **Logo (Home)** | **Logged out Home** | `https://www.myp.community/en?t=/Default/spl_login` | [`pages/home.html`](file:///e:/HR/000-myp-community/pages/home.html) |
+| **Community Types** | ↳ **HR Tech & B2B** | `https://www.myp.community/en/community-type/hr-tech-b2b` | [`pages/HR Tech and B2B Customer Communities.html`](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html) |
+| **Community Types** | ↳ **Other Communities** | `https://www.myp.community/en/community-type/other-communities/` | [`pages/other-communities.html`](file:///e:/HR/000-myp-community/pages/other-communities.html) |
+| **Features** | **Features** | `https://www.myp.community/en/features/` | [`pages/features.html`](file:///e:/HR/000-myp-community/pages/features.html) |
+| **Getting Started** | **Getting Started** | `https://www.myp.community/en/getting-started/` | [`pages/getting-started.html`](file:///e:/HR/000-myp-community/pages/getting-started.html) |
+| **Contact Us** | **Contact Us** | `https://www.myp.community/en/contact-us/` | [`pages/contact-us.html`](file:///e:/HR/000-myp-community/pages/contact-us.html) |
+
+
+

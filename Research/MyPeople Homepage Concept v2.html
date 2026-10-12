@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MyPeople | The website that engages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--ink:#14123a;--cobalt:#2334ff;--pink:#ff5fa8;--sun:#ffd23f;--mint:#7cf0c1;--lilac:#e9e6ff;
+--font:"Bricolage Grotesque","Arial Black",Impact,sans-serif}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;height:100%;background:var(--ink);font-family:var(--font);overflow:hidden}
+.stage{position:relative;height:100%;overflow:hidden;cursor:pointer}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:6vw;
+ background:var(--bg);color:var(--fg);clip-path:circle(0% at var(--cx,50%) var(--cy,100%));
+ transition:clip-path .9s cubic-bezier(.7,0,.2,1)}
+.scene.on{clip-path:circle(150% at var(--cx,50%) var(--cy,100%));z-index:2}
+.scene.past{clip-path:circle(150% at 50% 50%);z-index:1}
+h1,h2{position:relative;z-index:1;margin:0;font-weight:800;font-size:clamp(2.8rem,10.5vw,9.5rem);line-height:.92;letter-spacing:-.045em;max-width:17ch}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-right:.22em}
+.w>span{display:inline-block;transform:translateY(115%) rotate(6deg);transition:transform .8s cubic-bezier(.2,.9,.2,1);transition-delay:calc(var(--i)*90ms + 450ms)}
+.scene.on .w>span{transform:none}
+.yes{position:absolute;right:6vw;bottom:5vh;font-weight:800;font-size:clamp(2rem,7vw,6rem);letter-spacing:-.04em;
+ opacity:0;transform:scale(.4) rotate(-8deg);transition:.5s cubic-bezier(.3,1.6,.5,1)}
+.scene.on.said .yes{opacity:1;transform:scale(1) rotate(-4deg)}
+.q1{--bg:var(--cobalt);--fg:var(--lilac)}
+.q2{--bg:var(--pink);--fg:var(--ink)}
+.q3{--bg:var(--sun);--fg:var(--ink)}
+.q4{--bg:var(--mint);--fg:var(--ink)}
+.fin{--bg:var(--ink);--fg:#fff;--cx:50%;--cy:50%;padding-bottom:calc(6vw + 4rem)}
+.fin h2{max-width:11ch}
+.fin p{position:relative;z-index:1;font-weight:500;font-size:clamp(1.05rem,2vw,1.5rem);max-width:36ch;margin:2rem 0 0;line-height:1.35;color:var(--lilac);
+ opacity:0;transition:opacity .8s 1.6s}
+.fin.on p,.fin.on .cta{opacity:1}
+.cta{position:relative;z-index:1;align-self:flex-start;margin-top:1.6rem;font:800 clamp(1rem,1.6vw,1.3rem)/1 var(--font);color:var(--ink);background:var(--sun);
+ border:0;border-radius:999px;padding:1.1em 1.8em;cursor:pointer;text-decoration:none;opacity:0;transition:opacity .8s 2s,transform .2s}
+.cta:hover{transform:scale(1.05) rotate(-1deg)}
+.av{position:absolute;z-index:0;width:var(--s);aspect-ratio:1;opacity:0;transform:scale(.2) rotate(-20deg);
+ transition:opacity .5s,transform .8s cubic-bezier(.3,1.5,.5,1);transition-delay:calc(var(--n)*160ms + 1s)}
+.fin.on .av{opacity:1;transform:none}
+.av svg{display:block;width:100%;height:100%;border-radius:50%;animation:bob 4s ease-in-out infinite alternate;animation-delay:calc(var(--n)*-.7s)}
+@keyframes bob{from{transform:translateY(-8px) rotate(-3deg)}to{transform:translateY(10px) rotate(3deg)}}
+.marq{position:absolute;z-index:1;left:0;right:0;bottom:0;overflow:hidden;white-space:nowrap;border-top:2px solid var(--cobalt);padding:1rem 0;background:var(--ink)}
+.marq div{display:inline-block;animation:slide 30s linear infinite;font-weight:800;font-size:clamp(1.2rem,2.4vw,2rem);letter-spacing:-.02em;color:var(--pink)}
+.marq span{margin-right:2.5rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+.dots{position:absolute;left:6vw;top:calc(3vh + env(safe-area-inset-top,0px));z-index:5;display:flex;gap:.6rem}
+.dots button{width:2.2rem;height:.45rem;border:0;border-radius:9px;background:currentColor;opacity:.3;padding:0;cursor:pointer;color:#fff;mix-blend-mode:difference}
+.dots button.on{opacity:1}
+.skip{position:absolute;right:6vw;top:calc(2.4vh + env(safe-area-inset-top,0px));z-index:5;font:500 1rem var(--font);border:0;background:none;color:#fff;mix-blend-mode:difference;cursor:pointer;text-decoration:underline}
+.hint{position:absolute;left:6vw;bottom:calc(3vh + env(safe-area-inset-bottom,0px));z-index:5;font:500 .95rem var(--font);color:#fff;mix-blend-mode:difference}
+.stage.done .hint{display:none}
+button:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+ body{overflow:auto;height:auto}.stage{height:auto;cursor:auto}
+ .scene{position:relative;min-height:70vh;clip-path:none;transition:none}
+ .w>span,.yes,.fin p,.cta,.av{transform:none;opacity:1;transition:none}
+ .av svg,.marq div{animation:none}.dots,.skip,.hint{display:none}.fin{min-height:100vh}
+}
+</style>
+</head>
+<body>
+<main class="stage" id="stage">
+ <div class="dots" id="dots" role="tablist" aria-label="Questions"></div>
+ <button class="skip" id="skip">Skip to the good part</button>
+
+ <section class="scene q1" style="--cx:50%;--cy:100%"><h1 data-t="Do you want a website people love coming back to?"></h1><div class="yes" aria-hidden="true">Yes.</div></section>
+ <section class="scene q2" style="--cx:0%;--cy:50%"><h1 data-t="Do you want your members, customers and employees to feel connected?"></h1><div class="yes" aria-hidden="true">Yes.</div></section>
+ <section class="scene q3" style="--cx:100%;--cy:0%"><h1 data-t="Do you want events, discussions and learning under one roof?"></h1><div class="yes" aria-hidden="true">Yes.</div></section>
+ <section class="scene q4" style="--cx:50%;--cy:0%"><h1 data-t="Do you want to know what your audience really needs?"></h1><div class="yes" aria-hidden="true">Yes.</div></section>
+
+ <section class="scene fin">
+  <div id="ppl" aria-hidden="true"></div>
+  <h2 data-t="You need to see MyPeople."></h2>
+  <p>A better kind of website: one branded home where your audience connects, learns, joins events and gets a personalized experience.</p>
+  <a class="cta" href="#book">Book 30-Minute Discovery Call</a>
+  <div class="marq" aria-hidden="true"><div id="mq"></div></div>
+ </section>
+ <div class="hint">Click, tap or press space to move on</div>
+</main>
+
+<script>
+(function(){
+  var scenes=[].slice.call(document.querySelectorAll('.scene')),
+      dotsEl=document.getElementById('dots'),stage=document.getElementById('stage'),
+      cur=-1,timer,said;
+  document.querySelectorAll('[data-t]').forEach(function(h){
+    h.setAttribute('aria-label',h.dataset.t);
+    h.innerHTML=h.dataset.t.split(' ').map(function(w,i){
+      return '<span class="w" aria-hidden="true" style="--i:'+i+'"><span>'+w+'</span></span>';}).join('');
+  });
+  var items=['Virtual events','Discussions','Learning','Personalized feeds','Your brand','Your data','Your community'];
+  var m=items.concat(items).map(function(t){return '<span>'+t+'</span>';}).join('');
+  document.getElementById('mq').innerHTML=m+m;
+
+  // Illustrated happy people (placeholders: swap for real photos later)
+  function face(p){
+    var hair='';
+    if(p.h==0)hair='<path d="M29 44a21 21 0 0 1 42 0c-6-9-14-11-21-11s-15 2-21 11z" fill="'+p.hc+'"/>';
+    if(p.h==1)hair='<ellipse cx="50" cy="52" rx="25" ry="27" fill="'+p.hc+'"/><path d="M50 22a22 22 0 0 0-22 24c6-9 14-12 22-12s16 3 22 12a22 22 0 0 0-22-24z" fill="'+p.hc+'"/>';
+    if(p.h==2)hair=[[34,32],[44,27],[56,27],[66,32],[30,42],[70,42]].map(function(c){return '<circle cx="'+c[0]+'" cy="'+c[1]+'" r="9" fill="'+p.hc+'"/>';}).join('');
+    var back=p.h==1?hair:'';var front=p.h==1?'':hair;
+    return '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="'+p.bg+'"/>'+back+
+      '<path d="M12 100q4-30 38-32t38 32z" fill="'+p.sh+'"/><rect x="44" y="58" width="12" height="14" fill="'+p.sk+'"/>'+
+      '<circle cx="50" cy="46" r="20" fill="'+p.sk+'"/>'+(p.h==1?'<path d="M30 44a20 20 0 0 1 40 0c-7-6-13-8-20-8s-13 2-20 8z" fill="'+p.hc+'"/>':front)+
+      '<circle cx="43" cy="46" r="2.3" fill="#14123a"/><circle cx="57" cy="46" r="2.3" fill="#14123a"/>'+
+      '<circle cx="38" cy="54" r="3.5" fill="#ff5fa8" opacity=".35"/><circle cx="62" cy="54" r="3.5" fill="#ff5fa8" opacity=".35"/>'+
+      '<path d="M41 54q9 11 18 0z" fill="#fff" stroke="#14123a" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+  }
+  var ppl=[
+   {sk:'#f2c29b',hc:'#3b2314',h:0,sh:'#2334ff',bg:'#ffd23f',pos:'top:15%;left:4%',s:'clamp(64px,10vw,140px)'},
+   {sk:'#8d5a3b',hc:'#14123a',h:2,sh:'#ff5fa8',bg:'#7cf0c1',pos:'top:9%;right:7%',s:'clamp(80px,13vw,190px)'},
+   {sk:'#e0a97e',hc:'#a4451f',h:1,sh:'#7cf0c1',bg:'#ff5fa8',pos:'top:40%;right:2%',s:'clamp(70px,11vw,160px)'},
+   {sk:'#5c3a26',hc:'#14123a',h:0,sh:'#ffd23f',bg:'#2334ff',pos:'bottom:24%;right:16%',s:'clamp(64px,10vw,150px)'},
+   {sk:'#f6d3b3',hc:'#d9a441',h:1,sh:'#ff5fa8',bg:'#e9e6ff',pos:'top:28%;left:60%',s:'clamp(56px,8vw,120px)'},
+   {sk:'#c68863',hc:'#14123a',h:2,sh:'#2334ff',bg:'#ffd23f',pos:'bottom:26%;left:44%',s:'clamp(52px,7vw,110px)'}
+  ];
+  document.getElementById('ppl').innerHTML=ppl.map(function(p,i){
+    return '<div class="av" style="'+p.pos+';--s:'+p.s+';--n:'+i+'">'+face(p)+'</div>';}).join('');
+
+  scenes.forEach(function(_,i){
+    var b=document.createElement('button');b.setAttribute('aria-label','Go to scene '+(i+1));
+    b.addEventListener('click',function(e){e.stopPropagation();go(i);});dotsEl.appendChild(b);
+  });
+  function go(n){
+    if(n<0||n>=scenes.length||n===cur)return;
+    clearTimeout(timer);clearTimeout(said);
+    scenes.forEach(function(s,i){s.classList.remove('on','said');s.classList.toggle('past',i<n);});
+    cur=n;scenes[n].classList.add('on');
+    [].forEach.call(dotsEl.children,function(d,i){d.classList.toggle('on',i===n);});
+    stage.classList.toggle('done',n===scenes.length-1);
+    if(n<scenes.length-1){
+      said=setTimeout(function(){scenes[n].classList.add('said');},2800);
+      timer=setTimeout(function(){go(n+1);},4600);
+    }
+  }
+  stage.addEventListener('click',function(e){if(e.target.closest('a,button'))return;go(cur+1);});
+  document.getElementById('skip').addEventListener('click',function(e){e.stopPropagation();go(scenes.length-1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key===' '||e.key==='ArrowRight'){e.preventDefault();go(cur+1);}
+    if(e.key==='ArrowLeft')go(cur-1);
+  });
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)setTimeout(function(){go(0);},200);
+})();
+</script>
+</body>
+</html>

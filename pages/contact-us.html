@@ -1,0 +1,957 @@
+<style>
+  /* ==========================================================================
+     000-myp-community Official Design System Tokens
+     Source: 00-branding/tokens.css & 00-branding/design-system.md
+     ========================================================================== */
+  :root {
+    /* Typography Families */
+    --font-family-heading-1: 'Inria Serif', serif !important;
+    --font-family-heading-2: 'Inter', sans-serif !important;
+    --font-family-body: 'Roboto', sans-serif !important;
+
+    /* Generic Colors */
+    --color-page-bg: #FFFCF8 !important;
+    --color-text: #000000 !important;
+    --color-text-link: #02588E !important;
+    --color-border: #CCCCCC !important;
+    --color-white: #FFFFFF !important;
+    --color-black: #000000 !important;
+
+    /* Primary 1: MP-Green Scale */
+    --color-mp-green-50: #F2FBF5;
+    --color-mp-green-100: #E5F6E9;
+    --color-mp-green-200: #CBEED5;
+    --color-mp-green-300: #98DCAB;
+    --color-mp-green-400: #66CB81;
+    --color-mp-green-500: #34B957;
+    --color-mp-green-default: #02A82D;
+    --color-mp-green-700: #018624;
+    --color-mp-green-800: #00651B;
+    --color-mp-green-900: #004213;
+
+    /* Primary 2: MP-Blue Scale */
+    --color-mp-blue-50: #F5F7F8;
+    --color-mp-blue-100: #EBF0F2;
+    --color-mp-blue-200: #D7E1E3;
+    --color-mp-blue-300: #AFC4CB;
+    --color-mp-blue-400: #88A6B1;
+    --color-mp-blue-500: #608897;
+    --color-mp-blue-default: #396B7E;
+    --color-mp-blue-700: #2D5564;
+    --color-mp-blue-800: #22404B;
+    --color-mp-blue-900: #162B32;
+
+    /* Semantic Palettes */
+    --color-success-bg: #E5F6E9;
+    --color-success-border: #28C841;
+    --color-success-text: #018624;
+
+    --color-error-bg: #FFE3E3;
+    --color-error-border: #E06764;
+    --color-error-text: #E13838;
+
+    --color-alert-bg: #FFF4E5;
+    --color-alert-border: #FCBE67;
+    --color-alert-text: #FB9302;
+
+    --color-edit-bg: #E8F2FD;
+    --color-edit-border: #5099EC;
+    --color-edit-text: #1E66BA;
+
+    /* Black / Neutral Scale */
+    --color-black-50: #F2F2F2;
+    --color-black-100: #E4E4E4;
+    --color-black-200: #CCCCCC;
+    --color-black-300: #999999;
+    --color-black-400: #666666;
+    --color-black-500: #333333;
+    --color-black-default: #000000;
+
+    /* Component Metrics */
+    --radius-button: 12px;
+    --radius-card: 16px;
+    --radius-input: 12px;
+    --radius-tag: 12px;
+    --radius-accordion: 16px;
+    --gap-button: 12px;
+  }
+
+  /* ==========================================================================
+     CMS Scoped Root Container & Localized Defensive Reset
+     ========================================================================== */
+  #mp-contact-us-embed {
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--color-black-default);
+    text-align: left;
+    background-color: var(--color-page-bg);
+    width: 100%;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  #mp-contact-us-embed *,
+  #mp-contact-us-embed *::before,
+  #mp-contact-us-embed *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #mp-contact-us-embed img,
+  #mp-contact-us-embed svg {
+    vertical-align: middle;
+  }
+
+  #mp-contact-us-embed .mp_container {
+    width: 100%;
+    max-width: 1200px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ==========================================================================
+     Scroll Reveal & Micro-Animations
+     ========================================================================== */
+  #mp-contact-us-embed .mp-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #mp-contact-us-embed .mp-reveal.mp-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #mp-contact-us-embed .mp-reveal[data-delay="1"] { transition-delay: 0.1s; }
+  #mp-contact-us-embed .mp-reveal[data-delay="2"] { transition-delay: 0.2s; }
+
+  /* ==========================================================================
+     Primary CTA Button
+     ========================================================================== */
+  #mp-contact-us-embed .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-button);
+    height: 52px;
+    padding: 0 32px;
+    background-color: var(--color-mp-green-700) !important;
+    color: var(--color-white) !important;
+    border-radius: var(--radius-button) !important;
+    border: none !important;
+    font-family: var(--font-family-body) !important;
+    font-size: 16px;
+    font-weight: 500 !important;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(1, 134, 36, 0.22);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #mp-contact-us-embed .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  #mp-contact-us-embed .btn-primary:hover::after {
+    left: 100%;
+  }
+
+  #mp-contact-us-embed .btn-primary:hover {
+    background-color: var(--color-mp-green-800) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(1, 134, 36, 0.32);
+  }
+
+  #mp-contact-us-embed .btn-primary:focus {
+    background-color: var(--color-mp-green-default) !important;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(2, 168, 45, 0.3);
+  }
+
+  #mp-contact-us-embed .btn-primary svg {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-contact-us-embed .btn-primary:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ==========================================================================
+     Contact Us: 2-Column Equal Layout (Min-Height 70vh)
+     Column 1: Full Image
+     Column 2: Heading, Description, CTA, Trust Checklist
+     ========================================================================== */
+  #mp-contact-us-embed .mp_contact_section {
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 72px 0;
+    position: relative;
+    background-color: var(--color-page-bg);
+    overflow: hidden;
+  }
+
+  /* Subtle ambient dual-glow */
+  #mp-contact-us-embed .mp_contact_section::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -5%;
+    width: 540px;
+    height: 540px;
+    background: radial-gradient(circle, rgba(203, 238, 213, 0.45) 0%, rgba(242, 251, 245, 0.12) 60%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+  }
+
+  #mp-contact-us-embed .mp_contact_section::after {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    right: -8%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(175, 196, 203, 0.22) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50%;
+  }
+
+  #mp-contact-us-embed .mp_contact_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: stretch;
+    min-height: 70vh;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  /* Column 1: Full Image */
+  #mp-contact-us-embed .mp_contact_visual {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  #mp-contact-us-embed .mp_contact_img_box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(203, 238, 213, 0.6);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+
+  #mp-contact-us-embed .mp_contact_img_box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 48px rgba(1, 134, 36, 0.12);
+  }
+
+  #mp-contact-us-embed .mp_contact_img_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(1.01);
+  }
+
+  /* Column 2: Content, CTA, and Perks */
+  #mp-contact-us-embed .mp_contact_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 0;
+  }
+
+  /* Heading: Inria Serif Bold 700 */
+  #mp-contact-us-embed h1.mp_contact_title {
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 44px;
+    font-weight: 700 !important;
+    line-height: 52px;
+    letter-spacing: -0.3px;
+    color: var(--color-black-default) !important;
+    margin-bottom: 22px;
+    text-align: left;
+  }
+
+  #mp-contact-us-embed h1.mp_contact_title::before {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  #mp-contact-us-embed h1.mp_contact_title span.highlight_green {
+    color: var(--color-mp-green-700) !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+  }
+
+  /* Description: Roboto Regular 400 */
+  #mp-contact-us-embed p.mp_contact_desc {
+    font-family: var(--font-family-body) !important;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    color: var(--color-black-500);
+    margin-bottom: 34px;
+    text-align: left;
+  }
+
+  /* Action Area */
+  #mp-contact-us-embed .mp_contact_action {
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  /* Trust Perks Checklist Grid */
+  #mp-contact-us-embed .mp_contact_perks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 28px;
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid #ECEFEF;
+  }
+
+  #mp-contact-us-embed .mp_perk_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family-body) !important;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--color-black-default);
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  #mp-contact-us-embed .mp_perk_item:hover {
+    transform: translateX(3px);
+    color: var(--color-mp-green-700);
+  }
+
+  #mp-contact-us-embed .mp_perk_icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    stroke: var(--color-mp-green-700);
+  }
+
+  /* ==========================================================================
+     Modals & Overlay Styles (Brand Compliant Inputs & Radii)
+     ========================================================================== */
+  .mp-community-modal-overlay {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99998;
+    backdrop-filter: blur(3px);
+  }
+
+  .mp-community-modal-wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .mp_splash_modal {
+    width: 100%;
+    max-width: 620px;
+    background: var(--color-white);
+    border-radius: 18px;
+    border: 1px solid var(--color-border);
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+    padding: 34px 32px;
+    font-family: var(--font-family-body);
+    box-sizing: border-box;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .mp_splash_modal .mps_close {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-black-50);
+    color: var(--color-black-500);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .mp_splash_modal .mps_close:hover {
+    background: var(--color-black-100);
+    color: var(--color-black-default);
+  }
+
+  .mp_splash_modal h4 {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 22px;
+    font-weight: 600 !important;
+    color: var(--color-black-default) !important;
+    line-height: 30px;
+    margin: 0 0 20px 0;
+    padding-right: 40px;
+    text-transform: none !important;
+  }
+
+  .mp_ipbox {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .mp_ipbox .hrip {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .mp_ipbox .hrip.mw50 {
+    width: calc(50% - 8px);
+  }
+
+  .mp_ipbox .hrip.mw100 {
+    width: 100%;
+  }
+
+  .mp_ipbox .hrip > label {
+    font-family: var(--font-family-body) !important;
+    font-size: 14px;
+    font-weight: 500 !important;
+    color: var(--color-black-default) !important;
+    margin-bottom: 6px;
+  }
+
+  .mp_ipbox .hrip > input[type="text"],
+  .mp_ipbox .hrip > input[type="email"],
+  .mp_ipbox .hrip > input[type="tel"],
+  .mp_ipbox .hrip > select {
+    width: 100%;
+    height: 50px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    background: var(--color-white);
+    color: var(--color-black-default);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease;
+  }
+
+  .mp_ipbox .hrip > input:focus,
+  .mp_ipbox .hrip > select:focus {
+    border-color: var(--color-edit-border);
+  }
+
+  .mp_ipbox .hrip.fdrow {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+  }
+
+  .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-mp-green-700);
+    cursor: pointer;
+  }
+
+  .mp_ipbox .hrip.fdrow > label {
+    margin-bottom: 0;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .mp_ipbox .hrip span.error,
+  .mp_ipbox .hrip span.errorTickbox {
+    display: none;
+    font-size: 12px;
+    color: var(--color-error-text);
+    margin-top: 4px;
+  }
+
+  .mp_splash_modal .mps_success_info {
+    padding: 15px 0;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-black-default);
+  }
+
+  body.mp-freeze-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+  }
+
+  /* ==========================================================================
+     Wide-Screen & Min-Width Responsive Breakpoints (Capped at 1440px)
+     ========================================================================== */
+
+  /* Medium to Large Desktop (min-width: 1200px) */
+  @media screen and (min-width: 1200px) {
+    #mp-contact-us-embed .mp_container {
+      max-width: 1320px;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+    #mp-contact-us-embed .mp_contact_grid {
+      gap: 64px;
+    }
+    #mp-contact-us-embed h1.mp_contact_title {
+      font-size: 48px;
+      line-height: 56px;
+    }
+    #mp-contact-us-embed p.mp_contact_desc {
+      font-size: 19px;
+      line-height: 32px;
+    }
+    #mp-contact-us-embed .mp_perk_item {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  /* Large Desktop - Maximum Width Ceiling (min-width: 1440px) */
+  @media screen and (min-width: 1440px) {
+    #mp-contact-us-embed .mp_container {
+      max-width: 1440px;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    #mp-contact-us-embed .mp_contact_section {
+      padding: 92px 0;
+    }
+    #mp-contact-us-embed .mp_contact_grid {
+      gap: 72px;
+    }
+    #mp-contact-us-embed h1.mp_contact_title {
+      font-size: 52px;
+      line-height: 60px;
+    }
+    #mp-contact-us-embed p.mp_contact_desc {
+      font-size: 20px;
+      line-height: 34px;
+      margin-bottom: 38px;
+    }
+    #mp-contact-us-embed .btn-primary {
+      height: 54px;
+      padding: 0 34px;
+      font-size: 17px;
+    }
+    #mp-contact-us-embed .mp_contact_perks {
+      gap: 16px 36px;
+    }
+    #mp-contact-us-embed .mp_perk_item {
+      font-size: 16px;
+      line-height: 25px;
+    }
+  }
+
+  /* Tablet / Medium Screens (max-width: 991px) */
+  @media screen and (max-width: 991px) {
+    #mp-contact-us-embed .mp_contact_section {
+      min-height: auto;
+      padding: 56px 0;
+    }
+    #mp-contact-us-embed .mp_contact_grid {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      gap: 40px;
+    }
+    #mp-contact-us-embed .mp_contact_visual {
+      order: 2;
+      height: 420px;
+      min-height: 420px;
+    }
+    #mp-contact-us-embed .mp_contact_content {
+      order: 1;
+      padding: 0;
+      align-items: flex-start;
+      text-align: left;
+    }
+    #mp-contact-us-embed h1.mp_contact_title {
+      font-size: 38px;
+      line-height: 46px;
+    }
+    #mp-contact-us-embed p.mp_contact_desc {
+      font-size: 17px;
+      line-height: 28px;
+      margin-bottom: 28px;
+    }
+  }
+
+  /* Mobile Screens (max-width: 576px) */
+  @media screen and (max-width: 576px) {
+    #mp-contact-us-embed .mp_contact_section {
+      padding: 44px 0;
+    }
+    #mp-contact-us-embed .mp_contact_visual {
+      height: 300px;
+      min-height: 300px;
+    }
+    #mp-contact-us-embed h1.mp_contact_title {
+      font-size: 30px;
+      line-height: 38px;
+      margin-bottom: 16px;
+    }
+    #mp-contact-us-embed h1.mp_contact_title::before {
+      margin-bottom: 16px;
+    }
+    #mp-contact-us-embed p.mp_contact_desc {
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 24px;
+    }
+    #mp-contact-us-embed .btn-primary {
+      width: 100%;
+      height: 48px;
+      padding: 0 20px;
+      font-size: 15px;
+    }
+    #mp-contact-us-embed .mp_contact_perks {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .mp_ipbox .hrip.mw50 {
+      width: 100%;
+    }
+    .mp_splash_modal {
+      padding: 24px 18px;
+    }
+  }
+</style>
+
+<!-- ========================================================================
+     Root Scoping Container for WYSIWYG / CMS Embed
+     Strictly adhering to 000-myp-community Brand Tokens & Design System
+     ======================================================================== -->
+<div id="mp-contact-us-embed" class="mp-contact-us-embed">
+
+  <!-- ======================================================================
+       Contact Us / Free Community Consultation Section
+       Two Equal Columns (Min-Height 70vh)
+       Column 1: Full Image
+       Column 2: Title, Description, CTA, and Perks Checklist
+       ====================================================================== -->
+  <section class="mp_contact_section">
+    <div class="mp_container">
+      <div class="mp_contact_grid">
+        
+        <!-- Column 1: Full Image -->
+        <div class="mp_contact_visual mp-reveal" data-delay="1">
+          <div class="mp_contact_img_box">
+            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/contact_community_consultation.jpg" 
+                 alt="Ready to Build a Better Community? Book My Free Community Consultation" 
+                 loading="eager" 
+                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/contact_community_consultation.jpg';}">
+          </div>
+        </div>
+
+        <!-- Column 2: Content & CTA -->
+        <div class="mp_contact_content mp-reveal" data-delay="2">
+          <h1 class="mp_contact_title">Ready to Build a <span class="highlight_green">Better Community?</span></h1>
+          
+          <p class="mp_contact_desc">
+            Start with a 30-minute conversation. We’ll review your current community setup (if you have one), uncover opportunities, and show you how MyPeople can help you create a more connected, valuable member experience.
+          </p>
+
+          <div class="mp_contact_action">
+            <button type="button" class="btn-primary" data-open-contact="">
+              <span>Book My Free Community Consultation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="mp_contact_perks">
+            <div class="mp_perk_item">
+              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
+              </svg>
+              <span>30 minutes</span>
+            </div>
+            <div class="mp_perk_item">
+              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
+              </svg>
+              <span>Personalized recommendations</span>
+            </div>
+            <div class="mp_perk_item">
+              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
+              </svg>
+              <span>No obligation</span>
+            </div>
+            <div class="mp_perk_item">
+              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
+              </svg>
+              <span>See MyPeople in action if it’s a fit</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ========================================================================
+     Modals & Dialog Overlays (Isolated Vanilla JavaScript)
+     ======================================================================== -->
+<div class="mp-community-modal-overlay" id="mpModalOverlay"></div>
+
+<!-- Splash / Contact / Book Consultation Modal -->
+<div class="mp-community-modal-wrapper" id="mpSplashModal">
+  <div class="mp_splash_modal">
+    <div class="mps_close" data-close-modal="" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+      </svg>
+    </div>
+
+    <div id="mpSplashForm">
+      <h4>Fill out this quick form and we'll get back to you shortly</h4>
+      <form id="contactForm" onsubmit="return false;">
+        <div class="mp_ipbox">
+          <div class="hrip mw50">
+            <label for="mpFirstName">First Name</label>
+            <input type="text" name="firstName" id="mpFirstName" placeholder="First Name">
+            <span class="error" id="errFirstName">Please enter valid first name</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpLastName">Last Name</label>
+            <input type="text" name="lastName" id="mpLastName" placeholder="Last Name">
+            <span class="error" id="errLastName">Please enter valid last name</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpEmailId">Email Address</label>
+            <input type="email" name="email" id="mpEmailId" placeholder="Email Address">
+            <span class="error" id="errEmail">Please enter valid email</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpPhoneNumber">Phone Number</label>
+            <input type="tel" name="phoneNumber" id="mpPhoneNumber" placeholder="Phone Number">
+            <span class="error" id="errPhone">Please enter valid phone number</span>
+          </div>
+          <div class="hrip mw100">
+            <label for="mpSubject">Subject</label>
+            <select name="subject" id="mpSubject">
+              <option value="" disabled="">Choose a subject line</option>
+              <option value="Free Community Consultation" selected="">Book Free Community Consultation</option>
+              <option value="Associations">Associations Community</option>
+              <option value="B2C Brands">B2C Brands Community</option>
+              <option value="Media &amp; Publishing">Media &amp; Publishing Community</option>
+              <option value="Education">Education Community</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error" id="errSubject">Please select a subject</span>
+          </div>
+          <div class="hrip fdrow">
+            <input type="checkbox" name="mptc" id="mpTc">
+            <label for="mpTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
+            <span class="error errorTickbox" id="errTc">Please check this tickbox</span>
+          </div>
+          <button type="button" class="btn-primary" id="mpSubmitForm" style="width: 100%; margin-top: 10px;">
+            <span>Submit</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 12.312 12" fill="currentColor">
+              <path d="M5.235,3.451l.61-.61a.657.657,0,0,1,.932,0L12.118,8.18a.657.657,0,0,1,0,.932L6.776,14.454a.657.657,0,0,1-.932,0l-.61-.61a.66.66,0,0,1,.011-.943L8.557,9.746H.659A.658.658,0,0,1,0,9.087V8.208a.658.658,0,0,1,.659-.659h7.9L5.246,4.394A.655.655,0,0,1,5.235,3.451Z" transform="translate(0 -2.647)" />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Success message container -->
+    <div id="mpSuccessInfo" style="display: none;">
+      <div class="mps_success_info">
+        <h4>Thank you for reaching out!</h4>
+        <p>We have received your consultation request. One of our community architects will contact you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================
+     Zero-Dependency Vanilla JavaScript
+     ======================================================================== -->
+<script>
+  (function () {
+    // Scroll reveal observer
+    const reveals = document.querySelectorAll('#mp-contact-us-embed .mp-reveal');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('mp-revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach((el) => revealObserver.observe(el));
+    } else {
+      reveals.forEach((el) => el.classList.add('mp-revealed'));
+    }
+
+    // Modal Handling
+    const overlay = document.getElementById('mpModalOverlay');
+    const splashModal = document.getElementById('mpSplashModal');
+
+    function openModal() {
+      if (overlay && splashModal) {
+        overlay.style.display = 'block';
+        splashModal.style.display = 'flex';
+        document.body.classList.add('mp-freeze-scroll');
+      }
+    }
+
+    function closeModal() {
+      if (overlay && splashModal) {
+        overlay.style.display = 'none';
+        splashModal.style.display = 'none';
+        document.body.classList.remove('mp-freeze-scroll');
+      }
+    }
+
+    document.querySelectorAll('[data-open-contact]').forEach((btn) => {
+      btn.addEventListener('click', openModal);
+    });
+
+    document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+      btn.addEventListener('click', closeModal);
+    });
+
+    if (overlay) {
+      overlay.addEventListener('click', closeModal);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Form Validation Logic
+    const submitBtn = document.getElementById('mpSubmitForm');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', () => {
+        let hasError = false;
+        const firstName = document.getElementById('mpFirstName');
+        const lastName = document.getElementById('mpLastName');
+        const email = document.getElementById('mpEmailId');
+        const phone = document.getElementById('mpPhoneNumber');
+        const subject = document.getElementById('mpSubject');
+        const tc = document.getElementById('mpTc');
+
+        if (!firstName.value.trim()) {
+          document.getElementById('errFirstName').style.display = 'block';
+          hasError = true;
+        } else {
+          document.getElementById('errFirstName').style.display = 'none';
+        }
+
+        if (!lastName.value.trim()) {
+          document.getElementById('errLastName').style.display = 'block';
+          hasError = true;
+        } else {
+          document.getElementById('errLastName').style.display = 'none';
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.value.trim() || !emailRegex.test(email.value)) {
+          document.getElementById('errEmail').style.display = 'block';
+          hasError = true;
+        } else {
+          document.getElementById('errEmail').style.display = 'none';
+        }
+
+        if (!phone.value.trim() || phone.value.trim().length < 7) {
+          document.getElementById('errPhone').style.display = 'block';
+          hasError = true;
+        } else {
+          document.getElementById('errPhone').style.display = 'none';
+        }
+
+        if (!subject.value) {
+          document.getElementById('errSubject').style.display = 'block';
+          hasError = true;
+        } else {
+          document.getElementById('errSubject').style.display = 'none';
+        }
+
+        if (!tc.checked) {
+          document.getElementById('errTc').style.display = 'block';
+          hasError = true;
+        } else {
+          document.getElementById('errTc').style.display = 'none';
+        }
+
+        if (!hasError) {
+          document.getElementById('mpSplashForm').style.display = 'none';
+          document.getElementById('mpSuccessInfo').style.display = 'block';
+        }
+      });
+    }
+  })();
+</script>

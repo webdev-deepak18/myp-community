@@ -9,15 +9,9 @@
   - `<title>` tags
   - `<body>` or `</body>` tags
 - **Required Single-File Embed Structure**: Every HTML file in `pages/` MUST follow this exact top-to-bottom order:
-  1. **Google Fonts `<link>` Tags**:
-     ```html
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter:wght@600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-     ```
-  2. **Scoped `<style>` Block**: Embedded `:root` token variables from `00-branding/tokens.css` and all scoped CSS rules prefixed with `#mp-[page-name]-embed`.
-  3. **Root Container `<div>`**: `<div id="mp-[page-name]-embed" class="mp-[page-name]-embed">` wrapping ALL HTML elements (content, overlays, modals).
-  4. **Vanilla `<script>` Block**: Self-contained Vanilla JS (zero external libraries, zero jQuery).
+  1. **Scoped `<style>` Block**: Embedded `:root` token variables from `00-branding/tokens.css` and all scoped CSS rules prefixed with `#mp-[page-name]-embed`. (*Note: Google Fonts `<link>` tags are loaded centrally in `pages/templates/00_Myp-Community-Pages.html` and are omitted from individual embed files*).
+  2. **Root Container `<div>`**: `<div id="mp-[page-name]-embed" class="mp-[page-name]-embed">` wrapping ALL HTML elements (content, overlays, modals).
+  3. **Vanilla `<script>` Block**: Self-contained Vanilla JS (zero external libraries, zero jQuery).
 
 ---
 
@@ -83,3 +77,27 @@
 Whenever building, modifying, or auditing pages:
 1. Activate `myp-brand-tokens` for exact CSS classes, tokens, and UI component structures.
 2. Activate `cms-page-embed` for CMS isolation, reset patterns, vanilla modal handling, and wide-screen responsiveness.
+
+---
+
+## 9. Strict Content Fidelity (Zero Text Invention & Zero Hallucination)
+- **Zero Hallucination / Invention**: Under NO circumstances should you invent, extrapolate, or hallucinate text content, claims, statistics, metrics, or component cards not explicitly provided in the user's prompt, screenshots, or source backup HTML.
+- **Exact Copy Matching**: Always implement the EXACT headlines, subheadings, paragraphs, and CTA button text from the user's input/screenshots.
+- **No Unrequested Filler Cards**: If a section in a screenshot only contains a heading, subtitle, and paragraph, render ONLY those elements with premium brand typography and layout. Do NOT invent extra cards, badges, or filler items.
+
+---
+
+## 10. Live Story & Page URLs Directory (Quick Reference)
+- Refer to [page-urls.md](file:///e:/HR/000-myp-community/page-urls.md) in the workspace root for direct access to all deployed story URLs.
+- **Known Issue**: Top-level CMS navigation / menus may not function as expected across embed views, requiring direct URL access for validation.
+- **Navigation Hierarchy Directory**:
+  - **Logo (Home - Logged in)**: `https://www.myp.community/en/` -> [pages/home.html](file:///e:/HR/000-myp-community/pages/home.html)
+  - **Logo (Home - Logged out)**: `https://www.myp.community/en?t=/Default/spl_login` -> [pages/home.html](file:///e:/HR/000-myp-community/pages/home.html)
+  - **Community Types > HR Tech & B2B**: `https://www.myp.community/en/community-type/hr-tech-b2b` -> [pages/HR Tech and B2B Customer Communities.html](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html)
+  - **Community Types > Other Communities**: `https://www.myp.community/en/community-type/other-communities/` -> [pages/other-communities.html](file:///e:/HR/000-myp-community/pages/other-communities.html)
+  - **Features**: `https://www.myp.community/en/features/` -> [pages/features.html](file:///e:/HR/000-myp-community/pages/features.html)
+  - **Getting Started**: `https://www.myp.community/en/getting-started/` -> [pages/getting-started.html](file:///e:/HR/000-myp-community/pages/getting-started.html)
+  - **Contact Us**: `https://www.myp.community/en/contact-us/` -> [pages/contact-us.html](file:///e:/HR/000-myp-community/pages/contact-us.html)
+
+
+

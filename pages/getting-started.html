@@ -1,0 +1,212 @@
+<style>
+:root {
+  /* ------------------------------------------------------------------------
+     Typography Font Families
+     ------------------------------------------------------------------------ */
+  --font-family-heading-1: 'Inria Serif', serif;
+  --font-family-heading-2: 'Inter', sans-serif;
+  --font-family-body: 'Roboto', sans-serif;
+
+  /* ------------------------------------------------------------------------
+     Generic Colors
+     ------------------------------------------------------------------------ */
+  --color-page-bg: #FFFCF8;
+  --color-text: #000000;
+  --color-text-link: #02588E;
+  --color-border: #CCCCCC;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* ------------------------------------------------------------------------
+     Primary 1: MP-Green Scale
+     ------------------------------------------------------------------------ */
+  --color-mp-green-50: #F2FBF5;
+  --color-mp-green-100: #E5F6E9;
+  --color-mp-green-200: #CBEED5;
+  --color-mp-green-300: #98DCAB;
+  --color-mp-green-400: #66CB81;
+  --color-mp-green-500: #34B957;
+  --color-mp-green-default: #02A82D;
+  --color-mp-green-700: #018624;
+  --color-mp-green-800: #00651B;
+  --color-mp-green-900: #004213;
+
+  /* ------------------------------------------------------------------------
+     Primary 2: MP-Blue Scale
+     ------------------------------------------------------------------------ */
+  --color-mp-blue-50: #F5F7F8;
+  --color-mp-blue-100: #EBF0F2;
+  --color-mp-blue-200: #D7E1E3;
+  --color-mp-blue-300: #AFC4CB;
+  --color-mp-blue-400: #88A6B1;
+  --color-mp-blue-500: #608897;
+  --color-mp-blue-default: #396B7E;
+  --color-mp-blue-700: #2D5564;
+  --color-mp-blue-800: #22404B;
+  --color-mp-blue-900: #162B32;
+
+  /* ------------------------------------------------------------------------
+     Semantic Palettes
+     ------------------------------------------------------------------------ */
+  --color-success-bg: #E5F6E9;
+  --color-success-border: #28C841;
+  --color-success-text: #018624;
+
+  --color-error-bg: #FFE3E3;
+  --color-error-border: #E06764;
+  --color-error-text: #E13838;
+
+  --color-alert-bg: #FFF4E5;
+  --color-alert-border: #FCBE67;
+  --color-alert-text: #FB9302;
+
+  --color-edit-bg: #E8F2FD;
+  --color-edit-border: #5099EC;
+  --color-edit-text: #1E66BA;
+
+  /* ------------------------------------------------------------------------
+     Black / Neutral Scale
+     ------------------------------------------------------------------------ */
+  --color-black-50: #F2F2F2;
+  --color-black-100: #E4E4E4;
+  --color-black-200: #CCCCCC;
+  --color-black-300: #999999;
+  --color-black-400: #666666;
+  --color-black-500: #333333;
+  --color-black-default: #000000;
+
+  /* ------------------------------------------------------------------------
+     Component Tokens
+     ------------------------------------------------------------------------ */
+  --radius-button: 12px;
+  --radius-input: 12px;
+  --radius-tag: 12px;
+  --radius-accordion: 16px;
+  --radius-table: 0px;
+
+  --gap-button: 12px;
+  --gap-input: 12px;
+  --gap-table: 12px;
+}
+
+#mp-getting-started-embed {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-black-default);
+  background-color: var(--color-page-bg);
+  text-align: left;
+  width: 100%;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#mp-getting-started-embed *,
+#mp-getting-started-embed *::before,
+#mp-getting-started-embed *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#mp-getting-started-embed img,
+#mp-getting-started-embed svg {
+  vertical-align: middle;
+}
+
+/* Base Desktop / Laptops */
+#mp-getting-started-embed .mp_container {
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+#mp-getting-started-embed h2.mp_com_title {
+  font-family: var(--font-family-heading-1);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: -0.25px;
+  color: var(--color-black-default);
+  text-align: center;
+  margin: 0 auto;
+}
+
+#mp-getting-started-embed .mp_features_tagline {
+  font-family: var(--font-family-heading-2);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+#mp-getting-started-embed p {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  line-height: 28px;
+  margin: 24px auto 0 auto;
+  text-align: center;
+  max-width: 800px;
+}
+
+/* 1200px+: Medium-to-Large Desktop */
+@media screen and (min-width: 1200px) {
+  #mp-getting-started-embed .mp_container {
+    max-width: 1320px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  #mp-getting-started-embed h2.mp_com_title {
+    font-size: 38px;
+    line-height: 46px;
+  }
+  #mp-getting-started-embed .mp_features_tagline {
+    font-size: 34px;
+    line-height: 42px;
+    margin-top: 20px;
+  }
+}
+
+/* 1440px+: Maximum Desktop Ceiling */
+@media screen and (min-width: 1440px) {
+  #mp-getting-started-embed .mp_container {
+    max-width: 1440px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  #mp-getting-started-embed h2.mp_com_title {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  #mp-getting-started-embed .mp_features_tagline {
+    font-size: 36px;
+    line-height: 44px;
+    margin-top: 24px;
+  }
+  #mp-getting-started-embed p {
+    font-size: 18px;
+    line-height: 32px;
+    margin-top: 32px;
+  }
+}
+</style>
+
+<div id="mp-getting-started-embed" class="mp-getting-started-embed">
+  <div class="mp_container">
+    <h2 class="mp_com_title">Getting Started</h2>
+    <h3 class="mp_features_tagline">Welcome to the Community</h3>
+    <p>This is a placeholder text for the Getting Started page.</p>
+  </div>
+</div>

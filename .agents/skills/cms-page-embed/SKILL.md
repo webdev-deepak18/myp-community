@@ -17,10 +17,9 @@ This skill defines the technical standards for constructing self-contained HTML/
 Because the output is pasted directly into a CMS story container or rich-text block, **NEVER output standard outer document wrappers**:
 - **FORBIDDEN**: `<!DOCTYPE html>`, `<html>`, `</html>`, `<head>`, `</head>`, `<meta>`, `<title>`, `<body>`, `</body>`.
 - **REQUIRED FILE ORDER**:
-  1. Google Fonts `<link>` stylesheet
-  2. Scoped `<style>` block containing `:root` brand tokens and `#mp-[page-name]-embed` prefixed styles
-  3. Single container `<div id="mp-[page-name]-embed" class="mp-[page-name]-embed">` wrapping all markup (content, modals)
-  4. Vanilla `<script>` block
+  1. Scoped `<style>` block containing `:root` brand tokens and `#mp-[page-name]-embed` prefixed styles (*Note: Google Fonts `<link>` tags are loaded centrally by the Master Story Template `pages/templates/00_Myp-Community-Pages.html` and are omitted from individual embed files to avoid duplicate DOM tags and redundant network requests*).
+  2. Single container `<div id="mp-[page-name]-embed" class="mp-[page-name]-embed">` wrapping all markup (content, modals)
+  3. Vanilla `<script>` block
 
 ---
 
@@ -216,3 +215,23 @@ When embedding via a CMS master story template (such as `pages/templates/00_Myp-
    </div>
    $designAttribute:masterD_no_sidebar
    ```
+3. **Centralized Google Fonts Loading**:
+   The Master Story Template (`pages/templates/00_Myp-Community-Pages.html`) loads the official Google Fonts (`Inria Serif`, `Inter`, `Roboto`) at the top of the template. Embedded child pages (`pages/*.html`) must NOT duplicate `<link rel="preconnect">` or `<link rel="stylesheet">` tags.
+
+---
+
+## 5. Live Story & Page URLs Directory (Quick Reference)
+
+For quick access and direct navigation (especially if CMS top-level menus are not working as expected), refer to [page-urls.md](file:///e:/HR/000-myp-community/page-urls.md) in the workspace root or the navigation hierarchy table below:
+
+| Navigation Item | Page / Sub-Item | Live Story / Page URL | Workspace HTML Source |
+| :--- | :--- | :--- | :--- |
+| **Logo (Home)** | **Logged in Home** | `https://www.myp.community/en/` | [`pages/home.html`](file:///e:/HR/000-myp-community/pages/home.html) |
+| **Logo (Home)** | **Logged out Home** | `https://www.myp.community/en?t=/Default/spl_login` | [`pages/home.html`](file:///e:/HR/000-myp-community/pages/home.html) |
+| **Community Types** | ↳ **HR Tech & B2B** | `https://www.myp.community/en/community-type/hr-tech-b2b` | [`pages/HR Tech and B2B Customer Communities.html`](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html) |
+| **Community Types** | ↳ **Other Communities** | `https://www.myp.community/en/community-type/other-communities/` | [`pages/other-communities.html`](file:///e:/HR/000-myp-community/pages/other-communities.html) |
+| **Features** | **Features** | `https://www.myp.community/en/features/` | [`pages/features.html`](file:///e:/HR/000-myp-community/pages/features.html) |
+| **Getting Started** | **Getting Started** | `https://www.myp.community/en/getting-started/` | [`pages/getting-started.html`](file:///e:/HR/000-myp-community/pages/getting-started.html) |
+| **Contact Us** | **Contact Us** | `https://www.myp.community/en/contact-us/` | [`pages/contact-us.html`](file:///e:/HR/000-myp-community/pages/contact-us.html) |
+
+
