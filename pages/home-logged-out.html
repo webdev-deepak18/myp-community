@@ -94,6 +94,9 @@
     padding: 0;
     overflow-x: hidden;
     overflow-x: clip;
+
+    /* Community network motif (decorative mask shared by hero scenes and the Better section) */
+    --mp-network-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='black' stroke-width='3'%3E%3Cpath d='M60 90C140 60 170 150 230 120S330 70 350 160M230 120C210 210 120 220 90 300M230 120C280 200 300 260 330 320M90 300C170 330 250 340 330 320M60 90C70 170 40 240 90 300'/%3E%3Cg fill='black' stroke='none'%3E%3Ccircle cx='60' cy='90' r='22'/%3E%3Ccircle cx='230' cy='120' r='34'/%3E%3Ccircle cx='350' cy='160' r='18'/%3E%3Ccircle cx='90' cy='300' r='28'/%3E%3Ccircle cx='330' cy='320' r='24'/%3E%3Ccircle cx='160' cy='215' r='10'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   #mp-home-embed *,
@@ -155,6 +158,15 @@
     position: relative;
   }
 
+  /* The CMS template adds a float clearfix (.mp_container::before/::after,
+     display: table). Our containers are flex/grid, where those pseudo-elements
+     become real items and push columns out of place. */
+  #mp-home-embed .mp_container::before,
+  #mp-home-embed .mp_container::after {
+    content: none !important;
+    display: none !important;
+  }
+
   /* ==========================================================================
      Keyframes
      ========================================================================== */
@@ -180,7 +192,7 @@
   #mp-home-embed.mp-js .mp-reveal {
     opacity: 0;
     transform: translateY(32px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s);
   }
 
   #mp-home-embed.mp-js .mp-reveal.mp-revealed {
@@ -188,10 +200,18 @@
     transform: none;
   }
 
-  #mp-home-embed.mp-js .mp-reveal[data-delay="1"] { transition-delay: 0.08s; }
-  #mp-home-embed.mp-js .mp-reveal[data-delay="2"] { transition-delay: 0.16s; }
-  #mp-home-embed.mp-js .mp-reveal[data-delay="3"] { transition-delay: 0.24s; }
-  #mp-home-embed.mp-js .mp-reveal[data-delay="4"] { transition-delay: 0.32s; }
+  #mp-home-embed.mp-js .mp-reveal[data-delay="1"] { --mp-reveal-delay: 0.08s; }
+  #mp-home-embed.mp-js .mp-reveal[data-delay="2"] { --mp-reveal-delay: 0.16s; }
+  #mp-home-embed.mp-js .mp-reveal[data-delay="3"] { --mp-reveal-delay: 0.24s; }
+  #mp-home-embed.mp-js .mp-reveal[data-delay="4"] { --mp-reveal-delay: 0.32s; }
+
+  /* Cards that are also reveal targets lift with the separate `translate` property,
+     so the reveal's `transform` can't cancel the hover. Keep both transitions. */
+  #mp-home-embed.mp-js .mp_better_item.mp-reveal,
+  #mp-home-embed.mp-js .mp_type_panel.mp-reveal,
+  #mp-home-embed.mp-js .mp_diff_card.mp-reveal {
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  }
 
   /* Scroll progress bar */
   #mp-home-embed .mp_scroll_bar {
@@ -399,8 +419,8 @@
     background-color: currentColor;
     opacity: 0.07;
     pointer-events: none;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='black' stroke-width='3'%3E%3Cpath d='M60 90C140 60 170 150 230 120S330 70 350 160M230 120C210 210 120 220 90 300M230 120C280 200 300 260 330 320M90 300C170 330 250 340 330 320M60 90C70 170 40 240 90 300'/%3E%3Cg fill='black' stroke='none'%3E%3Ccircle cx='60' cy='90' r='22'/%3E%3Ccircle cx='230' cy='120' r='34'/%3E%3Ccircle cx='350' cy='160' r='18'/%3E%3Ccircle cx='90' cy='300' r='28'/%3E%3Ccircle cx='330' cy='320' r='24'/%3E%3Ccircle cx='160' cy='215' r='10'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='black' stroke-width='3'%3E%3Cpath d='M60 90C140 60 170 150 230 120S330 70 350 160M230 120C210 210 120 220 90 300M230 120C280 200 300 260 330 320M90 300C170 330 250 340 330 320M60 90C70 170 40 240 90 300'/%3E%3Cg fill='black' stroke='none'%3E%3Ccircle cx='60' cy='90' r='22'/%3E%3Ccircle cx='230' cy='120' r='34'/%3E%3Ccircle cx='350' cy='160' r='18'/%3E%3Ccircle cx='90' cy='300' r='28'/%3E%3Ccircle cx='330' cy='320' r='24'/%3E%3Ccircle cx='160' cy='215' r='10'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
+    -webkit-mask: var(--mp-network-mask) no-repeat center / contain;
+    mask: var(--mp-network-mask) no-repeat center / contain;
   }
 
   #mp-home-embed .mp_scene_final::after {
@@ -892,18 +912,39 @@
   }
 
   /* ==========================================================================
-     Section 4: Better for Your Members (Editorial columns on green tint)
+     Section 4: Better for Your Members (Split heading + colour-block tiles)
      ========================================================================== */
   #mp-home-embed .mp_better {
+    position: relative;
     padding: 96px 0;
     background-color: var(--color-mp-green-50);
     border-top: 1px solid var(--color-mp-green-200);
     border-bottom: 1px solid var(--color-mp-green-200);
+    overflow: hidden;
   }
 
-  #mp-home-embed .mp_better .mp_h2 {
-    max-width: 820px;
-    margin-bottom: 56px;
+  /* Faint community network motif behind the heading */
+  #mp-home-embed .mp_better::before {
+    content: '';
+    position: absolute;
+    left: -140px;
+    bottom: -160px;
+    width: 560px;
+    height: 560px;
+    background-color: var(--color-mp-green-700);
+    opacity: 0.06;
+    pointer-events: none;
+    -webkit-mask: var(--mp-network-mask) no-repeat center / contain;
+    mask: var(--mp-network-mask) no-repeat center / contain;
+  }
+
+  #mp-home-embed .mp_better_layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: 64px;
   }
 
   #mp-home-embed .mp_better .mp_h2 .mp_hl {
@@ -912,72 +953,95 @@
 
   #mp-home-embed .mp_better_grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
 
+  /* Checkerboard of colour-block tiles: green / white / white / slate */
   #mp-home-embed .mp_better_item {
     position: relative;
-    padding-top: 32px;
-    border-top: 2px solid var(--color-mp-green-200);
-  }
-
-  #mp-home-embed .mp_better_item::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-mp-green-700);
-    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  #mp-home-embed .mp_better_item.mp-revealed::before {
-    width: 48px;
-  }
-
-  #mp-home-embed .mp_better_item:hover::before {
-    width: 100%;
-  }
-
-  #mp-home-embed .mp_better_head {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 32px;
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
   }
 
+  #mp-home-embed .mp_better_item:hover {
+    translate: 0 -6px;
+    box-shadow: 0 24px 50px rgba(22, 43, 50, 0.16);
+  }
+
+  #mp-home-embed .mp_better_item.is-green {
+    background-color: var(--color-mp-green-700);
+  }
+
+  #mp-home-embed .mp_better_item.is-white {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-mp-green-200);
+  }
+
+  #mp-home-embed .mp_better_item.is-white:hover {
+    border-color: var(--color-mp-green-300);
+  }
+
+  #mp-home-embed .mp_better_item.is-slate {
+    background-color: var(--color-mp-blue-800);
+  }
+
+  /* Giant serif index as a watermark */
   #mp-home-embed .mp_better_num {
+    position: absolute;
+    top: 14px;
+    right: 26px;
     font-family: var(--font-family-heading-1) !important;
-    font-size: 40px;
+    font-size: 104px;
     font-weight: 700 !important;
-    line-height: 44px;
-    color: var(--color-mp-green-300);
-    transition: color 0.3s ease;
+    line-height: 104px;
+    letter-spacing: -3px;
+    pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   #mp-home-embed .mp_better_item:hover .mp_better_num {
-    color: var(--color-mp-green-700);
+    transform: translateY(-6px);
   }
 
+  #mp-home-embed .mp_better_item.is-green .mp_better_num { color: var(--color-mp-green-500); }
+  #mp-home-embed .mp_better_item.is-white .mp_better_num { color: var(--color-mp-green-100); }
+  #mp-home-embed .mp_better_item.is-slate .mp_better_num { color: var(--color-mp-blue-700); }
+
   #mp-home-embed .mp_better_icon {
+    position: relative;
     width: 56px;
     height: 56px;
+    margin-bottom: 40px;
     border-radius: var(--radius-card);
-    background-color: var(--color-white);
-    border: 1px solid var(--color-mp-green-200);
-    color: var(--color-mp-green-700);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease;
   }
 
   #mp-home-embed .mp_better_item:hover .mp_better_icon {
+    transform: rotate(-6deg);
+  }
+
+  #mp-home-embed .mp_better_item.is-green .mp_better_icon {
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700);
+  }
+
+  #mp-home-embed .mp_better_item.is-white .mp_better_icon {
     background-color: var(--color-mp-green-700);
     color: var(--color-white);
-    transform: rotate(-6deg);
+  }
+
+  #mp-home-embed .mp_better_item.is-slate .mp_better_icon {
+    background-color: var(--color-mp-green-400);
+    color: var(--color-mp-blue-900);
   }
 
   #mp-home-embed .mp_better_icon svg {
@@ -986,20 +1050,36 @@
   }
 
   #mp-home-embed .mp_better_item h4 {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 21px;
-    font-weight: 600 !important;
-    line-height: 29px;
-    color: var(--color-black-default);
+    position: relative;
+    margin-top: auto;
     margin-bottom: 10px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 22px;
+    font-weight: 600 !important;
+    line-height: 30px;
+    color: var(--color-black-default);
   }
 
   #mp-home-embed .mp_better_item p {
+    position: relative;
     font-family: var(--font-family-body) !important;
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
     color: var(--color-black-500);
+  }
+
+  #mp-home-embed .mp_better_item.is-green h4,
+  #mp-home-embed .mp_better_item.is-slate h4 {
+    color: var(--color-white);
+  }
+
+  #mp-home-embed .mp_better_item.is-green p {
+    color: var(--color-white);
+  }
+
+  #mp-home-embed .mp_better_item.is-slate p {
+    color: var(--color-mp-blue-100);
   }
 
   /* ==========================================================================
@@ -1138,11 +1218,11 @@
     padding: 16px 16px 40px 16px;
     border-radius: var(--radius-panel);
     color: var(--color-white);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
   }
 
   #mp-home-embed .mp_type_panel:hover {
-    transform: translateY(-6px);
+    translate: 0 -6px;
     box-shadow: 0 28px 60px rgba(22, 43, 50, 0.22);
   }
 
@@ -1268,11 +1348,11 @@
     background-color: var(--color-white);
     border: 1px solid var(--color-mp-blue-200);
     box-shadow: 0 6px 24px rgba(22, 43, 50, 0.05);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: translate 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   #mp-home-embed .mp_diff_card:hover {
-    transform: translateY(-6px);
+    translate: 0 -6px;
     border-color: var(--color-mp-green-300);
     box-shadow: 0 22px 44px rgba(1, 134, 36, 0.12);
   }
@@ -1658,7 +1738,8 @@
     #mp-home-embed .mp_arch_grid,
     #mp-home-embed .mp_build_grid { gap: 80px; }
 
-    #mp-home-embed .mp_better_item h4 { font-size: 22px; line-height: 30px; }
+    #mp-home-embed .mp_better_layout { gap: 80px; }
+    #mp-home-embed .mp_better_item h4 { font-size: 23px; line-height: 31px; }
     #mp-home-embed .mp_arch_tag { font-size: 58px; line-height: 66px; }
     #mp-home-embed .mp_arch_list span { font-size: 20px; line-height: 28px; }
     #mp-home-embed .mp_type_panel h3 { font-size: 28px; line-height: 36px; }
@@ -1693,7 +1774,9 @@
     #mp-home-embed .mp_arch,
     #mp-home-embed .mp_build { padding: 136px 0; }
 
-    #mp-home-embed .mp_better_grid { gap: 40px; }
+    #mp-home-embed .mp_better_grid { gap: 28px; }
+    #mp-home-embed .mp_better_item { min-height: 320px; padding: 40px; }
+    #mp-home-embed .mp_better_num { font-size: 120px; line-height: 120px; }
     #mp-home-embed .mp_better_item h4 { font-size: 24px; line-height: 32px; }
     #mp-home-embed .mp_better_item p { font-size: 17px; line-height: 28px; }
     #mp-home-embed .mp_arch_tag { font-size: 64px; line-height: 72px; letter-spacing: -2px; }
@@ -1746,8 +1829,9 @@
     #mp-home-embed .mp_media_dots { right: 8px; }
     #mp-home-embed .mp_media_badge { left: 16px; bottom: -20px; }
 
-    #mp-home-embed .mp_better .mp_h2 { margin-bottom: 40px; }
-    #mp-home-embed .mp_better_grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+    #mp-home-embed .mp_better_layout { grid-template-columns: 1fr; gap: 40px; }
+    #mp-home-embed .mp_better_grid { gap: 20px; }
+    #mp-home-embed .mp_better_item { min-height: 260px; }
 
     #mp-home-embed .mp_arch_tag { font-size: 44px; line-height: 52px; letter-spacing: -1px; }
     #mp-home-embed .mp_arch_list span { font-size: 18px; line-height: 26px; }
@@ -1814,7 +1898,11 @@
     #mp-home-embed .mp_media_badge { padding: 10px; gap: 8px; }
     #mp-home-embed .mp_media_badge span { width: 36px; height: 36px; }
 
-    #mp-home-embed .mp_better_grid { grid-template-columns: 1fr; gap: 32px; }
+    #mp-home-embed .mp_better::before { display: none; }
+    #mp-home-embed .mp_better_grid { grid-template-columns: 1fr; gap: 16px; }
+    #mp-home-embed .mp_better_item { min-height: 0; padding: 28px 24px; }
+    #mp-home-embed .mp_better_icon { margin-bottom: 32px; }
+    #mp-home-embed .mp_better_num { font-size: 80px; line-height: 80px; top: 12px; right: 20px; }
 
     #mp-home-embed .mp_arch_tag { font-size: 34px; line-height: 42px; }
     #mp-home-embed .mp_arch_list li { padding: 18px 4px; gap: 16px; }
@@ -1853,6 +1941,17 @@
     #mp-home-embed .mp_hero_yes,
     #mp-home-embed.mp-js .mp-reveal {
       transition: none !important;
+    }
+
+    #mp-home-embed .mp_better_item:hover,
+    #mp-home-embed .mp_type_panel:hover,
+    #mp-home-embed .mp_diff_card:hover {
+      translate: none !important;
+    }
+
+    #mp-home-embed .mp_better_item:hover .mp_better_num,
+    #mp-home-embed .mp_better_item:hover .mp_better_icon {
+      transform: none !important;
     }
 
     #mp-home-embed .mp_hero_collage img,
@@ -2072,73 +2171,65 @@
        Section 4: Better for Your Members. Better for You.
        ====================================================================== -->
   <section class="mp_better">
-    <div class="mp_container">
+    <div class="mp_container mp_better_layout">
       <h2 class="mp_h2 mp-reveal">Better for Your Members. <span class="mp_hl">Better for You.</span></h2>
 
       <div class="mp_better_grid">
-        <div class="mp_better_item mp-reveal" data-delay="1">
-          <div class="mp_better_head">
-            <span class="mp_better_num" aria-hidden="true">01</span>
-            <div class="mp_better_icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                <path d="m9 12 2 2 4-4"></path>
-              </svg>
-            </div>
+        <div class="mp_better_item is-green mp-reveal" data-delay="1">
+          <span class="mp_better_num" aria-hidden="true">01</span>
+          <div class="mp_better_icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
           </div>
           <h4>More Trust</h4>
           <p>Connect your audience with each other and you</p>
         </div>
 
-        <div class="mp_better_item mp-reveal" data-delay="2">
-          <div class="mp_better_head">
-            <span class="mp_better_num" aria-hidden="true">02</span>
-            <div class="mp_better_icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 21v-7"></path>
-                <path d="M4 10V3"></path>
-                <path d="M12 21v-9"></path>
-                <path d="M12 8V3"></path>
-                <path d="M20 21v-5"></path>
-                <path d="M20 12V3"></path>
-                <circle cx="4" cy="12" r="2"></circle>
-                <circle cx="12" cy="10" r="2"></circle>
-                <circle cx="20" cy="14" r="2"></circle>
-              </svg>
-            </div>
+        <div class="mp_better_item is-white mp-reveal" data-delay="2">
+          <span class="mp_better_num" aria-hidden="true">02</span>
+          <div class="mp_better_icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 21v-7"></path>
+              <path d="M4 10V3"></path>
+              <path d="M12 21v-9"></path>
+              <path d="M12 8V3"></path>
+              <path d="M20 21v-5"></path>
+              <path d="M20 12V3"></path>
+              <circle cx="4" cy="12" r="2"></circle>
+              <circle cx="12" cy="10" r="2"></circle>
+              <circle cx="20" cy="14" r="2"></circle>
+            </svg>
           </div>
           <h4>Fully Personalized</h4>
           <p>Members' feeds focus on topics that they care about</p>
         </div>
 
-        <div class="mp_better_item mp-reveal" data-delay="3">
-          <div class="mp_better_head">
-            <span class="mp_better_num" aria-hidden="true">03</span>
-            <div class="mp_better_icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
-              </svg>
-            </div>
+        <div class="mp_better_item is-white mp-reveal" data-delay="3">
+          <span class="mp_better_num" aria-hidden="true">03</span>
+          <div class="mp_better_icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+            </svg>
           </div>
           <h4>Unified Intel</h4>
           <p>Replace siloed audience data with one "source of truth"</p>
         </div>
 
-        <div class="mp_better_item mp-reveal" data-delay="4">
-          <div class="mp_better_head">
-            <span class="mp_better_num" aria-hidden="true">04</span>
-            <div class="mp_better_icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
-              </svg>
-            </div>
+        <div class="mp_better_item is-slate mp-reveal" data-delay="4">
+          <span class="mp_better_num" aria-hidden="true">04</span>
+          <div class="mp_better_icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
           </div>
           <h4>More Opportunity</h4>
           <p>Grow revenue and increase member loyalty</p>

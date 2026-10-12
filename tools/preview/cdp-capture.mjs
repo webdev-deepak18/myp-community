@@ -20,7 +20,15 @@ const send = (method, params = {}) => new Promise(r => { const i = ++id; pending
 await send('Emulation.setDeviceMetricsOverride', { width: +width, height: +height, deviceScaleFactor: 1, mobile: +width < 600 });
 await send('Page.navigate', { url });
 const t0 = Date.now();
+// Optional: MP_SCROLL=<css selector> scrolls that section into view before the captures
+const scrollSel = process.env.MP_SCROLL;
+let scrolled = !scrollSel;
 for (const t of times) {
+  if (!scrolled) {
+    await sleep(800);
+    await send('Runtime.evaluate', { expression: `document.querySelector(${JSON.stringify(scrollSel)}).scrollIntoView()` });
+    scrolled = true;
+  }
   await sleep(Math.max(0, +t - (Date.now() - t0)));
   const r = await send('Page.captureScreenshot', { format: 'png' });
   writeFileSync(join(outDir, `rt_${width}_${t}.png`), Buffer.from(r.data, 'base64'));

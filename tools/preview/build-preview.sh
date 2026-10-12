@@ -12,7 +12,10 @@ cat <<HEAD
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <base href="file:///${PAGES_DIR}/">
 <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<style>body{margin:0}.fake-header{height:78px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;padding:0 24px;font:600 16px Inter}</style>
+<style>/* Host template rules that bleed into embeds (copied from the live logout template) */
+.mp_container{width:100%;max-width:1170px;padding-left:20px;padding-right:20px;margin:0 auto;position:relative}
+.mp_container::before,.mp_container::after{display:table;content:" "}.mp_container::after{clear:both}
+body{margin:0}.fake-header{height:78px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;padding:0 24px;font:600 16px Inter}</style>
 </head><body><div class="fake-header">MyPeople (CMS header placeholder)</div>
 HEAD
 cat "$SRC"

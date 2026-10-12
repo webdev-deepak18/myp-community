@@ -64,8 +64,8 @@ Green-700 band, Inter 600, items separated by green-300 dots. One `<ul class="mp
 ### 4.3 Editorial Split + Photo with Vector Accents (`.mp_welcome`, `.mp_media`)
 Text left (rule bar, H2, lead, body), photo right in a 28px-radius frame, plus vector accents: dashed green-300 ring, three-dot cluster SVG, floating white badge with icon-only circles (heart, chat, calendar). Accents are decorative (`aria-hidden`) and **never contain new copy**.
 
-### 4.4 Numbered Editorial Columns (`.mp_better_item`)
-No card boxes: a 2px green-200 top rule with a green-700 segment that grows on reveal or hover, a large serif index (01–04), and an icon tile that inverts to solid green on hover.
+### 4.4 Split Heading + Colour-Block Tiles (`.mp_better_layout`, `.mp_better_item.is-green / .is-white / .is-slate`)
+Green-tint band. On desktop the H2 sits in a left column (0.8fr) beside a 2×2 tile grid (1.2fr); below 992px it stacks, and below 577px the tiles go to one column. Tiles form a checkerboard (green-700 / white / white / blue-800) with 28px radius. Each tile has an icon chip at the top-left and a giant Inria Serif index (01–04) as a low-contrast watermark at the top-right (green-500 / green-100 / blue-700); the H4 and body are pushed to the bottom with `margin-top: auto`. On hover the tile lifts, the icon tilts and the index rises. A faint network motif (`--mp-network-mask`, shared with the hero) sits behind the heading. Don't use this next to the white icon cards (4.8): both are tile grids.
 
 ### 4.5 Full-bleed Dark Statement (`.mp_arch`)
 Slate band with a dot grid and a soft green glow. Left: H2 + giant two-line Inter statement (second line green-400). Right: divided checklist rows that slide right on hover.
