@@ -77,6 +77,12 @@
 Whenever building, modifying, or auditing pages:
 1. Activate `myp-brand-tokens` for exact CSS classes, tokens, and UI component structures.
 2. Activate `cms-page-embed` for CMS isolation, reset patterns, vanilla modal handling, and wide-screen responsiveness.
+3. Activate `myp-bold-sections` for the modern "big, bold" section patterns, display type tier and motion rules (reference: `pages/home-logged-out.html`).
+4. Activate `myp-image-style` whenever a page needs a new image (house style, prompts, pipeline, CDN hosting).
+5. Before starting ANY request, apply `ai-task-routing` to decide whether Claude or Gemini 3.1 Pro should handle it.
+
+Canonical skills live in `.agents/skills/`. Claude Code discovers them through thin wrappers in `.claude/skills/`. Edit only the canonical files.
+Decision log for the home redesign: `docs/home-redesign-decisions.md`. **New session? Read `docs/session-handoff.md` first.**
 
 ---
 
@@ -91,8 +97,8 @@ Whenever building, modifying, or auditing pages:
 - Refer to [page-urls.md](file:///e:/HR/000-myp-community/page-urls.md) in the workspace root for direct access to all deployed story URLs.
 - **Known Issue**: Top-level CMS navigation / menus may not function as expected across embed views, requiring direct URL access for validation.
 - **Navigation Hierarchy Directory**:
-  - **Logo (Home - Logged in)**: `https://www.myp.community/en/` -> [pages/home.html](file:///e:/HR/000-myp-community/pages/home.html)
-  - **Logo (Home - Logged out)**: `https://www.myp.community/en?t=/Default/spl_login` -> [pages/home.html](file:///e:/HR/000-myp-community/pages/home.html)
+  - **Logo (Home - Logged in)**: `https://www.myp.community/en/` -> [pages/home-logged-out.html](file:///e:/HR/000-myp-community/pages/home-logged-out.html)
+  - **Logo (Home - Logged out)**: `https://www.myp.community/en?t=/Default/spl_login` -> [pages/home-logged-out.html](file:///e:/HR/000-myp-community/pages/home-logged-out.html)
   - **Community Types > HR Tech & B2B**: `https://www.myp.community/en/community-type/hr-tech-b2b` -> [pages/HR Tech and B2B Customer Communities.html](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html)
   - **Community Types > Other Communities**: `https://www.myp.community/en/community-type/other-communities/` -> [pages/other-communities.html](file:///e:/HR/000-myp-community/pages/other-communities.html)
   - **Features**: `https://www.myp.community/en/features/` -> [pages/features.html](file:///e:/HR/000-myp-community/pages/features.html)
@@ -101,3 +107,13 @@ Whenever building, modifying, or auditing pages:
 
 
 
+---
+
+## 11. Two-Agent Workspace (Antigravity: Claude + Gemini 3.1 Pro)
+- This workspace runs in Antigravity with **Claude** and **Gemini 3.1 Pro** side by side. Neither agent can call the other; the user routes work.
+- At the start of every request, check the routing table in `.agents/skills/ai-task-routing/SKILL.md`. If all or part of the task suits the other agent better (Gemini: image generation, browser visual QA, bulk mechanical edits, PDF/screenshot extraction; Claude: architecture, interactive JS, audits, planning, skills), say so in one line and write a handoff brief to `docs/handoffs/`.
+- Work handed back from either agent is audited against `.claude/agents/myp-brand-auditor.md` before it counts as done.
+
+## 12. Images
+- New imagery follows `.agents/skills/myp-image-style/SKILL.md`: real-people photography combined with mint-green vector network accents, never generic stock.
+- Files go in `pages/images/<page>/`, are referenced CDN-first (`https://public-cdn.myp.community/images/<page>/…`) with a local `onerror` fallback, and must be uploaded to the CDN before publishing.

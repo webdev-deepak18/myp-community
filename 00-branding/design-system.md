@@ -235,3 +235,26 @@ The design sheet follows a 3-column specification: `Type`, `Attributes`, and `Ex
 | :--- | :--- | :--- | :--- | :--- |
 | **Table Header (TH)** | `#F2F2F2` (Black 50) | `Solid 2px #28C841` | Roboto, `14px`, Medium (500), `#000000` | `20px X 20px` |
 | **Table Data (TD)** | `#FFFFFF` | `Solid 1px #CCCCCC` | Roboto, `14px`, Regular (400), `#000000` | - |
+
+---
+
+## 4. Marketing Page Extensions (approved 2026-10-12)
+
+Added for the "modern, big, bold" marketing pages (first used on `pages/home-logged-out.html`). These extend the PDF scale; they don't replace it.
+
+### 4.1 Display Type Tier
+| Level | Font Family | Desktop ≥1440 | 1200–1439 | 992–1199 | ≤991 | ≤576 | Letter Spacing |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Display XL** | Inria Serif Bold 700 | 92px / 98px | 80px / 86px | 68px / 74px | 52px / 58px | 38px / 44px | -2.5px → -0.75px |
+| **Display L** | Inria Serif Bold 700 | 76px / 82px | 68px / 74px | 60px / 66px | 48px / 54px | 38px / 44px | -2px → -0.75px |
+| **Section Title (marketing H2)** | Inria Serif Bold 700 | 56px / 64px | 50px / 58px | 44px / 52px | 38px / 46px | 30px / 38px | -1px → -0.25px |
+| **Statement** | Inter Semi Bold 600 | 64px / 72px | 58px / 66px | 52px / 60px | 44px / 52px | 34px / 42px | -2px → -1px |
+
+### 4.2 Component Radii
+| Token | Value | Usage |
+| :--- | :--- | :--- |
+| `--radius-card` | `16px` | Icon tiles, small cards |
+| `--radius-panel` | `28px` | Large colour panels, photo frames |
+
+### 4.3 Section Backgrounds
+Marketing pages alternate Page-BG, MP-Green 50 (with MP-Green 200 hairlines), MP-Blue 900 and MP-Green 700 so that no two adjacent sections share a background. See `.agents/skills/myp-bold-sections/SKILL.md`.

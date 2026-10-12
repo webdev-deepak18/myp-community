@@ -226,8 +226,8 @@ For quick access and direct navigation (especially if CMS top-level menus are no
 
 | Navigation Item | Page / Sub-Item | Live Story / Page URL | Workspace HTML Source |
 | :--- | :--- | :--- | :--- |
-| **Logo (Home)** | **Logged in Home** | `https://www.myp.community/en/` | [`pages/home.html`](file:///e:/HR/000-myp-community/pages/home.html) |
-| **Logo (Home)** | **Logged out Home** | `https://www.myp.community/en?t=/Default/spl_login` | [`pages/home.html`](file:///e:/HR/000-myp-community/pages/home.html) |
+| **Logo (Home)** | **Logged in Home** | `https://www.myp.community/en/` | [`pages/home-logged-out.html`](file:///e:/HR/000-myp-community/pages/home-logged-out.html) |
+| **Logo (Home)** | **Logged out Home** | `https://www.myp.community/en?t=/Default/spl_login` | [`pages/home-logged-out.html`](file:///e:/HR/000-myp-community/pages/home-logged-out.html) |
 | **Community Types** | ↳ **HR Tech & B2B** | `https://www.myp.community/en/community-type/hr-tech-b2b` | [`pages/HR Tech and B2B Customer Communities.html`](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html) |
 | **Community Types** | ↳ **Other Communities** | `https://www.myp.community/en/community-type/other-communities/` | [`pages/other-communities.html`](file:///e:/HR/000-myp-community/pages/other-communities.html) |
 | **Features** | **Features** | `https://www.myp.community/en/features/` | [`pages/features.html`](file:///e:/HR/000-myp-community/pages/features.html) |
