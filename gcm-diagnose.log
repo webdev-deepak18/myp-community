@@ -1,0 +1,198 @@
+﻿Diagnose log at 2026-10-12T15:19:09Z
+
+AppPath: C:\Program Files\Git\mingw64\bin\git-credential-manager.exe
+InstallDir: C:\Program Files\Git\mingw64\bin\
+Version: 2.6.1+786ab03440ddc82e807a97c0e540f5247e44cec6
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 26200)
+Reading environment variables... OK
+ Variables:
+PROCESSOR_ARCHITEW6432=AMD64
+DriverData=C:\Windows\System32\Drivers\DriverData
+COMPUTERNAME=HR
+GIT_TRACE2_PARENT_SID=3c38e1ab-1a98-4ce4-b7b3-c9dc553f36c7
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+OneDrive=C:\Users\Deepak\OneDrive
+HOMEPATH=\Users\Deepak
+USERNAME=Deepak
+ANTIGRAVITY_SAFECLIS_SOURCE=C:/Users/Deepak/.gemini/antigravity-ide/bin/safeclis/src
+ANTIGRAVITY_SOURCE_METADATA={"tool":{"conversationId":"724a6956-a5c0-471e-904b-3c78b807e6f4","stepIndex":77,"toolCall":{"id":"call_1367628","name":"run_command","argumentsJson":"{\"CommandLine\":\"\\u0026 \\\"C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\git-credential-manager.exe\\\" diagnose\",\"Cwd\":\"e:\\\\HR\\\\000-myp-community\",\"WaitMsBeforeAsync\":5000,\"toolAction\":\"Diagnosing git-credential-manager settings\",\"toolSummary\":\"GCM diagnose\"}","thinkingSignature":"EqIICp8IAWkUfRM6d5TKsIjVdjKMzsEnyDwtOj7SYLV76ckeQ177OH/Z3OkrBGp/fMrG3+TyFSY42t2XjPef9LZNAoj9SiDBQvWLI2UGKI4Ju4XXhwRPtmtAfsksZYPxV1vgzKJvujkrlqprs9MjAYWwcMnXFXBUpC9Bm1YFaxK1TvLveYCWJJiJ1IFGDrljYgGYyEddMitlgi651FIVk7JxlEUmuMBNZkvkXBJynFV4xSuJ+v/s5ojPuEYdWjAXreNj3tAyy9SfvSrej54xerPoZbW0pQHhqXz/tXPtSrKP/VUkPLKYP6OUbfZhiDmx9exqiEprHjX7tAnvGNUzbsEPtVgby4Jd0QcZ1d+wZd2sIpNYuScjDGxzg1BvR+5eQnQckhEJXcEfP3VjdXIdiNmpzH1B1yQUcPvlr7pdY4GuQANJcCezfhtT5DNLRrK47bymDs4urutKWRuTTeDtFe8Mp3fCRjbMNr00yVXS6MRMC9zyQYhXIt57WdWXx9aWwrXGuzXe5YrHFpLaRnGiIIdEH4i5/1ch+w9m05a6xIlrk+6dSfxrduqaJFE7sh324lSnsNS9JrwtHw3dxcSrdNRR8ucAa0ca5GwhF39xc+Yg5PnC9BWgv19xIelDOjMolcyHs8wRh/3nbDjXYmz0rjinDMep3Q8kQn8ruEyVsiynRXrtNO2fFi9s3xtKOIDVA488WBGaGTOixMSP3Usv+A10T1ADMot3D1NPFF/RCGUGa86aNYVbmdRS02pxMK7SdO7Ch4FvDqQsngI92xfOC4bwfCUxIQeL9M5h5DIpntcnHrxZKBBV2CCF4PpwxuRphhHYmCQ/4+Du5iYxf5yHXfGWotk4fFob5u/bK/Xuy66S2cJztRs5wxwi/vbAX7ki0qswhrGde0y9S4njGdh1uzcUI4RcTo3PB/pNDQWQ6QuaTaBEh3QCHzTT2sAJtd/UQfGEjo0PDIZKiazZXDEeIjF+q95QXoGufwPPSUqp7NYxHhDSZhxGTKF1nRy6EltuY4Mdfp/KBFXmdhhMr+bHBbgNJ61cQv9vgwzjl83ZvpOMRjzKkOPHc8nBHaqexyw/BGoMcXx8zgNDzf9P28fFhlAQb+l7CxO2IwFm8RnZ8E/baOBbboX34cKrKgIpbPkPD3epcdb6IolKKJ/axGrBf1L7iWB2LsqWXXbB+mquVMFb7PsKVlfKfelneOwQtR6s7PfrEhHzI5a8RlXoxNmoeYfdOjtQVH4gIBqPSGokji22zLMhyHqYc6WDA6qpcXftR5h7BpcGFbPH+FbN7yE4/BbuLrUb0QfN/L9CVTO/17ZIJmstbwuLitMjOdJWu4Kdq/0GvRHqRYnnBsvlPh6wFbqG5EO9cvGsG/zRCvyoPLji9JHjVaEK+GUZvKmw6PplweSyvgA=","originalName":"run_command"}}}
+ANTIGRAVITY_TRAJECTORY_ID=7d979fe6-1d34-4eee-a4da-d837dd115961
+ANTIGRAVITY_CSRF_TOKEN=0c214b45-7ee9-4ae4-b8f7-9a4f910622a2
+PROCESSOR_ARCHITECTURE=x86
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+VSCODE_IPC_HOOK=\\.\pipe\164b77cb-1.107.0-main-sock
+ANTIGRAVITY_EDITOR_APP_ROOT=c:\Users\Deepak\AppData\Local\Programs\Antigravity IDE\resources\app
+CHROME_CRASHPAD_PIPE_NAME=\\.\pipe\crashpad_6616_POBDISCFSFFSUVYM
+TEMP=C:\Users\Deepak\AppData\Local\Temp
+LOCALAPPDATA=C:\Users\Deepak\AppData\Local
+PUBLIC=C:\Users\Public
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 154 Stepping 4, GenuineIntel
+PSModulePath=C:\Users\Deepak\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+EFC_7096_3789132940=1
+EFC_7096_2775293581=1
+USERDOMAIN=HR
+ANTIGRAVITY_CONVERSATION_ID=724a6956-a5c0-471e-904b-3c78b807e6f4
+PROCESSOR_REVISION=9a04
+PROCESSOR_LEVEL=6
+NUMBER_OF_PROCESSORS=12
+APPDATA=C:\Users\Deepak\AppData\Roaming
+ProgramFiles(x86)=C:\Program Files (x86)
+EFC_7096_2946480783=1
+FPS_BROWSER_USER_PROFILE_STRING=Default
+CommonProgramFiles=C:\Program Files (x86)\Common Files
+TMP=C:\Users\Deepak\AppData\Local\Temp
+EFC_7096_2283032206=1
+VSCODE_NLS_CONFIG={"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"C:\\Users\\Deepak\\AppData\\Local\\Programs\\Antigravity IDE\\resources\\app\\out\\nls.messages.json","locale":"en-us","availableLanguages":{}}
+ANTIGRAVITY_LS_ADDRESS=localhost:56362
+ProgramData=C:\ProgramData
+ProgramW6432=C:\Program Files
+PATH=C:/Users/Deepak/.gemini/antigravity-ide/bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Deepak\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Users\Deepak\.local\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Deepak\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Users\Deepak\AppData\Roaming\npm;C:\Users\Deepak\AppData\Local\Programs\Antigravity\bin;C:\Users\Deepak\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Deepak\AppData\Local\Programs\Antigravity IDE\bin;C:\Users\Deepak\AppData\Local\nvm;C:\nvm4w\nodejs
+ProgramFiles=C:\Program Files (x86)
+EFC_7096_1592913036=1
+VSCODE_CODE_CACHE_PATH=C:\Users\Deepak\AppData\Roaming\Antigravity IDE\CachedData\ecfbad74d93962fc8ca485d93ab9b4f3d4cb6cf8
+SystemRoot=C:\WINDOWS
+NVM_SYMLINK=C:\nvm4w\nodejs
+NVM_HOME=C:\Users\Deepak\AppData\Local\nvm
+SESSIONNAME=Console
+ANTIGRAVITY_AGENT=1
+CommonProgramW6432=C:\Program Files\Common Files
+ZES_ENABLE_SYSMAN=1
+LOGONSERVER=\\HR
+USERPROFILE=C:\Users\Deepak
+USERDOMAIN_ROAMINGPROFILE=HR
+ANTIGRAVITY_AGENTAPI_EXE=c:\Users\Deepak\AppData\Local\Programs\Antigravity IDE\resources\app\extensions\antigravity\bin\language_server_windows_x64.exe
+HOMEDRIVE=C:
+VSCODE_PID=6616
+EFC_7096_1262719628=1
+VSCODE_CWD=C:\Users\Deepak\AppData\Local\Programs\Antigravity IDE
+ANTIGRAVITY_LS_VERSION=ide-2.4.5
+FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+EFC_7096_4126798990=1
+OS=Windows_NT
+ComSpec=C:\WINDOWS\system32\cmd.exe
+SystemDrive=C:
+windir=C:\WINDOWS
+ALLUSERSPROFILE=C:\ProgramData
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\Deepak\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\Deepak\AppData\Local\Temp\8a6644e3935a8bea722aa957'... OK
+Reading from temporary file 'C:\Users\Deepak\AppData\Local\Temp\8a6644e3935a8bea722aa957'... OK
+Deleting temporary file 'C:\Users\Deepak\AppData\Local\Temp\8a6644e3935a8bea722aa957'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\Deepak
+UserDataDirectoryPath: C:\Users\Deepak\.gcm
+GetCurrentDirectory(): E:\HR\000-myp-community
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+ OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:59897/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.51.0.windows.1'
+Locating current repository...Git repository at 'E:/HR/000-myp-community/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Program Files/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=openssl
+file:C:/Program Files/Git/etc/gitconfig	http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig	core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig	core.symlinks=false
+file:C:/Program Files/Git/etc/gitconfig	pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig	init.defaultbranch=main
+file:C:/Users/Deepak/.gitconfig	core.editor="C:\Users\Deepak\AppData\Local\Programs\Microsoft VS Code\bin\code" --wait
+file:C:/Users/Deepak/.gitconfig	user.name=webdev-deepak18
+file:C:/Users/Deepak/.gitconfig	user.email=webdev.deepak18@gmail.com
+file:C:/Users/Deepak/.gitconfig	credential.helper=manager
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+file:.git/config	remote.origin.url=https://github.com/webdev-deepak18/myp-community.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+file:.git/config	branch.main.remote=origin
+file:.git/config	branch.main.merge=refs/heads/main
+file:.git/config	branch.main.vscode-merge-base=origin/main
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\Deepak\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\Deepak\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+
