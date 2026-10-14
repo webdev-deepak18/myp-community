@@ -1,11 +1,24 @@
-# myp-community
+# MyPeople Platform: Tenant Websites
 
-Community platform built with pure HTML5 and Vanilla CSS following strict brand guidelines and design tokens.
+Website pages for every tenant (client site) on the MyPeople platform, built as pure HTML5 + vanilla CSS/JS embeds for the platform CMS (story editor / WYSIWYG).
 
-## Project Structure
-- `page-urls.md`: Quick access directory for all live story pages and local HTML source mappings.
-- `00-branding/`: Visual design system specifications (`design-system.md`, `design-system.pdf`) and CSS tokens (`tokens.css`).
-- `.agents/`: Project AI skills and custom workflows (`cms-page-embed`, `myp-brand-tokens`).
-- `AGENTS.md`: Workspace rules and styling guidelines.
-- `pages/`: Embedded story HTML pages and templates.
+## Structure
+- `AGENTS.md`: platform rules (embed format, scoping, px units, 1440px width tiers, content fidelity, agent routing) and the tenant table. **Start here.**
+- `platform/`: shared tooling (`tools/preview/` local preview + headless Chrome capture) and platform docs.
+- `tenants/<tenant>/`: one folder per client site, each with:
+  - `TENANT.md`: brand summary, root-ID prefix, fonts, skills, URLs, CDN. **Read before touching the tenant.**
+  - `brand/`: brand guide, `design-system.md`, `tokens.css`
+  - `pages/`: CMS embed pages (MyP also keeps `templates/`, `images/`, `css/` here)
+  - `docs/`: decision logs, session handoffs, Gemini handoff briefs (`docs/handoffs/`)
+  - `source/` or `archive/`: the old site's HTML and assets (copy reference)
+  - `preview-head.html`: fonts and host CSS used by the preview tool
+- `.agents/skills/`: canonical agent skills. Platform: `cms-page-embed`, `ai-task-routing`. Tenant-scoped: `myp-*`, `svk-*`.
+- `.claude/`: Claude Code skill wrappers and the `brand-auditor` agent.
 
+## Tenants
+| Tenant | Folder | Site |
+| :--- | :--- | :--- |
+| MyPeople Community | `tenants/myp-community/` | https://www.myp.community/ |
+| SVK & Associates | `tenants/svk-associates/` | https://svkassociates.com/ |
+
+Adding a tenant: see `AGENTS.md` §10.

@@ -1,7 +1,7 @@
 ---
 name: myp-image-style
 description: >-
-  Use this skill whenever a 000-myp-community page needs a new image, illustration, banner or
+  Use this skill whenever a myp-community tenant page (tenants/myp-community/; not other tenants) needs a new image, illustration, banner or
   hero visual, or when reviewing whether an image fits the brand. Defines the MyPeople
   "photo + vector network" image style, ready-to-use generation prompts, the generation
   pipeline (Gemini in Antigravity or Figma AI), file naming, compression and CDN hosting.
@@ -14,7 +14,7 @@ Images must never look like generic stock photography.
 
 ---
 
-## 1. The House Style (derived from `pages/images/*.jpg`)
+## 1. The House Style (derived from `tenants/myp-community/pages/images/*.jpg`)
 
 There are three approved image families. Pick one per slot; do not mix within one image.
 
@@ -64,7 +64,7 @@ Fill the `{…}` slots. Keep the closing sentence about text/logos.
    $p.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter([System.Drawing.Imaging.Encoder]::Quality, [long]84)
    $img = [System.Drawing.Image]::FromFile($in); $img.Save($out, $codec, $p); $img.Dispose()
    ```
-5. Save to `pages/images/<page>/<page>_<slot>.jpg` (e.g. `pages/images/home/home_hero_collage.jpg`).
+5. Save to `tenants/myp-community/pages/images/<page>/<page>_<slot>.jpg` (e.g. `tenants/myp-community/pages/images/home/home_hero_collage.jpg`).
 
 ## 4. Hosting & Markup Pattern
 
@@ -74,7 +74,7 @@ Images ship CDN-first with a local fallback, the same pattern as the other pages
      onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_collage.jpg';}"
      alt="…" width="1024" height="1024" loading="lazy" decoding="async">
 ```
-- CDN base for new images: `https://public-cdn.myp.community/images/<page>/<file>`, mirroring `pages/images/<page>/`. Upload before publishing (older pages still use `https://public-cdn.hr.com/remoteimages/website-images/myp-community/`).
+- CDN base for new images: `https://public-cdn.myp.community/images/<page>/<file>`, mirroring `tenants/myp-community/pages/images/<page>/`. Upload before publishing (older pages still use `https://public-cdn.hr.com/remoteimages/website-images/myp-community/`).
 - Always set `width`/`height` (prevents layout shift) and meaningful `alt`. Use `loading="eager"` only for the hero.
 - Blend dark-background images into dark sections with `mask-image: radial-gradient(...)` instead of hard edges.
 

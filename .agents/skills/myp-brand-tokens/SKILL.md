@@ -2,23 +2,23 @@
 name: myp-brand-tokens
 description: >-
   Use this skill whenever creating, updating, styling, or inspecting raw HTML and CSS pages,
-  components, layouts, or design tokens for the 000-myp-community project. Enforces strict
-  compliance with 00-branding/design-system.md, tokens.css, and production pages.
+  components, layouts, or design tokens for the myp-community tenant only (tenants/myp-community/); never for other tenants such as svk-associates. Enforces strict
+  compliance with tenants/myp-community/brand/design-system.md, tokens.css, and production pages.
 ---
 
 # 000-myp-community Brand Guidelines & Token Skill
 
 This skill provides the exact specifications, CSS variable tokens, and semantic HTML markup standards for all web pages and components in the **000-myp-community** codebase.
 
-**MANDATORY RULE**: Every new HTML file created anywhere in this repository MUST strictly follow the design system defined in [00-branding/design-system.md](file:///e:/HR/000-myp-community/00-branding/design-system.md) and [00-branding/tokens.css](file:///e:/HR/000-myp-community/00-branding/tokens.css).
+**MANDATORY RULE**: Every new HTML file under `tenants/myp-community/` MUST strictly follow the design system defined in [tenants/myp-community/brand/design-system.md](file:///e:/HR/000-myp-community/tenants/myp-community/brand/design-system.md) and [tenants/myp-community/brand/tokens.css](file:///e:/HR/000-myp-community/tenants/myp-community/brand/tokens.css).
 
 ---
 
 ## 1. Core Rule: Zero Token Invention
 - **Never hardcode ad-hoc hex codes or random padding/radii.**
-- Always reference CSS custom properties defined in [00-branding/tokens.css](file:///e:/HR/000-myp-community/00-branding/tokens.css).
+- Always reference CSS custom properties defined in [tenants/myp-community/brand/tokens.css](file:///e:/HR/000-myp-community/tenants/myp-community/brand/tokens.css).
 - The official brand typography utilizes Google Fonts:
-  `Inria Serif` (700 Bold), `Inter` (600 Semi Bold), and `Roboto` (400 Regular, 500 Medium, 700 Bold). *(Note: Loaded centrally at the Master Story Template level `pages/templates/00_Myp-Community-Pages.html` and via `@import` in `00-branding/tokens.css`)*.
+  `Inria Serif` (700 Bold), `Inter` (600 Semi Bold), and `Roboto` (400 Regular, 500 Medium, 700 Bold). *(Note: Loaded centrally at the Master Story Template level `tenants/myp-community/pages/templates/00_Myp-Community-Pages.html` and via `@import` in `tenants/myp-community/brand/tokens.css`)*.
 - The page canvas background is always `#FFFCF8` (`var(--color-page-bg)`).
 
 ---
@@ -211,17 +211,17 @@ Before submitting any new or modified HTML file:
 
 ## 7. Live Story & Page URLs Directory (Quick Reference)
 
-For quick access and direct navigation (especially if CMS top-level menus are not working as expected), refer to [page-urls.md](file:///e:/HR/000-myp-community/page-urls.md) in the workspace root or the navigation hierarchy table below:
+For quick access and direct navigation (especially if CMS top-level menus are not working as expected), refer to [page-urls.md](file:///e:/HR/000-myp-community/tenants/myp-community/page-urls.md) in the workspace root or the navigation hierarchy table below:
 
 | Navigation Item | Page / Sub-Item | Live Story / Page URL | Workspace HTML Source |
 | :--- | :--- | :--- | :--- |
-| **Logo (Home)** | **Logged in Home** | `https://www.myp.community/en/` | [`pages/home-logged-out.html`](file:///e:/HR/000-myp-community/pages/home-logged-out.html) |
-| **Logo (Home)** | **Logged out Home** | `https://www.myp.community/en?t=/Default/spl_login` | [`pages/home-logged-out.html`](file:///e:/HR/000-myp-community/pages/home-logged-out.html) |
-| **Community Types** | ↳ **HR Tech & B2B** | `https://www.myp.community/en/community-type/hr-tech-b2b` | [`pages/HR Tech and B2B Customer Communities.html`](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html) |
-| **Community Types** | ↳ **Other Communities** | `https://www.myp.community/en/community-type/other-communities/` | [`pages/other-communities.html`](file:///e:/HR/000-myp-community/pages/other-communities.html) |
-| **Features** | **Features** | `https://www.myp.community/en/features/` | [`pages/features.html`](file:///e:/HR/000-myp-community/pages/features.html) |
-| **Getting Started** | **Getting Started** | `https://www.myp.community/en/getting-started/` | [`pages/getting-started.html`](file:///e:/HR/000-myp-community/pages/getting-started.html) |
-| **Contact Us** | **Contact Us** | `https://www.myp.community/en/contact-us/` | [`pages/contact-us.html`](file:///e:/HR/000-myp-community/pages/contact-us.html) |
+| **Logo (Home)** | **Logged in Home** | `https://www.myp.community/en/` | [`tenants/myp-community/pages/home-logged-out.html`](file:///e:/HR/000-myp-community/tenants/myp-community/pages/home-logged-out.html) |
+| **Logo (Home)** | **Logged out Home** | `https://www.myp.community/en?t=/Default/spl_login` | [`tenants/myp-community/pages/home-logged-out.html`](file:///e:/HR/000-myp-community/tenants/myp-community/pages/home-logged-out.html) |
+| **Community Types** | ↳ **HR Tech & B2B** | `https://www.myp.community/en/community-type/hr-tech-b2b` | [`tenants/myp-community/pages/HR Tech and B2B Customer Communities.html`](file:///e:/HR/000-myp-community/tenants/myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html) |
+| **Community Types** | ↳ **Other Communities** | `https://www.myp.community/en/community-type/other-communities/` | [`tenants/myp-community/pages/other-communities.html`](file:///e:/HR/000-myp-community/tenants/myp-community/pages/other-communities.html) |
+| **Features** | **Features** | `https://www.myp.community/en/features/` | [`tenants/myp-community/pages/features.html`](file:///e:/HR/000-myp-community/tenants/myp-community/pages/features.html) |
+| **Getting Started** | **Getting Started** | `https://www.myp.community/en/getting-started/` | [`tenants/myp-community/pages/getting-started.html`](file:///e:/HR/000-myp-community/tenants/myp-community/pages/getting-started.html) |
+| **Contact Us** | **Contact Us** | `https://www.myp.community/en/contact-us/` | [`tenants/myp-community/pages/contact-us.html`](file:///e:/HR/000-myp-community/tenants/myp-community/pages/contact-us.html) |
 
 
 

@@ -29,7 +29,7 @@ and to supply a ready-to-paste handoff brief.
 | Extracting text from **PDFs / screenshots** of the old site into copy docs | **Gemini** | Strong multimodal reading |
 | First-draft of a **simple page** that clones an existing page's pattern | **Gemini** | Pattern exists already; Claude reviews afterwards |
 | **New page architecture**, new interactive components, hero sequences, modal/form logic | **Claude** | Multi-constraint design + vanilla JS correctness |
-| **Brand / CMS compliance audits** and code review | **Claude** | Use `.claude/agents/myp-brand-auditor.md` |
+| **Brand / CMS compliance audits** and code review | **Claude** | Use `.claude/agents/brand-auditor.md` |
 | **Planning**, decision logs, writing or updating skills and rules | **Claude** | Keeps reasoning consistent across sessions |
 | Debugging CMS layout drift, specificity wars, JS bugs | **Claude** | Needs careful root-cause analysis |
 | Anything touching **content fidelity** (exact copy from source) | Either agent, but **Claude must verify** | Zero-hallucination rule |
@@ -38,7 +38,7 @@ and to supply a ready-to-paste handoff brief.
 Multi-constraint design, logic or review goes to Claude.
 
 When a request mixes both, do the Claude part and hand off the rest:
-> "I've built the section. The image generation is a better fit for Gemini; here's the brief: `docs/handoffs/<file>.md`."
+> "I've built the section. The image generation is a better fit for Gemini; here's the brief: `tenants/<tenant>/docs/handoffs/<file>.md`."
 
 If the user explicitly asks Claude to do something on the Gemini list, just do it.
 
@@ -46,7 +46,7 @@ If the user explicitly asks Claude to do something on the Gemini list, just do i
 
 ## 2. Handoff Brief Format
 
-Save briefs to `docs/handoffs/YYYY-MM-DD-<short-task>.md`:
+Save briefs to `tenants/<tenant>/docs/handoffs/YYYY-MM-DD-<short-task>.md`:
 
 ```markdown
 # Handoff: <task>
@@ -77,5 +77,5 @@ What to report back (file paths, screenshots, open questions).
 
 ## 3. After a Handoff Comes Back
 
-Claude reviews Gemini's output with the `myp-brand-auditor` agent checklist before it is
+Claude reviews Gemini's output with the `brand-auditor` agent checklist before it is
 considered done (raw hex outside `:root`, `rem` units, unscoped selectors, invented copy).

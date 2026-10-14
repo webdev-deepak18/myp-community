@@ -1,0 +1,31 @@
+# Tenant: SVK & Associates (svkassociates.com)
+
+A client of the MyPeople platform: executive coaching, GTM advisory and fractional leadership for founders and CEOs.
+Platform rules in the root `AGENTS.md` apply; this file adds the SVK brand. **Never use MyP tokens, fonts, classes or imagery here.**
+
+| Item | Value |
+| :--- | :--- |
+| Live site | https://svkassociates.com/ (current WordPress/Avada site; the platform pages will replace it) |
+| Root-ID prefix | `#svk-<page>-embed` (e.g. `#svk-home-embed`); class prefix `svk_` |
+| Brand source | [brand/SVK Brand Guide - 2026-06-30.pdf](brand/SVK%20Brand%20Guide%20-%202026-06-30.pdf), transcribed in [brand/design-system.md](brand/design-system.md); tokens in [brand/tokens.css](brand/tokens.css) |
+| Skills | `svk-brand-tokens` (+ platform `cms-page-embed`). The `myp-*` skills do NOT apply. |
+| Fonts (the SVK CMS template must load them) | Roboto 600/700, Nunito 400/600, Petit Formal Script 400. See [preview-head.html](preview-head.html). |
+| CMS template | Not built yet. It needs the font link above. Pages assume no header/footer inside the embed, and the hero height assumes a header of about 120px. |
+| Images | Hotlinked from the client's current site (`svkassociates.com/wp-content/uploads/...`, `susanvanklink.com/wp-content/uploads/...`). Move them to a CDN before the old site is retired. |
+| Old site reference | [source/client-home.html](source/client-home.html) (saved home page: exact copy, image URLs, Mailchimp form) |
+
+## Pages
+
+| Page | File | Status |
+| :--- | :--- | :--- |
+| Home | [pages/home.html](pages/home.html) | Built 2026-10-14, previewed at 1440 and 390px; not yet deployed |
+
+Old-site navigation (pages still to build): About `/about/`, Services `/services/` (Executive Coaching, Go To Market (GTM) Advisory, Revenue Flywheel, Fractional Leadership), Get Started `/get-started/`, Book Now `/book-now/`, Our Team `/our-team/`, Resources `/resources/`, Contact `/contact/`.
+
+## Integrations
+- **Newsletter:** Mailchimp form on the home page posts to `https://emotionatwork.us11.list-manage.com/subscribe/post?u=d5087f44ef875442cb22e27fa&id=5a11fb6fce&f_id=003e94e0f0` (fields `EMAIL`*, `FNAME`*, `LNAME`, interest group `group[34909][1|2|4|8]`, honeypot `b_d5087f44ef875442cb22e27fa_5a11fb6fce`).
+- **Social:** X `https://twitter.com/svanklink`, LinkedIn `https://www.linkedin.com/company/susanvanklink-com/about/`.
+
+## Content Notes
+- Copy comes from `source/client-home.html` and the brand guide's approved text (`brand/design-system.md` §5), both verbatim.
+- Some testimonials name other team members ("Lisa", "John"), and one has the typo "sprit". They're kept verbatim; confirm with the client before changing.

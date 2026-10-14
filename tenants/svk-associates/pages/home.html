@@ -1,0 +1,1824 @@
+<style>
+  /* ==========================================================================
+     SVK & Associates Brand Tokens
+     Source: tenants/svk-associates/brand/tokens.css (from the SVK Brand Guide, June 30 2026)
+     Colour usage: 70% Cream + Dark Blue, 20% Dusty Blue, 10% Warm Copper + Warm Taupe
+     Fonts (load in the host template): Roboto 600/700, Nunito 400/600, Petit Formal Script 400
+     ========================================================================== */
+  :root {
+    /* Typography */
+    --svk-font-heading: 'Roboto', sans-serif;
+    --svk-font-body: 'Nunito', sans-serif;
+    --svk-font-script: 'Petit Formal Script', cursive;
+
+    /* Primary brand colours */
+    --svk-dark-blue: #274B64;
+    --svk-cream: #FFFDF9;
+
+    /* Supporting neutrals */
+    --svk-soft-gray: #B9C0C6;
+    --svk-charcoal: #474242;
+    --svk-dusty-blue: #9DB2BF;
+
+    /* Accents (support, never dominate) */
+    --svk-copper: #AD713E;
+    --svk-taupe: #9B8B81;
+
+    /* Derived tints (alpha of the brand colours above, no new hues) */
+    --svk-dusty-tint: rgba(157, 178, 191, 0.18);
+    --svk-dusty-line: rgba(157, 178, 191, 0.45);
+    --svk-blue-tint: rgba(39, 75, 100, 0.08);
+    --svk-blue-line: rgba(39, 75, 100, 0.16);
+    --svk-cream-soft: rgba(255, 253, 249, 0.78);
+    --svk-cream-line: rgba(255, 253, 249, 0.16);
+
+    /* Component tokens */
+    --svk-radius-button: 6px;
+    --svk-radius-input: 6px;
+    --svk-radius-card: 16px;
+    --svk-radius-panel: 24px;
+    --svk-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ==========================================================================
+     Scoped Root & Localized Reset
+     ========================================================================== */
+  #svk-home-embed {
+    font-family: var(--svk-font-body);
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--svk-charcoal);
+    text-align: left;
+    background-color: var(--svk-cream);
+    width: 100%;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  #svk-home-embed *,
+  #svk-home-embed *::before,
+  #svk-home-embed *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #svk-home-embed img { display: block; max-width: 100%; height: auto; border: 0; }
+  #svk-home-embed svg { vertical-align: middle; }
+  #svk-home-embed a { color: inherit; text-decoration: none; }
+  #svk-home-embed ul, #svk-home-embed ol { list-style: none; }
+  #svk-home-embed li::before { content: none; }
+  #svk-home-embed button { font-family: inherit; background: none; border: none; cursor: pointer; }
+  #svk-home-embed :focus-visible { outline: 3px solid var(--svk-copper); outline-offset: 3px; }
+
+  #svk-home-embed h1, #svk-home-embed h2, #svk-home-embed h3, #svk-home-embed h4 {
+    font-family: var(--svk-font-heading) !important;
+    text-transform: none;
+    color: inherit;
+  }
+
+  #svk-home-embed p {
+    font-family: var(--svk-font-body) !important;
+  }
+
+  #svk-home-embed .svk_sr {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  #svk-home-embed .svk_container {
+    width: 100%;
+    max-width: 1200px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Host themes often add a float clearfix to containers; it breaks flex/grid */
+  #svk-home-embed .svk_container::before,
+  #svk-home-embed .svk_container::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  #svk-home-embed .svk_section {
+    padding: 112px 0;
+    position: relative;
+  }
+
+  /* ==========================================================================
+     Motion
+     ========================================================================== */
+  @keyframes svk-home-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-25%); }
+  }
+
+  @keyframes svk-home-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  #svk-home-embed.svk-js .svk-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s var(--svk-ease) var(--svk-delay, 0s), transform 0.8s var(--svk-ease) var(--svk-delay, 0s);
+  }
+
+  #svk-home-embed.svk-js .svk-reveal.svk-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  #svk-home-embed.svk-js .svk-reveal[data-delay="1"] { --svk-delay: 0.08s; }
+  #svk-home-embed.svk-js .svk-reveal[data-delay="2"] { --svk-delay: 0.16s; }
+  #svk-home-embed.svk-js .svk-reveal[data-delay="3"] { --svk-delay: 0.24s; }
+  #svk-home-embed.svk-js .svk-reveal[data-delay="4"] { --svk-delay: 0.32s; }
+
+  #svk-home-embed .svk_scroll_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--svk-copper);
+    transform: scaleX(0);
+    transform-origin: left center;
+    z-index: 99997;
+    pointer-events: none;
+  }
+
+  /* ==========================================================================
+     Shared Typography
+     ========================================================================== */
+  #svk-home-embed .svk_h2 {
+    font-size: 44px;
+    font-weight: 700 !important;
+    line-height: 52px;
+    letter-spacing: -1px;
+    color: var(--svk-dark-blue);
+  }
+
+  #svk-home-embed .svk_hl {
+    color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_lead {
+    font-size: 21px;
+    font-weight: 600 !important;
+    line-height: 31px;
+    color: var(--svk-dark-blue);
+  }
+
+  #svk-home-embed .svk_body {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 29px;
+    color: var(--svk-charcoal);
+  }
+
+  #svk-home-embed .svk_rule {
+    display: block;
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: var(--svk-copper);
+    margin-bottom: 28px;
+  }
+
+  #svk-home-embed .svk_eyebrow {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--svk-copper);
+  }
+
+  /* ==========================================================================
+     Buttons
+     ========================================================================== */
+  #svk-home-embed .svk_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 52px;
+    padding: 0 28px;
+    border-radius: var(--svk-radius-button) !important;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 15px;
+    font-weight: 600 !important;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    text-decoration: none !important;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.25s var(--svk-ease), box-shadow 0.25s ease;
+  }
+
+  #svk-home-embed .svk_btn svg {
+    flex-shrink: 0;
+    transition: transform 0.25s var(--svk-ease);
+  }
+
+  #svk-home-embed .svk_btn:hover svg { transform: translateX(4px); }
+  #svk-home-embed .svk_btn_lg { height: 60px; padding: 0 34px; font-size: 16px; }
+
+  #svk-home-embed .svk_btn_primary {
+    background-color: var(--svk-dark-blue) !important;
+    color: var(--svk-cream) !important;
+    border: none !important;
+    box-shadow: 0 8px 20px rgba(39, 75, 100, 0.22);
+  }
+
+  #svk-home-embed .svk_btn_primary:hover,
+  #svk-home-embed .svk_btn_primary:focus-visible {
+    background-color: var(--svk-copper) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(173, 113, 62, 0.3);
+  }
+
+  #svk-home-embed .svk_btn_light {
+    background-color: var(--svk-cream) !important;
+    color: var(--svk-dark-blue) !important;
+    border: none !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  }
+
+  #svk-home-embed .svk_btn_light:hover,
+  #svk-home-embed .svk_btn_light:focus-visible {
+    background-color: var(--svk-copper) !important;
+    color: var(--svk-cream) !important;
+    transform: translateY(-2px);
+  }
+
+  #svk-home-embed .svk_link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0.4px;
+    color: var(--svk-copper);
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, gap 0.25s var(--svk-ease);
+  }
+
+  #svk-home-embed .svk_link:hover { border-color: currentColor; gap: 14px; }
+
+  /* ==========================================================================
+     1. Hero
+     ========================================================================== */
+  #svk-home-embed .svk_hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 600px;
+    min-height: max(600px, min(calc(100vh - 120px), 860px));
+    padding: 120px 0;
+    background-color: var(--svk-dark-blue);
+    color: var(--svk-cream);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  #svk-home-embed .svk_hero_bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  #svk-home-embed .svk_hero_bg img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: 70% 50%;
+    transform: scale(1.06);
+    transition: transform 2.4s var(--svk-ease);
+  }
+
+  #svk-home-embed.svk-js .svk_hero.is-in .svk_hero_bg img { transform: scale(1); }
+
+  #svk-home-embed .svk_hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(39, 75, 100, 0.97) 0%, rgba(39, 75, 100, 0.9) 40%, rgba(39, 75, 100, 0.35) 72%, rgba(39, 75, 100, 0.15) 100%);
+  }
+
+  /* Decorative orbit rings around the rocket */
+  #svk-home-embed .svk_hero_rings {
+    position: absolute;
+    right: -140px;
+    top: 50%;
+    width: 640px;
+    height: 640px;
+    transform: translateY(-50%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  #svk-home-embed .svk_hero_rings span {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--svk-dusty-line);
+    border-radius: 50%;
+  }
+
+  #svk-home-embed .svk_hero_rings span:nth-child(2) { inset: 90px; border-style: dashed; animation: svk-home-spin 60s linear infinite; }
+  #svk-home-embed .svk_hero_rings span:nth-child(3) { inset: 190px; border-color: rgba(173, 113, 62, 0.55); }
+
+  #svk-home-embed .svk_hero_inner {
+    position: relative;
+    max-width: 820px;
+  }
+
+  #svk-home-embed .svk_hero_q {
+    font-size: 60px;
+    font-weight: 700 !important;
+    line-height: 66px;
+    letter-spacing: -1.5px;
+    color: var(--svk-cream);
+  }
+
+  #svk-home-embed .svk_w {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 8px;
+    margin-bottom: -8px;
+  }
+
+  #svk-home-embed .svk_w > span {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 55ms + 200ms);
+  }
+
+  #svk-home-embed .svk_hero.is-in .svk_w > span { transform: none; }
+
+  #svk-home-embed .svk_hero_a {
+    position: relative;
+    display: inline-block;
+    margin-top: 28px;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 42px;
+    letter-spacing: -0.5px;
+    color: var(--svk-dusty-blue);
+  }
+
+  #svk-home-embed .svk_hero_swash {
+    position: absolute;
+    left: 0;
+    bottom: -14px;
+    width: 100%;
+    height: 14px;
+    color: var(--svk-copper);
+    overflow: visible;
+  }
+
+  #svk-home-embed .svk_hero_swash path {
+    stroke-dasharray: 520;
+    stroke-dashoffset: 0;
+  }
+
+  #svk-home-embed.svk-js .svk_hero_swash path {
+    stroke-dashoffset: 520;
+    transition: stroke-dashoffset 1s var(--svk-ease) 1.5s;
+  }
+
+  #svk-home-embed.svk-js .svk_hero.is-in .svk_hero_swash path { stroke-dashoffset: 0; }
+
+  #svk-home-embed.svk-js .svk_hero_item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.8s var(--svk-ease);
+  }
+
+  #svk-home-embed.svk-js .svk_hero.is-in .svk_hero_item { opacity: 1; transform: none; }
+  #svk-home-embed.svk-js .svk_hero.is-in .svk_hero_item.d1 { transition-delay: 1.05s; }
+  #svk-home-embed.svk-js .svk_hero.is-in .svk_hero_item.d2 { transition-delay: 1.35s; }
+
+  #svk-home-embed .svk_hero_actions {
+    margin-top: 48px;
+  }
+
+  /* ==========================================================================
+     2. Marquee (Enduring Growth System vocabulary)
+     ========================================================================== */
+  #svk-home-embed .svk_marquee {
+    background-color: var(--svk-dusty-blue);
+    color: var(--svk-dark-blue);
+    overflow: hidden;
+    padding: 22px 0;
+  }
+
+  #svk-home-embed .svk_marquee_track {
+    display: flex;
+    width: max-content;
+    animation: svk-home-marquee 48s linear infinite;
+  }
+
+  #svk-home-embed .svk_marquee:hover .svk_marquee_track { animation-play-state: paused; }
+
+  #svk-home-embed .svk_marquee_group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  #svk-home-embed .svk_marquee_group li {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding-right: 36px;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+  }
+
+  #svk-home-embed .svk_marquee_group li::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: var(--svk-copper);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ==========================================================================
+     3. About (editorial split with portrait)
+     ========================================================================== */
+  #svk-home-embed .svk_about_grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 88px;
+  }
+
+  #svk-home-embed .svk_portrait {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  #svk-home-embed .svk_portrait::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: -28px;
+    right: 28px;
+    bottom: -28px;
+    border: 2px solid var(--svk-copper);
+    border-radius: var(--svk-radius-panel);
+    z-index: 0;
+  }
+
+  #svk-home-embed .svk_portrait_frame {
+    position: relative;
+    z-index: 1;
+    border-radius: var(--svk-radius-panel);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(39, 75, 100, 0.22);
+  }
+
+  #svk-home-embed .svk_portrait_frame img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  #svk-home-embed .svk_portrait_dots {
+    position: absolute;
+    right: -36px;
+    top: -36px;
+    width: 132px;
+    height: 132px;
+    background-image: radial-gradient(var(--svk-dusty-blue) 2px, transparent 2.5px);
+    background-size: 18px 18px;
+    z-index: 0;
+  }
+
+  #svk-home-embed .svk_portrait_tag {
+    position: absolute;
+    z-index: 2;
+    right: -20px;
+    bottom: 36px;
+    padding: 16px 22px;
+    border-radius: 12px;
+    background-color: var(--svk-dark-blue);
+    color: var(--svk-cream);
+    box-shadow: 0 16px 36px rgba(39, 75, 100, 0.3);
+  }
+
+  #svk-home-embed .svk_portrait_tag strong {
+    display: block;
+    font-family: var(--svk-font-script) !important;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  #svk-home-embed .svk_portrait_tag span {
+    display: block;
+    font-family: var(--svk-font-body) !important;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--svk-dusty-blue);
+  }
+
+  #svk-home-embed .svk_about_text .svk_lead { margin-top: 24px; }
+  #svk-home-embed .svk_about_text .svk_body { margin-top: 20px; }
+  #svk-home-embed .svk_about_text .svk_btn { margin-top: 36px; }
+
+  /* ==========================================================================
+     4. Services (2x2 checkerboard cards)
+     ========================================================================== */
+  #svk-home-embed .svk_services {
+    background-color: var(--svk-dusty-tint);
+    border-top: 1px solid var(--svk-dusty-line);
+    border-bottom: 1px solid var(--svk-dusty-line);
+  }
+
+  #svk-home-embed .svk_services_head {
+    max-width: 760px;
+    margin-bottom: 56px;
+  }
+
+  #svk-home-embed .svk_services_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  #svk-home-embed .svk_svc {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--svk-radius-panel);
+    overflow: hidden;
+    background-color: var(--svk-cream);
+    color: var(--svk-charcoal);
+    border: 1px solid var(--svk-blue-line);
+    transition: translate 0.35s var(--svk-ease), box-shadow 0.35s ease;
+  }
+
+  #svk-home-embed .svk_svc:hover {
+    translate: 0 -6px;
+    box-shadow: 0 24px 50px rgba(39, 75, 100, 0.18);
+  }
+
+  #svk-home-embed .svk_svc.is-dark {
+    background-color: var(--svk-dark-blue);
+    color: var(--svk-cream-soft);
+    border-color: var(--svk-dark-blue);
+  }
+
+  #svk-home-embed .svk_svc_media {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    background-color: var(--svk-dark-blue);
+  }
+
+  #svk-home-embed .svk_svc_media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: transform 0.8s var(--svk-ease), opacity 0.4s ease;
+    opacity: 0.88;
+  }
+
+  #svk-home-embed .svk_svc:hover .svk_svc_media img {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  #svk-home-embed .svk_svc_num {
+    position: absolute;
+    left: 24px;
+    top: 20px;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 1.5px;
+    color: var(--svk-cream);
+    background-color: var(--svk-copper);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+
+  #svk-home-embed .svk_svc_body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 36px 40px 40px;
+  }
+
+  #svk-home-embed .svk_svc_body h3 {
+    font-size: 28px;
+    font-weight: 700 !important;
+    line-height: 34px;
+    letter-spacing: -0.5px;
+    color: var(--svk-dark-blue);
+  }
+
+  #svk-home-embed .svk_svc.is-dark .svk_svc_body h3 { color: var(--svk-cream); }
+
+  #svk-home-embed .svk_svc_body h3 a { transition: color 0.2s ease; }
+  #svk-home-embed .svk_svc_body h3 a:hover { color: var(--svk-copper); }
+
+  #svk-home-embed .svk_svc_body p {
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+  #svk-home-embed .svk_svc_body .svk_link {
+    margin-top: auto;
+    padding-top: 28px;
+    align-self: flex-start;
+  }
+
+  #svk-home-embed .svk_svc.is-dark .svk_link { color: var(--svk-dusty-blue); }
+
+  /* ==========================================================================
+     5. What Makes SVK Different (full-bleed dark band)
+     ========================================================================== */
+  #svk-home-embed .svk_diff {
+    background-color: var(--svk-dark-blue);
+    color: var(--svk-cream);
+    overflow: hidden;
+  }
+
+  #svk-home-embed .svk_diff::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(157, 178, 191, 0.22) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
+    -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 85%);
+    mask-image: linear-gradient(180deg, black 0%, transparent 85%);
+    pointer-events: none;
+  }
+
+  #svk-home-embed .svk_diff .svk_h2 { color: var(--svk-cream); }
+
+  #svk-home-embed .svk_diff_top {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  #svk-home-embed .svk_diff_intro {
+    margin-top: 24px;
+    font-size: 19px;
+    line-height: 30px;
+    color: var(--svk-cream-soft);
+  }
+
+  #svk-home-embed .svk_statement {
+    margin-top: 36px;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 60px;
+    letter-spacing: -1.5px;
+    color: var(--svk-cream);
+  }
+
+  #svk-home-embed .svk_statement span { display: block; color: var(--svk-dusty-blue); }
+
+  #svk-home-embed .svk_checklist_label {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--svk-dusty-blue);
+    margin-bottom: 8px;
+  }
+
+  #svk-home-embed .svk_checklist li {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--svk-cream-line);
+    font-family: var(--svk-font-heading) !important;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 28px;
+    transition: transform 0.35s var(--svk-ease), color 0.2s ease;
+  }
+
+  #svk-home-embed .svk_checklist li:hover { transform: translateX(8px); color: var(--svk-dusty-blue); }
+  #svk-home-embed .svk_checklist li:last-child { border-bottom: 0; }
+
+  #svk-home-embed .svk_checklist li svg {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_system {
+    margin-top: 96px;
+    padding-top: 56px;
+    border-top: 1px solid var(--svk-cream-line);
+  }
+
+  #svk-home-embed .svk_system_label {
+    font-size: 19px;
+    line-height: 30px;
+    color: var(--svk-cream-soft);
+  }
+
+  #svk-home-embed .svk_system_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 32px;
+  }
+
+  #svk-home-embed .svk_system_item {
+    position: relative;
+    padding: 36px 32px;
+    border-radius: var(--svk-radius-card);
+    border: 1px solid var(--svk-cream-line);
+    background-color: rgba(255, 253, 249, 0.04);
+    overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  #svk-home-embed .svk_system_item:hover {
+    background-color: rgba(255, 253, 249, 0.08);
+    border-color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_system_item b {
+    display: block;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_system_item h3 {
+    margin-top: 24px;
+    font-size: 26px;
+    font-weight: 700 !important;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+    color: var(--svk-cream);
+  }
+
+  #svk-home-embed .svk_system_note {
+    max-width: 860px;
+    margin-top: 48px;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--svk-cream);
+  }
+
+  /* ==========================================================================
+     6. Our Why (pull quote) + Mission / Vision
+     ========================================================================== */
+  #svk-home-embed .svk_why { text-align: center; }
+
+  #svk-home-embed .svk_why_label {
+    display: block;
+    font-family: var(--svk-font-script) !important;
+    font-size: 30px;
+    line-height: 44px;
+    color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_why_mark {
+    display: block;
+    margin: 20px auto 0;
+    width: 56px;
+    height: 44px;
+    color: var(--svk-dusty-blue);
+  }
+
+  #svk-home-embed .svk_quote {
+    max-width: 1000px;
+    margin: 24px auto 0;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 54px;
+    letter-spacing: -0.8px;
+    color: var(--svk-dark-blue);
+    quotes: none;
+  }
+
+  #svk-home-embed .svk_mv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 1000px;
+    margin: 72px auto 0;
+    text-align: left;
+  }
+
+  #svk-home-embed .svk_mv_item {
+    padding: 36px 36px 40px;
+    border-radius: var(--svk-radius-card);
+    background-color: var(--svk-cream);
+    border: 1px solid var(--svk-blue-line);
+    box-shadow: 0 14px 34px rgba(39, 75, 100, 0.08);
+    border-left: 4px solid var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_mv_item h3 {
+    font-size: 15px;
+    font-weight: 700 !important;
+    line-height: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_mv_item p {
+    margin-top: 12px;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 30px;
+    color: var(--svk-dark-blue);
+  }
+
+  /* ==========================================================================
+     7. Testimonials (scroll-snap carousel, works without JS)
+     ========================================================================== */
+  #svk-home-embed .svk_testi {
+    background-color: var(--svk-dusty-tint);
+    border-top: 1px solid var(--svk-dusty-line);
+    border-bottom: 1px solid var(--svk-dusty-line);
+  }
+
+  #svk-home-embed .svk_testi_head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  #svk-home-embed .svk_testi_nav {
+    display: flex;
+    gap: 12px;
+  }
+
+  #svk-home-embed .svk_testi_nav button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid var(--svk-dark-blue);
+    color: var(--svk-dark-blue);
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  }
+
+  #svk-home-embed .svk_testi_nav button:hover:not(:disabled) {
+    background-color: var(--svk-dark-blue);
+    color: var(--svk-cream);
+  }
+
+  #svk-home-embed .svk_testi_nav button:disabled { opacity: 0.3; cursor: default; }
+
+  #svk-home-embed .svk_testi_track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 56px) / 3);
+    gap: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 4px 4px 28px;
+    margin: -4px -4px 0;
+    scrollbar-width: none;
+  }
+
+  #svk-home-embed .svk_testi_track::-webkit-scrollbar { display: none; }
+
+  #svk-home-embed .svk_testi_card {
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 32px 32px;
+    border-radius: var(--svk-radius-card);
+    background-color: var(--svk-cream);
+    border: 1px solid var(--svk-blue-line);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #svk-home-embed .svk_testi_card:hover {
+    border-color: var(--svk-dusty-blue);
+    box-shadow: 0 18px 40px rgba(39, 75, 100, 0.12);
+  }
+
+  #svk-home-embed .svk_testi_card > svg {
+    width: 36px;
+    height: 28px;
+    color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_testi_card blockquote {
+    margin: 20px 0 0;
+    padding: 0;
+    border: 0;
+    font-family: var(--svk-font-body) !important;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--svk-charcoal);
+    quotes: none;
+  }
+
+  #svk-home-embed .svk_testi_card blockquote::before,
+  #svk-home-embed .svk_testi_card blockquote::after { content: none; }
+
+  #svk-home-embed .svk_testi_who {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 28px;
+  }
+
+  #svk-home-embed .svk_testi_who img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    filter: grayscale(1);
+    box-shadow: 0 0 0 3px var(--svk-cream), 0 0 0 4px var(--svk-dusty-blue);
+  }
+
+  #svk-home-embed .svk_testi_who strong {
+    display: block;
+    font-family: var(--svk-font-heading) !important;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+    color: var(--svk-dark-blue);
+  }
+
+  #svk-home-embed .svk_testi_who span {
+    display: block;
+    margin-top: 2px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--svk-charcoal);
+  }
+
+  #svk-home-embed .svk_testi_progress {
+    height: 3px;
+    margin-top: 12px;
+    border-radius: 3px;
+    background-color: var(--svk-blue-line);
+    overflow: hidden;
+  }
+
+  #svk-home-embed .svk_testi_progress span {
+    display: block;
+    height: 100%;
+    width: 30%;
+    border-radius: 3px;
+    background-color: var(--svk-dark-blue);
+    transform-origin: left center;
+    transition: transform 0.3s ease, margin-left 0.3s ease;
+  }
+
+  /* ==========================================================================
+     8. Stay Informed (Mailchimp signup)
+     ========================================================================== */
+  #svk-home-embed .svk_sub {
+    background-color: var(--svk-dark-blue);
+    color: var(--svk-cream);
+    overflow: hidden;
+  }
+
+  #svk-home-embed .svk_sub::after {
+    content: '';
+    position: absolute;
+    left: -180px;
+    bottom: -220px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    border: 1px solid var(--svk-dusty-line);
+    box-shadow: 0 0 0 80px rgba(157, 178, 191, 0.05), 0 0 0 160px rgba(157, 178, 191, 0.03);
+    pointer-events: none;
+  }
+
+  #svk-home-embed .svk_sub_grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  #svk-home-embed .svk_sub .svk_h2 { color: var(--svk-cream); font-size: 56px; line-height: 62px; }
+
+  #svk-home-embed .svk_sub_text {
+    margin-top: 24px;
+    max-width: 460px;
+    font-size: 19px;
+    line-height: 30px;
+    color: var(--svk-cream-soft);
+  }
+
+  #svk-home-embed .svk_social {
+    display: flex;
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  #svk-home-embed .svk_social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--svk-dusty-line);
+    color: var(--svk-cream);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #svk-home-embed .svk_social a:hover { background-color: var(--svk-copper); border-color: var(--svk-copper); }
+
+  #svk-home-embed .svk_form {
+    padding: 44px;
+    border-radius: var(--svk-radius-panel);
+    background-color: var(--svk-cream);
+    color: var(--svk-charcoal);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+  }
+
+  #svk-home-embed .svk_form_req {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--svk-charcoal);
+    text-align: right;
+    margin-bottom: 8px;
+  }
+
+  #svk-home-embed .svk_form_req i,
+  #svk-home-embed .svk_field label i {
+    font-style: normal;
+    color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_form_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  #svk-home-embed .svk_field { margin-top: 20px; }
+
+  #svk-home-embed .svk_field label,
+  #svk-home-embed .svk_fieldset legend {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--svk-font-body) !important;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+    color: var(--svk-dark-blue);
+  }
+
+  #svk-home-embed .svk_field input {
+    display: block;
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--svk-soft-gray);
+    border-radius: var(--svk-radius-input);
+    background-color: var(--svk-cream);
+    font-family: var(--svk-font-body) !important;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--svk-charcoal);
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #svk-home-embed .svk_field input:focus {
+    outline: none;
+    border-color: var(--svk-dark-blue);
+    box-shadow: 0 0 0 3px var(--svk-dusty-tint);
+  }
+
+  #svk-home-embed .svk_field input[aria-invalid="true"] { border-color: var(--svk-copper); }
+
+  #svk-home-embed .svk_error {
+    display: none;
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--svk-copper);
+  }
+
+  #svk-home-embed .svk_error.is-on { display: block; }
+
+  #svk-home-embed .svk_fieldset {
+    margin-top: 24px;
+    border: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  #svk-home-embed .svk_checks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  #svk-home-embed .svk_check {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--svk-soft-gray);
+    border-radius: var(--svk-radius-input);
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--svk-charcoal);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  #svk-home-embed .svk_check input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+
+  #svk-home-embed .svk_check_box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--svk-soft-gray);
+    border-radius: 4px;
+    color: transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  #svk-home-embed .svk_check:hover { border-color: var(--svk-dusty-blue); }
+  #svk-home-embed .svk_check:has(input:checked) { border-color: var(--svk-dark-blue); background-color: var(--svk-dusty-tint); }
+  #svk-home-embed .svk_check input:checked + .svk_check_box { background-color: var(--svk-dark-blue); border-color: var(--svk-dark-blue); color: var(--svk-cream); }
+  #svk-home-embed .svk_check input:focus-visible + .svk_check_box { outline: 3px solid var(--svk-copper); outline-offset: 2px; }
+
+  #svk-home-embed .svk_hp {
+    position: absolute;
+    left: -5000px;
+  }
+
+  #svk-home-embed .svk_form .svk_btn {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  /* ==========================================================================
+     Wide-screen tiers (1200 / 1440 ceiling)
+     ========================================================================== */
+  @media screen and (min-width: 1200px) {
+    #svk-home-embed .svk_container { max-width: 1320px; padding-left: 28px; padding-right: 28px; }
+    #svk-home-embed .svk_section { padding: 124px 0; }
+    #svk-home-embed .svk_h2 { font-size: 50px; line-height: 58px; }
+    #svk-home-embed .svk_lead { font-size: 22px; line-height: 32px; }
+    #svk-home-embed .svk_hero_q { font-size: 68px; line-height: 74px; }
+    #svk-home-embed .svk_hero_a { font-size: 38px; line-height: 46px; }
+    #svk-home-embed .svk_statement { font-size: 58px; line-height: 66px; }
+    #svk-home-embed .svk_quote { font-size: 44px; line-height: 58px; }
+    #svk-home-embed .svk_sub .svk_h2 { font-size: 62px; line-height: 68px; }
+    #svk-home-embed .svk_svc_body h3 { font-size: 30px; line-height: 36px; }
+  }
+
+  @media screen and (min-width: 1440px) {
+    #svk-home-embed .svk_container { max-width: 1440px; padding-left: 32px; padding-right: 32px; }
+    #svk-home-embed .svk_section { padding: 136px 0; }
+    #svk-home-embed .svk_h2 { font-size: 56px; line-height: 64px; letter-spacing: -1.5px; }
+    #svk-home-embed .svk_lead { font-size: 24px; line-height: 34px; }
+    #svk-home-embed .svk_body { font-size: 18px; line-height: 30px; }
+    #svk-home-embed .svk_hero_inner { max-width: 900px; }
+    #svk-home-embed .svk_hero_q { font-size: 76px; line-height: 82px; letter-spacing: -2px; }
+    #svk-home-embed .svk_hero_a { font-size: 42px; line-height: 50px; }
+    #svk-home-embed .svk_statement { font-size: 64px; line-height: 72px; letter-spacing: -2px; }
+    #svk-home-embed .svk_quote { font-size: 48px; line-height: 62px; }
+    #svk-home-embed .svk_sub .svk_h2 { font-size: 68px; line-height: 74px; }
+    #svk-home-embed .svk_svc_body { padding: 40px 48px 44px; }
+    #svk-home-embed .svk_svc_body h3 { font-size: 32px; line-height: 38px; }
+    #svk-home-embed .svk_svc_body p { font-size: 18px; line-height: 30px; }
+    #svk-home-embed .svk_testi_card blockquote { font-size: 18px; line-height: 30px; }
+    #svk-home-embed .svk_btn { height: 56px; padding: 0 32px; }
+    #svk-home-embed .svk_btn_lg { height: 64px; padding: 0 38px; font-size: 17px; }
+  }
+
+  /* ==========================================================================
+     Tablet & Mobile
+     ========================================================================== */
+  @media screen and (max-width: 991px) {
+    #svk-home-embed .svk_section { padding: 88px 0; }
+    #svk-home-embed .svk_h2 { font-size: 38px; line-height: 46px; }
+    #svk-home-embed .svk_lead { font-size: 20px; line-height: 30px; }
+    #svk-home-embed .svk_hero { padding: 96px 0; min-height: 560px; }
+    #svk-home-embed .svk_hero::before { background: linear-gradient(90deg, rgba(39, 75, 100, 0.96) 0%, rgba(39, 75, 100, 0.85) 60%, rgba(39, 75, 100, 0.55) 100%); }
+    #svk-home-embed .svk_hero_q { font-size: 48px; line-height: 54px; letter-spacing: -1px; }
+    #svk-home-embed .svk_hero_a { font-size: 30px; line-height: 38px; }
+    #svk-home-embed .svk_hero_rings { width: 480px; height: 480px; right: -220px; }
+    #svk-home-embed .svk_about_grid { grid-template-columns: 1fr; gap: 72px; }
+    #svk-home-embed .svk_portrait { max-width: 420px; }
+    #svk-home-embed .svk_services_grid { gap: 20px; }
+    #svk-home-embed .svk_svc_body { padding: 28px 28px 32px; }
+    #svk-home-embed .svk_svc_body h3 { font-size: 24px; line-height: 30px; }
+    #svk-home-embed .svk_diff_top { grid-template-columns: 1fr; gap: 48px; }
+    #svk-home-embed .svk_statement { font-size: 44px; line-height: 52px; }
+    #svk-home-embed .svk_system { margin-top: 72px; }
+    #svk-home-embed .svk_system_grid { grid-template-columns: 1fr; gap: 16px; }
+    #svk-home-embed .svk_system_item { display: flex; align-items: center; gap: 24px; padding: 24px 28px; }
+    #svk-home-embed .svk_system_item b { font-size: 48px; line-height: 48px; }
+    #svk-home-embed .svk_system_item h3 { margin-top: 0; font-size: 22px; line-height: 28px; }
+    #svk-home-embed .svk_quote { font-size: 32px; line-height: 44px; }
+    #svk-home-embed .svk_testi_track { grid-auto-columns: calc((100% - 20px) / 2); gap: 20px; }
+    #svk-home-embed .svk_sub_grid { grid-template-columns: 1fr; gap: 48px; }
+    #svk-home-embed .svk_sub .svk_h2 { font-size: 46px; line-height: 52px; }
+  }
+
+  @media screen and (max-width: 767px) {
+    #svk-home-embed .svk_services_grid { grid-template-columns: 1fr; }
+    #svk-home-embed .svk_mv { grid-template-columns: 1fr; margin-top: 48px; }
+  }
+
+  @media screen and (max-width: 576px) {
+    #svk-home-embed .svk_container { padding-left: 20px; padding-right: 20px; }
+    #svk-home-embed .svk_section { padding: 72px 0; }
+    #svk-home-embed .svk_h2 { font-size: 30px; line-height: 38px; letter-spacing: -0.5px; }
+    #svk-home-embed .svk_lead { font-size: 18px; line-height: 27px; }
+    #svk-home-embed .svk_body { font-size: 16px; line-height: 27px; }
+    #svk-home-embed .svk_hero { padding: 80px 0 88px; min-height: 520px; }
+    #svk-home-embed .svk_hero::before { background: linear-gradient(180deg, rgba(39, 75, 100, 0.92) 0%, rgba(39, 75, 100, 0.88) 55%, rgba(39, 75, 100, 0.7) 100%); }
+    #svk-home-embed .svk_hero_bg img { object-position: 62% 50%; }
+    #svk-home-embed .svk_hero_q { font-size: 36px; line-height: 42px; letter-spacing: -0.5px; }
+    #svk-home-embed .svk_hero_a { font-size: 24px; line-height: 32px; margin-top: 22px; }
+    #svk-home-embed .svk_hero_actions { margin-top: 40px; }
+    #svk-home-embed .svk_hero_actions .svk_btn { width: 100%; }
+    #svk-home-embed .svk_hero_rings { display: none; }
+    #svk-home-embed .svk_marquee { padding: 16px 0; }
+    #svk-home-embed .svk_marquee_group li { font-size: 18px; line-height: 26px; gap: 24px; padding-right: 24px; }
+    #svk-home-embed .svk_portrait::before { left: -14px; right: 14px; top: 14px; bottom: -14px; }
+    #svk-home-embed .svk_portrait_dots { right: -12px; top: -20px; width: 90px; height: 90px; }
+    #svk-home-embed .svk_portrait_tag { right: 12px; bottom: 16px; padding: 12px 16px; }
+    #svk-home-embed .svk_about_text .svk_btn { width: 100%; }
+    #svk-home-embed .svk_services_head { margin-bottom: 36px; }
+    #svk-home-embed .svk_svc_body { padding: 24px 24px 28px; }
+    #svk-home-embed .svk_svc_body p { font-size: 16px; line-height: 27px; }
+    #svk-home-embed .svk_statement { font-size: 32px; line-height: 40px; letter-spacing: -0.5px; }
+    #svk-home-embed .svk_diff_intro, #svk-home-embed .svk_system_label { font-size: 17px; line-height: 28px; }
+    #svk-home-embed .svk_checklist li { font-size: 18px; line-height: 26px; padding: 16px 0; }
+    #svk-home-embed .svk_system_item b { font-size: 40px; line-height: 40px; }
+    #svk-home-embed .svk_system_item h3 { font-size: 19px; line-height: 26px; }
+    #svk-home-embed .svk_system_note { font-size: 18px; line-height: 28px; }
+    #svk-home-embed .svk_why_label { font-size: 26px; line-height: 38px; }
+    #svk-home-embed .svk_quote { font-size: 24px; line-height: 34px; letter-spacing: -0.3px; }
+    #svk-home-embed .svk_mv_item { padding: 28px 24px 30px; }
+    #svk-home-embed .svk_mv_item p { font-size: 17px; line-height: 28px; }
+    #svk-home-embed .svk_testi_head { margin-bottom: 32px; }
+    #svk-home-embed .svk_testi_nav button { width: 44px; height: 44px; }
+    #svk-home-embed .svk_testi_track { grid-auto-columns: 86%; gap: 16px; }
+    #svk-home-embed .svk_testi_card { padding: 28px 24px 24px; }
+    #svk-home-embed .svk_testi_card blockquote { font-size: 16px; line-height: 27px; }
+    #svk-home-embed .svk_sub .svk_h2 { font-size: 36px; line-height: 42px; }
+    #svk-home-embed .svk_sub_text { font-size: 17px; line-height: 28px; }
+    #svk-home-embed .svk_form { padding: 28px 20px; }
+    #svk-home-embed .svk_form_row, #svk-home-embed .svk_checks { grid-template-columns: 1fr; gap: 0; }
+    #svk-home-embed .svk_checks { gap: 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #svk-home-embed *, #svk-home-embed *::before, #svk-home-embed *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+    #svk-home-embed .svk_marquee_track { width: auto; justify-content: center; flex-wrap: wrap; }
+    #svk-home-embed .svk_marquee_group { flex-wrap: wrap; justify-content: center; row-gap: 8px; }
+    #svk-home-embed .svk_marquee_group[aria-hidden="true"] { display: none; }
+  }
+</style>
+
+<div id="svk-home-embed" class="svk-home-embed">
+  <div class="svk_scroll_bar" id="svkScrollBar" aria-hidden="true"></div>
+
+  <!-- 1. Hero -->
+  <section class="svk_hero" id="svkHero" aria-label="Introduction">
+    <div class="svk_hero_bg" aria-hidden="true">
+      <img src="https://susanvanklink.com/wp-content/uploads/2022/10/Home1-Rev2.jpg" alt="" width="1250" height="695" fetchpriority="high">
+    </div>
+    <div class="svk_hero_rings" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="svk_container">
+      <div class="svk_hero_inner">
+        <h1 class="svk_hero_q" data-svk-split>Looking to supercharge your business with growth strategies that have proven success?</h1>
+        <p class="svk_hero_a svk_hero_item d1">SVK &amp; Associates can help.<svg class="svk_hero_swash" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10C90 3 210 1 398 7" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></p>
+        <div class="svk_hero_actions svk_hero_item d2">
+          <a class="svk_btn svk_btn_light svk_btn_lg" href="https://svkassociates.com/get-started/">GET STARTED
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Marquee: the Enduring Growth System vocabulary (brand guide) -->
+  <div class="svk_marquee" aria-label="How we work">
+    <div class="svk_marquee_track">
+      <ul class="svk_marquee_group">
+        <li>What to do</li>
+        <li>In what order</li>
+        <li>Based on their stage of growth</li>
+        <li>With accountability and measurable outcomes</li>
+        <li>Resolve Chasm Risks</li>
+        <li>Build the Revenue Flywheel</li>
+        <li>Compound Customer Capital</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. About -->
+  <section class="svk_section svk_about">
+    <div class="svk_container svk_about_grid">
+      <div class="svk_portrait svk-reveal">
+        <span class="svk_portrait_dots" aria-hidden="true"></span>
+        <div class="svk_portrait_frame">
+          <img src="https://svkassociates.com/wp-content/uploads/2025/02/SVK-Headshot-Long-Hair.jpg" alt="Susan Van Klink" width="694" height="694" loading="lazy">
+        </div>
+        <div class="svk_portrait_tag">
+          <strong>Susan Van Klink</strong>
+          <span>Founder &amp; CEO</span>
+        </div>
+      </div>
+      <div class="svk_about_text">
+        <span class="svk_rule svk-reveal" aria-hidden="true"></span>
+        <h2 class="svk_h2 svk-reveal" data-delay="1">About SVK &amp; Associates</h2>
+        <p class="svk_lead svk-reveal" data-delay="2">SVK &amp; Associates are a team of seasoned executives that can supercharge your business with proven growth strategies.</p>
+        <p class="svk_body svk-reveal" data-delay="3">SVK &amp; Associates helps founders and CEOs understand what actually builds enduring growth&mdash;and then execute it. Through proprietary growth frameworks, structured diagnosis, embedded execution support, and a curated founder community, we help companies identify growth constraints, build scalable operating systems, and navigate critical scaling transitions.</p>
+        <a class="svk_btn svk_btn_primary svk-reveal" data-delay="4" href="https://svkassociates.com/about/">LEARN MORE
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Services -->
+  <section class="svk_section svk_services">
+    <div class="svk_container">
+      <div class="svk_services_head">
+        <span class="svk_rule svk-reveal" aria-hidden="true"></span>
+        <h2 class="svk_h2 svk-reveal" data-delay="1">Explore the Ways that <span class="svk_hl">SVK &amp; Associates</span> can help.</h2>
+      </div>
+      <div class="svk_services_grid">
+        <article class="svk_svc is-dark svk-reveal">
+          <a class="svk_svc_media" href="https://svkassociates.com/executive-coaching/" tabindex="-1" aria-hidden="true">
+            <img src="https://susanvanklink.com/wp-content/uploads/2022/12/ExecCoachingBW.jpg" alt="" width="1000" height="667" loading="lazy">
+            <span class="svk_svc_num">01</span>
+          </a>
+          <div class="svk_svc_body">
+            <h3><a href="https://svkassociates.com/executive-coaching/">Executive Coaching</a></h3>
+            <p>Whether you&rsquo;re looking to take your career to the next level or you&rsquo;ve decided that something needs to change to make work work for you, we can help.</p>
+            <a class="svk_link" href="https://svkassociates.com/book-now/">Let&rsquo;s talk <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="svk_svc svk-reveal" data-delay="1">
+          <a class="svk_svc_media" href="https://svkassociates.com/go-to-market-gtm-advisory/" tabindex="-1" aria-hidden="true">
+            <img src="https://susanvanklink.com/wp-content/uploads/2022/12/StrategicAdBW.jpg" alt="" width="1000" height="667" loading="lazy">
+            <span class="svk_svc_num">02</span>
+          </a>
+          <div class="svk_svc_body">
+            <h3><a href="https://svkassociates.com/go-to-market-gtm-advisory/">Go to Market (GTM) Advisory</a></h3>
+            <p>Whether you&rsquo;re looking to grow your business exponentially or bring an exciting new concept to market, having a third party advisor who has &ldquo;been there, done that&rdquo; can help.</p>
+            <a class="svk_link" href="https://svkassociates.com/book-now/">Let&rsquo;s talk <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="svk_svc svk-reveal">
+          <a class="svk_svc_media" href="https://svkassociates.com/revenue-flywheel/" tabindex="-1" aria-hidden="true">
+            <img src="https://svkassociates.com/wp-content/uploads/2025/02/Customer-Flywheel-938x623-2.jpg" alt="" width="938" height="623" loading="lazy">
+            <span class="svk_svc_num">03</span>
+          </a>
+          <div class="svk_svc_body">
+            <h3><a href="https://svkassociates.com/revenue-flywheel/">Revenue Flywheel</a></h3>
+            <p>Many companies prioritize marketing to attract new customers while overlooking the value of their existing customer base. Our Revenue Flywheel framework accelerates growth by maximizing existing customer relationships. We can help you grow faster.</p>
+            <a class="svk_link" href="https://svkassociates.com/book-now/">Let&rsquo;s talk <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="svk_svc is-dark svk-reveal" data-delay="1">
+          <a class="svk_svc_media" href="https://svkassociates.com/fractional-leadership/" tabindex="-1" aria-hidden="true">
+            <img src="https://svkassociates.com/wp-content/uploads/2025/02/Fractional-Leadership-72.jpg" alt="" width="938" height="623" loading="lazy">
+            <span class="svk_svc_num">04</span>
+          </a>
+          <div class="svk_svc_body">
+            <h3><a href="https://svkassociates.com/fractional-leadership/">Fractional Leadership</a></h3>
+            <p>Need expert guidance without the full-time expense? We offer experienced fractional executives in various roles&mdash;CEO, COO, CMO, CIO, and CHRO&mdash;along with skilled resources in leadership development, project management, marketing, and process improvement. We can provide the help you need.</p>
+            <a class="svk_link" href="https://svkassociates.com/book-now/">Let&rsquo;s talk <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. What Makes SVK Different (brand guide) -->
+  <section class="svk_section svk_diff">
+    <div class="svk_container">
+      <div class="svk_diff_top">
+        <div>
+          <h2 class="svk_h2 svk-reveal">What Makes SVK &amp; Associates Different</h2>
+          <p class="svk_diff_intro svk-reveal" data-delay="1">Most firms provide advice, content, opinions, or frameworks. SVK &amp; Associates provides:</p>
+          <p class="svk_statement svk-reveal" data-delay="2">Sequenced, contextual, <span>actionable execution expertise.</span></p>
+        </div>
+        <div class="svk-reveal" data-delay="2">
+          <p class="svk_checklist_label">We help founders understand:</p>
+          <ul class="svk_checklist">
+            <li><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M10 16.5l4 4 8-9"/></svg>What to do</li>
+            <li><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M10 16.5l4 4 8-9"/></svg>In what order</li>
+            <li><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M10 16.5l4 4 8-9"/></svg>Based on their stage of growth</li>
+            <li><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M10 16.5l4 4 8-9"/></svg>With accountability and measurable outcomes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="svk_system">
+        <p class="svk_system_label svk-reveal">Our work is grounded in the Enduring Growth System:</p>
+        <ol class="svk_system_grid">
+          <li class="svk_system_item svk-reveal" data-delay="1"><b aria-hidden="true">01</b><h3>Resolve Chasm Risks</h3></li>
+          <li class="svk_system_item svk-reveal" data-delay="2"><b aria-hidden="true">02</b><h3>Build the Revenue Flywheel</h3></li>
+          <li class="svk_system_item svk-reveal" data-delay="3"><b aria-hidden="true">03</b><h3>Compound Customer Capital</h3></li>
+        </ol>
+        <p class="svk_system_note svk-reveal">We don&rsquo;t simply advise. Leveraging these frameworks, we help founders build the systems, discipline, and operating cadence required to move from fragile growth to enduring market leadership.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Our Why / Mission / Vision (brand guide) -->
+  <section class="svk_section svk_why">
+    <div class="svk_container">
+      <h2 class="svk_why_label svk-reveal">Our Why</h2>
+      <svg class="svk_why_mark svk-reveal" viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+      <blockquote class="svk_quote svk-reveal" data-delay="1">We believe that the world is a better place when newly-founded companies <span class="svk_hl">thrive and survive.</span></blockquote>
+      <div class="svk_mv">
+        <div class="svk_mv_item svk-reveal" data-delay="1">
+          <h3>Our Mission</h3>
+          <p>We help founders and CEOs cross the scaling chasms that break most growing companies.</p>
+        </div>
+        <div class="svk_mv_item svk-reveal" data-delay="2">
+          <h3>Our Vision</h3>
+          <p>We are creating a world where more founders and CEOs have the support, guidance, and community they need to successfully cross the scaling chasms and build enduring companies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Testimonials -->
+  <section class="svk_section svk_testi">
+    <div class="svk_container">
+      <div class="svk_testi_head">
+        <div>
+          <span class="svk_rule svk-reveal" aria-hidden="true"></span>
+          <h2 class="svk_h2 svk-reveal" data-delay="1" id="svkTestiTitle">Why People Work With Us</h2>
+        </div>
+        <div class="svk_testi_nav" data-testi-nav hidden>
+          <button type="button" data-testi-prev aria-label="Previous testimonials">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </button>
+          <button type="button" data-testi-next aria-label="Next testimonials">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="svk_testi_track svk-reveal" data-delay="2" data-testi-track tabindex="0" role="region" aria-labelledby="svkTestiTitle">
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>Sue helped me take my sales leadership career to the next level. Not only was she a skillful executive coach but she has been a mentor and a friend that I can turn to throughout my career.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://susanvanklink.com/wp-content/uploads/2022/12/KC.jpg" alt="" width="60" height="60" loading="lazy"><div><strong>Kathi Stacy</strong><span>Enterprise Sales VP</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>Sue is a skilled strategic advisor and executive coach. If you want to see positive change in your career, business, or life, there&rsquo;s no one better to help you take your game to the next level.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://susanvanklink.com/wp-content/uploads/2022/12/KT.jpg" alt="" width="60" height="60" loading="lazy"><div><strong>Kim Tabac</strong><span>Tech CHRO</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>If you&rsquo;re looking for a strategic advisor to help you grow your company, Sue is the resource you&rsquo;re looking for. Having worked with Sue in several growth start-ups and scale-ups, I can attest that she can help you create a growth engine for your business to get it to the next level, whether it be $20M ARR, $100M ARR, $1B ARR or beyond.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://susanvanklink.com/wp-content/uploads/2022/12/GZ.jpg" alt="" width="60" height="60" loading="lazy"><div><strong>Gordon Zeilstra</strong><span>Tech Executive</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>I have known Lisa as both a client and a valued advisor to our company.  She provides clear, insightful guidance as a coach, counselor, marketing leader or collaborative partner.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://svkassociates.com/wp-content/uploads/2025/03/KrisRudeegraap-300x300.jpeg" alt="" width="60" height="60" loading="lazy"><div><strong>Kris Rudeegraap</strong><span>Founder, Co-CEO Sendoso</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>As I define what I want the next chapter of my career to look like, Sue has been an essential source of wisdom and guidance along the path. She helps me to think outside of the box and consider new ways to approach things that really work.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://susanvanklink.com/wp-content/uploads/2022/12/WT.jpg" alt="" width="60" height="60" loading="lazy"><div><strong>Walter Thayer</strong><span>Marketing and Global Events Leader</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>If you&rsquo;re looking for a speaker for your next event, you can&rsquo;t go wrong with Susan Van Klink. Articulate, polished, and engaging, Sue combines great content with great delivery and is an ideal presenter for an event of any size.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://susanvanklink.com/wp-content/uploads/2022/12/sl.jpg" alt="" width="60" height="60" loading="lazy"><div><strong>Sabina Iyengar</strong><span>Director Growth Marketing</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>John blends strategic depth in GTM with relationship-building finesse, infusing excellence into business processes and making him an invaluable partner for any organization aiming for real, lasting growth</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://svkassociates.com/wp-content/uploads/2025/03/IMG_0670-251x300.jpeg" alt="" width="60" height="60" loading="lazy"><div><strong>Ellen Burke</strong><span>GTM Strategy, Culture Amp</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>Lisa&rsquo;s unique approach to leadership coaching combines insightful methodology and empathy.  Her professionalism, discretion, and value is immeasurable.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://svkassociates.com/wp-content/uploads/2025/03/Rani_jpeg-300x300.jpeg" alt="" width="60" height="60" loading="lazy"><div><strong>Rani Selvarajoo Urbas</strong><span>Cloud Computing Executive (Oracle, Google), Venture Capital, Private/Public Policy</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>Lisa is not afraid to innovate and explore.  Her creative and fearless sprit led to a customer satisfaction program that yielded previously unknown insights and became the scaleable, durable, and valuable framework we used across multiple business sectors.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://svkassociates.com/wp-content/uploads/2025/03/Jonas_moe-300x300.jpeg" alt="" width="60" height="60" loading="lazy"><div><strong>Jonas Moe</strong><span>SVP Marketing &amp; Market Strategy, Ellie Mae (Now ICE Mortgage Technology)</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>Sue is the only person I trusted to help me figure out my next career move. She is a great listener and coach. Now I&rsquo;m a VP at a growing software company and I love it.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://susanvanklink.com/wp-content/uploads/2022/12/AS.jpg" alt="" width="60" height="60" loading="lazy"><div><strong>Andrea Couto</strong><span>Tech VP</span></div></figcaption>
+        </figure>
+        <figure class="svk_testi_card">
+          <svg viewBox="0 0 56 44" fill="currentColor" aria-hidden="true"><path d="M0 44V27.5C0 12.4 7.3 3.2 21.9 0l2.5 5.4C16.8 7.6 13 12.4 12.6 19.6H23V44H0Zm32.6 0V27.5C32.6 12.4 39.9 3.2 54.5 0L57 5.4c-7.6 2.2-11.4 7-11.8 14.2h10.4V44H32.6Z"/></svg>
+          <blockquote>I have hired Sue to speak for us at multiple virtual events. Having someone of Sue&rsquo;s presence and professionalism speak on subjects that were of interest to our prospects really improved our marketing efforts. If you&rsquo;re looking for a dynamic speaker, I can&rsquo;t recommend her enough.</blockquote>
+          <figcaption class="svk_testi_who"><img src="https://susanvanklink.com/wp-content/uploads/2022/12/BB.jpg" alt="" width="60" height="60" loading="lazy"><div><strong>Barbara Burlington</strong><span>Tech CMO</span></div></figcaption>
+        </figure>
+      </div>
+      <div class="svk_testi_progress" data-testi-progress hidden aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+
+  <!-- 8. Stay Informed (posts to SVK's Mailchimp list) -->
+  <section class="svk_section svk_sub">
+    <div class="svk_container svk_sub_grid">
+      <div>
+        <span class="svk_rule svk-reveal" aria-hidden="true"></span>
+        <h2 class="svk_h2 svk-reveal" data-delay="1">Stay Informed</h2>
+        <p class="svk_sub_text svk-reveal" data-delay="2">Enter your email address to register and be the first to learn about new content, upcoming events and exciting news.</p>
+        <div class="svk_social svk-reveal" data-delay="3">
+          <a href="https://twitter.com/svanklink" target="_blank" rel="noopener noreferrer" aria-label="X" title="X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L2.8 2h6.4l4.4 5.9L18.9 2Zm-1.1 18.1h1.7L8.3 3.8H6.4l11.4 16.3Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/susanvanklink-com/about/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.89 1.28-1.89 2.6V21H9.5V9.75Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <form class="svk_form svk-reveal" data-delay="2" id="svkSubForm" action="https://emotionatwork.us11.list-manage.com/subscribe/post?u=d5087f44ef875442cb22e27fa&amp;id=5a11fb6fce&amp;f_id=003e94e0f0" method="post" target="_blank" novalidate>
+        <p class="svk_form_req"><i>*</i> indicates required</p>
+        <div class="svk_field">
+          <label for="svk-EMAIL">Your Email Address <i>*</i></label>
+          <input type="email" name="EMAIL" id="svk-EMAIL" autocomplete="email" required aria-describedby="svkErrEmail">
+          <span class="svk_error" id="svkErrEmail">Please enter a valid email address.</span>
+        </div>
+        <div class="svk_form_row">
+          <div class="svk_field">
+            <label for="svk-FNAME">First Name <i>*</i></label>
+            <input type="text" name="FNAME" id="svk-FNAME" autocomplete="given-name" required aria-describedby="svkErrFname">
+            <span class="svk_error" id="svkErrFname">Please enter your first name.</span>
+          </div>
+          <div class="svk_field">
+            <label for="svk-LNAME">Last Name</label>
+            <input type="text" name="LNAME" id="svk-LNAME" autocomplete="family-name">
+          </div>
+        </div>
+        <fieldset class="svk_fieldset">
+          <legend>What would you like to hear about?</legend>
+          <div class="svk_checks">
+            <label class="svk_check"><input type="checkbox" value="1" name="group[34909][1]"><span class="svk_check_box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span>Anything New</label>
+            <label class="svk_check"><input type="checkbox" value="2" name="group[34909][2]"><span class="svk_check_box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span>Book Excerpts</label>
+            <label class="svk_check"><input type="checkbox" value="4" name="group[34909][4]"><span class="svk_check_box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span>Blog Posts</label>
+            <label class="svk_check"><input type="checkbox" value="8" name="group[34909][8]"><span class="svk_check_box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.5 2.5L10 3"/></svg></span>Podcast Episodes</label>
+          </div>
+        </fieldset>
+        <!-- Mailchimp bot trap: must stay empty and off-screen -->
+        <div class="svk_hp" aria-hidden="true"><input type="text" name="b_d5087f44ef875442cb22e27fa_5a11fb6fce" tabindex="-1" value="" autocomplete="off"></div>
+        <button type="submit" name="subscribe" class="svk_btn svk_btn_primary svk_btn_lg">Subscribe
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('svk-home-embed');
+    if (!root) return;
+    root.classList.add('svk-js');
+
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    // ── Hero: split the headline into rising words, then reveal ───────────
+    (function () {
+      var hero = document.getElementById('svkHero');
+      if (!hero) return;
+      hero.querySelectorAll('[data-svk-split]').forEach(function (el) {
+        var text = el.textContent.replace(/\s+/g, ' ').trim();
+        el.textContent = '';
+        var sr = document.createElement('span');
+        sr.className = 'svk_sr';
+        sr.textContent = text;
+        el.appendChild(sr);
+        text.split(' ').forEach(function (word, i) {
+          var outer = document.createElement('span');
+          outer.className = 'svk_w';
+          outer.setAttribute('aria-hidden', 'true');
+          var inner = document.createElement('span');
+          inner.style.setProperty('--i', i);
+          inner.textContent = word;
+          outer.appendChild(inner);
+          el.appendChild(outer);
+          el.appendChild(document.createTextNode(' '));
+        });
+      });
+      void hero.offsetWidth; // commit the hidden word positions before animating
+      window.requestAnimationFrame(function () { hero.classList.add('is-in'); });
+    })();
+
+    // ── Scroll Reveal ──────────────────────────────────────────────────────
+    (function () {
+      var els = root.querySelectorAll('.svk-reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('svk-revealed'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('svk-revealed');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+
+    // ── Scroll Progress Bar ────────────────────────────────────────────────
+    (function () {
+      var bar = document.getElementById('svkScrollBar');
+      if (!bar) return;
+      var ticking = false;
+      function update() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? (window.pageYOffset || doc.scrollTop) / max : 0;
+        bar.style.transform = 'scaleX(' + Math.min(Math.max(pct, 0), 1) + ')';
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
+
+    // ── Marquee: clone the group so the loop is seamless ──────────────────
+    (function () {
+      var track = root.querySelector('.svk_marquee_track');
+      if (!track) return;
+      var group = track.querySelector('.svk_marquee_group');
+      for (var i = 0; i < 3; i++) {
+        var clone = group.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      }
+    })();
+
+    // ── Testimonials carousel (native scroll-snap + prev/next) ────────────
+    (function () {
+      var track = root.querySelector('[data-testi-track]');
+      var nav = root.querySelector('[data-testi-nav]');
+      var progress = root.querySelector('[data-testi-progress]');
+      if (!track || !nav) return;
+      var prev = nav.querySelector('[data-testi-prev]');
+      var next = nav.querySelector('[data-testi-next]');
+      var thumb = progress ? progress.querySelector('span') : null;
+      nav.hidden = false;
+      if (progress) progress.hidden = false;
+
+      function step() {
+        var card = track.querySelector('.svk_testi_card');
+        var gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+        return card ? card.getBoundingClientRect().width + gap : track.clientWidth;
+      }
+
+      function update() {
+        var max = track.scrollWidth - track.clientWidth;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max - 2;
+        if (thumb) {
+          var visible = track.clientWidth / track.scrollWidth;
+          var w = Math.max(visible, 0.08) * 100;
+          thumb.style.width = w + '%';
+          thumb.style.marginLeft = (max > 0 ? (track.scrollLeft / max) * (100 - w) : 0) + '%';
+        }
+      }
+
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+
+      var ticking = false;
+      track.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(function () { update(); ticking = false; }); }
+      }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    // ── Stay Informed: validate, then let the form post to Mailchimp ──────
+    (function () {
+      var form = document.getElementById('svkSubForm');
+      if (!form) return;
+      var email = form.querySelector('#svk-EMAIL');
+      var fname = form.querySelector('#svk-FNAME');
+
+      function flag(input, errId, bad) {
+        var err = document.getElementById(errId);
+        if (err) err.classList.toggle('is-on', bad);
+        input.setAttribute('aria-invalid', bad ? 'true' : 'false');
+        return bad;
+      }
+
+      function validEmail(v) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
+      }
+
+      form.addEventListener('submit', function (e) {
+        var badEmail = flag(email, 'svkErrEmail', !validEmail(email.value));
+        var badName = flag(fname, 'svkErrFname', !fname.value.trim());
+        if (badEmail || badName) {
+          e.preventDefault();
+          (badEmail ? email : fname).focus();
+        }
+      });
+
+      [email, fname].forEach(function (input) {
+        input.addEventListener('input', function () {
+          if (input.getAttribute('aria-invalid') === 'true') {
+            if (input === email) flag(email, 'svkErrEmail', !validEmail(email.value));
+            else flag(fname, 'svkErrFname', !fname.value.trim());
+          }
+        });
+      });
+    })();
+  })();
+</script>

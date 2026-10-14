@@ -1,119 +1,82 @@
-# Project Rules: 000-myp-community
+# Project Rules: MyPeople Platform (multi-tenant)
 
-## 1. Story / WYSIWYG Embed Format (NO Outer Document Tags)
-- **Zero Full-Document Boilerplate**: Because pages are deployed via CMS Story Editors / WYSIWYG containers, NEVER include:
-  - `<!DOCTYPE html>`
-  - `<html>` or `</html>`
-  - `<head>` or `</head>`
-  - `<meta>` tags
-  - `<title>` tags
-  - `<body>` or `</body>` tags
-- **Required Single-File Embed Structure**: Every HTML file in `pages/` MUST follow this exact top-to-bottom order:
-  1. **Scoped `<style>` Block**: Embedded `:root` token variables from `00-branding/tokens.css` and all scoped CSS rules prefixed with `#mp-[page-name]-embed`. (*Note: Google Fonts `<link>` tags are loaded centrally in `pages/templates/00_Myp-Community-Pages.html` and are omitted from individual embed files*).
-  2. **Root Container `<div>`**: `<div id="mp-[page-name]-embed" class="mp-[page-name]-embed">` wrapping ALL HTML elements (content, overlays, modals).
-  3. **Vanilla `<script>` Block**: Self-contained Vanilla JS (zero external libraries, zero jQuery).
+This repo holds the website pages for every **tenant** (client site) running on the MyPeople platform.
+All tenants share the same CMS, embed format and build rules (the **platform** layer). Each tenant has its own brand, content, pages and URLs.
 
----
+```
+AGENTS.md, README.md        platform rules (this file)
+platform/                   shared tooling + docs (preview/capture tools, CMS lessons)
+tenants/<tenant>/           one folder per client site
+  TENANT.md                 READ FIRST: brand, fonts, root-ID prefix, skills, URLs, CDN
+  brand/  pages/  docs/ ... tenant-owned files
+.agents/skills/             canonical skills (platform skills + tenant-prefixed skills)
+.claude/                    Claude Code wrappers + agents
+```
 
-## 2. Mandatory Branding Requirement for ALL HTML Pages
-- **Strict Brand Design System**: EVERY page or component MUST strictly implement the official brand design system defined in [00-branding/design-system.md](file:///e:/HR/000-myp-community/00-branding/design-system.md) and [00-branding/tokens.css](file:///e:/HR/000-myp-community/00-branding/tokens.css).
-- **Zero Legacy Styling**: Under no circumstance should legacy website colors (e.g., `#2B323C`, random hexes), legacy fonts (e.g., Poppins, Quicksand, Open Sans), or external CSS frameworks (TailwindCSS, Bootstrap) be used.
-- **Zero Token Invention**: All colors, font families, font weights, font sizes, line heights, border radii, and spacing MUST originate from `00-branding/tokens.css`. Never invent arbitrary hex codes or margins.
+| Tenant | Folder | Root-ID prefix | Brand skill |
+| :--- | :--- | :--- | :--- |
+| MyPeople Community (myp.community) | `tenants/myp-community/` | `#mp-<page>-embed` | `myp-brand-tokens` |
+| SVK & Associates (svkassociates.com) | `tenants/svk-associates/` | `#svk-<page>-embed` | `svk-brand-tokens` |
 
 ---
 
-## 3. Typography Rules
-- **Hero 1, H1, H2 (Page Titles)**: `Inria Serif` (Bold 700) -> `var(--font-family-heading-1)`
-  - Class: `.mp_com_title`, `h2.mp_com_title > span` (accent color `var(--color-mp-green-700)`)
-- **Hero 2, H3, H4 (Section Taglines, Card Titles, Dialog Titles)**: `Inter` (Semi Bold 600) -> `var(--font-family-heading-2)`
-  - Classes: `.mp_features_tagline`, `.ft_info > h4`, `.mpFeaturesDetails_box h4`, `#mpSplashForm > h4`
-- **H5, H6, Body, Paragraphs, Forms, Buttons**: `Roboto` (Regular 400 / Medium 500 / Bold 700) -> `var(--font-family-body)`
-  - Classes: `p`, `.btn-primary`, `.btn-secondary`, `.features_details_button`, `label`, `input`, `select`, `textarea`, `span.error`
+## 0. Identify the Tenant First (non-negotiable)
+- Work out the tenant from the file path (`tenants/<tenant>/...`) or the user's request. If it's unclear, ask.
+- Read `tenants/<tenant>/TENANT.md` before building anything. It names the brand files, fonts, prefix and tenant skills to use.
+- **Never mix tenants**: no MyP tokens, fonts, classes, imagery or copy on an SVK page, and vice versa. A skill whose name starts with a tenant prefix (`myp-`, `svk-`) applies **only** to that tenant.
+- New session? Read the tenant's `docs/session-handoff.md` if it has one.
 
 ---
 
-## 4. Color Palette Enforcement
-- **Page Canvas Background**: `#FFFCF8` (`var(--color-page-bg)`).
-- **Primary CTA & Active Elements**: `var(--color-mp-green-700)` (`#018624`).
-  - Hover: `var(--color-mp-green-800)` (`#00651B`).
-  - Focus / Active: `var(--color-mp-green-default)` (`#02A82D`).
-- **Surface & Cards Tint**: `var(--color-mp-green-50)` (`#F2FBF5`) with border `var(--color-mp-green-200)` (`#CBEED5`).
-- **Footer & Secondary Background**: `var(--color-mp-blue-50)` (`#F5F7F8`), `var(--color-mp-blue-800)` (`#22404B`), `var(--color-mp-blue-900)` (`#162B32`).
-- **Secondary Buttons & Icon Buttons**: `var(--color-black-50)` (`#F2F2F2`) with hover `var(--color-black-100)` (`#E4E4E4`).
-- **Borders & Controls**: `var(--color-border)` (`#CCCCCC`), focus `var(--color-edit-border)` (`#5099EC`), errors `var(--color-error-text)` (`#E13838`).
+## 1. Embed Format (NO Outer Document Tags)
+- Pages are deployed via CMS Story Editors / WYSIWYG containers, so NEVER include `<!DOCTYPE html>`, `<html>`, `<head>`, `<meta>`, `<title>` or `<body>`.
+- Every page in `tenants/<tenant>/pages/` MUST follow this order:
+  1. **Scoped `<style>` block**: the tenant's `:root` tokens (from its `brand/tokens.css`) and all rules prefixed with the root ID. Google Fonts `<link>` tags are loaded by the tenant's CMS template, not by the page.
+  2. **One root `<div id="<prefix>-<page>-embed" class="<prefix>-<page>-embed">`** wrapping ALL markup (content, overlays, modals, fixed bars).
+  3. **One vanilla `<script>` block**: no libraries, no jQuery.
 
----
+## 2. Brand Comes From the Tenant
+- Every colour, font family, weight, size, line height, radius and spacing comes from the tenant's `brand/tokens.css` (or `rgba()` of a token's RGB). Never invent hex codes.
+- No CSS frameworks (Tailwind, Bootstrap) and no legacy styling from the tenant's old site unless its brand guide keeps it.
+- Typography roles, CTA colours and component classes are defined per tenant in `TENANT.md` and its brand skill.
 
-## 5. Standard Component Class Architecture
-- **Page Title & Banner**: `.mp_container`, `h2.mp_com_title`, `.mp_post`
-- **CTA Button**: `.mp_community_btn`, `.btn-primary` (with inline SVG arrow)
-- **Section Tagline / Subtitle**: `.mp_features_tagline` (Inter 32px / 40px Semi Bold 600)
-- **Feature Cards**: `.ft_card_wrapper`, `.ft_card`, `.ft_card_img`, `.ft_info`, `.features_details_button`
-- **Modals & Overlays**: `.mp-features-modal-overlay`, `.mp-features-modal-wrapper`, `.mp_splash_modal`, `.mps_close`, `.mpFeaturesDetails_box`, `body.mp-freeze-scroll`
-- **Form Controls**: `.mp_ipbox`, `.hrip.mw50`, `.hrip.mw100`, `span.error`
-- **Social Proof**: `.mp_comm_wrapper`, `.mp_logobox`
-- **CMS Master Story Template**: `.mp-story-template-root`, `.mp-story-toolbar-wrap`, `.mp-story-content-wrap`
+## 3. CMS Isolation & Scoping
+- Every selector starts with the root ID (except `:root`, `@keyframes` and a body scroll-lock class).
+- Explicit `px` for font sizes, line heights, padding, margins and radii (never `rem`).
+- Defensive local reset inside the root; neutralise host clearfix pseudo-elements on flex/grid containers.
 
----
+## 4. Wide-Screen Layout (max 1440px)
+- Container: base `max-width: 1200px; padding: 0 24px` → `@media (min-width: 1200px)` `1320px / 28px` → `@media (min-width: 1440px)` `1440px / 32px`.
+- Headings, body, buttons and card padding scale across these tiers and stay balanced at 1440px.
 
-## 6. CMS Isolation & Scoping Standards
-- **Root Container**: Every page must encapsulate all content inside `#mp-[page-name]-embed`.
-- **Selector Scoping**: All CSS rules must be prefixed with `#mp-[page-name]-embed` to prevent CMS theme bleeding.
-- **Pixel-Anchored Units**: All font sizes, line heights, paddings, and radii must use explicit `px` units (never `rem`) to protect against CMS host root font-size scaling.
+## 5. Strict Content Fidelity (Zero Invention)
+- Never invent text, claims, statistics, testimonials or cards. Use the exact copy from the user's prompt, screenshots, the tenant's brand guide or its old-site source files.
+- If a section only has a heading and paragraph, render only those. No filler items.
+- Keep source copy verbatim (including the client's own typos); flag doubtful copy to the user instead of fixing it silently.
 
----
+## 6. Skills
+Canonical skills live in `.agents/skills/`; Claude Code discovers them through thin wrappers in `.claude/skills/`. Edit only the canonical files.
 
-## 7. Wide-Screen Layout Standards (Max-Width Capped at 1440px)
-- **Container Max-Width Ceiling**: All desktop containers (`.mp_container`) must be capped at a maximum width of `1440px`.
-- **Progressive Container Scaling**:
-  - Base / Laptop: `max-width: 1200px; padding: 0 24px;`
-  - `@media screen and (min-width: 1200px)`: `max-width: 1320px; padding: 0 28px;`
-  - `@media screen and (min-width: 1440px)` (Maximum Ceiling): `max-width: 1440px; padding: 0 32px;`
-- **Dynamic Typography & Card Scaling**: Headings, body text, hero banners, buttons, and card padding must scale gracefully across these tiers and remain balanced at the 1440px max-width ceiling.
+| Skill | Scope | Use for |
+| :--- | :--- | :--- |
+| `ai-task-routing` | platform | Start of every request: Claude vs Gemini |
+| `cms-page-embed` | platform | Embed format, isolation, reset, vanilla modals, width tiers |
+| `myp-brand-tokens`, `myp-bold-sections`, `myp-image-style` | myp-community only | MyP tokens/classes, bold section patterns, image style |
+| `svk-brand-tokens` | svk-associates only | SVK tokens, type roles, palette ratios, components |
 
----
+## 7. Two-Agent Workspace (Antigravity: Claude + Gemini 3.1 Pro)
+- Neither agent can call the other; the user routes work.
+- At the start of every request, check `.agents/skills/ai-task-routing/SKILL.md`. If part of the task suits the other agent better (Gemini: image generation, browser visual QA, bulk mechanical edits, PDF/screenshot extraction; Claude: architecture, interactive JS, audits, planning, skills), say so in one line and write a handoff brief to `tenants/<tenant>/docs/handoffs/`.
+- Work handed back from either agent is audited with `.claude/agents/brand-auditor.md` before it counts as done.
 
-## 8. Skill Activation
-Whenever building, modifying, or auditing pages:
-1. Activate `myp-brand-tokens` for exact CSS classes, tokens, and UI component structures.
-2. Activate `cms-page-embed` for CMS isolation, reset patterns, vanilla modal handling, and wide-screen responsiveness.
-3. Activate `myp-bold-sections` for the modern "big, bold" section patterns, display type tier and motion rules (reference: `pages/home-logged-out.html`).
-4. Activate `myp-image-style` whenever a page needs a new image (house style, prompts, pipeline, CDN hosting).
-5. Before starting ANY request, apply `ai-task-routing` to decide whether Claude or Gemini 3.1 Pro should handle it.
+## 8. Images
+- Each tenant's `TENANT.md` defines its image style, local folder and CDN base. Reference images CDN-first with a local `onerror` fallback, and upload to the CDN before publishing.
 
-Canonical skills live in `.agents/skills/`. Claude Code discovers them through thin wrappers in `.claude/skills/`. Edit only the canonical files.
-Decision log for the home redesign: `docs/home-redesign-decisions.md`. **New session? Read `docs/session-handoff.md` first.**
+## 9. Preview & QA
+- `platform/tools/preview/build-preview.sh <page.html> <out.html>` wraps a page with its tenant's fonts (read from `tenants/<tenant>/preview-head.html`) and a fake CMS header.
+- `platform/tools/preview/cdp-capture.mjs` captures real-time screenshots in headless Chrome. Check `scrollWidth` equals the viewport at 390px.
 
----
-
-## 9. Strict Content Fidelity (Zero Text Invention & Zero Hallucination)
-- **Zero Hallucination / Invention**: Under NO circumstances should you invent, extrapolate, or hallucinate text content, claims, statistics, metrics, or component cards not explicitly provided in the user's prompt, screenshots, or source backup HTML.
-- **Exact Copy Matching**: Always implement the EXACT headlines, subheadings, paragraphs, and CTA button text from the user's input/screenshots.
-- **No Unrequested Filler Cards**: If a section in a screenshot only contains a heading, subtitle, and paragraph, render ONLY those elements with premium brand typography and layout. Do NOT invent extra cards, badges, or filler items.
-
----
-
-## 10. Live Story & Page URLs Directory (Quick Reference)
-- Refer to [page-urls.md](file:///e:/HR/000-myp-community/page-urls.md) in the workspace root for direct access to all deployed story URLs.
-- **Known Issue**: Top-level CMS navigation / menus may not function as expected across embed views, requiring direct URL access for validation.
-- **Navigation Hierarchy Directory**:
-  - **Logo (Home - Logged in)**: `https://www.myp.community/en/` -> [pages/home-logged-out.html](file:///e:/HR/000-myp-community/pages/home-logged-out.html)
-  - **Logo (Home - Logged out)**: `https://www.myp.community/en?t=/Default/spl_login` -> [pages/home-logged-out.html](file:///e:/HR/000-myp-community/pages/home-logged-out.html)
-  - **Community Types > HR Tech & B2B**: `https://www.myp.community/en/community-type/hr-tech-b2b` -> [pages/HR Tech and B2B Customer Communities.html](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html)
-  - **Community Types > Other Communities**: `https://www.myp.community/en/community-type/other-communities/` -> [pages/other-communities.html](file:///e:/HR/000-myp-community/pages/other-communities.html)
-  - **Features**: `https://www.myp.community/en/features/` -> [pages/features.html](file:///e:/HR/000-myp-community/pages/features.html)
-  - **Getting Started**: `https://www.myp.community/en/getting-started/` -> [pages/getting-started.html](file:///e:/HR/000-myp-community/pages/getting-started.html)
-  - **Contact Us**: `https://www.myp.community/en/contact-us/` -> [pages/contact-us.html](file:///e:/HR/000-myp-community/pages/contact-us.html)
-
-
-
----
-
-## 11. Two-Agent Workspace (Antigravity: Claude + Gemini 3.1 Pro)
-- This workspace runs in Antigravity with **Claude** and **Gemini 3.1 Pro** side by side. Neither agent can call the other; the user routes work.
-- At the start of every request, check the routing table in `.agents/skills/ai-task-routing/SKILL.md`. If all or part of the task suits the other agent better (Gemini: image generation, browser visual QA, bulk mechanical edits, PDF/screenshot extraction; Claude: architecture, interactive JS, audits, planning, skills), say so in one line and write a handoff brief to `docs/handoffs/`.
-- Work handed back from either agent is audited against `.claude/agents/myp-brand-auditor.md` before it counts as done.
-
-## 12. Images
-- New imagery follows `.agents/skills/myp-image-style/SKILL.md`: real-people photography combined with mint-green vector network accents, never generic stock.
-- Files go in `pages/images/<page>/`, are referenced CDN-first (`https://public-cdn.myp.community/images/<page>/…`) with a local `onerror` fallback, and must be uploaded to the CDN before publishing.
+## 10. Adding a New Tenant
+1. Create `tenants/<tenant>/` with `TENANT.md`, `preview-head.html`, `brand/` (guide + `tokens.css` + `design-system.md`), `pages/`, `docs/`, and `source/` for old-site references.
+2. Pick a short root-ID prefix and add the tenant to the table at the top of this file.
+3. Add a `<prefix>-brand-tokens` skill in `.agents/skills/` plus its `.claude/skills/` wrapper.

@@ -1,0 +1,40 @@
+/* ==========================================================================
+   SVK & Associates Design Tokens
+   Source: brand/SVK Brand Guide - 2026-06-30.pdf ("Brand Colors", "Typography")
+   Copy this :root block verbatim into every SVK embed page.
+   Fonts are loaded by the SVK CMS template (see ../preview-head.html), not by pages.
+   ========================================================================== */
+:root {
+  /* Typography */
+  --svk-font-heading: 'Roboto', sans-serif;            /* Headlines, titles, navigation, key messages: 600 / 700 */
+  --svk-font-body: 'Nunito', sans-serif;               /* Body, subheadings, digital content: 400 / 600 */
+  --svk-font-script: 'Petit Formal Script', cursive;   /* Signature accents, quotes, decorative only. Never body or primary messaging */
+
+  /* Primary brand colours (with Cream: 70% of any page) */
+  --svk-dark-blue: #274B64;
+  --svk-cream: #FFFDF9;
+
+  /* Supporting neutrals (Dusty Blue: ~20%) */
+  --svk-soft-gray: #B9C0C6;
+  --svk-charcoal: #474242;
+  --svk-dusty-blue: #9DB2BF;
+
+  /* Accents (~10%, support never dominate) */
+  --svk-copper: #AD713E;
+  --svk-taupe: #9B8B81;
+
+  /* Derived tints (alpha of the brand colours above, no new hues) */
+  --svk-dusty-tint: rgba(157, 178, 191, 0.18);
+  --svk-dusty-line: rgba(157, 178, 191, 0.45);
+  --svk-blue-tint: rgba(39, 75, 100, 0.08);
+  --svk-blue-line: rgba(39, 75, 100, 0.16);
+  --svk-cream-soft: rgba(255, 253, 249, 0.78);
+  --svk-cream-line: rgba(255, 253, 249, 0.16);
+
+  /* Component tokens (not in the guide; set for the platform build, keep consistent) */
+  --svk-radius-button: 6px;
+  --svk-radius-input: 6px;
+  --svk-radius-card: 16px;
+  --svk-radius-panel: 24px;
+  --svk-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}

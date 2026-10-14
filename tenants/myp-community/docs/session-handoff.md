@@ -3,12 +3,12 @@
 **Last updated:** 2026-10-12. **Next task:** fix live glitches on the redesigned logged-out home page.
 
 ## Where things stand
-- `pages/home-logged-out.html` was fully redesigned (modern, big, bold) and is **live** at https://www.myp.community/en?t=/Default/spl_login (template: `pages/templates/myp-community-logout-home-template.html`).
-- Every decision and its reason: `docs/home-redesign-decisions.md`. Treat these as settled unless the user reopens one.
+- `tenants/myp-community/pages/home-logged-out.html` was fully redesigned (modern, big, bold) and is **live** at https://www.myp.community/en?t=/Default/spl_login (template: `tenants/myp-community/pages/templates/myp-community-logout-home-template.html`).
+- Every decision and its reason: `tenants/myp-community/docs/home-redesign-decisions.md`. Treat these as settled unless the user reopens one.
 - Reusable patterns, the display type tier and motion rules: `.agents/skills/myp-bold-sections/SKILL.md`.
-- Image style and pipeline: `.agents/skills/myp-image-style/SKILL.md`. Images live at `https://public-cdn.myp.community/images/home/` with local fallbacks in `pages/images/home/`.
+- Image style and pipeline: `.agents/skills/myp-image-style/SKILL.md`. Images live at `https://public-cdn.myp.community/images/home/` with local fallbacks in `tenants/myp-community/pages/images/home/`.
 - Claude/Gemini division of work: `.agents/skills/ai-task-routing/SKILL.md` (Gemini suits live-site browser QA and screenshots).
-- Compliance audit: `.claude/agents/myp-brand-auditor.md`.
+- Compliance audit: `.claude/agents/brand-auditor.md`.
 
 ## Page anatomy (`#mp-home-embed`)
 | # | Section class | What it is |
@@ -36,9 +36,9 @@
 
 ## How to reproduce locally
 ```bash
-tools/preview/build-preview.sh pages/home-logged-out.html "$SCRATCH/preview.html"
-node tools/preview/cdp-capture.mjs "file:///$SCRATCH/preview.html" "$SCRATCH/shots" 1440 900 3200 23000
-node tools/preview/cdp-capture.mjs "file:///$SCRATCH/preview.html" "$SCRATCH/shots" 390 844 3200 23000
+platform/tools/preview/build-preview.sh tenants/myp-community/pages/home-logged-out.html "$SCRATCH/preview.html"
+node platform/tools/preview/cdp-capture.mjs "file:///$SCRATCH/preview.html" "$SCRATCH/shots" 1440 900 3200 23000
+node platform/tools/preview/cdp-capture.mjs "file:///$SCRATCH/preview.html" "$SCRATCH/shots" 390 844 3200 23000
 ```
 The capture script prints which scene is on, whether it's done, and `scrollWidth` (must equal the viewport width).
 Chrome is at `C:/Program Files/Google/Chrome/Application/chrome.exe`; Node 22 is available; there's no Python or ImageMagick (use PowerShell `System.Drawing` for image work).

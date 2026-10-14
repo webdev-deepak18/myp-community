@@ -1,7 +1,7 @@
 ---
 name: myp-bold-sections
 description: >-
-  Use this skill when designing or upgrading any 000-myp-community page to the "modern, big, bold" look introduced on the logged-out home page (pages/home-logged-out.html). Provides the display type tier, section rhythm rules, and copy-ready patterns: hero question sequence, marquee band, editorial split with photo + vector accents, numbered editorial columns, full-bleed dark band, bold colour panels, serif pull quote, icon cards, and the closing green timeline/CTA block.
+  Use this skill when designing or upgrading any myp-community tenant page (tenants/myp-community/; not other tenants) to the "modern, big, bold" look introduced on the logged-out home page (tenants/myp-community/pages/home-logged-out.html). Provides the display type tier, section rhythm rules, and copy-ready patterns: hero question sequence, marquee band, editorial split with photo + vector accents, numbered editorial columns, full-bleed dark band, bold colour panels, serif pull quote, icon cards, and the closing green timeline/CTA block.
 ---
 
 # myp-bold-sections (Claude Code wrapper)

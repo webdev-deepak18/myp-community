@@ -1,8 +1,8 @@
 ---
 name: myp-bold-sections
 description: >-
-  Use this skill when designing or upgrading any 000-myp-community page to the "modern, big, bold"
-  look introduced on the logged-out home page (pages/home-logged-out.html). Provides the display
+  Use this skill when designing or upgrading any myp-community tenant page (tenants/myp-community/; not other tenants) to the "modern, big, bold"
+  look introduced on the logged-out home page (tenants/myp-community/pages/home-logged-out.html). Provides the display
   type tier, section rhythm rules, and copy-ready patterns: hero question sequence, marquee band,
   editorial split with photo + vector accents, numbered editorial columns, full-bleed dark band,
   bold colour panels, serif pull quote, icon cards, and the closing green timeline/CTA block.
@@ -10,7 +10,7 @@ description: >-
 
 # MyPeople Bold Section Patterns
 
-Reference implementation: [pages/home-logged-out.html](../../../pages/home-logged-out.html).
+Reference implementation: [tenants/myp-community/pages/home-logged-out.html](../../../tenants/myp-community/pages/home-logged-out.html).
 All patterns obey `myp-brand-tokens` (colours and fonts) and `cms-page-embed` (scoping, px units, no document tags).
 Copy the CSS from the reference file and rename the root ID (`#mp-home-embed` → `#mp-<page>-embed`).
 
@@ -96,4 +96,4 @@ Green-700 block with outline rings, product UI image left, H2 with a tilted whit
 ## 7. Verification
 1. Build a preview wrapper (fonts `<link>` + fake 78px header + the embed file) in the scratchpad.
 2. Capture with headless Chrome. **Don't trust `--virtual-time-budget` for clip-path transitions**; drive Chrome in real time over the DevTools protocol (Node 22 has a global `WebSocket`) and check `document.documentElement.scrollWidth === viewport` at 390px.
-3. Run the `myp-brand-auditor` agent.
+3. Run the `brand-auditor` agent.

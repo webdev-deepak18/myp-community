@@ -1,7 +1,7 @@
 # Visual Design Specification
 
 ## Overview
-This document serves as the single source of truth for the **000-myp-community** visual design system, extracted from and 100% verified against [design-system.pdf](file:///e:/HR/000-myp-community/00-branding/design-system.pdf).
+This document serves as the single source of truth for the **000-myp-community** visual design system, extracted from and 100% verified against [design-system.pdf](file:///e:/HR/000-myp-community/tenants/myp-community/brand/design-system.pdf).
 
 The design sheet follows a 3-column specification: `Type`, `Attributes`, and `Example`.
 
@@ -240,7 +240,7 @@ The design sheet follows a 3-column specification: `Type`, `Attributes`, and `Ex
 
 ## 4. Marketing Page Extensions (approved 2026-10-12)
 
-Added for the "modern, big, bold" marketing pages (first used on `pages/home-logged-out.html`). These extend the PDF scale; they don't replace it.
+Added for the "modern, big, bold" marketing pages (first used on `tenants/myp-community/pages/home-logged-out.html`). These extend the PDF scale; they don't replace it.
 
 ### 4.1 Display Type Tier
 | Level | Font Family | Desktop ≥1440 | 1200–1439 | 992–1199 | ≤991 | ≤576 | Letter Spacing |

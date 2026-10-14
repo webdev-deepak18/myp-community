@@ -32,7 +32,7 @@ for (const t of times) {
   await sleep(Math.max(0, +t - (Date.now() - t0)));
   const r = await send('Page.captureScreenshot', { format: 'png' });
   writeFileSync(join(outDir, `rt_${width}_${t}.png`), Buffer.from(r.data, 'base64'));
-  const st = await send('Runtime.evaluate', { expression: "(function(){var h=document.getElementById('mpHero');var on=[].map.call(h.querySelectorAll('.mp_hero_scene'),function(s,i){return s.classList.contains('is-on')?i:null}).filter(function(x){return x!==null});return JSON.stringify({on:on,done:h.classList.contains('is-done'),docW:document.documentElement.scrollWidth})})()", returnByValue: true });
+  const st = await send('Runtime.evaluate', { expression: "(function(){var h=document.getElementById('mpHero');if(!h)return JSON.stringify({docW:document.documentElement.scrollWidth});var on=[].map.call(h.querySelectorAll('.mp_hero_scene'),function(s,i){return s.classList.contains('is-on')?i:null}).filter(function(x){return x!==null});return JSON.stringify({on:on,done:h.classList.contains('is-done'),docW:document.documentElement.scrollWidth})})()", returnByValue: true });
   console.log(t, st.result.value);
 }
 ws.close(); chrome.kill();

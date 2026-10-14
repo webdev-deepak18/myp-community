@@ -9,7 +9,7 @@ description: >-
 
 # CMS Page Embed & Isolation Skill
 
-This skill defines the technical standards for constructing self-contained HTML/CSS embed files designed to be pasted directly into a CMS, story format, or WYSIWYG editor without styling conflicts, while **strictly adhering to the 000-myp-community official brand design system**.
+This skill defines the technical standards for constructing self-contained HTML/CSS embed files designed to be pasted directly into a CMS, story format, or WYSIWYG editor without styling conflicts, while **strictly adhering to the current tenant's brand design system** (`tenants/<tenant>/TENANT.md`). This is a platform skill and applies to every tenant.
 
 ---
 
@@ -17,8 +17,8 @@ This skill defines the technical standards for constructing self-contained HTML/
 Because the output is pasted directly into a CMS story container or rich-text block, **NEVER output standard outer document wrappers**:
 - **FORBIDDEN**: `<!DOCTYPE html>`, `<html>`, `</html>`, `<head>`, `</head>`, `<meta>`, `<title>`, `<body>`, `</body>`.
 - **REQUIRED FILE ORDER**:
-  1. Scoped `<style>` block containing `:root` brand tokens and `#mp-[page-name]-embed` prefixed styles (*Note: Google Fonts `<link>` tags are loaded centrally by the Master Story Template `pages/templates/00_Myp-Community-Pages.html` and are omitted from individual embed files to avoid duplicate DOM tags and redundant network requests*).
-  2. Single container `<div id="mp-[page-name]-embed" class="mp-[page-name]-embed">` wrapping all markup (content, modals)
+  1. Scoped `<style>` block containing `:root` brand tokens and `#<prefix>-[page-name]-embed` prefixed styles (*Note: Google Fonts `<link>` tags are loaded centrally by the tenant's CMS template (MyP: `tenants/myp-community/pages/templates/00_Myp-Community-Pages.html`) and are omitted from individual embed files to avoid duplicate DOM tags and redundant network requests*).
+  2. Single container `<div id="<prefix>-[page-name]-embed" class="<prefix>-[page-name]-embed">` wrapping all markup (content, modals)
   3. Vanilla `<script>` block
 
 ---
@@ -35,17 +35,19 @@ When raw HTML/CSS is embedded into a CMS:
 
 ## 3. Mandatory Architecture Rules
 
+> `<prefix>` is the tenant's root-ID prefix (`mp` for myp-community, `svk` for svk-associates). Class names and token names in the examples below come from the myp-community tenant; use the current tenant's own classes and `brand/tokens.css` variables instead.
+
 ### Rule 1: Root Container Encapsulation
 Every embedded page must wrap ALL elements (including modals) in a single root element:
 ```html
-<div id="mp-[page-name]-embed" class="mp-[page-name]-embed">
+<div id="<prefix>-[page-name]-embed" class="<prefix>-[page-name]-embed">
   <!-- All page markup and modals live here -->
 </div>
 ```
 
 ### Rule 2: Strict Selector Scoping
-Every CSS selector in the embedded `<style>` block must begin with the root ID selector `#mp-[page-name]-embed`.
-- **Correct**: `#mp-[page-name]-embed .ft_card`, `#mp-[page-name]-embed h2.mp_com_title`, `#mp-[page-name]-embed .mp_features_tagline`
+Every CSS selector in the embedded `<style>` block must begin with the root ID selector `#<prefix>-[page-name]-embed`.
+- **Correct**: `#<prefix>-[page-name]-embed .ft_card`, `#<prefix>-[page-name]-embed h2.mp_com_title`, `#<prefix>-[page-name]-embed .mp_features_tagline`
 - **Forbidden**: `body { ... }`, `h2 { ... }`, `.ft_card { ... }` (unscoped)
 
 ### Rule 3: Absolute Pixel Anchoring (No `rem` for Fonts/Padding)
@@ -58,9 +60,9 @@ Always use explicit `px` units for:
 This guarantees that **14px renders as exactly 14px in any CMS environment**.
 
 ### Rule 4: Localized Defensive Reset (Using Official Brand Tokens)
-At the top of the scoped CSS, supply a localized reset targeted exclusively inside `#mp-[page-name]-embed`:
+At the top of the scoped CSS, supply a localized reset targeted exclusively inside `#<prefix>-[page-name]-embed`:
 ```css
-#mp-[page-name]-embed {
+#<prefix>-[page-name]-embed {
   font-family: var(--font-family-body);
   font-size: 14px;
   line-height: 22px;
@@ -74,16 +76,16 @@ At the top of the scoped CSS, supply a localized reset targeted exclusively insi
   padding: 0;
 }
 
-#mp-[page-name]-embed *,
-#mp-[page-name]-embed *::before,
-#mp-[page-name]-embed *::after {
+#<prefix>-[page-name]-embed *,
+#<prefix>-[page-name]-embed *::before,
+#<prefix>-[page-name]-embed *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-#mp-[page-name]-embed img,
-#mp-[page-name]-embed svg {
+#<prefix>-[page-name]-embed img,
+#<prefix>-[page-name]-embed svg {
   vertical-align: middle;
 }
 ```
@@ -92,7 +94,7 @@ At the top of the scoped CSS, supply a localized reset targeted exclusively insi
 The maximum container width for all desktop embeds is capped at **`1440px`**, scaling cleanly from laptops to large desktops:
 ```css
 /* Base Desktop / Laptops */
-#mp-[page-name]-embed .mp_container {
+#<prefix>-[page-name]-embed .mp_container {
   width: 100%;
   max-width: 1200px;
   padding-left: 24px;
@@ -103,29 +105,29 @@ The maximum container width for all desktop embeds is capped at **`1440px`**, sc
 
 /* 1200px+: Medium-to-Large Desktop */
 @media screen and (min-width: 1200px) {
-  #mp-[page-name]-embed .mp_container {
+  #<prefix>-[page-name]-embed .mp_container {
     max-width: 1320px;
     padding-left: 28px;
     padding-right: 28px;
   }
-  #mp-[page-name]-embed h2.mp_com_title {
+  #<prefix>-[page-name]-embed h2.mp_com_title {
     font-size: 38px;
     line-height: 46px;
   }
-  #mp-[page-name]-embed .mp_features_tagline {
+  #<prefix>-[page-name]-embed .mp_features_tagline {
     font-size: 34px;
     line-height: 42px;
     margin-top: 48px;
   }
-  #mp-[page-name]-embed .ft_card_wrapper {
+  #<prefix>-[page-name]-embed .ft_card_wrapper {
     gap: 28px;
     margin-top: 40px;
   }
-  #mp-[page-name]-embed .ft_info > h4 {
+  #<prefix>-[page-name]-embed .ft_info > h4 {
     font-size: 21px;
     line-height: 29px;
   }
-  #mp-[page-name]-embed .ft_info > p {
+  #<prefix>-[page-name]-embed .ft_info > p {
     font-size: 15px;
     line-height: 24px;
   }
@@ -133,38 +135,38 @@ The maximum container width for all desktop embeds is capped at **`1440px`**, sc
 
 /* 1440px+: Maximum Desktop Ceiling */
 @media screen and (min-width: 1440px) {
-  #mp-[page-name]-embed .mp_container {
+  #<prefix>-[page-name]-embed .mp_container {
     max-width: 1440px;
     padding-left: 32px;
     padding-right: 32px;
   }
-  #mp-[page-name]-embed h2.mp_com_title {
+  #<prefix>-[page-name]-embed h2.mp_com_title {
     font-size: 40px;
     line-height: 48px;
     margin: 44px auto 18px auto;
   }
-  #mp-[page-name]-embed .mp_features_tagline {
+  #<prefix>-[page-name]-embed .mp_features_tagline {
     font-size: 36px;
     line-height: 44px;
     margin-top: 52px;
   }
-  #mp-[page-name]-embed .ft_card_wrapper {
+  #<prefix>-[page-name]-embed .ft_card_wrapper {
     gap: 30px;
     margin-top: 44px;
   }
-  #mp-[page-name]-embed .ft_card {
+  #<prefix>-[page-name]-embed .ft_card {
     padding: 30px 30px 26px 30px;
     border-radius: 18px;
   }
-  #mp-[page-name]-embed .ft_info > h4 {
+  #<prefix>-[page-name]-embed .ft_info > h4 {
     font-size: 22px;
     line-height: 30px;
   }
-  #mp-[page-name]-embed .ft_info > p {
+  #<prefix>-[page-name]-embed .ft_info > p {
     font-size: 15px;
     line-height: 25px;
   }
-  #mp-[page-name]-embed .btn-primary {
+  #<prefix>-[page-name]-embed .btn-primary {
     height: 52px;
     padding: 20px 28px;
     font-size: 15px;
@@ -181,7 +183,7 @@ The maximum container width for all desktop embeds is capped at **`1440px`**, sc
 ---
 
 ## 4. CMS Master Story Template Architecture
-When embedding via a CMS master story template (such as `pages/templates/00_Myp-Community-Pages.html`):
+When embedding via a CMS master story template (such as `tenants/myp-community/pages/templates/00_Myp-Community-Pages.html`):
 1. **Neutralize CMS Host Bootstrap Constraints**:
    Host CMS page wrappers often place the story template inside `.ContentArea > .container` with Bootstrap's hardcoded `width: 1170px` (or `width: 970px`). The story template must explicitly reset these constraints:
    ```css
@@ -216,22 +218,9 @@ When embedding via a CMS master story template (such as `pages/templates/00_Myp-
    $designAttribute:masterD_no_sidebar
    ```
 3. **Centralized Google Fonts Loading**:
-   The Master Story Template (`pages/templates/00_Myp-Community-Pages.html`) loads the official Google Fonts (`Inria Serif`, `Inter`, `Roboto`) at the top of the template. Embedded child pages (`pages/*.html`) must NOT duplicate `<link rel="preconnect">` or `<link rel="stylesheet">` tags.
+   Each tenant's CMS template loads that tenant's Google Fonts (MyP: Inria Serif, Inter, Roboto in `00_Myp-Community-Pages.html`; SVK: Roboto, Nunito, Petit Formal Script). Embedded pages (`tenants/<tenant>/pages/*.html`) must NOT duplicate `<link rel="preconnect">` or `<link rel="stylesheet">` tags.
 
 ---
 
-## 5. Live Story & Page URLs Directory (Quick Reference)
-
-For quick access and direct navigation (especially if CMS top-level menus are not working as expected), refer to [page-urls.md](file:///e:/HR/000-myp-community/page-urls.md) in the workspace root or the navigation hierarchy table below:
-
-| Navigation Item | Page / Sub-Item | Live Story / Page URL | Workspace HTML Source |
-| :--- | :--- | :--- | :--- |
-| **Logo (Home)** | **Logged in Home** | `https://www.myp.community/en/` | [`pages/home-logged-out.html`](file:///e:/HR/000-myp-community/pages/home-logged-out.html) |
-| **Logo (Home)** | **Logged out Home** | `https://www.myp.community/en?t=/Default/spl_login` | [`pages/home-logged-out.html`](file:///e:/HR/000-myp-community/pages/home-logged-out.html) |
-| **Community Types** | ↳ **HR Tech & B2B** | `https://www.myp.community/en/community-type/hr-tech-b2b` | [`pages/HR Tech and B2B Customer Communities.html`](file:///e:/HR/000-myp-community/pages/HR%20Tech%20and%20B2B%20Customer%20Communities.html) |
-| **Community Types** | ↳ **Other Communities** | `https://www.myp.community/en/community-type/other-communities/` | [`pages/other-communities.html`](file:///e:/HR/000-myp-community/pages/other-communities.html) |
-| **Features** | **Features** | `https://www.myp.community/en/features/` | [`pages/features.html`](file:///e:/HR/000-myp-community/pages/features.html) |
-| **Getting Started** | **Getting Started** | `https://www.myp.community/en/getting-started/` | [`pages/getting-started.html`](file:///e:/HR/000-myp-community/pages/getting-started.html) |
-| **Contact Us** | **Contact Us** | `https://www.myp.community/en/contact-us/` | [`pages/contact-us.html`](file:///e:/HR/000-myp-community/pages/contact-us.html) |
-
-
+## 5. Live URLs
+Each tenant keeps its own live-URL directory and page map: see `tenants/<tenant>/TENANT.md` (MyP: `tenants/myp-community/page-urls.md`).
