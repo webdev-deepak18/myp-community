@@ -1,1948 +1,2551 @@
 <style>
-    /* ==========================================================================
-       000-myp-community Official Design System Tokens
-       Source: 00-branding/tokens.css & 00-branding/design-system.md
-       ========================================================================== */
-    :root {
-      /* Typography Families */
-      --font-family-heading-1: 'Inria Serif', serif !important;
-      --font-family-heading-2: 'Inter', sans-serif !important;
-      --font-family-body: 'Roboto', sans-serif !important;
+  /* ==========================================================================
+     MyPeople Design System Tokens (tenants/myp-community/brand/tokens.css)
+     ========================================================================== */
+  :root {
+    --font-family-heading-1: 'Inria Serif', serif;
+    --font-family-heading-2: 'Inter', sans-serif;
+    --font-family-body: 'Roboto', sans-serif;
 
-      /* Generic Colors */
-      --color-page-bg: #FFFCF8 !important;
-      --color-text: #000000 !important;
-      --color-text-link: #02588E !important;
-      --color-border: #CCCCCC !important;
-      --color-white: #FFFFFF !important;
-      --color-black: #000000 !important;
+    --color-page-bg: #FFFCF8;
+    --color-text: #000000;
+    --color-text-link: #02588E;
+    --color-border: #CCCCCC;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
 
-      /* Primary 1: MP-Green Scale */
-      --color-mp-green-50: #F2FBF5;
-      --color-mp-green-100: #E5F6E9;
-      --color-mp-green-200: #CBEED5;
-      --color-mp-green-300: #98DCAB;
-      --color-mp-green-400: #66CB81;
-      --color-mp-green-500: #34B957;
-      --color-mp-green-default: #02A82D;
-      --color-mp-green-700: #018624;
-      --color-mp-green-800: #00651B;
-      --color-mp-green-900: #004213;
+    --color-mp-green-50: #F2FBF5;
+    --color-mp-green-100: #E5F6E9;
+    --color-mp-green-200: #CBEED5;
+    --color-mp-green-300: #98DCAB;
+    --color-mp-green-400: #66CB81;
+    --color-mp-green-500: #34B957;
+    --color-mp-green-default: #02A82D;
+    --color-mp-green-700: #018624;
+    --color-mp-green-800: #00651B;
+    --color-mp-green-900: #004213;
 
-      /* Primary 2: MP-Blue Scale */
-      --color-mp-blue-50: #F5F7F8;
-      --color-mp-blue-100: #EBF0F2;
-      --color-mp-blue-200: #D7E1E3;
-      --color-mp-blue-300: #AFC4CB;
-      --color-mp-blue-400: #88A6B1;
-      --color-mp-blue-500: #608897;
-      --color-mp-blue-default: #396B7E;
-      --color-mp-blue-700: #2D5564;
-      --color-mp-blue-800: #22404B;
-      --color-mp-blue-900: #162B32;
+    --color-mp-blue-50: #F5F7F8;
+    --color-mp-blue-100: #EBF0F2;
+    --color-mp-blue-200: #D7E1E3;
+    --color-mp-blue-300: #AFC4CB;
+    --color-mp-blue-400: #88A6B1;
+    --color-mp-blue-500: #608897;
+    --color-mp-blue-default: #396B7E;
+    --color-mp-blue-700: #2D5564;
+    --color-mp-blue-800: #22404B;
+    --color-mp-blue-900: #162B32;
 
-      /* Semantic Palettes */
-      --color-success-bg: #E5F6E9;
-      --color-success-border: #28C841;
-      --color-success-text: #018624;
+    --color-error-text: #E13838;
+    --color-edit-border: #5099EC;
 
-      --color-error-bg: #FFE3E3;
-      --color-error-border: #E06764;
-      --color-error-text: #E13838;
+    --color-black-50: #F2F2F2;
+    --color-black-100: #E4E4E4;
+    --color-black-200: #CCCCCC;
+    --color-black-300: #999999;
+    --color-black-400: #666666;
+    --color-black-500: #333333;
+    --color-black-default: #000000;
 
-      --color-alert-bg: #FFF4E5;
-      --color-alert-border: #FCBE67;
-      --color-alert-text: #FB9302;
+    --radius-button: 12px;
+    --radius-input: 12px;
+    --radius-tag: 12px;
+    --radius-card: 16px;
+    --radius-panel: 28px;
+    --gap-button: 12px;
 
-      --color-edit-bg: #E8F2FD;
-      --color-edit-border: #5099EC;
-      --color-edit-text: #1E66BA;
+    --mp-network-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='black' stroke-width='3'%3E%3Cpath d='M60 90C140 60 170 150 230 120S330 70 350 160M230 120C210 210 120 220 90 300M230 120C280 200 300 260 330 320M90 300C170 330 250 340 330 320M60 90C70 170 40 240 90 300'/%3E%3Cg fill='black' stroke='none'%3E%3Ccircle cx='60' cy='90' r='22'/%3E%3Ccircle cx='230' cy='120' r='34'/%3E%3Ccircle cx='350' cy='160' r='18'/%3E%3Ccircle cx='90' cy='300' r='28'/%3E%3Ccircle cx='330' cy='320' r='24'/%3E%3Ccircle cx='160' cy='215' r='10'/%3E%3C/g%3E%3C/svg%3E");
+  }
 
-      /* Black / Neutral Scale */
-      --color-black-50: #F2F2F2;
-      --color-black-100: #E4E4E4;
-      --color-black-200: #CCCCCC;
-      --color-black-300: #999999;
-      --color-black-400: #666666;
-      --color-black-500: #333333;
-      --color-black-default: #000000;
+  /* ==========================================================================
+     CMS Scoped Root & Localized Reset
+     ========================================================================== */
+  #mp-features-embed {
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--color-black-default) !important;
+    text-align: left;
+    background-color: var(--color-page-bg);
+    width: 100%;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
 
-      /* Component Metrics */
-      --radius-button: 12px;
-      --radius-input: 12px;
-      --radius-tag: 12px;
-      --radius-accordion: 16px;
-      --gap-button: 12px;
-    }
+  #mp-features-embed *,
+  #mp-features-embed *::before,
+  #mp-features-embed *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* ==========================================================================
-       CMS Scoped Root Container
-       ========================================================================== */
-    #mp-features-embed {
-      font-family: var(--font-family-body);
-      font-size: 14px;
-      line-height: 22px;
-      color: var(--color-black-default);
-      text-align: left;
-      background-color: var(--color-page-bg);
-      width: 100%;
-      position: relative;
-      -webkit-text-size-adjust: 100%;
-      box-sizing: border-box;
-      padding: 0;
-    }
+  /* Host CMS shield: the story template forces fonts, letter-spacing and
+     p colour with !important (see cms-page-embed skill, Rule 4b).
+     Children of headings / paragraphs inherit ours instead; colours and
+     letter-spacing in this file are !important so the #root selectors win. */
+  #mp-features-embed h1 *,
+  #mp-features-embed h2 *,
+  #mp-features-embed h3 *,
+  #mp-features-embed h4 *,
+  #mp-features-embed p * {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    letter-spacing: inherit !important;
+  }
 
-    #mp-features-embed *,
-    #mp-features-embed *::before,
-    #mp-features-embed *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  #mp-features-embed img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
 
-    #mp-features-embed img,
-    #mp-features-embed svg {
-      vertical-align: middle;
-    }
+  #mp-features-embed svg {
+    vertical-align: middle;
+  }
 
+  #mp-features-embed a {
+    color: inherit !important;
+    text-decoration: none;
+  }
+
+  #mp-features-embed ul,
+  #mp-features-embed ol {
+    list-style: none;
+  }
+
+  #mp-features-embed li::before,
+  #mp-features-embed li::marker {
+    content: none;
+  }
+
+  #mp-features-embed button {
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  #mp-features-embed [hidden] {
+    display: none !important;
+  }
+
+  #mp-features-embed :focus-visible {
+    outline: 3px solid var(--color-edit-border);
+    outline-offset: 3px;
+  }
+
+  #mp-features-embed .mp_container {
+    width: 100%;
+    max-width: 1200px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* The CMS template adds a float clearfix on .mp_container; on flex/grid
+     containers those pseudo-elements become real items. */
+  #mp-features-embed .mp_container::before,
+  #mp-features-embed .mp_container::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* ==========================================================================
+     Keyframes
+     ========================================================================== */
+  @keyframes mp-ft-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes mp-ft-float {
+    from { transform: translateY(-6px); }
+    to { transform: translateY(8px); }
+  }
+
+  @keyframes mp-ft-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0.45); }
+    70% { box-shadow: 0 0 0 12px rgba(102, 203, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0); }
+  }
+
+  /* Feature pictures: every shape animates from its natural state, so the
+     drawings are complete without JS and with reduced motion. */
+  @keyframes mp-ft-pop { from { opacity: 0; transform: scale(0.3); } }
+  @keyframes mp-ft-rise { from { opacity: 0; transform: translateY(16px); } }
+  @keyframes mp-ft-grow { from { transform: scaleX(0); } }
+  @keyframes mp-ft-growy { from { transform: scaleY(0); } }
+  @keyframes mp-ft-draw { from { stroke-dashoffset: 1; } }
+  @keyframes mp-ft-fade { from { opacity: 0; } }
+  @keyframes mp-ft-dim { to { opacity: 0.35; } }
+  @keyframes mp-ft-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+  /* ==========================================================================
+     Scroll Reveal (content only hides once JS has booted: .mp-js)
+     ========================================================================== */
+  #mp-features-embed.mp-js .mp-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s);
+  }
+
+  #mp-features-embed.mp-js .mp-reveal.mp-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  #mp-features-embed.mp-js .mp-reveal[data-delay="1"] { --mp-reveal-delay: 0.08s; }
+  #mp-features-embed.mp-js .mp-reveal[data-delay="2"] { --mp-reveal-delay: 0.16s; }
+  #mp-features-embed.mp-js .mp-reveal[data-delay="3"] { --mp-reveal-delay: 0.24s; }
+
+  /* Tiles are also reveal targets: they lift with `translate`, so the
+     reveal's `transform` can't cancel the hover. */
+  #mp-features-embed.mp-js .ft_tile.mp-reveal {
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  }
+
+  /* Scroll progress bar */
+  #mp-features-embed .mp_scroll_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
+    transform: scaleX(0);
+    transform-origin: left center;
+    z-index: 99997;
+    pointer-events: none;
+  }
+
+  /* ==========================================================================
+     Shared Typography
+     ========================================================================== */
+  #mp-features-embed .mp_h2 {
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 44px;
+    font-weight: 700 !important;
+    line-height: 52px;
+    letter-spacing: -0.75px !important;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-features-embed .mp_hl {
+    color: var(--color-mp-green-700) !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+  }
+
+  #mp-features-embed .mp_rule {
+    display: block;
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
+    margin: 0 auto 28px auto;
+  }
+
+  /* ==========================================================================
+     Buttons
+     ========================================================================== */
+  #mp-features-embed .btn-primary,
+  #mp-features-embed .btn-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-button);
+    height: 50px;
+    padding: 0 28px;
+    border-radius: var(--radius-button) !important;
+    font-family: var(--font-family-body) !important;
+    font-size: 15px;
+    font-weight: 500 !important;
+    line-height: 20px;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  }
+
+  #mp-features-embed .btn-lg {
+    height: 60px;
+    padding: 0 32px;
+    font-size: 16px;
+  }
+
+  #mp-features-embed .btn-primary {
+    background-color: var(--color-mp-green-700) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    box-shadow: 0 6px 18px rgba(1, 134, 36, 0.28);
+  }
+
+  #mp-features-embed .btn-primary:hover {
+    background-color: var(--color-mp-green-800) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(1, 134, 36, 0.36);
+  }
+
+  #mp-features-embed .btn-primary:focus,
+  #mp-features-embed .btn-primary:focus-visible,
+  #mp-features-embed .btn-primary:active {
+    background-color: var(--color-mp-green-default) !important;
+  }
+
+  #mp-features-embed .btn-light {
+    background-color: var(--color-white) !important;
+    color: var(--color-black-default) !important;
+    border: none !important;
+    box-shadow: 0 6px 18px rgba(22, 43, 50, 0.18);
+  }
+
+  #mp-features-embed .btn-light:hover {
+    background-color: var(--color-mp-green-50) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(22, 43, 50, 0.24);
+  }
+
+  #mp-features-embed .btn-primary svg,
+  #mp-features-embed .btn-light svg {
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-features-embed .btn-primary:hover svg,
+  #mp-features-embed .btn-light:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ==========================================================================
+     Shared Vector Accents (drawn in code)
+     ========================================================================== */
+  #mp-features-embed .mp_dots {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    pointer-events: none;
+  }
+
+  #mp-features-embed .mp_dots circle { fill: var(--color-mp-green-default); }
+  #mp-features-embed .mp_dots circle:last-child { fill: var(--color-mp-green-700); }
+
+  #mp-features-embed .mp_chip {
+    position: absolute;
+    z-index: 3;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    box-shadow: 0 14px 34px rgba(22, 43, 50, 0.22);
+    animation: mp-ft-float 5s ease-in-out infinite alternate;
+  }
+
+  #mp-features-embed .mp_chip svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #mp-features-embed .mp_chip.d2 { animation-delay: -1.6s; }
+  #mp-features-embed .mp_chip.d3 { animation-delay: -3.2s; }
+
+  /* ==========================================================================
+     Section 1: Hero (slate): display title, CTA, banner in a white frame
+     ========================================================================== */
+  #mp-features-embed .mp_hero {
+    position: relative;
+    padding: 96px 0 104px 0;
+    background-color: var(--color-mp-blue-900);
+    background-image: radial-gradient(var(--color-mp-blue-800) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
+    color: var(--color-white) !important;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  #mp-features-embed .mp_hero::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -420px;
+    width: 1100px;
+    height: 820px;
+    margin-left: -550px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 185, 87, 0.24) 0%, rgba(22, 43, 50, 0) 66%);
+    pointer-events: none;
+  }
+
+  #mp-features-embed .mp_hero .mp_container {
+    position: relative;
+    z-index: 1;
+  }
+
+  #mp-features-embed .mp_hero_title {
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 68px;
+    font-weight: 700 !important;
+    line-height: 74px;
+    letter-spacing: -1.5px !important;
+    color: var(--color-white) !important;
+  }
+
+  #mp-features-embed .mp_hero_title .mp_hl {
+    color: var(--color-mp-green-400) !important;
+  }
+
+  #mp-features-embed .mp_hero_actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+  }
+
+  #mp-features-embed .ft_hero_media {
+    position: relative;
+    max-width: 1180px;
+    margin: 64px auto 0 auto;
+  }
+
+  #mp-features-embed .ft_hero_frame {
+    position: relative;
+    z-index: 1;
+    padding: 18px;
+    border-radius: var(--radius-panel);
+    background-color: var(--color-white);
+    box-shadow: 0 34px 80px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  #mp-features-embed .ft_hero_frame img {
+    width: 100%;
+    aspect-ratio: 1920 / 847;
+    border-radius: 16px;
+    background-color: var(--color-mp-green-50);
+  }
+
+  /* Dashed orbit rings behind the frame */
+  #mp-features-embed .ft_hero_media::before,
+  #mp-features-embed .ft_hero_media::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 2px dashed var(--color-mp-blue-700);
+    pointer-events: none;
+  }
+
+  #mp-features-embed .ft_hero_media::before {
+    width: 360px;
+    height: 360px;
+    left: -150px;
+    top: -110px;
+  }
+
+  #mp-features-embed .ft_hero_media::after {
+    width: 280px;
+    height: 280px;
+    right: -110px;
+    bottom: -90px;
+    border-color: var(--color-mp-green-800);
+  }
+
+  #mp-features-embed .ft_hero_media .mp_chip.c1 { left: -20px; top: 22%; }
+  #mp-features-embed .ft_hero_media .mp_chip.c2 { right: -20px; top: 12%; }
+  #mp-features-embed .ft_hero_media .mp_chip.c3 { right: 14%; bottom: -24px; }
+  #mp-features-embed .ft_hero_media .mp_dots { left: 10%; bottom: -26px; z-index: 2; }
+
+  /* ==========================================================================
+     Section 2: Marquee Band (the 17 feature names)
+     ========================================================================== */
+  #mp-features-embed .mp_marquee {
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+    overflow: hidden;
+    padding: 22px 0;
+  }
+
+  #mp-features-embed .mp_marquee_track,
+  #mp-features-embed .ft_logos_track {
+    display: flex;
+    width: max-content;
+    animation: mp-ft-marquee 70s linear infinite;
+  }
+
+  #mp-features-embed .mp_marquee:hover .mp_marquee_track,
+  #mp-features-embed .ft_logos_band:hover .ft_logos_track {
+    animation-play-state: paused;
+  }
+
+  #mp-features-embed .mp_marquee_group,
+  #mp-features-embed .ft_logos_group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  #mp-features-embed .mp_marquee_group li {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding-right: 36px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 24px;
+    font-weight: 600 !important;
+    line-height: 32px;
+    letter-spacing: -0.25px !important;
+    color: var(--color-white) !important;
+    white-space: nowrap;
+  }
+
+  #mp-features-embed .mp_marquee_group li::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-300);
+  }
+
+  /* ==========================================================================
+     Section 3: Feature Bento (green tint): mixed tile sizes and colours
+     ========================================================================== */
+  #mp-features-embed .ft_section {
+    position: relative;
+    padding: 96px 0;
+    background-color: var(--color-mp-green-50);
+    border-bottom: 1px solid var(--color-mp-green-200);
+    overflow: hidden;
+  }
+
+  #mp-features-embed .ft_section::before {
+    content: '';
+    position: absolute;
+    right: -160px;
+    top: -120px;
+    width: 560px;
+    height: 560px;
+    background-color: var(--color-mp-green-700);
+    opacity: 0.06;
+    pointer-events: none;
+    -webkit-mask: var(--mp-network-mask) no-repeat center / contain;
+    mask: var(--mp-network-mask) no-repeat center / contain;
+  }
+
+  #mp-features-embed .ft_section .mp_h2 {
+    position: relative;
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto 56px auto;
+  }
+
+  #mp-features-embed .ft_grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  #mp-features-embed .ft_tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 18px 18px 22px 18px;
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  }
+
+  #mp-features-embed .ft_tile:hover {
+    translate: 0 -6px;
+    box-shadow: 0 24px 50px rgba(22, 43, 50, 0.16);
+  }
+
+  #mp-features-embed .ft_tile.is-wide {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  #mp-features-embed .ft_tile.is-white { background-color: var(--color-white); border: 1px solid var(--color-mp-green-200); }
+  #mp-features-embed .ft_tile.is-white:hover { border-color: var(--color-mp-green-300); }
+  #mp-features-embed .ft_tile.is-green { background-color: var(--color-mp-green-700); }
+  #mp-features-embed .ft_tile.is-slate { background-color: var(--color-mp-blue-800); }
+
+  /* Picture panel */
+  #mp-features-embed .ft_tile .ft_pic {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 240 / 150;
+    padding: 6px;
+    border-radius: 20px;
+    background-color: var(--color-mp-green-50);
+    border: 1px solid var(--color-mp-green-100);
+  }
+
+  #mp-features-embed .ft_tile.is-wide .ft_pic {
+    flex: 1 1 54%;
+    aspect-ratio: auto;
+    min-height: 240px;
+  }
+
+  /* Wide (green / slate) tiles: the white drawing card floats on the tile
+     colour over a dashed orbit ring, instead of sitting in a tall empty panel */
+  #mp-features-embed .ft_tile.is-wide .ft_pic {
+    position: relative;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+  }
+
+  #mp-features-embed .ft_tile.is-wide .ft_pic::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 84%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px dashed var(--color-mp-green-500);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  #mp-features-embed .ft_tile.is-slate .ft_pic::before { border-color: var(--color-mp-blue-700); }
+
+  #mp-features-embed .ft_tile.is-wide .ft_pic svg {
+    position: relative;
+    height: auto;
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.28));
+  }
+
+  #mp-features-embed .ft_pic svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow: visible;
+  }
+
+  #mp-features-embed .ft_body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 6px;
+  }
+
+  #mp-features-embed .ft_tile.is-wide .ft_body {
+    flex: 1 1 46%;
+    padding: 14px 8px 4px 8px;
+  }
+
+  #mp-features-embed .ft_body h3 {
+    margin-bottom: 10px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 22px;
+    font-weight: 600 !important;
+    line-height: 30px;
+    letter-spacing: -0.25px !important;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-features-embed .ft_body p {
+    font-family: var(--font-family-body) !important;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--color-black-500) !important;
+  }
+
+  #mp-features-embed .ft_tile.is-green h3,
+  #mp-features-embed .ft_tile.is-slate h3 { color: var(--color-white) !important; }
+  #mp-features-embed .ft_tile.is-green .ft_body p { color: var(--color-mp-green-50) !important; }
+  #mp-features-embed .ft_tile.is-slate .ft_body p { color: var(--color-mp-blue-100) !important; }
+
+  #mp-features-embed .ft_foot {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+    padding-top: 18px;
+  }
+
+  /* Details button: its ::after stretches over the tile, so the whole tile opens the popup */
+  #mp-features-embed .ft_open {
+    position: static;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-mp-green-700) !important;
+    color: var(--color-white) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  }
+
+  #mp-features-embed .ft_open::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  /* Chevron drawn once as a mask (saves 17 inline SVGs) */
+  #mp-features-embed .ft_open::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/%3E%3C/svg%3E") no-repeat center / contain;
+  }
+
+  #mp-features-embed .ft_tile:hover .ft_open {
+    transform: translateX(4px);
+    background-color: var(--color-mp-green-800) !important;
+  }
+
+  #mp-features-embed .ft_tile.is-green .ft_open { background-color: var(--color-white) !important; color: var(--color-mp-green-700) !important; }
+  #mp-features-embed .ft_tile.is-green:hover .ft_open { background-color: var(--color-mp-green-50) !important; }
+  #mp-features-embed .ft_tile.is-slate .ft_open { background-color: var(--color-mp-green-400) !important; color: var(--color-mp-blue-900) !important; }
+  #mp-features-embed .ft_tile.is-slate:hover .ft_open { background-color: var(--color-mp-green-300) !important; }
+
+  /* "& much much more!" tile */
+  #mp-features-embed .ft_much {
+    position: relative;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    padding: 40px;
+    border-radius: var(--radius-panel);
+    background-color: var(--color-mp-green-700);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  #mp-features-embed .ft_much::before {
+    content: '';
+    position: absolute;
+    left: -60px;
+    bottom: -120px;
+    width: 380px;
+    height: 380px;
+    background-color: var(--color-mp-green-500);
+    opacity: 0.45;
+    pointer-events: none;
+    -webkit-mask: var(--mp-network-mask) no-repeat center / contain;
+    mask: var(--mp-network-mask) no-repeat center / contain;
+  }
+
+  #mp-features-embed .ft_much::after {
+    content: '';
+    position: absolute;
+    right: -70px;
+    top: -90px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 2px dashed var(--color-mp-green-400);
+    pointer-events: none;
+  }
+
+  #mp-features-embed .ft_much p {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 56px;
+    font-weight: 700 !important;
+    line-height: 62px;
+    letter-spacing: -1.25px !important;
+    color: var(--color-white) !important;
+  }
+
+  #mp-features-embed .ft_much p span {
+    color: var(--color-mp-green-300) !important;
+  }
+
+  /* ==========================================================================
+     Feature Pictures (inline SVG, viewBox 0 0 240 150, brand tokens only)
+     ========================================================================== */
+  #mp-features-embed .ft_pic .k { fill: var(--color-white); stroke: var(--color-mp-green-200); stroke-width: 1px; }
+  #mp-features-embed .ft_pic .g7 { fill: var(--color-mp-green-700); }
+  #mp-features-embed .ft_pic .gd { fill: var(--color-mp-green-default); }
+  #mp-features-embed .ft_pic .g4 { fill: var(--color-mp-green-400); }
+  #mp-features-embed .ft_pic .g3 { fill: var(--color-mp-green-300); }
+  #mp-features-embed .ft_pic .g2 { fill: var(--color-mp-green-200); }
+  #mp-features-embed .ft_pic .g1 { fill: var(--color-mp-green-100); }
+  #mp-features-embed .ft_pic .b2 { fill: var(--color-mp-blue-200); }
+  #mp-features-embed .ft_pic .b3 { fill: var(--color-mp-blue-300); }
+  #mp-features-embed .ft_pic .b7 { fill: var(--color-mp-blue-700); }
+  #mp-features-embed .ft_pic .n1 { fill: var(--color-black-100); }
+  #mp-features-embed .ft_pic .w { fill: var(--color-white); }
+  #mp-features-embed .ft_pic .ring { stroke: var(--color-white); stroke-width: 2.5px; }
+
+  #mp-features-embed .ft_pic .ln,
+  #mp-features-embed .ft_pic .lk,
+  #mp-features-embed .ft_pic .lw {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+  }
+
+  #mp-features-embed .ft_pic .ln { stroke: var(--color-mp-green-400); stroke-width: 2.5px; }
+  #mp-features-embed .ft_pic .lk { stroke: var(--color-mp-green-default); stroke-width: 3px; }
+  #mp-features-embed .ft_pic .lw { stroke: var(--color-white); stroke-width: 3px; }
+
+  #mp-features-embed .ft_pic .a-pop,
+  #mp-features-embed .ft_pic .a-rise { transform-box: fill-box; transform-origin: center; }
+  #mp-features-embed .ft_pic .a-grow { transform-box: fill-box; transform-origin: left center; }
+  #mp-features-embed .ft_pic .a-growy { transform-box: fill-box; transform-origin: center bottom; }
+
+  #mp-features-embed .ft_pic.is-play .a-pop { animation: mp-ft-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0s) both; }
+  #mp-features-embed .ft_pic.is-play .a-rise { animation: mp-ft-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both; }
+  #mp-features-embed .ft_pic.is-play .a-grow { animation: mp-ft-grow 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both; }
+  #mp-features-embed .ft_pic.is-play .a-growy { animation: mp-ft-growy 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both; }
+  #mp-features-embed .ft_pic.is-play .a-draw { animation: mp-ft-draw 1.2s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0s) both; }
+  #mp-features-embed .ft_pic.is-play .a-fade { animation: mp-ft-fade 0.8s ease var(--d, 0s) both; }
+  #mp-features-embed .ft_pic.is-play .a-dim { animation: mp-ft-dim 0.6s ease var(--d, 0s) forwards; }
+  #mp-features-embed .ft_pic.is-play .a-blink { animation: mp-ft-blink 1.6s ease-in-out 1.2s infinite; }
+
+  /* ==========================================================================
+     Section 4: Logos (slate band, scrolling strip)
+     ========================================================================== */
+  #mp-features-embed .ft_logos {
+    position: relative;
+    padding: 96px 0;
+    background-color: var(--color-mp-blue-900);
+    background-image: radial-gradient(var(--color-mp-blue-800) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
+    overflow: hidden;
+  }
+
+  #mp-features-embed .ft_logos .mp_h2 {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 56px auto;
+    color: var(--color-white) !important;
+  }
+
+  #mp-features-embed .ft_logos .mp_h2 .mp_hl {
+    color: var(--color-mp-green-400) !important;
+  }
+
+  #mp-features-embed .ft_logos_band {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+
+  #mp-features-embed .ft_logos_track {
+    animation-duration: 50s;
+  }
+
+  #mp-features-embed .ft_logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 96px;
+    margin-right: 18px;
+    padding: 18px 26px;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+
+  /* Logos keep their original colours (several have filled shapes, so a
+     white silhouette filter turns them into blocks) */
+  #mp-features-embed .ft_logo img {
+    width: auto;
+    max-width: 100%;
+    max-height: 44px;
+  }
+
+  #mp-features-embed .ft_logo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.26);
+  }
+
+  /* ==========================================================================
+     Section 5: Closing CTA (green band)
+     ========================================================================== */
+  #mp-features-embed .ft_cta {
+    position: relative;
+    padding: 88px 0;
+    background-color: var(--color-mp-green-700);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  #mp-features-embed .ft_cta::before,
+  #mp-features-embed .ft_cta::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--color-mp-green-500);
+    pointer-events: none;
+  }
+
+  #mp-features-embed .ft_cta::before {
+    width: 460px;
+    height: 460px;
+    left: -180px;
+    top: -220px;
+  }
+
+  #mp-features-embed .ft_cta::after {
+    width: 320px;
+    height: 320px;
+    right: -100px;
+    bottom: -200px;
+    border-style: dashed;
+  }
+
+  #mp-features-embed .ft_cta .mp_container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  #mp-features-embed .ft_cta .mp_dots { left: 12%; top: 50%; margin-top: -28px; }
+
+  /* Connector line that runs into the button from both sides */
+  #mp-features-embed .ft_cta_line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    background: linear-gradient(90deg, rgba(102, 203, 129, 0) 0%, var(--color-mp-green-400) 30%, var(--color-mp-green-400) 70%, rgba(102, 203, 129, 0) 100%);
+    pointer-events: none;
+  }
+
+  /* ==========================================================================
+     Dialogs (feature details + contact form)
+     ========================================================================== */
+  #mp-features-embed .mp-ft-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(22, 43, 50, 0.7);
+    z-index: 99998;
+    display: none;
+    backdrop-filter: blur(6px);
+  }
+
+  #mp-features-embed .mp-ft-modal-overlay.active {
+    display: block;
+  }
+
+  #mp-features-embed .mp-ft-modal-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  #mp-features-embed .mp-ft-modal-wrapper.active {
+    display: flex;
+  }
+
+  #mp-features-embed .mps_close {
+    position: absolute;
+    z-index: 2;
+    top: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-black-50);
+    color: var(--color-black-400) !important;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.2s ease;
+  }
+
+  #mp-features-embed .mps_close:hover {
+    background-color: var(--color-black-100);
+    color: var(--color-black-default) !important;
+    transform: rotate(90deg);
+  }
+
+  #mp-features-embed .ft_dialog .mps_close {
+    background-color: var(--color-white);
+    box-shadow: 0 4px 14px rgba(22, 43, 50, 0.16);
+  }
+
+  /* Feature details popup: picture panel left, text right */
+  #mp-features-embed .ft_dialog {
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    width: 100%;
+    max-width: 1000px;
+    max-height: 100%;
+    border-radius: var(--radius-panel);
+    background-color: var(--color-white);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+
+  #mp-features-embed .ft_dialog_pic {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 36px;
+    background-color: var(--color-mp-green-50);
+    border-right: 1px solid var(--color-mp-green-100);
+    overflow: hidden;
+  }
+
+  #mp-features-embed .ft_dialog_pic::before {
+    content: '';
+    position: absolute;
+    left: -80px;
+    bottom: -100px;
+    width: 320px;
+    height: 320px;
+    background-color: var(--color-mp-green-700);
+    opacity: 0.07;
+    pointer-events: none;
+    -webkit-mask: var(--mp-network-mask) no-repeat center / contain;
+    mask: var(--mp-network-mask) no-repeat center / contain;
+  }
+
+  #mp-features-embed .ft_dialog_pic svg {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  #mp-features-embed .ft_dialog_body {
+    display: flex;
+    flex-direction: column;
+    padding: 56px 48px 36px 48px;
+    overflow-y: auto;
+  }
+
+  #mp-features-embed .ft_dialog_count {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 13px;
+    font-weight: 600 !important;
+    line-height: 18px;
+    letter-spacing: 1.4px !important;
+    color: var(--color-mp-green-700) !important;
+  }
+
+  #mp-features-embed .ft_dialog_count::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-400);
+    animation: mp-ft-pulse 2.4s ease-out infinite;
+  }
+
+  #mp-features-embed .ft_dialog_count span {
+    color: var(--color-black-300) !important;
+  }
+
+  #mp-features-embed .ft_dialog_text h4 {
+    padding-right: 32px;
+    margin-bottom: 18px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 30px;
+    font-weight: 600 !important;
+    line-height: 38px;
+    letter-spacing: -0.5px !important;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-features-embed .ft_dialog_text p {
+    font-family: var(--font-family-body) !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    color: var(--color-black-500) !important;
+  }
+
+  #mp-features-embed .ft_dialog_text p.ft_use {
+    margin-top: 24px;
+    padding: 20px 22px;
+    border-left: 4px solid var(--color-mp-green-700);
+    border-radius: 0 16px 16px 0;
+    background-color: var(--color-mp-green-50);
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-features-embed .ft_dialog_text p.ft_use strong {
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 14px;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px !important;
+    color: var(--color-mp-green-700) !important;
+  }
+
+  #mp-features-embed .ft_dialog_nav {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 32px;
+  }
+
+  #mp-features-embed .ft_dialog_nav button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-mp-green-200);
+    color: var(--color-mp-green-700) !important;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #mp-features-embed .ft_dialog_nav button:hover {
+    background-color: var(--color-mp-green-700);
+    border-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+  }
+
+  #mp-features-embed .ft_dialog_nav svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Contact form dialog */
+  #mp-features-embed .mp_splash_modal {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 36px 32px 32px 32px;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  }
+
+  #mp-features-embed .mp_splash_modal .mps_close {
+    width: 36px;
+    height: 36px;
+  }
+
+  #mp-features-embed .mp_splash_modal h4 {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 24px;
+    font-weight: 600 !important;
+    line-height: 32px;
+    color: var(--color-black-default) !important;
+    margin-bottom: 22px;
+    padding-right: 40px;
+  }
+
+  #mp-features-embed .mp_ipbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 16px;
+  }
+
+  #mp-features-embed .mp_ipbox .hrip {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #mp-features-embed .mp_ipbox .hrip.mw50 {
+    width: calc(50% - 8px);
+  }
+
+  #mp-features-embed .mp_ipbox .hrip > label {
+    font-family: var(--font-family-body) !important;
+    font-size: 14px;
+    font-weight: 500 !important;
+    line-height: 24px;
+    color: var(--color-black-default) !important;
+    margin-bottom: 4px;
+  }
+
+  #mp-features-embed .mp_ipbox .hrip > input[type="text"],
+  #mp-features-embed .mp_ipbox .hrip > input[type="email"],
+  #mp-features-embed .mp_ipbox .hrip > input[type="tel"],
+  #mp-features-embed .mp_ipbox .hrip > select {
+    width: 100%;
+    height: 50px;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    background-color: var(--color-white);
+    color: var(--color-black-default) !important;
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #mp-features-embed .mp_ipbox .hrip > input::placeholder {
+    color: var(--color-black-300) !important;
+  }
+
+  #mp-features-embed .mp_ipbox .hrip > input:focus,
+  #mp-features-embed .mp_ipbox .hrip > select:focus {
+    border-color: var(--color-edit-border);
+    box-shadow: 0 0 0 3px rgba(80, 153, 236, 0.15);
+  }
+
+  #mp-features-embed .mp_ipbox .hrip.fdrow {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  #mp-features-embed .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-mp-green-700);
+    cursor: pointer;
+  }
+
+  #mp-features-embed .mp_ipbox .hrip.fdrow > label {
+    margin-bottom: 0;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  #mp-features-embed .mp_ipbox span.error,
+  #mp-features-embed .mp_ipbox span.errorTickbox {
+    display: none;
+    width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-error-text) !important;
+    margin-top: 4px;
+  }
+
+  #mp-features-embed .mp_ipbox .mp_submit_row {
+    margin-top: 14px;
+  }
+
+  #mp-features-embed .mp_ipbox .mp_submit_row .btn-primary {
+    width: 100%;
+  }
+
+  #mp-features-embed .mps_success_info p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-black-default) !important;
+  }
+
+  body.mp-freeze-scroll {
+    overflow: hidden !important;
+  }
+
+  /* ==========================================================================
+     Wide-Screen Tiers (container capped at 1440px)
+     ========================================================================== */
+  @media screen and (min-width: 1200px) {
     #mp-features-embed .mp_container {
-      width: 100%;
-      max-width: 1200px;
-      padding-left: 24px;
-      padding-right: 24px;
-      margin: 0 auto;
-      position: relative;
+      max-width: 1320px;
+      padding-left: 28px;
+      padding-right: 28px;
     }
 
+    #mp-features-embed .mp_h2 { font-size: 50px; line-height: 58px; }
 
-    /* ==========================================================================
-       Hero Title & Device Banner Section
-       ========================================================================== */
-    #mp-features-embed .mp_hero_features_section {
-      width: 100%;
-      padding: 64px 0 72px 0;
-      position: relative;
-      background-color: var(--color-page-bg);
-      overflow: hidden;
+    #mp-features-embed .mp_hero { padding: 112px 0 120px 0; }
+    #mp-features-embed .mp_hero_title { font-size: 80px; line-height: 86px; letter-spacing: -2px !important; }
+    #mp-features-embed .ft_hero_media { margin-top: 72px; }
+
+    #mp-features-embed .mp_marquee_group li { font-size: 26px; line-height: 34px; }
+
+    #mp-features-embed .ft_section,
+    #mp-features-embed .ft_logos { padding: 112px 0; }
+
+    /* Bento: four columns, wide tiles span two */
+    #mp-features-embed .ft_grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    #mp-features-embed .ft_tile.is-wide .ft_pic { min-height: 0; }
+  }
+
+  @media screen and (min-width: 1440px) {
+    #mp-features-embed .mp_container {
+      max-width: 1440px;
+      padding-left: 32px;
+      padding-right: 32px;
     }
 
-    #mp-features-embed .mp_hero_features_section::before {
-      content: '';
-      position: absolute;
-      top: -12%;
-      right: -5%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(203, 238, 213, 0.45) 0%, rgba(242, 251, 245, 0.12) 60%, transparent 100%);
-      pointer-events: none;
-      z-index: 0;
-      border-radius: 50%;
+    #mp-features-embed .mp_h2 { font-size: 56px; line-height: 64px; letter-spacing: -1px !important; }
+
+    #mp-features-embed .mp_hero { padding: 128px 0 136px 0; }
+    #mp-features-embed .mp_hero_title { font-size: 92px; line-height: 98px; letter-spacing: -2.5px !important; }
+    #mp-features-embed .ft_hero_media { max-width: 1240px; margin-top: 80px; }
+
+    #mp-features-embed .mp_marquee { padding: 26px 0; }
+    #mp-features-embed .mp_marquee_group li { font-size: 28px; line-height: 36px; gap: 44px; padding-right: 44px; }
+
+    #mp-features-embed .ft_section,
+    #mp-features-embed .ft_logos { padding: 128px 0; }
+    #mp-features-embed .ft_cta { padding: 104px 0; }
+
+    #mp-features-embed .ft_grid { gap: 28px; }
+    #mp-features-embed .ft_tile { padding: 20px 20px 24px 20px; }
+    #mp-features-embed .ft_body h3 { font-size: 23px; line-height: 31px; }
+    #mp-features-embed .ft_body p { font-size: 16px; line-height: 26px; }
+    #mp-features-embed .ft_much p { font-size: 64px; line-height: 70px; }
+    #mp-features-embed .ft_logo { width: 196px; height: 104px; }
+  }
+
+  /* ==========================================================================
+     Laptop / Tablet (max-width: 1199px): two-column bento
+     ========================================================================== */
+  @media screen and (max-width: 1199px) {
+    #mp-features-embed .ft_tile .ft_pic { aspect-ratio: 240 / 128; }
+    #mp-features-embed .ft_tile.is-wide .ft_pic { aspect-ratio: auto; }
+  }
+
+  /* ==========================================================================
+     Tablet (max-width: 991px)
+     ========================================================================== */
+  @media screen and (max-width: 991px) {
+    #mp-features-embed .mp_h2 { font-size: 38px; line-height: 46px; letter-spacing: -0.5px !important; }
+
+    #mp-features-embed .mp_hero { padding: 80px 0 88px 0; }
+    #mp-features-embed .mp_hero_title { font-size: 52px; line-height: 58px; letter-spacing: -1.25px !important; }
+    #mp-features-embed .ft_hero_media { margin-top: 52px; }
+    #mp-features-embed .ft_hero_frame { padding: 12px; }
+
+    #mp-features-embed .mp_marquee_group li { font-size: 22px; line-height: 30px; gap: 28px; padding-right: 28px; }
+
+    #mp-features-embed .ft_section,
+    #mp-features-embed .ft_logos { padding: 80px 0; }
+    #mp-features-embed .ft_cta { padding: 72px 0; }
+    #mp-features-embed .ft_section .mp_h2,
+    #mp-features-embed .ft_logos .mp_h2 { margin-bottom: 40px; }
+    #mp-features-embed .ft_grid { gap: 20px; }
+    #mp-features-embed .ft_much p { font-size: 46px; line-height: 52px; }
+
+    #mp-features-embed .ft_dialog { grid-template-columns: 1fr; overflow-y: auto; max-width: 640px; }
+    #mp-features-embed .ft_dialog_pic { padding: 28px 40px; border-right: none; border-bottom: 1px solid var(--color-mp-green-100); }
+    #mp-features-embed .ft_dialog_pic svg { max-width: 360px; }
+    #mp-features-embed .ft_dialog_body { overflow-y: visible; padding: 32px 36px 28px 36px; }
+  }
+
+  /* ==========================================================================
+     Small Tablet (max-width: 767px): wide tiles stack
+     ========================================================================== */
+  @media screen and (max-width: 767px) {
+    #mp-features-embed .ft_tile.is-wide { flex-direction: column; }
+    #mp-features-embed .ft_tile.is-wide .ft_pic { flex: 0 0 auto; aspect-ratio: 240 / 150; min-height: 0; }
+    #mp-features-embed .ft_tile.is-wide .ft_body { padding: 0 6px; }
+  }
+
+  /* ==========================================================================
+     Mobile (max-width: 576px)
+     ========================================================================== */
+  @media screen and (max-width: 576px) {
+    #mp-features-embed .mp_container {
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
-    #mp-features-embed .mp_hero_features_section::after {
-      content: '';
-      position: absolute;
-      bottom: -15%;
-      left: -8%;
-      width: 440px;
-      height: 440px;
-      background: radial-gradient(circle, rgba(175, 196, 203, 0.2) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      border-radius: 50%;
+    #mp-features-embed .mp_h2 { font-size: 30px; line-height: 38px; letter-spacing: -0.25px !important; }
+
+    #mp-features-embed .btn-primary,
+    #mp-features-embed .btn-light { width: 100%; white-space: normal; text-align: center; }
+    #mp-features-embed .btn-lg { height: 56px; padding: 0 20px; font-size: 15px; }
+
+    #mp-features-embed .mp_hero { padding: 64px 0 72px 0; }
+    #mp-features-embed .mp_hero_title { font-size: 38px; line-height: 44px; letter-spacing: -1px !important; }
+    #mp-features-embed .mp_hero_actions { margin-top: 28px; }
+    #mp-features-embed .ft_hero_media { margin-top: 44px; }
+    #mp-features-embed .ft_hero_frame { padding: 8px; border-radius: 20px; }
+    #mp-features-embed .ft_hero_frame img { border-radius: 12px; }
+    #mp-features-embed .ft_hero_media::before { width: 220px; height: 220px; left: -110px; top: -80px; }
+    #mp-features-embed .ft_hero_media::after { width: 180px; height: 180px; right: -90px; bottom: -70px; }
+    #mp-features-embed .mp_chip { width: 44px; height: 44px; border-radius: 14px; }
+    #mp-features-embed .mp_chip svg { width: 20px; height: 20px; }
+    #mp-features-embed .ft_hero_media .mp_chip.c1 { left: -8px; top: auto; bottom: -22px; }
+    #mp-features-embed .ft_hero_media .mp_chip.c2 { right: -8px; top: -22px; }
+    #mp-features-embed .ft_hero_media .mp_chip.c3 { right: 18%; }
+    #mp-features-embed .ft_hero_media .mp_dots { left: auto; right: 42%; width: 40px; height: 40px; bottom: -20px; }
+
+    #mp-features-embed .mp_marquee { padding: 16px 0; }
+    #mp-features-embed .mp_marquee_group li { font-size: 18px; line-height: 26px; gap: 20px; padding-right: 20px; }
+
+    #mp-features-embed .ft_section,
+    #mp-features-embed .ft_logos { padding: 64px 0; }
+    #mp-features-embed .ft_cta { padding: 56px 0; }
+    #mp-features-embed .ft_section::before { display: none; }
+    #mp-features-embed .ft_grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    #mp-features-embed .ft_tile.is-wide,
+    #mp-features-embed .ft_much { grid-column: auto; }
+    #mp-features-embed .ft_tile { padding: 14px 14px 18px 14px; gap: 18px; border-radius: 24px; }
+    #mp-features-embed .ft_tile .ft_pic,
+    #mp-features-embed .ft_tile.is-wide .ft_pic { aspect-ratio: 240 / 150; border-radius: 16px; }
+    #mp-features-embed .ft_body h3 { font-size: 21px; line-height: 29px; }
+    #mp-features-embed .ft_body p { font-size: 15px; line-height: 24px; }
+    #mp-features-embed .ft_open { width: 44px; height: 44px; }
+    #mp-features-embed .ft_much { min-height: 200px; padding: 32px 24px; border-radius: 24px; }
+    #mp-features-embed .ft_much p { font-size: 38px; line-height: 44px; letter-spacing: -0.75px !important; }
+
+    #mp-features-embed .ft_logo { width: 144px; height: 80px; padding: 14px 20px; margin-right: 12px; border-radius: 16px; }
+    #mp-features-embed .ft_logo img { max-height: 36px; }
+
+    #mp-features-embed .mp-ft-modal-wrapper { padding: 12px; }
+    #mp-features-embed .ft_dialog { border-radius: 22px; }
+    #mp-features-embed .ft_dialog_pic { padding: 22px 20px; }
+    #mp-features-embed .ft_dialog_body { padding: 24px 22px 22px 22px; }
+    #mp-features-embed .ft_dialog_text h4 { font-size: 24px; line-height: 32px; margin-bottom: 14px; }
+    #mp-features-embed .ft_dialog_text p { font-size: 15px; line-height: 25px; }
+    #mp-features-embed .ft_dialog_text p.ft_use { margin-top: 18px; padding: 16px 18px; }
+    #mp-features-embed .ft_dialog_nav { padding-top: 22px; }
+    #mp-features-embed .mps_close { top: 12px; right: 12px; }
+
+    #mp-features-embed .mp_ipbox .hrip.mw50 { width: 100%; }
+    #mp-features-embed .mp_splash_modal { padding: 28px 20px 24px 20px; }
+  }
+
+  /* ==========================================================================
+     Reduced Motion
+     ========================================================================== */
+  @media (prefers-reduced-motion: reduce) {
+    #mp-features-embed.mp-js .mp-reveal {
+      transition: none !important;
+      opacity: 1;
+      transform: none;
     }
 
-    /* H2: Inria Serif, 36px, Bold (700), LH: 44px, LS: -0.25px */
-    #mp-features-embed h2.mp_com_title,
-    #mp-features-embed h2.mp_com_title * {
-      font-family: var(--font-family-heading-1) !important;
-      font-size: 36px;
-      font-weight: 700 !important;
-      line-height: 44px;
-      letter-spacing: -0.25px;
-      color: var(--color-black-default) !important;
-      text-align: center;
-      width: 100%;
-      margin: 0 auto 28px auto;
-      position: relative;
-      z-index: 1;
+    #mp-features-embed .ft_pic *,
+    #mp-features-embed .mp_chip,
+    #mp-features-embed .ft_dialog_count::before {
+      animation: none !important;
     }
 
-    #mp-features-embed h2.mp_com_title::before {
-      content: '';
-      display: block;
-      width: 48px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-      border-radius: 2px;
-      margin: 0 auto 20px auto;
+    #mp-features-embed .ft_tile:hover {
+      translate: none !important;
     }
 
-    #mp-features-embed h2.mp_com_title > span {
-      color: var(--color-mp-green-700) !important;
-      font-family: var(--font-family-heading-1) !important;
-      font-weight: 700 !important;
+    #mp-features-embed .btn-primary:hover,
+    #mp-features-embed .btn-light:hover,
+    #mp-features-embed .btn-primary:hover svg,
+    #mp-features-embed .btn-light:hover svg,
+    #mp-features-embed .ft_tile:hover .ft_open,
+    #mp-features-embed .mps_close:hover {
+      transform: none !important;
     }
 
-    #mp-features-embed .mp_post {
-      width: 100%;
-      position: relative;
-      z-index: 1;
-      padding: 0;
-      display: flex;
-      align-items: center;
+    #mp-features-embed .mp_marquee_track,
+    #mp-features-embed .ft_logos_track {
+      animation: none;
+      width: auto;
       justify-content: center;
     }
 
-    #mp-features-embed .mp_post > img {
-      display: block;
-      width: 100%;
-      max-width: 1020px;
-      height: auto;
-      filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.08));
-      border-radius: 16px;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    #mp-features-embed .mp_post > img:hover {
-      transform: translateY(-4px);
-    }
-
-    /* Primary CTA Button: Design System Spec (Medium, 50px, Pad 20px 24px, Radius 12px) */
-    #mp-features-embed .mp_community_btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 36px auto 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    #mp-features-embed .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--gap-button);
-      height: 50px;
-      padding: 0 30px;
-      background-color: var(--color-mp-green-700) !important;
-      color: var(--color-white) !important;
-      border-radius: var(--radius-button) !important;
-      border: none !important;
-      font-family: var(--font-family-body) !important;
-      font-size: 15px;
-      font-weight: 500 !important;
-      cursor: pointer;
-      text-decoration: none !important;
-      transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-      box-shadow: 0 4px 14px rgba(1, 134, 36, 0.22);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #mp-features-embed .btn-primary::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.6s ease;
-    }
-
-    #mp-features-embed .btn-primary:hover::after {
-      left: 100%;
-    }
-
-    #mp-features-embed .btn-primary:hover {
-      background-color: var(--color-mp-green-800) !important;
-      color: var(--color-white) !important;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(1, 134, 36, 0.32);
-    }
-
-    #mp-features-embed .btn-primary:focus {
-      background-color: var(--color-mp-green-default) !important;
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(2, 168, 45, 0.3);
-    }
-
-    #mp-features-embed .btn-primary svg {
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    #mp-features-embed .btn-primary:hover svg {
-      transform: translateX(4px);
-    }
-
-    /* ==========================================================================
-       Feature Cards Grid (18 Items) - Alternating Subtle Gradient Section
-       ========================================================================== */
-    #mp-features-embed .mp_features_grid_section {
-      width: 100%;
-      padding: 76px 0 92px 0;
-      position: relative;
-      background: linear-gradient(180deg, var(--color-page-bg) 0%, #F5FBF7 50%, var(--color-page-bg) 100%);
-      border-top: 1px solid rgba(203, 238, 213, 0.4);
-      border-bottom: 1px solid rgba(203, 238, 213, 0.4);
-      overflow: hidden;
-    }
-
-    #mp-features-embed .mp_features_tagline {
-      font-family: var(--font-family-heading-2) !important;
-      font-size: 32px;
-      font-weight: 600 !important;
-      line-height: 40px;
-      letter-spacing: 0px;
-      color: var(--color-black-default) !important;
-      text-align: center;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    #mp-features-embed .mp_features_tagline::before {
-      content: '';
-      display: block;
-      width: 48px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-      border-radius: 2px;
-      margin: 0 auto 20px auto;
-    }
-
-    #mp-features-embed .ft_card_wrapper {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 44px;
-    }
-
-    /* Premium Card Surface: White background, subtle slate border, refined elevation */
-    #mp-features-embed .ft_card {
-      width: 100%;
-      position: relative;
-      background-color: var(--color-white);
-      border: 1px solid #DCE3E6;
-      padding: 30px 28px 26px 28px;
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    #mp-features-embed .ft_card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 36px rgba(1, 134, 36, 0.1);
-      border-color: var(--color-mp-green-300);
-    }
-
-    #mp-features-embed .ft_card_img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-mp-blue-50);
-      border: 1px solid #E8EEF0;
-      transition: transform 0.3s ease;
-    }
-
-    #mp-features-embed .ft_card:hover .ft_card_img {
-      transform: scale(1.02);
-    }
-
-    #mp-features-embed .ft_card_img > img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    #mp-features-embed .ft_info {
-      width: 100%;
-      padding: 22px 0 0 0;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      justify-content: space-between;
-    }
-
-    /* H4: Inter, 20px -> Scaled for card heading: Inter Semi Bold (600) */
-    #mp-features-embed .ft_info > h4 {
-      font-family: var(--font-family-heading-2) !important;
-      font-size: 20px;
-      font-weight: 600 !important;
-      line-height: 28px;
-      letter-spacing: 0px !important;
-      margin: 0 0 10px 0;
-      color: var(--color-black-default) !important;
-      text-transform: none !important;
-    }
-
-    /* Paragraph Medium: Roboto, 15px, Regular, LH: 24px (Clamped to 2 lines) */
-    #mp-features-embed .ft_info > p {
-      font-family: var(--font-family-body) !important;
-      font-size: 15px;
-      font-weight: 400 !important;
-      line-height: 24px;
-      letter-spacing: 0px !important;
-      margin: 0 0 18px 0;
-      color: var(--color-black-500) !important;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      word-wrap: break-word;
-    }
-
-    /* Icon button: 40px Small Icon Button, MP-Green 700 with micro-elevation */
-    #mp-features-embed .features_details_button {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-button);
-      background-color: var(--color-mp-green-700);
-      color: var(--color-white);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      user-select: none;
-      border: none;
-      transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-      align-self: flex-start;
-      box-shadow: 0 4px 12px rgba(1, 134, 36, 0.2);
-    }
-
-    #mp-features-embed .features_details_button:hover {
-      background-color: var(--color-mp-green-800);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(1, 134, 36, 0.3);
-    }
-
-    #mp-features-embed .features_details_button:focus {
-      background-color: var(--color-mp-green-default);
-      outline: none;
-    }
-
-    #mp-features-embed .features_details_button > svg {
-      fill: var(--color-white);
-      transition: transform 0.2s ease;
-    }
-
-    #mp-features-embed .features_details_button:hover > svg {
-      transform: translateX(2px);
-    }
-
-    /* 18th Promo Card ("& much much more!") */
-    #mp-features-embed .ft_card_ad_1_col {
-      width: 100%;
-      height: 100%;
-      min-height: 380px;
-      border-radius: 16px;
-      overflow: hidden;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-    }
-
-    #mp-features-embed .ft_card_ad_1_col:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 36px rgba(1, 134, 36, 0.1);
-    }
-
-    #mp-features-embed .ft_card_ad_1_col .ft_card_img {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid #DCE3E6;
-      background: var(--color-white);
-    }
-
-    #mp-features-embed .ft_card_ad_1_col .ft_card_img img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 16px;
-    }
-
-    /* ==========================================================================
-       Client / Partner Logos Section
-       ========================================================================== */
-    #mp-features-embed .mp_logos_section {
-      width: 100%;
-      padding: 72px 0 84px 0;
-      position: relative;
-      background-color: var(--color-page-bg);
-    }
-
-    #mp-features-embed .mp_comm_wrapper {
-      width: 100%;
-      position: relative;
-      margin: 0;
-      text-align: center;
-    }
-
-    #mp-features-embed .mp_comm_wrapper h2.mp_com_title {
-      font-size: 32px;
-      line-height: 40px;
-      margin-bottom: 40px;
-    }
-
-    #mp-features-embed .mp_network_logobox {
-      width: 100%;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
+    #mp-features-embed .mp_marquee_group,
+    #mp-features-embed .ft_logos_group {
       flex-wrap: wrap;
-    }
-
-    #mp-features-embed .mp_logobox {
-      width: calc(16.666% - 13.5px);
-      height: 96px;
-      border: 1px solid #DCE3E6;
-      border-radius: 12px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      background: var(--color-white);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      row-gap: 12px;
     }
 
-    #mp-features-embed .mp_logobox:hover {
-      border-color: var(--color-mp-green-700);
-      box-shadow: 0 8px 20px rgba(1, 134, 36, 0.1);
-      transform: translateY(-3px);
-    }
-
-    #mp-features-embed .mp_logobox > img {
-      display: block;
-      max-width: 100%;
-      max-height: 48px;
-      object-fit: contain;
-      transition: transform 0.2s ease;
-    }
-
-    #mp-features-embed .mp_logobox:hover > img {
-      transform: scale(1.05);
-    }
-
-
-    /* ==========================================================================
-       Modals & Overlay Styles (Brand Compliant Inputs & Radii)
-       ========================================================================== */
-    .mp-features-modal-overlay {
+    #mp-features-embed .mp_marquee_group[aria-hidden="true"],
+    #mp-features-embed .ft_logos_group[aria-hidden="true"] {
       display: none;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.65);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 99998;
-      backdrop-filter: blur(2px);
     }
 
-    .mp-features-modal-wrapper {
-      display: none;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 99999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      overflow-y: auto;
+    #mp-features-embed .ft_logos_band {
+      -webkit-mask-image: none;
+      mask-image: none;
     }
+  }
+</style>
 
-    .mp_splash_modal {
-      width: 100%;
-      max-width: 620px;
-      background: var(--color-white);
-      border-radius: 16px;
-      border: 1px solid var(--color-border);
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      padding: 32px;
-      font-family: var(--font-family-body);
-      box-sizing: border-box;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
+<!-- ========================================================================
+     Root Scoping Container for WYSIWYG / CMS Embed
+     ======================================================================== -->
+<div id="mp-features-embed" class="mp-features-embed">
 
-    .mp_splash_modal.wide-detail-modal {
-      max-width: 800px;
-    }
+  <div class="mp_scroll_bar" id="mpFtScrollBar" aria-hidden="true"></div>
 
-    .mp_splash_modal .mps_close,
-    .mp_splash_modal .mps_close_features {
-      width: 32px;
-      height: 32px;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      z-index: 2;
-      cursor: pointer;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: var(--color-black-50);
-      color: var(--color-black-500);
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-
-    .mp_splash_modal .mps_close:hover,
-    .mp_splash_modal .mps_close_features:hover {
-      background: var(--color-black-100);
-      color: var(--color-black-default);
-    }
-
-    .mp_splash_modal h4 {
-      font-family: var(--font-family-heading-2) !important;
-      font-size: 22px;
-      font-weight: 600 !important;
-      color: var(--color-black-default) !important;
-      line-height: 30px;
-      margin: 0 0 20px 0;
-      padding-right: 40px;
-      text-transform: none !important;
-    }
-
-    /* Contact Form Layout - Aligned with Section 3.2 Form Controls */
-    .mp_ipbox {
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .mp_ipbox .hrip {
-      width: 100%;
-      margin-bottom: 16px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .mp_ipbox .hrip.mw50 {
-      width: calc(50% - 8px);
-    }
-
-    .mp_ipbox .hrip.mw100 {
-      width: 100%;
-    }
-
-    .mp_ipbox .hrip > label {
-      font-family: var(--font-family-body) !important;
-      font-size: 14px;
-      font-weight: 500 !important;
-      color: var(--color-black-default) !important;
-      margin-bottom: 6px;
-    }
-
-    .mp_ipbox .hrip > input[type="text"],
-    .mp_ipbox .hrip > input[type="email"],
-    .mp_ipbox .hrip > input[type="tel"],
-    .mp_ipbox .hrip > select {
-      width: 100%;
-      height: 50px;
-      padding: 12px 14px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-input);
-      background: var(--color-white);
-      color: var(--color-black-default);
-      font-size: 14px;
-      font-family: inherit;
-      outline: none;
-      box-sizing: border-box;
-      transition: border-color 0.15s ease;
-    }
-
-    .mp_ipbox .hrip > input:focus,
-    .mp_ipbox .hrip > select:focus {
-      border-color: var(--color-edit-border);
-    }
-
-    .mp_ipbox .hrip.fdrow {
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-      margin-top: 5px;
-    }
-
-    .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--color-mp-green-700);
-      cursor: pointer;
-    }
-
-    .mp_ipbox .hrip.fdrow > label {
-      margin-bottom: 0;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    .mp_ipbox .hrip span.error,
-    .mp_ipbox .hrip span.errorTickbox {
-      display: none;
-      font-size: 12px;
-      color: var(--color-error-text);
-      margin-top: 4px;
-    }
-
-    .mp_splash_modal .mps_success_info {
-      padding: 15px 0;
-      font-size: 15px;
-      line-height: 24px;
-      color: var(--color-black-default);
-    }
-
-    /* Feature Details Modal Inside */
-    .mpFeaturesDetails_box {
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      gap: 30px;
-      padding: 10px 0 0 0;
-    }
-
-    .mpFeaturesDetails_box .fd_info {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .mpFeaturesDetails_box .fd_info h4 {
-      font-family: var(--font-family-heading-2) !important;
-      font-size: 24px;
-      font-weight: 600 !important;
-      color: var(--color-black-default) !important;
-      margin: 0;
-      padding-right: 0;
-      text-transform: none !important;
-    }
-
-    .mpFeaturesDetails_box .fd_info p {
-      font-family: var(--font-family-body) !important;
-      font-size: 14px;
-      line-height: 22px;
-      color: var(--color-black-500) !important;
-      margin: 0;
-    }
-
-    .mpFeaturesDetails_box .fd_img {
-      width: 50%;
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
-    }
-
-    .mpFeaturesDetails_box .fd_img > img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    /* Scroll locking */
-    body.mp-freeze-scroll {
-      overflow: hidden !important;
-      height: 100vh !important;
-    }
-
-    /* ==========================================================================
-       Responsive Breakpoints: Mobile, Tablet & Desktop Tiers
-       ========================================================================== */
-    @media screen and (max-width: 991px) {
-      #mp-features-embed .mp_hero_features_section {
-        padding: 52px 0 56px 0;
-      }
-      #mp-features-embed h2.mp_com_title {
-        font-size: 32px;
-        line-height: 40px;
-        margin-bottom: 24px;
-      }
-      #mp-features-embed .mp_features_grid_section {
-        padding: 60px 0 68px 0;
-      }
-      #mp-features-embed .mp_features_tagline {
-        font-size: 26px;
-        line-height: 34px;
-      }
-      #mp-features-embed .ft_card_wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 22px;
-        margin-top: 36px;
-      }
-      #mp-features-embed .mp_logos_section {
-        padding: 56px 0 64px 0;
-      }
-      #mp-features-embed .mp_logobox {
-        width: calc(33.333% - 11px);
-      }
-      .mpFeaturesDetails_box {
-        flex-direction: column-reverse;
-        gap: 20px;
-      }
-      .mpFeaturesDetails_box .fd_info,
-      .mpFeaturesDetails_box .fd_img {
-        width: 100%;
-      }
-    }
-
-    @media screen and (max-width: 767px) {
-      #mp-features-embed .mp_hero_features_section {
-        padding: 40px 0 44px 0;
-      }
-      #mp-features-embed h2.mp_com_title {
-        font-size: 28px;
-        line-height: 36px;
-        margin-bottom: 20px;
-      }
-      #mp-features-embed .mp_post > img {
-        max-width: 100%;
-      }
-      #mp-features-embed .btn-primary {
-        width: 100%;
-        height: 48px;
-        padding: 0 20px;
-      }
-      #mp-features-embed .mp_features_grid_section {
-        padding: 44px 0 48px 0;
-      }
-      #mp-features-embed .mp_features_tagline {
-        font-size: 22px;
-        line-height: 30px;
-      }
-      #mp-features-embed .ft_card_wrapper {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin-top: 28px;
-      }
-      #mp-features-embed .mp_logos_section {
-        padding: 44px 0 48px 0;
-      }
-      #mp-features-embed .mp_logobox {
-        width: calc(50% - 10px);
-      }
-      #mp-features-embed .mp_ipbox .hrip.mw50 {
-        width: 100%;
-      }
-      .mp_splash_modal {
-        padding: 24px 18px;
-      }
-    }
-
-    /* ==========================================================================
-       Wide-Screen & Min-Width Responsive Breakpoints (Capped at 1440px)
-       Expands container gracefully to 1440px max width with balanced typography
-       ========================================================================== */
-
-    /* Medium to Large Desktop (min-width: 1200px) */
-    @media screen and (min-width: 1200px) {
-      #mp-features-embed .mp_container {
-        max-width: 1320px;
-        padding-left: 28px;
-        padding-right: 28px;
-      }
-      #mp-features-embed .mp_hero_features_section {
-        padding: 76px 0 84px 0;
-      }
-      #mp-features-embed h2.mp_com_title {
-        font-size: 38px;
-        line-height: 46px;
-      }
-      #mp-features-embed .mp_post > img {
-        max-width: 1120px;
-      }
-      #mp-features-embed .mp_features_grid_section {
-        padding: 88px 0 100px 0;
-      }
-      #mp-features-embed .mp_features_tagline {
-        font-size: 34px;
-        line-height: 42px;
-      }
-      #mp-features-embed .ft_card_wrapper {
-        gap: 28px;
-        margin-top: 48px;
-      }
-      #mp-features-embed .ft_card {
-        padding: 30px 28px 26px 28px;
-      }
-      #mp-features-embed .ft_info > h4 {
-        font-size: 21px;
-        line-height: 29px;
-      }
-      #mp-features-embed .ft_info > p {
-        font-size: 15px;
-        line-height: 24px;
-        -webkit-line-clamp: 3;
-      }
-      #mp-features-embed .mp_logos_section {
-        padding: 84px 0 96px 0;
-      }
-      #mp-features-embed .mp_logobox {
-        height: 100px;
-      }
-    }
-
-    /* Large Desktop - Maximum Width Ceiling (min-width: 1440px) */
-    @media screen and (min-width: 1440px) {
-      #mp-features-embed .mp_container {
-        max-width: 1440px;
-        padding-left: 32px;
-        padding-right: 32px;
-      }
-      #mp-features-embed .mp_hero_features_section {
-        padding: 84px 0 96px 0;
-      }
-      #mp-features-embed h2.mp_com_title {
-        font-size: 40px;
-        line-height: 48px;
-        margin: 0 auto 32px auto;
-      }
-      #mp-features-embed .mp_post > img {
-        max-width: 1220px;
-      }
-      #mp-features-embed .btn-primary {
-        height: 52px;
-        padding: 0 32px;
-        font-size: 16px;
-      }
-      #mp-features-embed .mp_features_grid_section {
-        padding: 96px 0 112px 0;
-      }
-      #mp-features-embed .mp_features_tagline {
-        font-size: 36px;
-        line-height: 44px;
-      }
-      #mp-features-embed .ft_card_wrapper {
-        gap: 32px;
-        margin-top: 52px;
-      }
-      #mp-features-embed .ft_card {
-        padding: 34px 30px 28px 30px;
-        border-radius: 18px;
-      }
-      #mp-features-embed .ft_info {
-        padding: 24px 0 0 0;
-      }
-      #mp-features-embed .ft_info > h4 {
-        font-size: 22px;
-        line-height: 30px;
-      }
-      #mp-features-embed .ft_info > p {
-        font-size: 15px;
-        line-height: 25px;
-        -webkit-line-clamp: 3;
-      }
-      #mp-features-embed .features_details_button {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-      }
-      #mp-features-embed .features_details_button > svg {
-        width: 17px;
-        height: 17px;
-      }
-      #mp-features-embed .mp_logos_section {
-        padding: 96px 0 108px 0;
-      }
-      #mp-features-embed .mp_comm_wrapper h2.mp_com_title {
-        font-size: 34px;
-        line-height: 42px;
-      }
-      #mp-features-embed .mp_logobox {
-        width: calc(14.285% - 14px);
-        height: 104px;
-      }
-      #mp-features-embed .mp_logobox > img {
-        max-height: 50px;
-      }
-      .mp_splash_modal.wide-detail-modal {
-        max-width: 860px;
-      }
-    }
-  </style>
-
-  <!-- ========================================================================
-       Root Scoping Container for WYSIWYG / CMS Embed
-       Strictly adhering to 000-myp-community Brand Tokens & Design System
-       ======================================================================== -->
-  <div id="mp-features-embed" class="mp-features-embed">
-
-
-    <!-- Title & Banner Section -->
-    <section class="mp_hero_features_section">
-      <div class="mp_container">
-        <h2 class="mp_com_title"><span>MyPeople</span> Features</h2>
-        <div class="mp_post">
-          <img src="$public/images/mp_features_banner-2.jpg" alt="MyPeople Features Overview">
-        </div>
-        <div class="mp_community_btn">
-          <button type="button" class="btn-primary" data-open-contact="">
+  <!-- ======================================================================
+       Section 1: Hero
+       ====================================================================== -->
+  <section class="mp_hero">
+    <div class="mp_container">
+      <div class="mp-reveal">
+        <h1 class="mp_hero_title"><span class="mp_hl">MyPeople</span> Features</h1>
+        <div class="mp_hero_actions">
+          <button type="button" class="btn-primary btn-lg" data-open-contact>
             <span>Book 30-Minute Discovery Call</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
             </svg>
           </button>
         </div>
       </div>
-    </section>
 
-    <!-- 18 Features Card Grid -->
-    <section class="mp_features_grid_section">
-      <div class="mp_container">
-        <h3 class="mp_features_tagline">One Platform. Every Capability Your Community Needs.</h3>
-        <div class="ft_card_wrapper">
+      <div class="ft_hero_media mp-reveal" data-delay="2">
+        <div class="ft_hero_frame">
+          <!-- $public is the CMS alias of public-cdn.myp.community; the fallback makes local previews work -->
+          <img src="$public/images/mp_features_banner-2.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='https://public-cdn.myp.community/images/mp_features_banner-2.jpg';}"
+            alt="MyPeople Features Overview" width="1920" height="847" loading="eager" decoding="async">
+        </div>
+        <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="20" cy="20" r="11" />
+          <circle cx="46" cy="20" r="11" />
+          <circle cx="33" cy="44" r="11" />
+        </svg>
+        <span class="mp_chip c1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20.5l1.6-4.6A8.4 8.4 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z" />
+          </svg>
+        </span>
+        <span class="mp_chip c2 d2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+          </svg>
+        </span>
+        <span class="mp_chip c3 d3" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="4.5" width="18" height="16" rx="3" />
+            <path d="M16 2.5v4M8 2.5v4M3 10h18" />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Section 2: Marquee Band (the 17 feature names)
+       ====================================================================== -->
+  <div class="mp_marquee" role="region" aria-label="MyPeople features">
+    <div class="mp_marquee_track">
+      <ul class="mp_marquee_group">
+        <li>Site Designer</li>
+        <li>Content Management System</li>
+        <li>CRM</li>
+        <li>Email Campaign Management</li>
+        <li>Drive and File Manager</li>
+        <li>Virtual Events &amp; Webinars</li>
+        <li>Metrics &amp; Analytics Dashboard</li>
+        <li>Customizable User Profiles</li>
+        <li>Blogs &amp; Discussion Forums</li>
+        <li>Learning Management System</li>
+        <li>Directories</li>
+        <li>Online Forms &amp; Polls</li>
+        <li>Gamification</li>
+        <li>Storefront</li>
+        <li>Affiliate Program</li>
+        <li>Online Advertising</li>
+        <li>Moderation Tools &amp; User Roles</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Section 3: Feature Bento. Each tile: animated picture (SVG, no words or
+       numbers), card text, details button, and its popup text (hidden .ft_detail)
+       ====================================================================== -->
+  <section class="ft_section">
+    <div class="mp_container">
+      <span class="mp_rule mp-reveal" aria-hidden="true"></span>
+      <h2 class="mp_h2 mp-reveal">One Platform. <span class="mp_hl">Every Capability</span> Your Community Needs.</h2>
+
+      <div class="ft_grid">
 
         <!-- 01: Site Designer -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_01.png" alt="Site Designer" loading="lazy">
+        <article class="ft_tile is-wide is-green mp-reveal" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="16" y="12" width="208" height="126" rx="10" />
+              <circle class="n1" cx="28" cy="23" r="3" /><circle class="n1" cx="38" cy="23" r="3" /><circle class="n1" cx="48" cy="23" r="3" />
+              <rect class="g7 a-grow" x="26" y="33" width="188" height="14" rx="4" style="--d:.1s" />
+              <rect class="g1 a-rise" x="26" y="53" width="120" height="44" rx="6" style="--d:.3s" />
+              <rect class="b2 a-grow" x="36" y="63" width="70" height="8" rx="4" style="--d:.6s" />
+              <rect class="n1 a-grow" x="36" y="77" width="50" height="6" rx="3" style="--d:.7s" />
+              <rect class="g2 a-rise" x="152" y="53" width="62" height="44" rx="6" style="--d:.45s" />
+              <rect class="n1 a-rise" x="26" y="104" width="58" height="24" rx="5" style="--d:.6s" />
+              <rect class="n1 a-rise" x="91" y="104" width="58" height="24" rx="5" style="--d:.7s" />
+              <rect class="n1 a-rise" x="156" y="104" width="58" height="24" rx="5" style="--d:.8s" />
+              <g class="a-pop" style="--d:1s">
+                <rect class="k" x="170" y="98" width="62" height="34" rx="9" />
+                <circle class="g7" cx="185" cy="115" r="6" /><circle class="g4" cx="201" cy="115" r="6" /><circle class="b7" cx="217" cy="115" r="6" />
+              </g>
+              <path class="b7 ring a-rise" style="--d:1.3s" d="M142 78v22l6-6 5 10 5-2-5-10h8z" />
+            </svg>
           </div>
-          <div class="ft_info">
-            <h4>Site Designer</h4>
+          <div class="ft_body">
+            <h3>Site Designer</h3>
             <p>From the comfort of a browser, create the community site of your dreams, with complete control over branding, layout, CSS and design to suit your specific objectives. Example Use Case: Create a full website that aligns with your existing brand.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal01" aria-label="View Site Designer details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Site Designer details"></button>
+            </div>
           </div>
-        </div>
+          <div class="ft_detail" hidden>
+            <h4>Site Designer</h4>
+            <p>From the comfort of a browser, create the community site of your dreams, with complete control over branding, layout, CSS and design to suit your specific objectives.</p>
+            <p class="ft_use"><strong>Example Use Case:</strong> Create a full website that aligns with your existing brand and build a community that your audience will recognize and trust.</p>
+          </div>
+        </article>
 
         <!-- 02: Content Management System -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_02.png" alt="Content Management System" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="1" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="40" y="12" width="160" height="126" rx="10" />
+              <rect class="b2 a-grow" x="54" y="26" width="90" height="8" rx="4" style="--d:.1s" />
+              <g class="a-rise" style="--d:.25s">
+                <rect class="g1" x="54" y="42" width="132" height="42" rx="6" />
+                <path class="g3" d="M62 84l24-24 16 16 12-10 24 18z" />
+                <circle class="g4" cx="168" cy="56" r="7" />
+              </g>
+              <rect class="n1 a-grow" x="54" y="94" width="132" height="6" rx="3" style="--d:.5s" />
+              <rect class="n1 a-grow" x="54" y="106" width="116" height="6" rx="3" style="--d:.6s" />
+              <rect class="n1 a-grow" x="54" y="118" width="78" height="6" rx="3" style="--d:.7s" />
+              <rect class="g7 a-blink" x="136" y="116" width="3" height="10" rx="1.5" />
+              <path class="gd a-pop" style="--d:1s" d="M198 96l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Content Management System</h3>
+            <p>Effortlessly create, manage, and share rich, SEO-optimized content effortlessly with our AI-enhanced WYSIWYG editor. Intuitive navigation and menus help curate your site.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View CMS details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Content Management System</h4>
             <p>Effortlessly create, manage, and share rich, SEO-optimized content effortlessly with our AI-enhanced WYSIWYG editor. Intuitive navigation and menus help curate your site.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal02" aria-label="View CMS details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Share company updates, articles, and member-generated content to keep your community engaged and informed.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 03: CRM -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_03.png" alt="Customer Relationship Management" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="2" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <g class="a-rise" style="--d:.1s">
+                <rect class="k" x="28" y="14" width="184" height="34" rx="9" />
+                <circle class="g2" cx="46" cy="31" r="10" /><rect class="b2" x="64" y="23" width="64" height="7" rx="3.5" /><rect class="n1" x="64" y="35" width="42" height="6" rx="3" />
+              </g>
+              <g class="a-rise" style="--d:.25s">
+                <rect class="k" x="28" y="58" width="184" height="34" rx="9" />
+                <circle class="b3" cx="46" cy="75" r="10" /><rect class="b2" x="64" y="67" width="54" height="7" rx="3.5" /><rect class="n1" x="64" y="79" width="48" height="6" rx="3" />
+              </g>
+              <g class="a-rise" style="--d:.4s">
+                <rect class="k" x="28" y="102" width="184" height="34" rx="9" />
+                <circle class="g3" cx="46" cy="119" r="10" /><rect class="b2" x="64" y="111" width="70" height="7" rx="3.5" /><rect class="n1" x="64" y="123" width="36" height="6" rx="3" />
+              </g>
+              <rect class="g7 a-pop" x="166" y="24" width="34" height="14" rx="7" style="--d:.7s" />
+              <rect class="g4 a-pop" x="166" y="68" width="34" height="14" rx="7" style="--d:.85s" />
+              <rect class="g2 a-pop" x="166" y="112" width="34" height="14" rx="7" style="--d:1s" />
+              <path class="lk a-draw" pathLength="1" style="--d:1.1s" d="M146 31l4 4 8-8" />
+            </svg>
           </div>
-          <div class="ft_info">
-            <h4>CRM</h4>
+          <div class="ft_body">
+            <h3>CRM</h3>
             <p>Complete system to track and score member interactions. It's an essential tool to enable your sales team and product managers to gain insight into member behavior, identify leads and close sales.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal03" aria-label="View CRM details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View CRM details"></button>
+            </div>
           </div>
-        </div>
+          <div class="ft_detail" hidden>
+            <h4>Customer Relationship Management</h4>
+            <p>Complete system to track and score member interactions. It's an essential tool to enable your sales team and product managers to gain insight into member behavior, identify leads and close sales.</p>
+            <p class="ft_use"><strong>Example Use Case:</strong> Tailor communication and outreach based on member activity and interests.</p>
+          </div>
+        </article>
 
         <!-- 04: Email Campaign Management -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_04.png" alt="Email Campaign Management" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <g class="a-rise" style="--d:.1s">
+                <rect class="k" x="44" y="40" width="116" height="76" rx="9" />
+                <path class="ln" d="M46 46l56 38 56-38" />
+              </g>
+              <path class="ln a-draw" pathLength="1" style="--d:.5s" d="M160 70C178 66 182 52 190 42" />
+              <path class="g7 a-pop" style="--d:1s" d="M178 36l46-18-14 46-12-16z" />
+              <path class="g4 a-pop" style="--d:1.05s" d="M198 48l26-30-30 22z" />
+              <circle class="g4 ring a-pop" cx="62" cy="128" r="9" style="--d:.6s" />
+              <circle class="g2 ring a-pop" cx="80" cy="128" r="9" style="--d:.7s" />
+              <circle class="b3 ring a-pop" cx="98" cy="128" r="9" style="--d:.8s" />
+              <circle class="g7 ring a-pop" cx="116" cy="128" r="9" style="--d:.9s" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Email Campaign Management</h3>
+            <p>Makes it easy to reach 100% of your community with campaigns. Target your sends by segmenting your members with demographic-specific queries.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Email details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Email Campaign Management</h4>
             <p>Makes it easy to reach 100% of your community with campaigns. Target your sends by segmenting your members with demographic-specific queries.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal04" aria-label="View Email details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Send newsletters, event invitations, and updates direct to member's inboxes.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 05: Drive and File Manager -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_05.png" alt="Drive and File Manager" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="1" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <g class="a-rise" style="--d:.6s">
+                <rect class="k" x="100" y="20" width="40" height="52" rx="5" />
+                <rect class="n1" x="108" y="30" width="24" height="5" rx="2.5" /><rect class="n1" x="108" y="40" width="18" height="5" rx="2.5" />
+              </g>
+              <path class="g4 a-pop" style="--d:.1s" d="M24 62a4 4 0 0 1 4-4h20l6 6h28a4 4 0 0 1 4 4v42a4 4 0 0 1-4 4H28a4 4 0 0 1-4-4z" />
+              <path class="g7 a-pop" style="--d:.25s" d="M89 62a4 4 0 0 1 4-4h20l6 6h28a4 4 0 0 1 4 4v42a4 4 0 0 1-4 4H93a4 4 0 0 1-4-4z" />
+              <path class="b3 a-pop" style="--d:.4s" d="M154 62a4 4 0 0 1 4-4h20l6 6h28a4 4 0 0 1 4 4v42a4 4 0 0 1-4 4h-54a4 4 0 0 1-4-4z" />
+              <rect class="n1" x="24" y="128" width="192" height="8" rx="4" />
+              <rect class="g7 a-grow" x="24" y="128" width="124" height="8" rx="4" style="--d:.9s" />
+            </svg>
           </div>
-          <div class="ft_info">
-            <h4>Drive and File Manager</h4>
+          <div class="ft_body">
+            <h3>Drive and File Manager</h3>
             <p>Organize images, documents and resources for your community site in one easy-to-navigate area. Share important documents and manage community assets.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal05" aria-label="View Drive details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Drive details"></button>
+            </div>
           </div>
-        </div>
+          <div class="ft_detail" hidden>
+            <h4>Drive and File Manager</h4>
+            <p>Organize images, documents and resources for your community site in one easy-to-navigate area.</p>
+            <p class="ft_use"><strong>Example Use Case:</strong> Share important documents and manage community assets securely.</p>
+          </div>
+        </article>
 
         <!-- 06: Virtual Events & Webinars -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_06.png" alt="Virtual Events & Webinars" loading="lazy">
+        <article class="ft_tile is-wide is-slate mp-reveal" data-delay="2" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="16" y="12" width="208" height="126" rx="10" />
+              <g class="a-pop" style="--d:.1s">
+                <rect class="g1" x="26" y="22" width="92" height="50" rx="7" />
+                <circle class="g4" cx="72" cy="40" r="8" /><path class="g4" d="M56 72a16 14 0 0 1 32 0z" />
+              </g>
+              <g class="a-pop" style="--d:.25s">
+                <rect class="b2" x="122" y="22" width="92" height="50" rx="7" />
+                <circle class="b7" cx="168" cy="40" r="8" /><path class="b7" d="M152 72a16 14 0 0 1 32 0z" />
+              </g>
+              <g class="a-pop" style="--d:.4s">
+                <rect class="g2" x="26" y="76" width="92" height="50" rx="7" />
+                <circle class="g7" cx="72" cy="94" r="8" /><path class="g7" d="M56 126a16 14 0 0 1 32 0z" />
+              </g>
+              <g class="a-pop" style="--d:.55s">
+                <rect class="g1" x="122" y="76" width="92" height="50" rx="7" />
+                <circle class="b3" cx="168" cy="94" r="8" /><path class="b3" d="M152 126a16 14 0 0 1 32 0z" />
+              </g>
+              <rect class="lk a-draw" pathLength="1" style="--d:.9s" x="26" y="22" width="92" height="50" rx="7" />
+              <circle class="gd a-blink" cx="37" cy="32" r="4" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Virtual Events &amp; Webinars</h3>
+            <p>Not only is it easy to host live events to engage and educate members, but MyPeople also offers virtual trade show floors, booths, auditoriums, video chats and one-on-one meetings.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Events details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Virtual Events &amp; Webinars</h4>
             <p>Not only is it easy to host live events to engage and educate members, but MyPeople also offers virtual trade show floors, booths, auditoriums, video chats and one-on-one meetings.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal06" aria-label="View Events details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Create a series of webinars and virtual meetups that cater directly to member interests.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 07: Metrics & Analytics Dashboard -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_07.png" alt="Metrics & Analytics Dashboard" loading="lazy">
+        <article class="ft_tile is-wide is-green mp-reveal" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="16" y="12" width="208" height="126" rx="10" />
+              <rect class="b2 a-grow" x="30" y="24" width="56" height="8" rx="4" style="--d:.1s" />
+              <rect class="n1 a-grow" x="30" y="38" width="36" height="6" rx="3" style="--d:.2s" />
+              <rect class="g1 a-pop" x="180" y="24" width="32" height="14" rx="7" style="--d:.3s" />
+              <rect class="g2 a-growy" x="30" y="96" width="10" height="30" rx="2" style="--d:.3s" />
+              <rect class="g4 a-growy" x="45" y="78" width="10" height="48" rx="2" style="--d:.4s" />
+              <rect class="g2 a-growy" x="60" y="88" width="10" height="38" rx="2" style="--d:.5s" />
+              <rect class="g7 a-growy" x="75" y="66" width="10" height="60" rx="2" style="--d:.6s" />
+              <path class="g1 a-fade" style="--d:.8s" d="M98 112C110 110 116 94 128 94S146 102 158 88S178 62 190 66S206 44 212 40V126H98z" />
+              <path class="lk a-draw" pathLength="1" style="--d:.6s" d="M98 112C110 110 116 94 128 94S146 102 158 88S178 62 190 66S206 44 212 40" />
+              <circle class="g7 ring a-pop" cx="158" cy="88" r="5" style="--d:1.4s" />
+              <circle class="g7 ring a-pop" cx="212" cy="40" r="6" style="--d:1.6s" />
+            </svg>
           </div>
-          <div class="ft_info">
-            <h4>Metrics &amp; Analytics Dashboard</h4>
+          <div class="ft_body">
+            <h3>Metrics &amp; Analytics Dashboard</h3>
             <p>Gain insights into community engagement and growth through customizable dashboards, graphics and reports. Analyze member activity to identify trends and optimize content strategies.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal07" aria-label="View Metrics details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Metrics details"></button>
+            </div>
           </div>
-        </div>
+          <div class="ft_detail" hidden>
+            <h4>Metrics &amp; Analytics Dashboard</h4>
+            <p>Gain insights into community engagement and growth through customizable dashboards, graphics and reports.</p>
+            <p class="ft_use"><strong>Example Use Case:</strong> Analyze member activity to identify trends, popular content, and optimize community engagement strategies.</p>
+          </div>
+        </article>
 
         <!-- 08: Customizable User Profiles -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_08.png" alt="Customizable User Profiles" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="1" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="50" y="10" width="140" height="130" rx="10" />
+              <path class="g2 a-fade" style="--d:.1s" d="M50 44V20a10 10 0 0 1 10-10h120a10 10 0 0 1 10 10v24z" />
+              <g class="a-pop" style="--d:.3s">
+                <circle class="w" cx="120" cy="46" r="18" /><circle class="g4" cx="120" cy="46" r="14" />
+                <circle class="g7" cx="120" cy="42" r="5" /><path class="g7" d="M111 57a9 8 0 0 1 18 0z" />
+              </g>
+              <rect class="b2 a-grow" x="90" y="72" width="60" height="8" rx="4" style="--d:.5s" />
+              <rect class="n1 a-grow" x="100" y="86" width="40" height="6" rx="3" style="--d:.6s" />
+              <rect class="g1 a-pop" x="64" y="100" width="34" height="14" rx="7" style="--d:.8s" />
+              <rect class="g1 a-pop" x="103" y="100" width="34" height="14" rx="7" style="--d:.9s" />
+              <rect class="g1 a-pop" x="142" y="100" width="34" height="14" rx="7" style="--d:1s" />
+              <rect class="n1" x="64" y="122" width="112" height="6" rx="3" />
+              <path class="g7 a-pop" style="--d:1.2s" d="M196 92l16 6v11c0 10-7 17-16 20-9-3-16-10-16-20V98z" />
+              <path class="lw a-draw" pathLength="1" style="--d:1.5s" d="M189 110l5 5 9-9" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Customizable User Profiles</h3>
+            <p>Allow members to showcase their skills, interests and expertise. Blockchain technology protects and validates ownership of profiles.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Profiles details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Customizable User Profiles</h4>
             <p>Allow members to showcase their skills, interests and expertise. Blockchain technology protects and validates ownership of profiles.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal08" aria-label="View Profiles details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Foster deeper peer-to-peer networking, discovery, and member collaboration.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 09: Blogs & Discussion Forums -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_09.png" alt="Blogs & Discussion Forums" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="2" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <g class="a-rise" style="--d:.1s">
+                <circle class="g4" cx="32" cy="34" r="10" />
+                <rect class="k" x="48" y="16" width="116" height="36" rx="13" />
+                <rect class="n1" x="60" y="26" width="84" height="6" rx="3" /><rect class="n1" x="60" y="37" width="56" height="6" rx="3" />
+              </g>
+              <g class="a-rise" style="--d:.45s">
+                <rect class="g7" x="80" y="60" width="116" height="36" rx="13" />
+                <rect class="g3" x="92" y="70" width="88" height="6" rx="3" /><rect class="g3" x="92" y="81" width="60" height="6" rx="3" />
+                <circle class="b3" cx="210" cy="78" r="10" />
+              </g>
+              <g class="a-rise" style="--d:.8s">
+                <circle class="g1" cx="32" cy="120" r="10" />
+                <path class="gd" d="M32 112l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" />
+                <rect class="k" x="48" y="104" width="64" height="32" rx="13" />
+              </g>
+              <circle class="g4 a-blink" cx="66" cy="120" r="4" />
+              <circle class="g4 a-blink" cx="80" cy="120" r="4" style="animation-delay:1.4s" />
+              <circle class="g4 a-blink" cx="94" cy="120" r="4" style="animation-delay:1.6s" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Blogs &amp; Discussion Forums</h3>
+            <p>Encourage knowledge sharing and conversations among members through content and threaded discussions. Built-in AI facilitates answers and engagement.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Forums details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Blogs &amp; Discussion Forums</h4>
             <p>Encourage knowledge sharing and conversations among members through content and threaded discussions. Built-in AI facilitates answers and engagement.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal09" aria-label="View Forums details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> A dedicated, searchable space for Q&amp;A, industry discussions, tips, and peer support.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 10: Learning Management System -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_10.png" alt="Learning Management System" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="22" y="16" width="122" height="118" rx="10" />
+              <rect class="g1 a-rise" x="32" y="26" width="102" height="46" rx="6" style="--d:.1s" />
+              <path class="g7 a-pop" style="--d:.4s" d="M76 38l16 11-16 11z" />
+              <rect class="b2 a-grow" x="32" y="82" width="80" height="8" rx="4" style="--d:.3s" />
+              <rect class="n1 a-grow" x="32" y="96" width="60" height="6" rx="3" style="--d:.4s" />
+              <rect class="n1" x="32" y="114" width="102" height="8" rx="4" />
+              <rect class="g7 a-grow" x="32" y="114" width="72" height="8" rx="4" style="--d:.6s" />
+              <g class="a-rise" style="--d:.5s">
+                <rect class="k" x="152" y="30" width="68" height="94" rx="8" />
+                <rect class="n1" x="164" y="102" width="44" height="6" rx="3" /><rect class="n1" x="170" y="112" width="32" height="5" rx="2.5" />
+              </g>
+              <path class="g7 a-pop" style="--d:.8s" d="M178 76l-7 22 8-4 5 7 3-17zM194 76l7 22-8-4-5 7-3-17z" />
+              <circle class="g4 ring a-pop" cx="186" cy="66" r="15" style="--d:.9s" />
+              <path class="w a-pop" style="--d:1.1s" d="M186 58l2.4 5 5.5.6-4.1 3.7 1.2 5.4-5-2.8-5 2.8 1.2-5.4-4.1-3.7 5.5-.6z" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Learning Management System</h3>
+            <p>Organize educational content and courses with a library of SCORM-compliant resources, including internal or third-party certification.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View LMS details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Learning Management System</h4>
             <p>Organize educational content and courses with a library of SCORM-compliant resources, including internal or third-party certification.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal10" aria-label="View LMS details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Build paid or free structured learning tracks with certifications or credits for members.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 11: Directories -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_11.png" alt="Directories" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="1" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <g class="a-rise" style="--d:.1s">
+                <rect class="k" x="24" y="14" width="192" height="36" rx="9" />
+                <rect class="g7" x="34" y="22" width="20" height="20" rx="5" /><rect class="b2" x="64" y="22" width="70" height="7" rx="3.5" />
+              </g>
+              <g class="a-rise" style="--d:.25s">
+                <rect class="k" x="24" y="57" width="192" height="36" rx="9" />
+                <rect class="b7" x="34" y="65" width="20" height="20" rx="5" /><rect class="b2" x="64" y="65" width="58" height="7" rx="3.5" />
+              </g>
+              <g class="a-rise" style="--d:.4s">
+                <rect class="k" x="24" y="100" width="192" height="36" rx="9" />
+                <rect class="g4" x="34" y="108" width="20" height="20" rx="5" /><rect class="b2" x="64" y="108" width="76" height="7" rx="3.5" />
+              </g>
+              <path class="g4 a-grow" style="--d:.7s" d="M68 33l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" />
+              <path class="g4 a-grow" style="--d:.85s" d="M68 76l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" />
+              <path class="g4 a-grow" style="--d:1s" d="M68 119l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3zm11 0l1.2 2.6 2.8.3-2.1 1.9.6 2.8-2.5-1.4-2.5 1.4.6-2.8-2.1-1.9 2.8-.3z" />
+              <rect class="g1 a-pop" x="174" y="25" width="30" height="14" rx="7" style="--d:1.1s" />
+              <rect class="g1 a-pop" x="174" y="68" width="30" height="14" rx="7" style="--d:1.2s" />
+              <rect class="g1 a-pop" x="174" y="111" width="30" height="14" rx="7" style="--d:1.3s" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Directories</h3>
+            <p>You can create directories of companies, products, services, associations and more on MyPeople, complete with reviews, ratings and customer feedback features.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Directories details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Directories</h4>
             <p>You can create directories of companies, products, services, associations and more on MyPeople, complete with reviews, ratings and customer feedback features.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal11" aria-label="View Directories details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Present members with vetted, ranked products and vendor recommendations relating to your site's focus.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 12: Online Forms & Polls -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_12.png" alt="Online Forms & Polls" loading="lazy">
+        <article class="ft_tile is-wide is-slate mp-reveal" data-delay="2" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="16" y="12" width="208" height="126" rx="10" />
+              <rect class="b2 a-grow" x="28" y="24" width="84" height="8" rx="4" style="--d:.1s" />
+              <circle class="g1" cx="34" cy="52" r="6" /><circle class="gd a-pop" cx="34" cy="52" r="3" style="--d:1s" />
+              <circle class="g1" cx="34" cy="76" r="6" />
+              <circle class="g1" cx="34" cy="100" r="6" />
+              <rect class="n1" x="46" y="48" width="74" height="8" rx="4" /><rect class="g7 a-grow" x="46" y="48" width="66" height="8" rx="4" style="--d:.3s" />
+              <rect class="n1" x="46" y="72" width="74" height="8" rx="4" /><rect class="g4 a-grow" x="46" y="72" width="36" height="8" rx="4" style="--d:.45s" />
+              <rect class="n1" x="46" y="96" width="74" height="8" rx="4" /><rect class="g2 a-grow" x="46" y="96" width="50" height="8" rx="4" style="--d:.6s" />
+              <rect class="g1 a-rise" x="136" y="24" width="76" height="16" rx="5" style="--d:.3s" />
+              <rect class="g1 a-rise" x="136" y="48" width="76" height="16" rx="5" style="--d:.45s" />
+              <rect class="g7 a-pop" x="136" y="74" width="12" height="12" rx="3" style="--d:.8s" />
+              <path class="lw a-draw" pathLength="1" style="--d:1s" d="M139 80l2 2 4-4" />
+              <rect class="n1" x="154" y="77" width="40" height="6" rx="3" />
+              <rect class="g7 a-pop" x="136" y="98" width="76" height="20" rx="6" style="--d:1.2s" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Online Forms &amp; Polls</h3>
+            <p>Gather valuable feedback directly from members and generate leads through customizable forms, polls and quizzes.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Forms details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Online Forms &amp; Polls</h4>
             <p>Gather valuable feedback directly from members and generate leads through customizable forms, polls and quizzes.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal12" aria-label="View Forms details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Conduct community surveys and seamlessly sync responses directly into your built-in CRM.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 13: Gamification -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_13.png" alt="Gamification" loading="lazy">
+        <article class="ft_tile is-wide is-slate mp-reveal" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="16" y="12" width="208" height="126" rx="10" />
+              <rect class="g2 a-growy" x="34" y="84" width="36" height="42" rx="4" style="--d:.2s" />
+              <rect class="g7 a-growy" x="72" y="66" width="36" height="60" rx="4" style="--d:.1s" />
+              <rect class="g4 a-growy" x="110" y="96" width="36" height="30" rx="4" style="--d:.3s" />
+              <circle class="b3 ring a-pop" cx="52" cy="70" r="10" style="--d:.7s" />
+              <circle class="g4 ring a-pop" cx="90" cy="52" r="10" style="--d:.6s" />
+              <circle class="g2 ring a-pop" cx="128" cy="82" r="10" style="--d:.8s" />
+              <path class="g7 a-pop" style="--d:.9s" d="M174 62l-9 30 11-6 7 9 4-25zM194 62l9 30-11-6-7 9-4-25z" />
+              <circle class="g4 ring a-pop" cx="184" cy="52" r="22" style="--d:1s" />
+              <circle class="g7 a-pop" cx="184" cy="52" r="14" style="--d:1.1s" />
+              <path class="w a-pop" style="--d:1.25s" d="M184 43l2.6 5.4 5.9.7-4.4 4 1.3 5.8-5.4-3-5.4 3 1.3-5.8-4.4-4 5.9-.7z" />
+              <path class="gd a-pop" style="--d:1.4s" d="M214 24l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" />
+              <path class="g4 a-pop" style="--d:1.5s" d="M156 30l1.5 3.5 3.5 1.5-3.5 1.5-1.5 3.5-1.5-3.5-3.5-1.5 3.5-1.5z" />
+              <circle class="gd ring a-rise" cx="168" cy="114" r="7" style="--d:1.3s" />
+              <circle class="gd ring a-rise" cx="184" cy="120" r="7" style="--d:1.4s" />
+              <circle class="gd ring a-rise" cx="200" cy="114" r="7" style="--d:1.5s" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Gamification</h3>
+            <p>Redeemable points, badging and leaderboards enable you to drive more engagement through rewards and recognition.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Gamification details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Gamification</h4>
             <p>Redeemable points, badging and leaderboards enable you to drive more engagement through rewards and recognition.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal13" aria-label="View Gamification details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Reward members for contributing content, answering questions, and attending live events.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 14: Storefront -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_14.png" alt="Storefront" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="1" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <g class="a-rise" style="--d:.1s">
+                <rect class="k" x="24" y="22" width="86" height="110" rx="10" />
+                <rect class="g1" x="32" y="30" width="70" height="52" rx="6" /><circle class="g4" cx="67" cy="56" r="13" />
+                <rect class="b2" x="32" y="90" width="50" height="7" rx="3.5" />
+              </g>
+              <g class="a-rise" style="--d:.3s">
+                <rect class="k" x="120" y="22" width="86" height="110" rx="10" />
+                <rect class="g2" x="128" y="30" width="70" height="52" rx="6" /><rect class="b3" x="150" y="44" width="26" height="26" rx="6" />
+                <rect class="b2" x="128" y="90" width="56" height="7" rx="3.5" />
+              </g>
+              <rect class="g7 a-pop" x="32" y="106" width="32" height="16" rx="8" style="--d:.6s" />
+              <rect class="g7 a-pop" x="128" y="106" width="32" height="16" rx="8" style="--d:.7s" />
+              <circle class="g7 ring a-pop" cx="208" cy="28" r="20" style="--d:.9s" />
+              <path class="lw a-draw" pathLength="1" style="--d:1.2s" d="M197 21h4l4 12h11l3-8h-16" />
+              <circle class="w a-pop" cx="206" cy="38" r="2" style="--d:1.4s" /><circle class="w a-pop" cx="215" cy="38" r="2" style="--d:1.45s" />
+            </svg>
           </div>
-          <div class="ft_info">
-            <h4>Storefront</h4>
+          <div class="ft_body">
+            <h3>Storefront</h3>
             <p>Organize educational content and courses with a library of SCORM-compliant resources, including internal or third-party certification. Offer exclusive products or services directly to members.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal14" aria-label="View Storefront details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Storefront details"></button>
+            </div>
           </div>
-        </div>
+          <div class="ft_detail" hidden>
+            <h4>Storefront</h4>
+            <p>Organize educational content, digital downloads, courses, and merchandise with complete checkout and ticketing support.</p>
+            <p class="ft_use"><strong>Example Use Case:</strong> Offer premium courses, digital products, or merchandise directly to your members.</p>
+          </div>
+        </article>
 
         <!-- 15: Affiliate Program -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_15.png" alt="Affiliate Program" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="2" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <path class="ln a-draw" pathLength="1" style="--d:.3s" d="M120 75C96 70 74 58 48 38" />
+              <path class="ln a-draw" pathLength="1" style="--d:.4s" d="M120 75C144 70 166 58 192 38" />
+              <path class="ln a-draw" pathLength="1" style="--d:.5s" d="M120 75C102 88 88 104 64 118" />
+              <path class="ln a-draw" pathLength="1" style="--d:.6s" d="M120 75C138 88 152 104 176 118" />
+              <g class="a-pop" style="--d:.1s">
+                <circle class="g7 ring" cx="120" cy="75" r="22" />
+                <circle class="w" cx="120" cy="69" r="7" /><path class="w" d="M108 88a12 10 0 0 1 24 0z" />
+              </g>
+              <circle class="g1 ring a-pop" cx="48" cy="38" r="14" style="--d:1.1s" /><circle class="g4 a-pop" cx="48" cy="38" r="7" style="--d:1.15s" />
+              <circle class="g1 ring a-pop" cx="192" cy="38" r="14" style="--d:1.2s" /><circle class="b3 a-pop" cx="192" cy="38" r="7" style="--d:1.25s" />
+              <circle class="g1 ring a-pop" cx="64" cy="118" r="14" style="--d:1.3s" /><circle class="g7 a-pop" cx="64" cy="118" r="7" style="--d:1.35s" />
+              <circle class="g1 ring a-pop" cx="176" cy="118" r="14" style="--d:1.4s" /><circle class="g4 a-pop" cx="176" cy="118" r="7" style="--d:1.45s" />
+              <circle class="gd ring a-pop" cx="88" cy="56" r="6" style="--d:1.6s" />
+              <circle class="gd ring a-pop" cx="150" cy="97" r="6" style="--d:1.7s" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Affiliate Program</h3>
+            <p>Drive additional revenue and member engagement by enabling your members to refer your products to their networks, and benefit via earning a percentage of any sales or points.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Affiliate details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Affiliate Program</h4>
             <p>Drive additional revenue and member engagement by enabling your members to refer your products to their networks, and benefit via earning a percentage of any sales or points.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal15" aria-label="View Affiliate details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Implement automated affiliate links for members to easily advocate and share products they love.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 16: Online Advertising -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_16.png" alt="Online Advertising" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <rect class="k" x="34" y="12" width="160" height="126" rx="10" />
+              <rect class="n1" x="44" y="22" width="140" height="10" rx="4" />
+              <rect class="n1" x="44" y="40" width="84" height="6" rx="3" /><rect class="n1" x="44" y="52" width="70" height="6" rx="3" /><rect class="n1" x="44" y="64" width="78" height="6" rx="3" />
+              <rect class="g4 a-pop" x="134" y="40" width="50" height="40" rx="5" style="--d:.3s" />
+              <rect class="g7 a-pop" x="44" y="88" width="140" height="16" rx="4" style="--d:.5s" />
+              <rect class="g2 a-pop" x="44" y="112" width="60" height="18" rx="4" style="--d:.7s" />
+              <rect class="n1" x="112" y="114" width="64" height="6" rx="3" /><rect class="n1" x="112" y="124" width="44" height="5" rx="2.5" />
+              <g class="a-pop" style="--d:1s">
+                <rect class="k" x="176" y="92" width="46" height="42" rx="8" />
+                <path class="g7" d="M176 100a8 8 0 0 1 8-8h30a8 8 0 0 1 8 8v4h-46z" />
+                <circle class="g4" cx="188" cy="115" r="3.5" /><circle class="n1" cx="199" cy="115" r="3.5" /><circle class="n1" cx="210" cy="115" r="3.5" />
+                <circle class="n1" cx="188" cy="125" r="3.5" /><circle class="gd" cx="199" cy="125" r="3.5" /><circle class="n1" cx="210" cy="125" r="3.5" />
+              </g>
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Online Advertising</h3>
+            <p>Popular community sites can be extremely attractive to advertisers. MyPeople has a built-in system to manage ad placement and scheduling on your site.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Advertising details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Online Advertising</h4>
             <p>Popular community sites can be extremely attractive to advertisers. MyPeople has a built-in system to manage ad placement and scheduling on your site.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal16" aria-label="View Advertising details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Offer targeted, sponsor-friendly advertising inventory to industry partners looking to connect with your audience.</p>
           </div>
-        </div>
+        </article>
 
         <!-- 17: Moderation Tools & User Roles -->
-        <div class="ft_card">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_17.png" alt="Moderation Tools & User Roles" loading="lazy">
+        <article class="ft_tile is-white mp-reveal" data-delay="1" data-ft>
+          <div class="ft_pic" aria-hidden="true">
+            <svg viewBox="0 0 240 150">
+              <g class="a-rise" style="--d:.1s">
+                <rect class="k" x="22" y="14" width="146" height="30" rx="8" />
+                <circle class="g2" cx="37" cy="29" r="8" /><rect class="n1" x="52" y="26" width="84" height="6" rx="3" />
+              </g>
+              <g class="a-rise" style="--d:.2s">
+                <g class="a-dim" style="--d:.9s">
+                  <rect class="k" x="22" y="52" width="146" height="30" rx="8" />
+                  <circle class="b3" cx="37" cy="67" r="8" /><rect class="n1" x="52" y="64" width="70" height="6" rx="3" />
+                </g>
+              </g>
+              <g class="a-rise" style="--d:.3s">
+                <rect class="k" x="22" y="90" width="146" height="30" rx="8" />
+                <circle class="g3" cx="37" cy="105" r="8" /><rect class="n1" x="52" y="102" width="90" height="6" rx="3" />
+              </g>
+              <path class="b7 a-pop" style="--d:1s" d="M146 58v18M146 58h12l-3 4 3 4h-12z" />
+              <rect class="g7 a-pop" x="22" y="128" width="40" height="14" rx="7" style="--d:1.2s" />
+              <rect class="g4 a-pop" x="66" y="128" width="40" height="14" rx="7" style="--d:1.3s" />
+              <path class="g7 a-pop" style="--d:.5s" d="M200 36l26 10v20c0 18-11 30-26 36-15-6-26-18-26-36V46z" />
+              <path class="lw a-draw" pathLength="1" style="--d:.9s" d="M189 70l8 8 15-15" />
+            </svg>
           </div>
-          <div class="ft_info">
+          <div class="ft_body">
+            <h3>Moderation Tools &amp; User Roles</h3>
+            <p>Moderation system helps you ensure that your community site consistently provides a safe, positive and welcoming environment for your members.</p>
+            <div class="ft_foot">
+              <button type="button" class="ft_open" data-ft-open aria-label="View Moderation details"></button>
+            </div>
+          </div>
+          <div class="ft_detail" hidden>
             <h4>Moderation Tools &amp; User Roles</h4>
             <p>Moderation system helps you ensure that your community site consistently provides a safe, positive and welcoming environment for your members.</p>
-            <button type="button" class="features_details_button" data-modal="mpFeaturesModal17" aria-label="View Moderation details">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
-              </svg>
-            </button>
+            <p class="ft_use"><strong>Example Use Case:</strong> Empower trusted members with community manager roles to help curate content and foster constructive discussions.</p>
           </div>
-        </div>
+        </article>
 
-        <!-- 18: & much much more! Promo Card -->
-        <div class="ft_card_ad_1_col">
-          <div class="ft_card_img">
-            <img src="https://mypeople.ai/images/mp_features_18.png" alt="& much much more!" loading="lazy">
-          </div>
+        <!-- 18: & much much more! -->
+        <div class="ft_much mp-reveal" data-delay="2">
+          <p><span>&amp;</span> much much more!</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Client / Partner Logos Section -->
-  <section class="mp_logos_section">
+  <!-- ======================================================================
+       Section 4: Organizations With Members in MyPeople Communities
+       ====================================================================== -->
+  <section class="ft_logos">
     <div class="mp_container">
-      <div class="mp_comm_wrapper">
-        <h2 class="mp_com_title">Organizations With Members in MyPeople Communities</h2>
-        <div class="mp_network_logobox">
-          <div class="mp_logobox">
-            <img alt="Google" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Google_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="TikTok" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/TikTok_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Instagram" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Instagram_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Twitter" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Twitter_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Walt Disney" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/WaltDisney_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="IBM" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/IBM_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Apple" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Apple_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="ADP" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/ADP_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Microsoft" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Microsoft_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="YouTube" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/YouTube_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Nestle" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Nestle_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Adidas" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Adidas_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Amazon" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/Amazon_Logo.png" loading="lazy">
-          </div>
-          <div class="mp_logobox">
-            <img alt="Coca Cola" src="https://public-cdn.hr.com/remoteimages/website-images/2023_siteupdate/logout_home/images/logo/CocaCola_Logo.png" loading="lazy">
-          </div>
-        </div>
+      <h2 class="mp_h2 mp-reveal">Organizations With Members in <span class="mp_hl">MyPeople Communities</span></h2>
+    </div>
+    <div class="ft_logos_band mp-reveal" data-delay="1">
+      <div class="ft_logos_track">
+        <ul class="ft_logos_group">
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_google.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_google.png';}" alt="Google" width="240" height="82" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_tiktok.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_tiktok.png';}" alt="TikTok" width="178" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_instagram.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_instagram.png';}" alt="Instagram" width="240" height="96" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_twitter.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_twitter.png';}" alt="Twitter" width="182" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_waltdisney.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_waltdisney.png';}" alt="Walt Disney" width="150" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_ibm.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_ibm.png';}" alt="IBM" width="230" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_apple.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_apple.png';}" alt="Apple" width="240" height="83" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_adp.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_adp.png';}" alt="ADP" width="148" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_microsoft.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_microsoft.png';}" alt="Microsoft" width="132" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_youtube.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_youtube.png';}" alt="YouTube" width="240" height="54" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_nestle.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_nestle.png';}" alt="Nestle" width="100" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_adidas.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_adidas.png';}" alt="Adidas" width="149" height="100" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_amazon.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_amazon.png';}" alt="Amazon" width="240" height="73" loading="lazy" decoding="async"></li>
+          <li class="ft_logo"><img src="https://public-cdn.myp.community/images/client-logos/features_logo_cocacola.png" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/features/features_logo_cocacola.png';}" alt="Coca Cola" width="240" height="79" loading="lazy" decoding="async"></li>
+        </ul>
       </div>
     </div>
   </section>
 
-
-
-  
-
-
-  <!-- ========================================================================
-       Modals & Dialog Overlays (Isolated Vanilla JavaScript)
-       ======================================================================== -->
-  <div class="mp-features-modal-overlay" id="mpModalOverlay"></div>
-
-  <!-- Splash / Contact / Book a Call Modal -->
-  <div class="mp-features-modal-wrapper" id="mpSplashModal">
-    <div class="mp_splash_modal">
-      <div class="mps_close" data-close-modal="" aria-label="Close modal">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
+  <!-- ======================================================================
+       Section 5: Closing CTA (existing button label only)
+       ====================================================================== -->
+  <section class="ft_cta">
+    <span class="ft_cta_line" aria-hidden="true"></span>
+    <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="20" cy="20" r="11" />
+      <circle cx="46" cy="20" r="11" />
+      <circle cx="33" cy="44" r="11" />
+    </svg>
+    <div class="mp_container mp-reveal">
+      <button type="button" class="btn-light btn-lg" data-open-contact>
+        <span>Book 30-Minute Discovery Call</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
         </svg>
-      </div>
+      </button>
+    </div>
+  </section>
 
-      <div id="mpSplashForm">
-        <h4>Fill out this quick form and we'll get back to you shortly</h4>
-        <form id="contactForm" onsubmit="return false;">
-          <div class="mp_ipbox">
-            <div class="hrip mw50">
-              <label for="mpFirstName">First Name</label>
-              <input type="text" name="firstName" id="mpFirstName" placeholder="First Name">
-              <span class="error" id="errFirstName">Please enter valid first name</span>
-            </div>
-            <div class="hrip mw50">
-              <label for="mpLastName">Last Name</label>
-              <input type="text" name="lastName" id="mpLastName" placeholder="Last Name">
-              <span class="error" id="errLastName">Please enter valid last name</span>
-            </div>
-            <div class="hrip mw50">
-              <label for="mpEmailId">Email Address</label>
-              <input type="email" name="email" id="mpEmailId" placeholder="Email Address">
-              <span class="error" id="errEmail">Please enter valid email</span>
-            </div>
-            <div class="hrip mw50">
-              <label for="mpPhoneNumber">Phone Number</label>
-              <input type="tel" name="phoneNumber" id="mpPhoneNumber" placeholder="Phone Number">
-              <span class="error" id="errPhone">Please enter valid phone number</span>
-            </div>
-            <div class="hrip mw100">
-              <label for="mpSubject">Subject</label>
-              <select name="subject" id="mpSubject">
-                <option value="" selected="" disabled="">Choose a subject line</option>
-                <option value="Like to start community">Like to start a community</option>
-                <option value="Like to join a community">Like to join a community</option>
-                <option value="Like to migrate a community">Like to migrate a community</option>
-                <option value="Learn more">Learn more</option>
-              </select>
-              <span class="error" id="errSubject">Please select a subject</span>
-            </div>
-            <div class="hrip fdrow">
-              <input type="checkbox" name="mptc" id="mpTc">
-              <label for="mpTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
-              <span class="error errorTickbox" id="errTc">Please check this tickbox</span>
-            </div>
-            <button type="button" class="btn-primary" id="mpSubmitForm" style="width: 100%; margin-top: 10px;">
+  <!-- ======================================================================
+       Dialogs (inside the root so they stay scoped)
+       ====================================================================== -->
+  <div class="mp-ft-modal-overlay" id="mpFtOverlay"></div>
+
+  <!-- Feature details: one shared popup, filled from the tile's .ft_detail -->
+  <div class="mp-ft-modal-wrapper" id="mpFtDetails" role="dialog" aria-modal="true" aria-labelledby="mpFtDetailTitle">
+    <div class="ft_dialog">
+      <button type="button" class="mps_close" data-close-modal aria-label="Close dialog">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)" />
+        </svg>
+      </button>
+      <div class="ft_pic ft_dialog_pic" id="mpFtDetailPic" aria-hidden="true"></div>
+      <div class="ft_dialog_body">
+        <p class="ft_dialog_count" aria-hidden="true"><b id="mpFtDetailNum">01</b><span id="mpFtDetailTotal">/ 17</span></p>
+        <div class="ft_dialog_text" id="mpFtDetailText"></div>
+        <div class="ft_dialog_nav">
+          <button type="button" data-ft-step="-1" aria-label="Previous feature">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" /></svg>
+          </button>
+          <button type="button" data-ft-step="1" aria-label="Next feature">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact / Book a Call -->
+  <div class="mp-ft-modal-wrapper" id="mpFtContact" role="dialog" aria-modal="true" aria-labelledby="mpFtContactTitle">
+    <div class="mp_splash_modal">
+      <button type="button" class="mps_close" data-close-modal aria-label="Close dialog">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)" />
+        </svg>
+      </button>
+      <div id="mpFtForm">
+        <h4 id="mpFtContactTitle">Fill out this quick form and we'll get back to you shortly</h4>
+        <div class="mp_ipbox">
+          <div class="hrip mw50">
+            <label for="mpFtFirstName">First Name</label>
+            <input type="text" name="firstName" id="mpFtFirstName" placeholder="First Name" autocomplete="given-name">
+            <span class="error" id="mpFtErrFirstName">Please enter valid first name</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpFtLastName">Last Name</label>
+            <input type="text" name="lastName" id="mpFtLastName" placeholder="Last Name" autocomplete="family-name">
+            <span class="error" id="mpFtErrLastName">Please enter valid last name</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpFtEmail">Email Address</label>
+            <input type="email" name="email" id="mpFtEmail" placeholder="Email Address" autocomplete="email">
+            <span class="error" id="mpFtErrEmail">Please enter valid email</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpFtPhone">Phone Number</label>
+            <input type="tel" name="phoneNumber" id="mpFtPhone" placeholder="Phone Number" autocomplete="tel">
+            <span class="error" id="mpFtErrPhone">Please enter valid phone number</span>
+          </div>
+          <div class="hrip mw100">
+            <label for="mpFtSubject">Subject</label>
+            <select name="subject" id="mpFtSubject">
+              <option value="" selected disabled>Choose a subject line</option>
+              <option value="Like to start community">Like to start a community</option>
+              <option value="Like to join a community">Like to join a community</option>
+              <option value="Like to migrate a community">Like to migrate a community</option>
+              <option value="Learn more">Learn more</option>
+            </select>
+            <span class="error" id="mpFtErrSubject">Please select a subject</span>
+          </div>
+          <div class="hrip mw100 fdrow">
+            <input type="checkbox" name="mptc" id="mpFtTc">
+            <label for="mpFtTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
+          </div>
+          <span class="errorTickbox" id="mpFtErrTc">Please check this tickbox</span>
+          <div class="hrip mw100 mp_submit_row">
+            <button type="button" class="btn-primary" id="mpFtSubmit">
               <span>Submit</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 12.312 12" fill="currentColor">
-                <path d="M5.235,3.451l.61-.61a.657.657,0,0,1,.932,0L12.118,8.18a.657.657,0,0,1,0,.932L6.776,14.454a.657.657,0,0,1-.932,0l-.61-.61a.66.66,0,0,1,.011-.943L8.557,9.746H.659A.658.658,0,0,1,0,9.087V8.208a.658.658,0,0,1,.659-.659h7.9L5.246,4.394A.655.655,0,0,1,5.235,3.451Z" transform="translate(0 -2.647)" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
               </svg>
             </button>
           </div>
-        </form>
+        </div>
       </div>
-
-      <!-- Success message container -->
-      <div id="mpSuccessInfo" style="display: none;">
-        <h4>Thanks for being awesome!</h4>
+      <div id="mpFtSuccess" hidden>
+        <h4 id="mpFtSuccessTitle">Thanks for being awesome!</h4>
         <div class="mps_success_info">
-          We have received your message and would like to thank you for writing to us. One of our specialists will reach out shortly.
+          <p>We have received your message and would like to thank you for writing to us. One of our specialists will reach out shortly.</p>
         </div>
-        <button type="button" class="btn-primary" data-close-modal="" style="margin-top: 15px;">Close</button>
+        <button type="button" class="btn-primary" data-close-modal>Close</button>
       </div>
     </div>
   </div>
 
-  <!-- Detail Modal 01: Site Designer -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal01">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="" aria-label="Close modal">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Site Designer</h4>
-          <p>From the comfort of a browser, create the community site of your dreams, with complete control over branding, layout, CSS and design to suit your specific objectives.</p>
-          <p><strong>Example Use Case:</strong> Create a full website that aligns with your existing brand and build a community that your audience will recognize and trust.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_01.png" alt="Site Designer">
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 
-  <!-- Detail Modal 02: CMS -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal02">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Content Management System</h4>
-          <p>Effortlessly create, manage, and share rich, SEO-optimized content effortlessly with our AI-enhanced WYSIWYG editor. Intuitive navigation and menus help curate your site.</p>
-          <p><strong>Example Use Case:</strong> Share company updates, articles, and member-generated content to keep your community engaged and informed.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_02.png" alt="Content Management System">
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- ========================================================================
+     Vanilla JavaScript (Zero Dependencies)
+     ======================================================================== -->
+<script>
+  (function () {
+    var root = document.getElementById('mp-features-embed');
+    if (!root) return;
+    root.classList.add('mp-js');
 
-  <!-- Detail Modal 03: CRM -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal03">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Customer Relationship Management</h4>
-          <p>Complete system to track and score member interactions. It's an essential tool to enable your sales team and product managers to gain insight into member behavior, identify leads and close sales.</p>
-          <p><strong>Example Use Case:</strong> Tailor communication and outreach based on member activity and interests.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_03.png" alt="CRM">
-        </div>
-      </div>
-    </div>
-  </div>
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-  <!-- Detail Modal 04: Email Campaign Management -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal04">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Email Campaign Management</h4>
-          <p>Makes it easy to reach 100% of your community with campaigns. Target your sends by segmenting your members with demographic-specific queries.</p>
-          <p><strong>Example Use Case:</strong> Send newsletters, event invitations, and updates direct to member's inboxes.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_04.png" alt="Email Campaign Management">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 05: Drive and File Manager -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal05">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Drive and File Manager</h4>
-          <p>Organize images, documents and resources for your community site in one easy-to-navigate area.</p>
-          <p><strong>Example Use Case:</strong> Share important documents and manage community assets securely.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_05.png" alt="Drive and File Manager">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 06: Virtual Events & Webinars -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal06">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Virtual Events &amp; Webinars</h4>
-          <p>Not only is it easy to host live events to engage and educate members, but MyPeople also offers virtual trade show floors, booths, auditoriums, video chats and one-on-one meetings.</p>
-          <p><strong>Example Use Case:</strong> Create a series of webinars and virtual meetups that cater directly to member interests.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_06.png" alt="Virtual Events & Webinars">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 07: Metrics & Analytics Dashboard -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal07">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Metrics &amp; Analytics Dashboard</h4>
-          <p>Gain insights into community engagement and growth through customizable dashboards, graphics and reports.</p>
-          <p><strong>Example Use Case:</strong> Analyze member activity to identify trends, popular content, and optimize community engagement strategies.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_07.png" alt="Metrics & Analytics Dashboard">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 08: Customizable User Profiles -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal08">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Customizable User Profiles</h4>
-          <p>Allow members to showcase their skills, interests and expertise. Blockchain technology protects and validates ownership of profiles.</p>
-          <p><strong>Example Use Case:</strong> Foster deeper peer-to-peer networking, discovery, and member collaboration.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_08.png" alt="Customizable User Profiles">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 09: Blogs & Discussion Forums -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal09">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Blogs &amp; Discussion Forums</h4>
-          <p>Encourage knowledge sharing and conversations among members through content and threaded discussions. Built-in AI facilitates answers and engagement.</p>
-          <p><strong>Example Use Case:</strong> A dedicated, searchable space for Q&amp;A, industry discussions, tips, and peer support.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_09.png" alt="Blogs & Discussion Forums">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 10: LMS -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal10">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Learning Management System</h4>
-          <p>Organize educational content and courses with a library of SCORM-compliant resources, including internal or third-party certification.</p>
-          <p><strong>Example Use Case:</strong> Build paid or free structured learning tracks with certifications or credits for members.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_10.png" alt="Learning Management System">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 11: Directories -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal11">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Directories</h4>
-          <p>You can create directories of companies, products, services, associations and more on MyPeople, complete with reviews, ratings and customer feedback features.</p>
-          <p><strong>Example Use Case:</strong> Present members with vetted, ranked products and vendor recommendations relating to your site's focus.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_11.png" alt="Directories">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 12: Online Forms & Polls -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal12">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Online Forms &amp; Polls</h4>
-          <p>Gather valuable feedback directly from members and generate leads through customizable forms, polls and quizzes.</p>
-          <p><strong>Example Use Case:</strong> Conduct community surveys and seamlessly sync responses directly into your built-in CRM.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_12.png" alt="Online Forms & Polls">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 13: Gamification -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal13">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Gamification</h4>
-          <p>Redeemable points, badging and leaderboards enable you to drive more engagement through rewards and recognition.</p>
-          <p><strong>Example Use Case:</strong> Reward members for contributing content, answering questions, and attending live events.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_13.png" alt="Gamification">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 14: Storefront -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal14">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Storefront</h4>
-          <p>Organize educational content, digital downloads, courses, and merchandise with complete checkout and ticketing support.</p>
-          <p><strong>Example Use Case:</strong> Offer premium courses, digital products, or merchandise directly to your members.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_14.png" alt="Storefront">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 15: Affiliate Program -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal15">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Affiliate Program</h4>
-          <p>Drive additional revenue and member engagement by enabling your members to refer your products to their networks, and benefit via earning a percentage of any sales or points.</p>
-          <p><strong>Example Use Case:</strong> Implement automated affiliate links for members to easily advocate and share products they love.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_15.png" alt="Affiliate Program">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 16: Online Advertising -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal16">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Online Advertising</h4>
-          <p>Popular community sites can be extremely attractive to advertisers. MyPeople has a built-in system to manage ad placement and scheduling on your site.</p>
-          <p><strong>Example Use Case:</strong> Offer targeted, sponsor-friendly advertising inventory to industry partners looking to connect with your audience.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_16.png" alt="Online Advertising">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Detail Modal 17: Moderation Tools -->
-  <div class="mp-features-modal-wrapper" id="mpFeaturesModal17">
-    <div class="mp_splash_modal wide-detail-modal">
-      <div class="mps_close_features" data-close-modal="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-        </svg>
-      </div>
-      <div class="mpFeaturesDetails_box">
-        <div class="fd_info">
-          <h4>Moderation Tools &amp; User Roles</h4>
-          <p>Moderation system helps you ensure that your community site consistently provides a safe, positive and welcoming environment for your members.</p>
-          <p><strong>Example Use Case:</strong> Empower trusted members with community manager roles to help curate content and foster constructive discussions.</p>
-        </div>
-        <div class="fd_img">
-          <img src="https://mypeople.ai/images/mp_features_17.png" alt="Moderation Tools & User Roles">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ========================================================================
-       Vanilla JavaScript Controller (No jQuery Dependency)
-       ======================================================================== -->
-  
-  </div> <!-- End #mp-features-embed -->
-
-  <script>
+    // ── Scroll Reveal (also starts each tile's picture animation) ─────────
     (function () {
-      // Elements
-      const overlay = document.getElementById('mpModalOverlay');
-      const splashModal = document.getElementById('mpSplashModal');
-
-      // Helper: open modal
-      function openModal(modalEl) {
-        if (!modalEl) return;
-        overlay.style.display = 'block';
-        modalEl.style.display = 'flex';
-        document.body.classList.add('mp-freeze-scroll');
+      var els = root.querySelectorAll('.mp-reveal');
+      function reveal(el) {
+        el.classList.add('mp-revealed');
+        [].forEach.call(el.querySelectorAll('.ft_pic'), function (p) { p.classList.add('is-play'); });
       }
-
-      // Helper: close all modals
-      function closeAllModals() {
-        overlay.style.display = 'none';
-        const allModals = document.querySelectorAll('.mp-features-modal-wrapper');
-        allModals.forEach(m => m.style.display = 'none');
-        document.body.classList.remove('mp-freeze-scroll');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        [].forEach.call(els, reveal);
+        return;
       }
-
-      // Open Book a Call / Contact Modal (from Header, Banner, or anywhere)
-      const contactBtns = document.querySelectorAll('[data-open-contact]');
-      contactBtns.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          openModal(splashModal);
-        });
-      });
-
-      // Open Specific Feature Detail Modals
-      const featureDetailBtns = document.querySelectorAll('[data-modal]');
-      featureDetailBtns.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = btn.getAttribute('data-modal');
-          const targetModal = document.getElementById(targetId);
-          if (targetModal) {
-            openModal(targetModal);
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            reveal(entry.target);
+            obs.unobserve(entry.target);
           }
         });
-      });
+      }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+      [].forEach.call(els, function (el) { obs.observe(el); });
+    })();
 
-      // Close button triggers
-      const closeButtons = document.querySelectorAll('[data-close-modal]');
-      closeButtons.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          closeAllModals();
-        });
-      });
-
-      // Overlay click dismiss
-      if (overlay) {
-        overlay.addEventListener('click', closeAllModals);
+    // ── Scroll Progress Bar ────────────────────────────────────────────────
+    (function () {
+      var bar = document.getElementById('mpFtScrollBar');
+      if (!bar) return;
+      var ticking = false;
+      function update() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? (window.pageYOffset || doc.scrollTop) / max : 0;
+        bar.style.transform = 'scaleX(' + Math.min(Math.max(pct, 0), 1) + ')';
+        ticking = false;
       }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
 
-      // Escape key dismiss
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          closeAllModals();
+    // ── Marquee + logo strip: one clone each, the tracks move -50% ────────
+    [].forEach.call(root.querySelectorAll('.mp_marquee_track, .ft_logos_track'), function (track) {
+      var group = track.firstElementChild;
+      if (!group) return;
+      var clone = group.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+
+    // ── Dialogs (shared overlay, focus trap, scroll lock) ─────────────────
+    var overlay = document.getElementById('mpFtOverlay');
+    var details = document.getElementById('mpFtDetails');
+    var contact = document.getElementById('mpFtContact');
+    if (!overlay || !details || !contact) return;
+    var active = null;
+    var lastFocus = null;
+
+    function focusables(dlg) {
+      return [].filter.call(dlg.querySelectorAll('input, select, button, [href]'), function (el) {
+        return el.offsetParent !== null && !el.disabled;
+      });
+    }
+
+    function openDialog(dlg, focusEl) {
+      if (!active) lastFocus = document.activeElement;
+      if (active && active !== dlg) active.classList.remove('active');
+      overlay.classList.add('active');
+      dlg.classList.add('active');
+      document.body.classList.add('mp-freeze-scroll');
+      active = dlg;
+      var target = focusEl || focusables(dlg)[0];
+      if (target) target.focus();
+    }
+
+    function closeDialog() {
+      if (!active) return;
+      active.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.classList.remove('mp-freeze-scroll');
+      active = null;
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    overlay.addEventListener('click', closeDialog);
+    [details, contact].forEach(function (dlg) {
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) closeDialog(); });
+      [].forEach.call(dlg.querySelectorAll('[data-close-modal]'), function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); closeDialog(); });
+      });
+    });
+
+    // ── Feature details popup ─────────────────────────────────────────────
+    var tiles = [].slice.call(root.querySelectorAll('[data-ft]'));
+    var pic = document.getElementById('mpFtDetailPic');
+    var text = document.getElementById('mpFtDetailText');
+    var num = document.getElementById('mpFtDetailNum');
+    var current = 0;
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    document.getElementById('mpFtDetailTotal').textContent = '/ ' + pad(tiles.length);
+
+    function showFeature(i) {
+      current = (i + tiles.length) % tiles.length;
+      var tile = tiles[current];
+      var detail = tile.querySelector('.ft_detail');
+      text.innerHTML = detail ? detail.innerHTML : '';
+      var title = text.querySelector('h4');
+      if (title) title.id = 'mpFtDetailTitle';
+      num.textContent = pad(current + 1);
+      pic.innerHTML = '';
+      var svg = tile.querySelector('.ft_pic svg');
+      if (svg) pic.appendChild(svg.cloneNode(true));
+      // Restart the picture animation for every feature shown
+      pic.classList.remove('is-play');
+      void pic.offsetWidth;
+      pic.classList.add('is-play');
+      details.querySelector('.ft_dialog_body').scrollTop = 0;
+      details.querySelector('.ft_dialog').scrollTop = 0;
+    }
+
+    tiles.forEach(function (tile, i) {
+      var btn = tile.querySelector('[data-ft-open]');
+      if (!btn) return;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        showFeature(i);
+        openDialog(details, details.querySelector('.mps_close'));
+      });
+    });
+
+    [].forEach.call(details.querySelectorAll('[data-ft-step]'), function (btn) {
+      btn.addEventListener('click', function () {
+        showFeature(current + parseInt(btn.getAttribute('data-ft-step'), 10));
+      });
+    });
+
+    // ── Keyboard: Esc, focus trap, arrows step through features ──────────
+    document.addEventListener('keydown', function (e) {
+      if (!active) return;
+      if (e.key === 'Escape') { closeDialog(); return; }
+      if (active === details && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+        showFeature(current + (e.key === 'ArrowRight' ? 1 : -1));
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      var items = focusables(active);
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    // ── Contact form ───────────────────────────────────────────────────────
+    [].forEach.call(root.querySelectorAll('[data-open-contact]'), function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        // Fresh form each time (the success state from an earlier submit is cleared)
+        document.getElementById('mpFtForm').hidden = false;
+        document.getElementById('mpFtSuccess').hidden = true;
+        contact.setAttribute('aria-labelledby', 'mpFtContactTitle');
+        openDialog(contact);
+      });
+    });
+
+    function toggleError(id, show) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = show ? 'block' : 'none';
+      return show;
+    }
+
+    function validEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).toLowerCase());
+    }
+
+    var submitBtn = document.getElementById('mpFtSubmit');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', function () {
+        var email = document.getElementById('mpFtEmail').value.trim();
+        var errors = [
+          toggleError('mpFtErrFirstName', !document.getElementById('mpFtFirstName').value.trim()),
+          toggleError('mpFtErrLastName', !document.getElementById('mpFtLastName').value.trim()),
+          toggleError('mpFtErrEmail', !email || !validEmail(email)),
+          toggleError('mpFtErrPhone', document.getElementById('mpFtPhone').value.trim().length < 7),
+          toggleError('mpFtErrSubject', !document.getElementById('mpFtSubject').value),
+          toggleError('mpFtErrTc', !document.getElementById('mpFtTc').checked)
+        ];
+
+        if (errors.indexOf(true) === -1) {
+          // TODO: wire to the real lead endpoint; this currently only shows the success state.
+          document.getElementById('mpFtForm').hidden = true;
+          document.getElementById('mpFtSuccess').hidden = false;
+          contact.setAttribute('aria-labelledby', 'mpFtSuccessTitle');
+          var close = contact.querySelector('#mpFtSuccess [data-close-modal]');
+          if (close) close.focus();
         }
       });
-
-      // Form validation helpers
-      function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).toLowerCase());
-      }
-
-      const submitBtn = document.getElementById('mpSubmitForm');
-      if (submitBtn) {
-        submitBtn.addEventListener('click', function () {
-          let hasError = false;
-
-          const firstName = document.getElementById('mpFirstName');
-          const lastName = document.getElementById('mpLastName');
-          const email = document.getElementById('mpEmailId');
-          const phone = document.getElementById('mpPhoneNumber');
-          const subject = document.getElementById('mpSubject');
-          const tc = document.getElementById('mpTc');
-
-          // First Name
-          if (!firstName.value.trim()) {
-            document.getElementById('errFirstName').style.display = 'block';
-            hasError = true;
-          } else {
-            document.getElementById('errFirstName').style.display = 'none';
-          }
-
-          // Last Name
-          if (!lastName.value.trim()) {
-            document.getElementById('errLastName').style.display = 'block';
-            hasError = true;
-          } else {
-            document.getElementById('errLastName').style.display = 'none';
-          }
-
-          // Email
-          if (!email.value.trim() || !validateEmail(email.value)) {
-            document.getElementById('errEmail').style.display = 'block';
-            hasError = true;
-          } else {
-            document.getElementById('errEmail').style.display = 'none';
-          }
-
-          // Phone
-          if (!phone.value.trim() || phone.value.trim().length < 7) {
-            document.getElementById('errPhone').style.display = 'block';
-            hasError = true;
-          } else {
-            document.getElementById('errPhone').style.display = 'none';
-          }
-
-          // Subject
-          if (!subject.value) {
-            document.getElementById('errSubject').style.display = 'block';
-            hasError = true;
-          } else {
-            document.getElementById('errSubject').style.display = 'none';
-          }
-
-          // Checkbox Terms
-          if (!tc.checked) {
-            document.getElementById('errTc').style.display = 'block';
-            hasError = true;
-          } else {
-            document.getElementById('errTc').style.display = 'none';
-          }
-
-          if (!hasError) {
-            // Show success state
-            document.getElementById('mpSplashForm').style.display = 'none';
-            document.getElementById('mpSuccessInfo').style.display = 'block';
-          }
-        });
-      }
-    })();
-  </script>
+    }
+  })();
+</script>

@@ -1,23 +1,19 @@
 <style>
   /* ==========================================================================
-     000-myp-community Official Design System Tokens
-     Source: 00-branding/tokens.css & 00-branding/design-system.md
+     MyPeople Design System Tokens (tenants/myp-community/brand/tokens.css)
      ========================================================================== */
   :root {
-    /* Typography Families */
-    --font-family-heading-1: 'Inria Serif', serif !important;
-    --font-family-heading-2: 'Inter', sans-serif !important;
-    --font-family-body: 'Roboto', sans-serif !important;
+    --font-family-heading-1: 'Inria Serif', serif;
+    --font-family-heading-2: 'Inter', sans-serif;
+    --font-family-body: 'Roboto', sans-serif;
 
-    /* Generic Colors */
-    --color-page-bg: #FFFCF8 !important;
-    --color-text: #000000 !important;
-    --color-text-link: #02588E !important;
-    --color-border: #CCCCCC !important;
-    --color-white: #FFFFFF !important;
-    --color-black: #000000 !important;
+    --color-page-bg: #FFFCF8;
+    --color-text: #000000;
+    --color-text-link: #02588E;
+    --color-border: #CCCCCC;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
 
-    /* Primary 1: MP-Green Scale */
     --color-mp-green-50: #F2FBF5;
     --color-mp-green-100: #E5F6E9;
     --color-mp-green-200: #CBEED5;
@@ -29,7 +25,6 @@
     --color-mp-green-800: #00651B;
     --color-mp-green-900: #004213;
 
-    /* Primary 2: MP-Blue Scale */
     --color-mp-blue-50: #F5F7F8;
     --color-mp-blue-100: #EBF0F2;
     --color-mp-blue-200: #D7E1E3;
@@ -41,24 +36,9 @@
     --color-mp-blue-800: #22404B;
     --color-mp-blue-900: #162B32;
 
-    /* Semantic Palettes */
-    --color-success-bg: #E5F6E9;
-    --color-success-border: #28C841;
-    --color-success-text: #018624;
-
-    --color-error-bg: #FFE3E3;
-    --color-error-border: #E06764;
     --color-error-text: #E13838;
-
-    --color-alert-bg: #FFF4E5;
-    --color-alert-border: #FCBE67;
-    --color-alert-text: #FB9302;
-
-    --color-edit-bg: #E8F2FD;
     --color-edit-border: #5099EC;
-    --color-edit-text: #1E66BA;
 
-    /* Black / Neutral Scale */
     --color-black-50: #F2F2F2;
     --color-black-100: #E4E4E4;
     --color-black-200: #CCCCCC;
@@ -67,23 +47,24 @@
     --color-black-500: #333333;
     --color-black-default: #000000;
 
-    /* Component Metrics */
     --radius-button: 12px;
-    --radius-card: 16px;
     --radius-input: 12px;
     --radius-tag: 12px;
-    --radius-accordion: 16px;
+    --radius-card: 16px;
+    --radius-panel: 28px;
     --gap-button: 12px;
+
+    --mp-network-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400' fill='none' stroke='black' stroke-width='3'%3E%3Cpath d='M60 90C140 60 170 150 230 120S330 70 350 160M230 120C210 210 120 220 90 300M230 120C280 200 300 260 330 320M90 300C170 330 250 340 330 320M60 90C70 170 40 240 90 300'/%3E%3Cg fill='black' stroke='none'%3E%3Ccircle cx='60' cy='90' r='22'/%3E%3Ccircle cx='230' cy='120' r='34'/%3E%3Ccircle cx='350' cy='160' r='18'/%3E%3Ccircle cx='90' cy='300' r='28'/%3E%3Ccircle cx='330' cy='320' r='24'/%3E%3Ccircle cx='160' cy='215' r='10'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   /* ==========================================================================
-     CMS Scoped Root Container & Localized Defensive Reset
+     CMS Scoped Root & Localized Reset
      ========================================================================== */
   #mp-other-communities-embed {
     font-family: var(--font-family-body);
     font-size: 14px;
     line-height: 22px;
-    color: var(--color-black-default);
+    color: var(--color-black-default) !important;
     text-align: left;
     background-color: var(--color-page-bg);
     width: 100%;
@@ -92,6 +73,7 @@
     box-sizing: border-box;
     padding: 0;
     overflow-x: hidden;
+    overflow-x: clip;
   }
 
   #mp-other-communities-embed *,
@@ -102,9 +84,55 @@
     padding: 0;
   }
 
-  #mp-other-communities-embed img,
+  /* Host CMS shield: the story template forces fonts, letter-spacing and
+     p colour with !important (see cms-page-embed skill, Rule 4b).
+     Children of headings / paragraphs inherit ours instead; colours and
+     letter-spacing in this file are !important so the #root selectors win. */
+  #mp-other-communities-embed h1 *,
+  #mp-other-communities-embed h2 *,
+  #mp-other-communities-embed h3 *,
+  #mp-other-communities-embed h4 *,
+  #mp-other-communities-embed p * {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    letter-spacing: inherit !important;
+  }
+
+  #mp-other-communities-embed img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
   #mp-other-communities-embed svg {
     vertical-align: middle;
+  }
+
+  #mp-other-communities-embed a {
+    color: inherit !important;
+    text-decoration: none;
+  }
+
+  #mp-other-communities-embed ul,
+  #mp-other-communities-embed ol {
+    list-style: none;
+  }
+
+  #mp-other-communities-embed li::before,
+  #mp-other-communities-embed li::marker {
+    content: none;
+  }
+
+  #mp-other-communities-embed button {
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  #mp-other-communities-embed :focus-visible {
+    outline: 3px solid var(--color-edit-border);
+    outline-offset: 3px;
   }
 
   #mp-other-communities-embed .mp_container {
@@ -116,2047 +144,2119 @@
     position: relative;
   }
 
-  /* ==========================================================================
-     Scroll Reveal & Micro-Animations
-     ========================================================================== */
-  #mp-other-communities-embed .mp-reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  /* The CMS template adds a float clearfix on .mp_container; on flex/grid
+     containers those pseudo-elements become real items. */
+  #mp-other-communities-embed .mp_container::before,
+  #mp-other-communities-embed .mp_container::after {
+    content: none !important;
+    display: none !important;
   }
-  #mp-other-communities-embed .mp-reveal.mp-revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  #mp-other-communities-embed .mp-reveal[data-delay="1"] { transition-delay: 0.1s; }
-  #mp-other-communities-embed .mp-reveal[data-delay="2"] { transition-delay: 0.2s; }
 
   /* ==========================================================================
-     Primary CTA Button
+     Keyframes
      ========================================================================== */
-  #mp-other-communities-embed .btn-primary {
+  @keyframes mp-oc-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-25%); }
+  }
+
+  @keyframes mp-oc-float {
+    from { transform: translateY(-6px); }
+    to { transform: translateY(8px); }
+  }
+
+  @keyframes mp-oc-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0.45); }
+    70% { box-shadow: 0 0 0 12px rgba(102, 203, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0); }
+  }
+
+  /* ==========================================================================
+     Scroll Reveal (content only hides once JS has booted: .mp-js)
+     ========================================================================== */
+  #mp-other-communities-embed.mp-js .mp-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s);
+  }
+
+  #mp-other-communities-embed.mp-js .mp-reveal.mp-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  #mp-other-communities-embed.mp-js .mp-reveal[data-delay="1"] { --mp-reveal-delay: 0.08s; }
+  #mp-other-communities-embed.mp-js .mp-reveal[data-delay="2"] { --mp-reveal-delay: 0.16s; }
+  #mp-other-communities-embed.mp-js .mp-reveal[data-delay="3"] { --mp-reveal-delay: 0.24s; }
+  #mp-other-communities-embed.mp-js .mp-reveal[data-delay="4"] { --mp-reveal-delay: 0.32s; }
+
+  /* Cards that are also reveal targets lift with `translate`, so the reveal's
+     `transform` can't cancel the hover. */
+  #mp-other-communities-embed.mp-js .mp_org.mp-reveal,
+  #mp-other-communities-embed.mp-js .mp_cap.mp-reveal {
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  /* Vector connectors draw themselves in once their block is revealed */
+  #mp-other-communities-embed.mp-js .mp-draw path.mp_link {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.35s;
+  }
+
+  #mp-other-communities-embed.mp-js .mp-revealed .mp-draw path.mp_link,
+  #mp-other-communities-embed.mp-js .mp-draw.mp-revealed path.mp_link {
+    stroke-dashoffset: 0;
+  }
+
+  #mp-other-communities-embed.mp-js .mp-draw .mp_node {
+    opacity: 0;
+    transition: opacity 0.4s ease 1.4s;
+  }
+
+  #mp-other-communities-embed.mp-js .mp-revealed .mp-draw .mp_node,
+  #mp-other-communities-embed.mp-js .mp-draw.mp-revealed .mp_node {
+    opacity: 1;
+  }
+
+  /* Scroll progress bar */
+  #mp-other-communities-embed .mp_scroll_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
+    transform: scaleX(0);
+    transform-origin: left center;
+    z-index: 99997;
+    pointer-events: none;
+  }
+
+  /* ==========================================================================
+     Shared Typography
+     ========================================================================== */
+  #mp-other-communities-embed .mp_h2 {
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 44px;
+    font-weight: 700 !important;
+    line-height: 52px;
+    letter-spacing: -0.75px !important;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-other-communities-embed .mp_hl {
+    color: var(--color-mp-green-700) !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+  }
+
+  #mp-other-communities-embed .mp_lead {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 21px;
+    font-weight: 600 !important;
+    line-height: 31px;
+    letter-spacing: -0.25px !important;
+    color: var(--color-mp-blue-800) !important;
+  }
+
+  #mp-other-communities-embed .mp_rule {
+    display: block;
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
+    margin-bottom: 28px;
+  }
+
+  /* ==========================================================================
+     Buttons
+     ========================================================================== */
+  #mp-other-communities-embed .btn-primary,
+  #mp-other-communities-embed .btn-light,
+  #mp-other-communities-embed .btn-ghost-light {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--gap-button);
     height: 50px;
     padding: 0 28px;
-    background-color: var(--color-mp-green-700) !important;
-    color: var(--color-white) !important;
     border-radius: var(--radius-button) !important;
-    border: none !important;
     font-family: var(--font-family-body) !important;
     font-size: 15px;
     font-weight: 500 !important;
-    cursor: pointer;
+    line-height: 20px;
+    letter-spacing: 0 !important;
     text-decoration: none !important;
-    transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-    box-shadow: 0 4px 14px rgba(1, 134, 36, 0.22);
+    white-space: nowrap;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   }
 
-  #mp-other-communities-embed .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.6s ease;
+  #mp-other-communities-embed .btn-lg {
+    height: 60px;
+    padding: 0 32px;
+    font-size: 16px;
   }
 
-  #mp-other-communities-embed .btn-primary:hover::after {
-    left: 100%;
+  #mp-other-communities-embed .btn-primary {
+    background-color: var(--color-mp-green-700) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    box-shadow: 0 6px 18px rgba(1, 134, 36, 0.28);
   }
 
   #mp-other-communities-embed .btn-primary:hover {
     background-color: var(--color-mp-green-800) !important;
-    color: var(--color-white) !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(1, 134, 36, 0.32);
+    box-shadow: 0 10px 26px rgba(1, 134, 36, 0.36);
   }
 
-  #mp-other-communities-embed .btn-primary:focus {
+  #mp-other-communities-embed .btn-primary:focus-visible,
+  #mp-other-communities-embed .btn-primary:active {
     background-color: var(--color-mp-green-default) !important;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(2, 168, 45, 0.3);
   }
 
-  #mp-other-communities-embed .btn-primary svg {
+  #mp-other-communities-embed .btn-light {
+    background-color: var(--color-white) !important;
+    color: var(--color-black-default) !important;
+    border: none !important;
+    box-shadow: 0 6px 18px rgba(22, 43, 50, 0.18);
+  }
+
+  #mp-other-communities-embed .btn-light:hover {
+    background-color: var(--color-mp-green-50) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(22, 43, 50, 0.24);
+  }
+
+  #mp-other-communities-embed .btn-ghost-light {
+    background-color: transparent !important;
+    color: var(--color-white) !important;
+    border: 2px solid var(--color-mp-blue-500) !important;
+  }
+
+  #mp-other-communities-embed .btn-ghost-light:hover {
+    border-color: var(--color-white) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-2px);
+  }
+
+  #mp-other-communities-embed .btn-primary svg,
+  #mp-other-communities-embed .btn-light svg {
+    flex-shrink: 0;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  #mp-other-communities-embed .btn-primary:hover svg {
+  #mp-other-communities-embed .btn-primary:hover svg,
+  #mp-other-communities-embed .btn-light:hover svg {
     transform: translateX(4px);
   }
 
   /* ==========================================================================
-     Section 1: Hero Section
-     Two-Column Layout: Column 1 HTML Content, Column 2 Visual Collage
+     Shared Vector Accents (drawn in code: perfect curves, constant stroke)
      ========================================================================== */
-  #mp-other-communities-embed .mp_hero_section {
-    width: 100%;
-    padding: 72px 0 80px 0;
+  #mp-other-communities-embed .mp_vec {
+    position: absolute;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  #mp-other-communities-embed .mp_vec path.mp_link {
+    fill: none;
+    stroke: var(--color-mp-green-400);
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-other-communities-embed .mp_vec .mp_ring {
+    fill: none;
+    stroke: var(--color-mp-blue-700);
+    stroke-width: 1.5px;
+    stroke-dasharray: 2 8;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-other-communities-embed .mp_vec .mp_node {
+    fill: var(--color-mp-green-default);
+    stroke: var(--color-white);
+    stroke-width: 3px;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-other-communities-embed .mp_dots {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    pointer-events: none;
+  }
+
+  #mp-other-communities-embed .mp_dots circle { fill: var(--color-mp-green-default); }
+  #mp-other-communities-embed .mp_dots circle:last-child { fill: var(--color-mp-green-700); }
+
+  /* Floating white icon chip */
+  #mp-other-communities-embed .mp_chip {
+    position: absolute;
+    z-index: 3;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    box-shadow: 0 14px 34px rgba(22, 43, 50, 0.22);
+    animation: mp-oc-float 5s ease-in-out infinite alternate;
+  }
+
+  #mp-other-communities-embed .mp_chip svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #mp-other-communities-embed .mp_chip.d2 { animation-delay: -1.6s; }
+  #mp-other-communities-embed .mp_chip.d3 { animation-delay: -3.2s; }
+
+  /* ==========================================================================
+     Section 1: Hero (slate) with a people network built in code
+     ========================================================================== */
+  #mp-other-communities-embed .mp_hero {
     position: relative;
-    background-color: var(--color-page-bg);
+    padding: 104px 0 112px 0;
+    background-color: var(--color-mp-blue-900);
+    background-image: radial-gradient(var(--color-mp-blue-800) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
+    color: var(--color-white) !important;
     overflow: hidden;
   }
 
-  /* Subtle ambient dual-glow matching brand design system */
-  #mp-other-communities-embed .mp_hero_section::before {
+  #mp-other-communities-embed .mp_hero::after {
     content: '';
     position: absolute;
-    top: -12%;
-    right: -5%;
-    width: 620px;
-    height: 620px;
-    background: radial-gradient(circle, rgba(203, 238, 213, 0.45) 0%, rgba(242, 251, 245, 0.12) 60%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
+    top: 50%;
+    right: -200px;
+    width: 760px;
+    height: 760px;
+    margin-top: -380px;
     border-radius: 50%;
-  }
-
-  #mp-other-communities-embed .mp_hero_section::after {
-    content: '';
-    position: absolute;
-    bottom: -15%;
-    left: -8%;
-    width: 440px;
-    height: 440px;
-    background: radial-gradient(circle, rgba(175, 196, 203, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(52, 185, 87, 0.2) 0%, rgba(22, 43, 50, 0) 68%);
     pointer-events: none;
-    z-index: 0;
-    border-radius: 50%;
   }
 
   #mp-other-communities-embed .mp_hero_grid {
-    display: grid;
-    grid-template-columns: 1.08fr 0.92fr;
-    align-items: center;
-    gap: 48px;
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 56px;
   }
 
-  /* Column 1: HTML Content */
-  #mp-other-communities-embed .mp_hero_content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    max-width: 580px;
+  #mp-other-communities-embed .mp_eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid var(--color-mp-blue-700);
+    border-radius: 999px;
+    background-color: var(--color-mp-blue-800);
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 13px;
+    font-weight: 600 !important;
+    line-height: 18px;
+    letter-spacing: 1.4px !important;
+    text-transform: uppercase;
+    color: var(--color-mp-green-300) !important;
   }
 
-  /* Hero Title: Inria Serif Bold 700 */
-  #mp-other-communities-embed h1.mp_hero_title {
+  #mp-other-communities-embed .mp_eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-400);
+    animation: mp-oc-pulse 2.4s ease-out infinite;
+  }
+
+  #mp-other-communities-embed .mp_hero_title {
     font-family: var(--font-family-heading-1) !important;
-    font-size: 46px;
+    font-size: 54px;
     font-weight: 700 !important;
-    line-height: 54px;
-    letter-spacing: -0.3px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 22px;
-    text-align: left;
+    line-height: 60px;
+    letter-spacing: -1.25px !important;
+    color: var(--color-white) !important;
   }
 
-  #mp-other-communities-embed h1.mp_hero_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
+  #mp-other-communities-embed .mp_hero_title .mp_hl {
+    display: block;
+    color: var(--color-mp-green-400) !important;
   }
 
-  /* Hero Subtitle / Subtext: Roboto Medium/Regular */
-  #mp-other-communities-embed p.mp_hero_subtext {
-    font-family: var(--font-family-body) !important;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 32px;
-    color: var(--color-black-500);
-    margin-bottom: 34px;
-    text-align: left;
+  #mp-other-communities-embed .mp_hero_tagline {
+    margin-top: 28px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 28px;
+    font-weight: 600 !important;
+    line-height: 36px;
+    letter-spacing: -0.5px !important;
+    color: var(--color-mp-blue-100) !important;
   }
 
-  /* Hero Actions Row */
+  #mp-other-communities-embed .mp_hero_tagline span {
+    color: var(--color-mp-green-300) !important;
+  }
+
   #mp-other-communities-embed .mp_hero_actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 16px;
-    flex-wrap: wrap;
+    margin-top: 40px;
   }
 
-  /* Column 2: Visual Collage Image (Clean, No Text) */
-  #mp-other-communities-embed .mp_hero_visual {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* People network: portrait crops in circle / pill / rounded frames,
+     joined by SVG bezier connectors. Crops come from other_hero_collage.jpg
+     (1024px); its baked-in connector lines stay outside every crop. */
+  #mp-other-communities-embed .mp_net {
     position: relative;
-  }
-
-  #mp-other-communities-embed .mp_hero_img_card {
+    justify-self: end;
     width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 540px;
+    aspect-ratio: 1 / 1;
   }
 
-  #mp-other-communities-embed .mp_hero_img_card:hover {
-    transform: translateY(-4px);
-  }
-
-  #mp-other-communities-embed .mp_hero_img_card img {
-    display: block;
+  #mp-other-communities-embed .mp_net > .mp_vec {
+    inset: 0;
     width: 100%;
-    max-width: 520px;
+    height: 100%;
+    z-index: 0;
+  }
+
+  #mp-other-communities-embed .mp_net_frame {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    border: 4px solid var(--color-white);
+    background-color: var(--color-mp-blue-800);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  #mp-other-communities-embed .mp_net_frame img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: none;
     height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.08));
-    border-radius: 20px;
+    transition: scale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-other-communities-embed .mp_net_frame:hover img {
+    scale: 1.05;
+  }
+
+  /* Frame geometry (% of the square stage) and crop of the 1024px source:
+     img width = 1024 / cropW, translate = -cropX / 1024, -cropY / 1024 */
+  #mp-other-communities-embed .mp_net_frame.f1 { left: 2%; top: 8%; width: 38%; aspect-ratio: 250 / 330; border-radius: 28px; }
+  #mp-other-communities-embed .mp_net_frame.f1 img { width: 409.6%; transform: translate(-7.81%, -8.59%); }
+
+  #mp-other-communities-embed .mp_net_frame.f2 { left: 62%; top: 2%; width: 34%; aspect-ratio: 1 / 1; border-radius: 50%; }
+  #mp-other-communities-embed .mp_net_frame.f2 img { width: 387.88%; transform: translate(-66.02%, -9.77%); }
+
+  #mp-other-communities-embed .mp_net_frame.f3 { left: 44%; top: 40%; width: 17%; aspect-ratio: 140 / 310; border-radius: 999px; }
+  #mp-other-communities-embed .mp_net_frame.f3 img { width: 731.43%; transform: translate(-42.97%, -34.96%); }
+
+  #mp-other-communities-embed .mp_net_frame.f4 { left: 65%; top: 44%; width: 32%; aspect-ratio: 255 / 356; border-radius: 28px; }
+  #mp-other-communities-embed .mp_net_frame.f4 img { width: 401.57%; transform: translate(-67.87%, -56.84%); }
+
+  #mp-other-communities-embed .mp_net_frame.f5 { left: 6%; top: 64%; width: 31%; aspect-ratio: 1 / 1; border-radius: 50%; }
+  #mp-other-communities-embed .mp_net_frame.f5 img { width: 400%; transform: translate(-8.79%, -64.65%); }
+
+  #mp-other-communities-embed .mp_net .mp_chip.c1 { left: 46%; top: 20%; }
+  #mp-other-communities-embed .mp_net .mp_chip.c2 { left: 29%; top: 60%; }
+  #mp-other-communities-embed .mp_net .mp_chip.c3 { left: 55%; top: 82%; }
+  #mp-other-communities-embed .mp_net .mp_dots { right: 0; top: 90%; }
+
+  /* ==========================================================================
+     Section 2: Marquee Band (the four organization types)
+     ========================================================================== */
+  #mp-other-communities-embed .mp_marquee {
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+    overflow: hidden;
+    padding: 22px 0;
+  }
+
+  #mp-other-communities-embed .mp_marquee_track {
+    display: flex;
+    width: max-content;
+    animation: mp-oc-marquee 40s linear infinite;
+  }
+
+  #mp-other-communities-embed .mp_marquee:hover .mp_marquee_track,
+  #mp-other-communities-embed .mp_marquee:focus-within .mp_marquee_track {
+    animation-play-state: paused;
+  }
+
+  #mp-other-communities-embed .mp_marquee_group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  #mp-other-communities-embed .mp_marquee_group li {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding-right: 36px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 24px;
+    font-weight: 600 !important;
+    line-height: 32px;
+    letter-spacing: -0.25px !important;
+    color: var(--color-white) !important;
+    white-space: nowrap;
+  }
+
+  #mp-other-communities-embed .mp_marquee_group li::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-300);
   }
 
   /* ==========================================================================
-     Section 2: Proven High-Value Ecosystem (4 Key Organizations Cards)
-     Alternating Subtle Gradient System
+     Section 3: Ecosystem (split heading + colour-block tiles on green tint)
      ========================================================================== */
-  #mp-other-communities-embed .mp_ecosystem_section {
-    width: 100%;
-    padding: 76px 0 92px 0;
+  #mp-other-communities-embed .mp_eco {
     position: relative;
-    background: linear-gradient(180deg, var(--color-page-bg) 0%, #F5FBF7 50%, var(--color-page-bg) 100%);
-    border-top: 1px solid rgba(203, 238, 213, 0.4);
-    border-bottom: 1px solid rgba(203, 238, 213, 0.4);
+    padding: 96px 0;
+    background-color: var(--color-mp-green-50);
+    border-top: 1px solid var(--color-mp-green-200);
+    border-bottom: 1px solid var(--color-mp-green-200);
     overflow: hidden;
   }
 
-  #mp-other-communities-embed .mp_ecosystem_header {
-    max-width: 860px;
-    margin: 0 auto 52px auto;
-    text-align: center;
-  }
-
-  #mp-other-communities-embed h2.mp_ecosystem_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 38px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 18px;
-    text-align: center;
-  }
-
-  #mp-other-communities-embed h2.mp_ecosystem_title::before {
+  /* Faint community network motif behind the heading */
+  #mp-other-communities-embed .mp_eco::before {
     content: '';
-    display: block;
-    width: 48px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 20px auto;
+    position: absolute;
+    left: -140px;
+    bottom: -160px;
+    width: 560px;
+    height: 560px;
+    background-color: var(--color-mp-green-700);
+    opacity: 0.06;
+    pointer-events: none;
+    -webkit-mask: var(--mp-network-mask) no-repeat center / contain;
+    mask: var(--mp-network-mask) no-repeat center / contain;
   }
 
-  #mp-other-communities-embed h2.mp_ecosystem_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  #mp-other-communities-embed p.mp_ecosystem_subtitle {
-    font-family: var(--font-family-body) !important;
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 30px;
-    color: var(--color-black-500);
-    margin-bottom: 14px;
-    text-align: center;
-  }
-
-  #mp-other-communities-embed p.mp_ecosystem_lead {
-    font-family: var(--font-family-body) !important;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 26px;
-    color: var(--color-mp-green-700);
-    text-align: center;
-  }
-
-  #mp-other-communities-embed .mp_ecosystem_grid {
+  #mp-other-communities-embed .mp_eco_layout {
+    position: relative;
+    z-index: 1;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    width: 100%;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: 64px;
   }
 
-  /* Crisp White Card Surface with refined slate border & soft shadow */
-  #mp-other-communities-embed .mp_ecosystem_card {
-    background-color: var(--color-white);
-    border: 1px solid #DCE3E6;
-    border-radius: var(--radius-card);
-    padding: 32px 26px 28px 26px;
+  #mp-other-communities-embed .mp_eco .mp_h2 {
+    margin-bottom: 24px;
+  }
+
+  #mp-other-communities-embed .mp_eco .mp_h2 .mp_hl {
+    display: block;
+  }
+
+  #mp-other-communities-embed .mp_eco_fit {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-mp-green-200);
+    font-family: var(--font-family-body) !important;
+    font-size: 17px;
+    font-weight: 500 !important;
+    line-height: 26px;
+    color: var(--color-black-500) !important;
+  }
+
+  #mp-other-communities-embed .mp_eco_fit svg {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+  }
+
+  #mp-other-communities-embed .mp_eco_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* Checkerboard of colour-block tiles: green / white / white / slate */
+  #mp-other-communities-embed .mp_org {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    min-height: 320px;
+    padding: 32px;
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  }
+
+  #mp-other-communities-embed .mp_org:hover {
+    translate: 0 -6px;
+    box-shadow: 0 24px 50px rgba(22, 43, 50, 0.16);
+  }
+
+  #mp-other-communities-embed .mp_org.is-green { background-color: var(--color-mp-green-700); }
+  #mp-other-communities-embed .mp_org.is-white { background-color: var(--color-white); border: 1px solid var(--color-mp-green-200); }
+  #mp-other-communities-embed .mp_org.is-white:hover { border-color: var(--color-mp-green-300); }
+  #mp-other-communities-embed .mp_org.is-slate { background-color: var(--color-mp-blue-800); }
+
+  /* Giant serif index as a watermark */
+  #mp-other-communities-embed .mp_org_num {
+    position: absolute;
+    top: 14px;
+    right: 26px;
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 104px;
+    font-weight: 700 !important;
+    line-height: 104px;
+    letter-spacing: -3px !important;
+    pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-other-communities-embed .mp_org:hover .mp_org_num { transform: translateY(-6px); }
+  #mp-other-communities-embed .mp_org.is-green .mp_org_num { color: var(--color-mp-green-500) !important; }
+  #mp-other-communities-embed .mp_org.is-white .mp_org_num { color: var(--color-mp-green-100) !important; }
+  #mp-other-communities-embed .mp_org.is-slate .mp_org_num { color: var(--color-mp-blue-700) !important; }
+
+  #mp-other-communities-embed .mp_org_icon {
     position: relative;
-  }
-
-  #mp-other-communities-embed .mp_ecosystem_card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 36px rgba(1, 134, 36, 0.1);
-    border-color: var(--color-mp-green-300);
-  }
-
-  #mp-other-communities-embed .mp_ecosystem_icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-    background-color: var(--color-mp-green-50);
-    color: var(--color-mp-green-700);
+    width: 56px;
+    height: 56px;
+    margin-bottom: 40px;
+    border-radius: var(--radius-card);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 22px;
-    border: 1px solid var(--color-mp-green-200);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: transform 0.3s ease;
   }
 
-  #mp-other-communities-embed .mp_ecosystem_card:hover .mp_ecosystem_icon {
-    background-color: var(--color-mp-green-100);
-    transform: scale(1.05);
-  }
+  #mp-other-communities-embed .mp_org:hover .mp_org_icon { transform: rotate(-6deg); }
+  #mp-other-communities-embed .mp_org.is-green .mp_org_icon { background-color: var(--color-white); color: var(--color-mp-green-700) !important; }
+  #mp-other-communities-embed .mp_org.is-white .mp_org_icon { background-color: var(--color-mp-green-700); color: var(--color-white) !important; }
+  #mp-other-communities-embed .mp_org.is-slate .mp_org_icon { background-color: var(--color-mp-green-400); color: var(--color-mp-blue-900) !important; }
 
-  #mp-other-communities-embed .mp_ecosystem_icon svg {
+  #mp-other-communities-embed .mp_org_icon svg {
     width: 26px;
     height: 26px;
-    stroke: var(--color-mp-green-700);
   }
 
-  #mp-other-communities-embed .mp_ecosystem_card h4 {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 20px;
-    font-weight: 600 !important;
-    line-height: 28px;
-    letter-spacing: 0px !important;
-    color: var(--color-black-default) !important;
-    margin-bottom: 12px;
-  }
-
-  #mp-other-communities-embed .mp_ecosystem_card p {
-    font-family: var(--font-family-body) !important;
-    font-size: 15px;
-    font-weight: 400 !important;
-    line-height: 24px;
-    color: var(--color-black-500);
-    margin: 0;
-    flex-grow: 1;
-  }
-
-  /* ==========================================================================
-     Section 3: One Platform. Every Capability Your Community Needs. (4 Pillars)
-     ========================================================================== */
-  #mp-other-communities-embed .mp_capabilities_section {
-    width: 100%;
-    padding: 76px 0 88px 0;
+  #mp-other-communities-embed .mp_org h3 {
     position: relative;
-    background-color: var(--color-page-bg);
-  }
-
-  #mp-other-communities-embed h2.mp_capabilities_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 38px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-    text-align: center;
-    margin-bottom: 48px;
-    width: 100%;
-  }
-
-  #mp-other-communities-embed h2.mp_capabilities_title::before {
-    content: '';
-    display: block;
-    width: 56px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 24px auto;
-  }
-
-  #mp-other-communities-embed h2.mp_capabilities_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  #mp-other-communities-embed .mp_capabilities_grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    width: 100%;
-    align-items: stretch;
-  }
-
-  #mp-other-communities-embed .mp_capability_pillar {
-    background-color: var(--color-white);
-    border-radius: var(--radius-card);
-    border: 1px solid #DCE3E6;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  #mp-other-communities-embed .mp_capability_pillar:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 34px rgba(1, 134, 36, 0.09);
-    border-color: var(--color-mp-green-300);
-  }
-
-  #mp-other-communities-embed .mp_pillar_header {
-    padding: 20px 22px;
-    border-bottom: 2px solid;
-    display: flex;
-    align-items: center;
-  }
-
-  #mp-other-communities-embed .theme_engagement .mp_pillar_header {
-    background-color: var(--color-mp-green-50);
-    border-bottom-color: var(--color-mp-green-700);
-  }
-  #mp-other-communities-embed .theme_engagement h3.mp_pillar_title {
-    color: var(--color-mp-green-700) !important;
-  }
-  #mp-other-communities-embed .theme_engagement .mp_pillar_icon {
-    color: var(--color-mp-green-700);
-  }
-
-  #mp-other-communities-embed .theme_admin .mp_pillar_header {
-    background-color: var(--color-mp-blue-50);
-    border-bottom-color: var(--color-mp-blue-800);
-  }
-  #mp-other-communities-embed .theme_admin h3.mp_pillar_title {
-    color: var(--color-mp-blue-800) !important;
-  }
-  #mp-other-communities-embed .theme_admin .mp_pillar_icon {
-    color: var(--color-mp-blue-800);
-  }
-
-  #mp-other-communities-embed .theme_ai .mp_pillar_header {
-    background-color: #EBF3F6;
-    border-bottom-color: var(--color-mp-blue-default);
-  }
-  #mp-other-communities-embed .theme_ai h3.mp_pillar_title {
-    color: var(--color-mp-blue-default) !important;
-  }
-  #mp-other-communities-embed .theme_ai .mp_pillar_icon {
-    color: var(--color-mp-blue-default);
-  }
-
-  #mp-other-communities-embed .theme_marketing .mp_pillar_header {
-    background-color: var(--color-alert-bg);
-    border-bottom-color: var(--color-alert-text);
-  }
-  #mp-other-communities-embed .theme_marketing h3.mp_pillar_title {
-    color: var(--color-alert-text) !important;
-  }
-  #mp-other-communities-embed .theme_marketing .mp_pillar_icon {
-    color: var(--color-alert-text);
-  }
-
-  #mp-other-communities-embed h3.mp_pillar_title {
+    margin-top: auto;
+    margin-bottom: 10px;
     font-family: var(--font-family-heading-2) !important;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600 !important;
-    line-height: 26px;
-    margin: 0;
+    line-height: 30px;
+    letter-spacing: -0.25px !important;
+    color: var(--color-black-default) !important;
   }
 
-  #mp-other-communities-embed ul.mp_pillar_list {
-    list-style: none;
-    margin: 0;
-    padding: 6px 0;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  #mp-other-communities-embed ul.mp_pillar_list li {
-    padding: 13px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid #F0F4F2;
-    font-family: var(--font-family-body) !important;
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--color-black-default);
-    text-align: left;
-    transition: background-color 0.2s ease, padding-left 0.2s ease, color 0.2s ease;
-  }
-
-  #mp-other-communities-embed ul.mp_pillar_list li:last-child {
-    border-bottom: none;
-  }
-
-  #mp-other-communities-embed ul.mp_pillar_list li:hover {
-    background-color: var(--color-mp-green-50);
-    color: var(--color-mp-green-700);
-    padding-left: 24px;
-  }
-
-  #mp-other-communities-embed .mp_pillar_icon {
-    flex-shrink: 0;
-    stroke-width: 2.2;
-  }
-
-  /* ==========================================================================
-     Section 4: Every Community Needs a Place to Call Home (List + Image)
-     ========================================================================== */
-  #mp-other-communities-embed .mp_insights_section {
-    width: 100%;
-    padding: 76px 0 88px 0;
+  #mp-other-communities-embed .mp_org p {
     position: relative;
-    background: linear-gradient(180deg, var(--color-page-bg) 0%, #F5FBF7 50%, var(--color-page-bg) 100%);
-    border-top: 1px solid rgba(203, 238, 213, 0.4);
-    border-bottom: 1px solid rgba(203, 238, 213, 0.4);
-    overflow: hidden;
-  }
-
-  #mp-other-communities-embed .mp_insights_header {
-    max-width: 900px;
-    margin: 0 auto 48px auto;
-    text-align: center;
-  }
-
-  #mp-other-communities-embed h2.mp_insights_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 38px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 14px;
-    text-align: center;
-  }
-
-  #mp-other-communities-embed h2.mp_insights_title::before {
-    content: '';
-    display: block;
-    width: 48px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 20px auto;
-  }
-
-  #mp-other-communities-embed h2.mp_insights_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  #mp-other-communities-embed p.mp_insights_subtitle {
-    font-family: var(--font-family-body) !important;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 32px;
-    color: var(--color-black-500);
-    text-align: center;
-    margin: 0;
-  }
-
-  #mp-other-communities-embed p.mp_insights_subtitle span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-weight: 500;
-  }
-
-  #mp-other-communities-embed .mp_insights_grid {
-    display: grid;
-    grid-template-columns: 1.08fr 0.92fr;
-    align-items: center;
-    gap: 48px;
-    width: 100%;
-  }
-
-  #mp-other-communities-embed .mp_insights_content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  #mp-other-communities-embed p.mp_insights_lead {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 20px;
-    font-weight: 600 !important;
-    line-height: 28px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 22px;
-    text-align: left;
-  }
-
-  #mp-other-communities-embed ul.mp_insights_list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-  }
-
-  #mp-other-communities-embed ul.mp_insights_list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
     font-family: var(--font-family-body) !important;
     font-size: 16px;
+    font-weight: 400;
     line-height: 26px;
-    color: var(--color-black-500);
-    text-align: left;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+    color: var(--color-black-500) !important;
   }
 
-  #mp-other-communities-embed ul.mp_insights_list li:hover {
-    transform: translateX(4px);
-    color: var(--color-black-default);
-  }
-
-  #mp-other-communities-embed ul.mp_insights_list li strong {
-    color: var(--color-black-default);
-    font-weight: 700;
-  }
-
-  #mp-other-communities-embed .mp_insights_icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-color: var(--color-mp-green-50);
-    border: 1px solid var(--color-mp-green-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  #mp-other-communities-embed ul.mp_insights_list li:hover .mp_insights_icon {
-    background-color: var(--color-mp-green-100);
-    border-color: var(--color-mp-green-300);
-    transform: scale(1.08);
-  }
-
-  #mp-other-communities-embed .mp_insights_icon svg {
-    width: 14px;
-    height: 14px;
-    stroke: var(--color-mp-green-700);
-    stroke-width: 2.2;
-  }
-
-  #mp-other-communities-embed .mp_insights_visual {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #mp-other-communities-embed .mp_insights_img_card {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  #mp-other-communities-embed .mp_insights_img_card:hover {
-    transform: translateY(-4px);
-  }
-
-  #mp-other-communities-embed .mp_insights_img_card img {
-    display: block;
-    width: 100%;
-    max-width: 520px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 18px;
-    border: 1px solid rgba(203, 238, 213, 0.6);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-  }
+  #mp-other-communities-embed .mp_org.is-green h3,
+  #mp-other-communities-embed .mp_org.is-slate h3 { color: var(--color-white) !important; }
+  #mp-other-communities-embed .mp_org.is-green p { color: var(--color-mp-green-50) !important; }
+  #mp-other-communities-embed .mp_org.is-slate p { color: var(--color-mp-blue-100) !important; }
 
   /* ==========================================================================
-     Section 5: LET’S BUILD YOUR COMMUNITY ON MYPEOPLE (Interconnected Steps)
+     Section 4: A Place to Call Home (full-bleed slate statement + checklist)
      ========================================================================== */
-  #mp-other-communities-embed .mp_steps_section {
-    width: 100%;
-    padding: 84px 0 96px 0;
+  #mp-other-communities-embed .mp_place {
     position: relative;
-    background-color: var(--color-page-bg);
+    padding: 104px 0;
+    background-color: var(--color-mp-blue-900);
+    background-image: radial-gradient(var(--color-mp-blue-700) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
+    color: var(--color-white) !important;
+    overflow: hidden;
   }
 
-  #mp-other-communities-embed .mp_steps_header {
-    width: 100%;
-    max-width: 860px;
-    margin: 0 auto 52px auto;
-    text-align: center;
-  }
-
-  #mp-other-communities-embed h2.mp_steps_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 34px;
-    font-weight: 700 !important;
-    line-height: 44px;
-    letter-spacing: 0.5px;
-    color: var(--color-mp-green-700) !important;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 0;
-  }
-
-  #mp-other-communities-embed h2.mp_steps_title::before {
+  #mp-other-communities-embed .mp_place::after {
     content: '';
-    display: block;
-    width: 56px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 24px auto;
-  }
-
-  /* Interconnected Steps Wrapper */
-  #mp-other-communities-embed .mp_steps_wrapper {
-    position: relative;
-    width: 100%;
-    margin-bottom: 52px;
-  }
-
-  /* Connecting Pipeline Track (Desktop) */
-  #mp-other-communities-embed .mp_steps_track {
     position: absolute;
-    top: 60px;
-    left: 16%;
-    right: 16%;
-    height: 2px;
-    z-index: 1;
+    top: -160px;
+    right: -160px;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 185, 87, 0.22) 0%, rgba(22, 43, 50, 0) 70%);
     pointer-events: none;
   }
 
-  #mp-other-communities-embed .mp_track_line {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      var(--color-mp-green-400) 0%, 
-      var(--color-mp-blue-default) 50%, 
-      var(--color-mp-green-700) 100%
-    );
-    border-radius: 2px;
+  #mp-other-communities-embed .mp_place_grid {
     position: relative;
-  }
-
-  #mp-other-communities-embed .mp_track_arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: var(--color-white);
-    border: 2px solid var(--color-mp-green-200);
-    color: var(--color-mp-green-700);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(1, 134, 36, 0.15);
-    z-index: 2;
-  }
-
-  #mp-other-communities-embed .track_arrow_1 {
-    left: calc(33.333% - 16px);
-  }
-
-  #mp-other-communities-embed .track_arrow_2 {
-    left: calc(66.666% - 16px);
-  }
-
-  /* Steps Grid */
-  #mp-other-communities-embed .mp_steps_grid {
+    z-index: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-    align-items: stretch;
-  }
-
-  #mp-other-communities-embed .mp_step_card {
-    background-color: var(--color-white);
-    border-radius: var(--radius-card);
-    border: 1px solid #DCE3E6;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    padding: 36px 28px 36px 28px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  #mp-other-communities-embed .mp_step_card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 28px;
-    right: 28px;
-    height: 4px;
-    border-radius: 0 0 4px 4px;
-  }
-
-  #mp-other-communities-embed .step_1::before { background-color: var(--color-mp-green-700); }
-  #mp-other-communities-embed .step_2::before { background-color: var(--color-mp-blue-default); }
-  #mp-other-communities-embed .step_3::before { background-color: var(--color-mp-green-500); }
-
-  #mp-other-communities-embed .mp_step_card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(1, 134, 36, 0.12);
-    border-color: var(--color-mp-green-300);
-  }
-
-  #mp-other-communities-embed .mp_step_badge_wrap {
-    display: flex;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 24px;
-    position: relative;
+    gap: 64px;
   }
 
-  #mp-other-communities-embed .mp_step_badge {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  #mp-other-communities-embed .mp_place .mp_h2 {
+    color: var(--color-white) !important;
+    margin-bottom: 32px;
+  }
+
+  #mp-other-communities-embed .mp_place .mp_h2 .mp_hl {
+    color: var(--color-mp-green-400) !important;
+  }
+
+  #mp-other-communities-embed .mp_place_tag {
+    padding-left: 24px;
+    border-left: 4px solid var(--color-mp-green-500);
     font-family: var(--font-family-heading-2) !important;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--color-white);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  #mp-other-communities-embed .step_1 .mp_step_badge {
-    background-color: var(--color-mp-green-700);
-    box-shadow: 0 0 0 5px var(--color-mp-green-100);
-  }
-
-  #mp-other-communities-embed .step_2 .mp_step_badge {
-    background-color: var(--color-mp-blue-default);
-    box-shadow: 0 0 0 5px var(--color-mp-blue-100);
-  }
-
-  #mp-other-communities-embed .step_3 .mp_step_badge {
-    background-color: var(--color-mp-green-700);
-    box-shadow: 0 0 0 5px var(--color-mp-green-200);
-  }
-
-  #mp-other-communities-embed .mp_step_card:hover .mp_step_badge {
-    transform: scale(1.1);
-  }
-
-  #mp-other-communities-embed .mp_step_body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  #mp-other-communities-embed h3.mp_step_title {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600 !important;
-    line-height: 28px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 14px;
-    text-align: left;
+    line-height: 40px;
+    letter-spacing: -0.75px !important;
+    color: var(--color-mp-blue-100) !important;
   }
 
-  #mp-other-communities-embed p.mp_step_desc {
-    font-family: var(--font-family-body) !important;
+  #mp-other-communities-embed .mp_place_tag span {
+    color: var(--color-mp-green-400) !important;
+  }
+
+  #mp-other-communities-embed .mp_place_label {
+    margin-bottom: 20px;
+    font-family: var(--font-family-heading-2) !important;
     font-size: 15px;
-    font-weight: 400;
-    line-height: 24px;
-    color: var(--color-black-500);
-    text-align: left;
-    margin: 0;
+    font-weight: 600 !important;
+    line-height: 22px;
+    letter-spacing: 1.4px !important;
+    text-transform: uppercase;
+    color: var(--color-mp-green-300) !important;
   }
 
-  /* Centered CTA Action */
-  #mp-other-communities-embed .mp_steps_action {
+  #mp-other-communities-embed .mp_place_list li {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
+    gap: 20px;
+    padding: 22px 8px;
+    border-bottom: 1px solid var(--color-mp-blue-700);
+    font-family: var(--font-family-body) !important;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--color-mp-blue-100) !important;
+    transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+  }
+
+  #mp-other-communities-embed .mp_place_list li:first-child {
+    border-top: 1px solid var(--color-mp-blue-700);
+  }
+
+  #mp-other-communities-embed .mp_place_list li:hover {
+    padding-left: 18px;
+    background-color: rgba(45, 85, 100, 0.35);
+  }
+
+  #mp-other-communities-embed .mp_place_list strong {
+    font-weight: 600;
+    color: var(--color-white) !important;
+  }
+
+  #mp-other-communities-embed .mp_check_icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-mp-green-400);
+    color: var(--color-mp-green-400) !important;
+    background-color: rgba(102, 203, 129, 0.12);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #mp-other-communities-embed .mp_place_list li:hover .mp_check_icon {
+    background-color: var(--color-mp-green-400);
+    color: var(--color-mp-blue-900) !important;
+  }
+
+  #mp-other-communities-embed .mp_check_icon svg {
+    width: 18px;
+    height: 18px;
   }
 
   /* ==========================================================================
-     Modals & Overlay Styles (Brand Compliant Inputs & Radii)
+     Section 5: Capabilities (4 icon cards with chip lists)
      ========================================================================== */
-  .mp-community-modal-overlay {
-    display: none;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.65);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99998;
-    backdrop-filter: blur(3px);
+  #mp-other-communities-embed .mp_caps {
+    padding: 96px 0;
+    background-color: var(--color-page-bg);
   }
 
-  .mp-community-modal-wrapper {
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
+  #mp-other-communities-embed .mp_caps .mp_h2 {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 56px auto;
+  }
+
+  #mp-other-communities-embed .mp_caps_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  #mp-other-communities-embed .mp_cap {
+    padding: 32px 26px 30px 26px;
+    border-radius: 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-mp-blue-200);
+    box-shadow: 0 6px 24px rgba(22, 43, 50, 0.05);
+    transition: translate 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #mp-other-communities-embed .mp_cap:hover {
+    translate: 0 -6px;
+    border-color: var(--color-mp-green-300);
+    box-shadow: 0 22px 44px rgba(1, 134, 36, 0.12);
+  }
+
+  #mp-other-communities-embed .mp_cap_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-mp-green-50);
+    border: 1px solid var(--color-mp-green-200);
+    color: var(--color-mp-green-700) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #mp-other-communities-embed .mp_cap:hover .mp_cap_icon {
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+  }
+
+  #mp-other-communities-embed .mp_cap_icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  #mp-other-communities-embed .mp_cap h3 {
+    margin-bottom: 20px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 22px;
+    font-weight: 600 !important;
+    line-height: 30px;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-other-communities-embed .mp_cap ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #mp-other-communities-embed .mp_cap li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px 7px 9px;
+    border-radius: 999px;
+    background-color: var(--color-mp-green-50);
+    border: 1px solid var(--color-mp-green-200);
+    font-family: var(--font-family-body) !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--color-black-500) !important;
+  }
+
+  #mp-other-communities-embed .mp_cap li svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--color-mp-green-700) !important;
+  }
+
+  /* ==========================================================================
+     Section 6: Let's Build (closing green block)
+     ========================================================================== */
+  #mp-other-communities-embed .mp_build {
+    position: relative;
+    padding: 104px 0;
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+    overflow: hidden;
+  }
+
+  #mp-other-communities-embed .mp_build::before,
+  #mp-other-communities-embed .mp_build::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--color-mp-green-500);
+    pointer-events: none;
+  }
+
+  #mp-other-communities-embed .mp_build::before {
+    width: 520px;
+    height: 520px;
+    left: -220px;
+    bottom: -260px;
+  }
+
+  #mp-other-communities-embed .mp_build::after {
+    width: 320px;
+    height: 320px;
+    right: -120px;
+    top: -140px;
+    border-style: dashed;
+  }
+
+  #mp-other-communities-embed .mp_build_grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  #mp-other-communities-embed .mp_build .mp_h2 {
+    color: var(--color-white) !important;
+    margin-bottom: 36px;
+  }
+
+  #mp-other-communities-embed .mp_build_badge {
+    display: inline-block;
+    padding: 0 14px;
+    margin-right: 6px;
+    border-radius: var(--radius-tag);
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    transform: rotate(-3deg);
+    font-family: inherit !important;
+  }
+
+  #mp-other-communities-embed .mp_steps {
+    margin-bottom: 40px;
+  }
+
+  #mp-other-communities-embed .mp_step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 20px;
+    padding-bottom: 28px;
+  }
+
+  #mp-other-communities-embed .mp_step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 56px;
+    bottom: 4px;
+    width: 2px;
+    background-color: var(--color-mp-green-500);
+  }
+
+  #mp-other-communities-embed .mp_step_num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 20px;
+    font-weight: 600 !important;
+    line-height: 24px;
+  }
+
+  #mp-other-communities-embed .mp_step h4 {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 21px;
+    font-weight: 600 !important;
+    line-height: 29px;
+    color: var(--color-white) !important;
+    margin: 10px 0 8px 0;
+  }
+
+  #mp-other-communities-embed .mp_step p {
+    font-family: var(--font-family-body) !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--color-mp-green-50) !important;
+  }
+
+  /* Product UI drawn in code (soft-glass bento): placeholder bars only,
+     no words and no numbers. Avatars are crops of other_hero_collage.jpg. */
+  #mp-other-communities-embed .mp_ui {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 18px;
+    border-radius: var(--radius-panel);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-mp-green-500);
+    box-shadow: 0 30px 70px rgba(0, 66, 19, 0.45);
+  }
+
+  #mp-other-communities-embed .mp_ui_card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 10px 24px rgba(0, 66, 19, 0.18);
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-other-communities-embed .mp_ui_card:hover {
+    translate: 0 -4px;
+  }
+
+  #mp-other-communities-embed .mp_ui_card.is-wide { grid-column: span 2; }
+  #mp-other-communities-embed .mp_ui_card.is-center { align-items: center; justify-content: center; }
+
+  #mp-other-communities-embed .mp_ui_bar {
+    display: block;
+    height: 10px;
+    border-radius: 6px;
+    background-color: var(--color-black-100);
+  }
+
+  #mp-other-communities-embed .mp_ui_bar.is-dark { background-color: var(--color-mp-blue-200); height: 12px; }
+  #mp-other-communities-embed .mp_ui_bar.is-green { background-color: var(--color-mp-green-200); }
+  #mp-other-communities-embed .mp_ui_bar.w30 { width: 30%; }
+  #mp-other-communities-embed .mp_ui_bar.w45 { width: 45%; }
+  #mp-other-communities-embed .mp_ui_bar.w60 { width: 60%; }
+  #mp-other-communities-embed .mp_ui_bar.w75 { width: 75%; }
+  #mp-other-communities-embed .mp_ui_bar.w90 { width: 90%; }
+
+  #mp-other-communities-embed .mp_ui_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  #mp-other-communities-embed .mp_ui_head > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #mp-other-communities-embed .mp_ui_pill {
+    flex-shrink: 0;
+    width: 52px;
+    height: 22px;
+    border-radius: 999px;
+    background-color: var(--color-mp-green-100);
+    border: 1px solid var(--color-mp-green-200);
+  }
+
+  #mp-other-communities-embed .mp_ui_chart {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #mp-other-communities-embed .mp_ui_chart .mp_ui_grid {
+    stroke: var(--color-black-50);
+    stroke-width: 1.5px;
+  }
+
+  #mp-other-communities-embed .mp_ui_chart .mp_ui_area {
+    fill: var(--color-mp-green-50);
+  }
+
+  #mp-other-communities-embed .mp_ui_chart path.mp_link {
+    fill: none;
+    stroke: var(--color-mp-green-default);
+    stroke-width: 3.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  #mp-other-communities-embed .mp_ui_chart .mp_node {
+    fill: var(--color-mp-green-700);
+    stroke: var(--color-white);
+    stroke-width: 3px;
+  }
+
+  #mp-other-communities-embed .mp_ui_ring {
+    width: 100%;
+    max-width: 112px;
+    height: auto;
+  }
+
+  #mp-other-communities-embed .mp_ui_ring .mp_ui_track {
+    fill: none;
+    stroke: var(--color-mp-green-100);
+    stroke-width: 12px;
+  }
+
+  #mp-other-communities-embed .mp_ui_ring .mp_ui_arc {
+    fill: none;
+    stroke: var(--color-mp-green-700);
+    stroke-width: 12px;
+    stroke-linecap: round;
+  }
+
+  #mp-other-communities-embed .mp_ui_ring .mp_ui_heart {
+    fill: var(--color-mp-green-default);
+  }
+
+  #mp-other-communities-embed .mp_ui_card.is-center .mp_ui_bar { align-self: stretch; margin: 0 auto; }
+
+  #mp-other-communities-embed .mp_ui_avs {
+    display: flex;
+    padding-left: 10px;
+  }
+
+  #mp-other-communities-embed .mp_ui_av {
+    position: relative;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: -10px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--color-white);
+    background-color: var(--color-mp-green-100);
+  }
+
+  #mp-other-communities-embed .mp_ui_av img {
+    position: absolute;
     left: 0;
-    right: 0;
+    top: 0;
+    max-width: none;
+    height: auto;
+  }
+
+  /* Face crops of the 1024px collage */
+  #mp-other-communities-embed .mp_ui_av.a1 img { width: 602.35%; transform: translate(-12.70%, -9.77%); }
+  #mp-other-communities-embed .mp_ui_av.a2 img { width: 640%; transform: translate(-41.99%, -37.60%); }
+  #mp-other-communities-embed .mp_ui_av.a3 img { width: 682.67%; transform: translate(-14.16%, -64.65%); }
+  #mp-other-communities-embed .mp_ui_av.a4 img { width: 682.67%; transform: translate(-73.73%, -58.59%); }
+  #mp-other-communities-embed .mp_ui_av.a5 img { width: 682.67%; transform: translate(-71.78%, -10.25%); }
+
+  #mp-other-communities-embed .mp_ui_row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #mp-other-communities-embed .mp_ui_row + .mp_ui_row {
+    padding-top: 12px;
+    border-top: 1px solid var(--color-black-50);
+  }
+
+  #mp-other-communities-embed .mp_ui_row > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #mp-other-communities-embed .mp_ui_row .mp_ui_av { margin-left: 0; }
+
+  #mp-other-communities-embed .mp_ui_react {
+    display: flex;
+    gap: 6px;
+  }
+
+  #mp-other-communities-embed .mp_ui_react span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-mp-green-50);
+    color: var(--color-mp-green-700) !important;
+  }
+
+  #mp-other-communities-embed .mp_ui_react svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  #mp-other-communities-embed .mp_ui > .mp_chip { left: -22px; bottom: 36%; }
+  #mp-other-communities-embed .mp_ui > .mp_dots { right: -18px; top: -24px; }
+
+  /* ==========================================================================
+     Contact Modal
+     ========================================================================== */
+  #mp-other-communities-embed .mp-oc-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(22, 43, 50, 0.7);
+    z-index: 99998;
+    display: none;
+    backdrop-filter: blur(6px);
+  }
+
+  #mp-other-communities-embed .mp-oc-modal-overlay.active {
+    display: block;
+  }
+
+  #mp-other-communities-embed .mp-oc-modal-wrapper {
+    position: fixed;
+    inset: 0;
     z-index: 99999;
+    display: none;
     align-items: center;
     justify-content: center;
     padding: 20px;
     overflow-y: auto;
   }
 
-  .mp_splash_modal {
-    width: 100%;
-    max-width: 620px;
-    background: var(--color-white);
-    border-radius: 18px;
-    border: 1px solid var(--color-border);
-    position: relative;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
-    padding: 34px 32px;
-    font-family: var(--font-family-body);
-    box-sizing: border-box;
-    max-height: 90vh;
-    overflow-y: auto;
+  #mp-other-communities-embed .mp-oc-modal-wrapper.active {
+    display: flex;
   }
 
-  .mp_splash_modal .mps_close {
-    width: 32px;
-    height: 32px;
+  #mp-other-communities-embed .mp_splash_modal {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: calc(100% - 40px);
+    overflow-y: auto;
+    padding: 36px 32px 32px 32px;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  }
+
+  #mp-other-communities-embed .mp_splash_modal .mps_close {
     position: absolute;
-    right: 20px;
-    top: 20px;
-    z-index: 2;
-    cursor: pointer;
-    user-select: none;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background: var(--color-black-50);
-    color: var(--color-black-500);
-    transition: background 0.15s ease, color 0.15s ease;
+    background-color: var(--color-black-50);
+    color: var(--color-black-400) !important;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.2s ease;
   }
 
-  .mp_splash_modal .mps_close:hover {
-    background: var(--color-black-100);
-    color: var(--color-black-default);
-  }
-
-  .mp_splash_modal h4 {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 22px;
-    font-weight: 600 !important;
+  #mp-other-communities-embed .mp_splash_modal .mps_close:hover {
+    background-color: var(--color-black-100);
     color: var(--color-black-default) !important;
-    line-height: 30px;
-    margin: 0 0 20px 0;
+    transform: rotate(90deg);
+  }
+
+  #mp-other-communities-embed .mp_splash_modal h4 {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 24px;
+    font-weight: 600 !important;
+    line-height: 32px;
+    color: var(--color-black-default) !important;
+    margin-bottom: 22px;
     padding-right: 40px;
-    text-transform: none !important;
   }
 
-  .mp_ipbox {
-    width: 100%;
+  #mp-other-communities-embed .mp_ipbox {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
     flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 16px;
   }
 
-  .mp_ipbox .hrip {
+  #mp-other-communities-embed .mp_ipbox .hrip {
     width: 100%;
     margin-bottom: 16px;
     display: flex;
     flex-direction: column;
-    position: relative;
   }
 
-  .mp_ipbox .hrip.mw50 {
+  #mp-other-communities-embed .mp_ipbox .hrip.mw50 {
     width: calc(50% - 8px);
   }
 
-  .mp_ipbox .hrip.mw100 {
-    width: 100%;
-  }
-
-  .mp_ipbox .hrip > label {
+  #mp-other-communities-embed .mp_ipbox .hrip > label {
     font-family: var(--font-family-body) !important;
     font-size: 14px;
     font-weight: 500 !important;
+    line-height: 24px;
     color: var(--color-black-default) !important;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
-  .mp_ipbox .hrip > input[type="text"],
-  .mp_ipbox .hrip > input[type="email"],
-  .mp_ipbox .hrip > input[type="tel"],
-  .mp_ipbox .hrip > select {
+  #mp-other-communities-embed .mp_ipbox .hrip > input[type="text"],
+  #mp-other-communities-embed .mp_ipbox .hrip > input[type="email"],
+  #mp-other-communities-embed .mp_ipbox .hrip > input[type="tel"],
+  #mp-other-communities-embed .mp_ipbox .hrip > select {
     width: 100%;
     height: 50px;
-    padding: 12px 14px;
+    padding: 12px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-input);
-    background: var(--color-white);
-    color: var(--color-black-default);
+    background-color: var(--color-white);
+    color: var(--color-black-default) !important;
+    font-family: var(--font-family-body);
     font-size: 14px;
-    font-family: inherit;
     outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.15s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .mp_ipbox .hrip > input:focus,
-  .mp_ipbox .hrip > select:focus {
+  #mp-other-communities-embed .mp_ipbox .hrip > input::placeholder {
+    color: var(--color-black-300) !important;
+  }
+
+  #mp-other-communities-embed .mp_ipbox .hrip > input:focus,
+  #mp-other-communities-embed .mp_ipbox .hrip > select:focus {
     border-color: var(--color-edit-border);
+    box-shadow: 0 0 0 3px rgba(80, 153, 236, 0.15);
   }
 
-  .mp_ipbox .hrip.fdrow {
+  #mp-other-communities-embed .mp_ipbox .hrip.fdrow {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    margin-top: 5px;
+    margin-bottom: 4px;
   }
 
-  .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+  #mp-other-communities-embed .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+    flex-shrink: 0;
     width: 18px;
     height: 18px;
     accent-color: var(--color-mp-green-700);
     cursor: pointer;
   }
 
-  .mp_ipbox .hrip.fdrow > label {
+  #mp-other-communities-embed .mp_ipbox .hrip.fdrow > label {
     margin-bottom: 0;
     font-size: 13px;
     cursor: pointer;
   }
 
-  .mp_ipbox .hrip span.error,
-  .mp_ipbox .hrip span.errorTickbox {
+  #mp-other-communities-embed .mp_ipbox span.error,
+  #mp-other-communities-embed .mp_ipbox span.errorTickbox {
     display: none;
+    width: 100%;
     font-size: 12px;
-    color: var(--color-error-text);
+    line-height: 16px;
+    color: var(--color-error-text) !important;
     margin-top: 4px;
   }
 
-  .mp_splash_modal .mps_success_info {
-    padding: 15px 0;
+  #mp-other-communities-embed .mp_ipbox .mp_submit_row {
+    margin-top: 14px;
+  }
+
+  #mp-other-communities-embed .mp_ipbox .mp_submit_row .btn-primary {
+    width: 100%;
+  }
+
+  #mp-other-communities-embed .mps_success_info p {
     font-size: 15px;
     line-height: 24px;
-    color: var(--color-black-default);
+    color: var(--color-black-default) !important;
   }
 
   body.mp-freeze-scroll {
     overflow: hidden !important;
-    height: 100vh !important;
   }
 
   /* ==========================================================================
-     Wide-Screen & Min-Width Responsive Breakpoints (Capped at 1440px)
+     Wide-Screen Tiers (container capped at 1440px)
      ========================================================================== */
-
-  /* Medium to Large Desktop (min-width: 1200px) */
   @media screen and (min-width: 1200px) {
     #mp-other-communities-embed .mp_container {
       max-width: 1320px;
       padding-left: 28px;
       padding-right: 28px;
     }
-    #mp-other-communities-embed .mp_hero_section {
-      padding: 84px 0 92px 0;
-    }
-    #mp-other-communities-embed h1.mp_hero_title {
-      font-size: 50px;
-      line-height: 58px;
-    }
-    #mp-other-communities-embed p.mp_hero_subtext {
-      font-size: 21px;
-      line-height: 34px;
-      margin-bottom: 38px;
-    }
-    #mp-other-communities-embed .mp_hero_img_card img {
-      max-width: 550px;
-    }
 
-    #mp-other-communities-embed .mp_ecosystem_section {
-      padding: 88px 0 100px 0;
-    }
-    #mp-other-communities-embed h2.mp_ecosystem_title {
-      font-size: 40px;
-      line-height: 50px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_grid {
-      gap: 28px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_card {
-      padding: 34px 28px 30px 28px;
-    }
+    #mp-other-communities-embed .mp_h2 { font-size: 50px; line-height: 58px; }
+    #mp-other-communities-embed .mp_lead { font-size: 22px; line-height: 32px; }
 
-    #mp-other-communities-embed .mp_capabilities_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-other-communities-embed h2.mp_capabilities_title {
-      font-size: 42px;
-      line-height: 52px;
-      margin-bottom: 52px;
-    }
-    #mp-other-communities-embed .mp_capabilities_grid {
-      gap: 24px;
-    }
-    #mp-other-communities-embed ul.mp_pillar_list li {
-      font-size: 15px;
-      padding: 14px 22px;
-    }
+    #mp-other-communities-embed .mp_hero { padding: 120px 0 128px 0; }
+    #mp-other-communities-embed .mp_hero_title { font-size: 62px; line-height: 68px; letter-spacing: -1.5px !important; }
+    #mp-other-communities-embed .mp_hero_tagline { font-size: 30px; line-height: 38px; }
+    #mp-other-communities-embed .mp_net { max-width: 580px; }
 
-    #mp-other-communities-embed .mp_insights_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-other-communities-embed .mp_insights_header {
-      margin-bottom: 54px;
-    }
-    #mp-other-communities-embed h2.mp_insights_title {
-      font-size: 40px;
-      line-height: 50px;
-    }
-    #mp-other-communities-embed p.mp_insights_subtitle {
-      font-size: 21px;
-      line-height: 32px;
-    }
-    #mp-other-communities-embed ul.mp_insights_list {
-      gap: 18px;
-    }
-    #mp-other-communities-embed ul.mp_insights_list li {
-      font-size: 16px;
-      line-height: 27px;
-    }
-    #mp-other-communities-embed .mp_insights_img_card img {
-      max-width: 560px;
-    }
+    #mp-other-communities-embed .mp_marquee_group li { font-size: 26px; line-height: 34px; }
 
-    #mp-other-communities-embed .mp_steps_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-other-communities-embed h2.mp_steps_title {
-      font-size: 38px;
-      line-height: 48px;
-    }
-    #mp-other-communities-embed .mp_steps_grid {
-      gap: 36px;
-    }
-    #mp-other-communities-embed .mp_step_card {
-      padding: 40px 32px 42px 32px;
-    }
-    #mp-other-communities-embed h3.mp_step_title {
-      font-size: 21px;
-      line-height: 30px;
-    }
-    #mp-other-communities-embed p.mp_step_desc {
-      font-size: 15px;
-      line-height: 25px;
-    }
+    #mp-other-communities-embed .mp_eco,
+    #mp-other-communities-embed .mp_caps { padding: 112px 0; }
+    #mp-other-communities-embed .mp_place,
+    #mp-other-communities-embed .mp_build { padding: 120px 0; }
+
+    #mp-other-communities-embed .mp_hero_grid,
+    #mp-other-communities-embed .mp_eco_layout,
+    #mp-other-communities-embed .mp_place_grid,
+    #mp-other-communities-embed .mp_build_grid { gap: 80px; }
+
+    #mp-other-communities-embed .mp_org h3 { font-size: 23px; line-height: 31px; }
+    #mp-other-communities-embed .mp_place_tag { font-size: 34px; line-height: 44px; }
+    #mp-other-communities-embed .mp_place_list li { font-size: 19px; line-height: 29px; }
+    #mp-other-communities-embed .mp_cap { padding: 36px 30px 34px 30px; }
+    #mp-other-communities-embed .mp_cap h3 { font-size: 23px; line-height: 31px; }
   }
 
-  /* Large Desktop - Maximum Width Ceiling (min-width: 1440px) */
   @media screen and (min-width: 1440px) {
     #mp-other-communities-embed .mp_container {
       max-width: 1440px;
       padding-left: 32px;
       padding-right: 32px;
     }
-    #mp-other-communities-embed .mp_hero_section {
-      padding: 92px 0 100px 0;
-    }
-    #mp-other-communities-embed h1.mp_hero_title {
-      font-size: 54px;
-      line-height: 62px;
-    }
-    #mp-other-communities-embed p.mp_hero_subtext {
-      font-size: 22px;
-      line-height: 36px;
-      margin-bottom: 42px;
-    }
-    #mp-other-communities-embed .btn-primary {
-      height: 52px;
-      padding: 0 32px;
-      font-size: 16px;
-    }
-    #mp-other-communities-embed .mp_hero_img_card img {
-      max-width: 580px;
-    }
 
-    #mp-other-communities-embed .mp_ecosystem_section {
-      padding: 96px 0 112px 0;
-    }
-    #mp-other-communities-embed h2.mp_ecosystem_title {
-      font-size: 42px;
-      line-height: 52px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_grid {
-      gap: 32px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_card {
-      padding: 38px 30px 32px 30px;
-      border-radius: 18px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_card h4 {
-      font-size: 21px;
-      line-height: 29px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_card p {
-      font-size: 15px;
-      line-height: 25px;
-    }
+    #mp-other-communities-embed .mp_h2 { font-size: 56px; line-height: 64px; letter-spacing: -1px !important; }
+    #mp-other-communities-embed .mp_lead { font-size: 24px; line-height: 34px; }
 
-    #mp-other-communities-embed .mp_capabilities_section {
-      padding: 96px 0 112px 0;
-    }
-    #mp-other-communities-embed h2.mp_capabilities_title {
-      font-size: 44px;
-      line-height: 56px;
-      margin-bottom: 56px;
-    }
-    #mp-other-communities-embed .mp_capabilities_grid {
-      gap: 28px;
-    }
-    #mp-other-communities-embed h3.mp_pillar_title {
-      font-size: 22px;
-      line-height: 28px;
-    }
-    #mp-other-communities-embed ul.mp_pillar_list li {
-      font-size: 15px;
-      padding: 14px 24px;
-    }
+    #mp-other-communities-embed .mp_hero { padding: 136px 0 144px 0; }
+    #mp-other-communities-embed .mp_hero_title { font-size: 68px; line-height: 74px; letter-spacing: -1.75px !important; }
+    #mp-other-communities-embed .mp_hero_tagline { font-size: 32px; line-height: 40px; }
+    #mp-other-communities-embed .mp_net { max-width: 620px; }
 
-    #mp-other-communities-embed .mp_insights_section {
-      padding: 96px 0 112px 0;
-    }
-    #mp-other-communities-embed .mp_insights_header {
-      margin-bottom: 60px;
-      max-width: 960px;
-    }
-    #mp-other-communities-embed h2.mp_insights_title {
-      font-size: 44px;
-      line-height: 54px;
-    }
-    #mp-other-communities-embed p.mp_insights_subtitle {
-      font-size: 22px;
-      line-height: 34px;
-    }
-    #mp-other-communities-embed p.mp_insights_lead {
-      font-size: 22px;
-      line-height: 30px;
-      margin-bottom: 26px;
-    }
-    #mp-other-communities-embed ul.mp_insights_list {
-      gap: 20px;
-    }
-    #mp-other-communities-embed ul.mp_insights_list li {
-      font-size: 17px;
-      line-height: 28px;
-    }
-    #mp-other-communities-embed .mp_insights_img_card img {
-      max-width: 600px;
-    }
+    #mp-other-communities-embed .mp_marquee { padding: 26px 0; }
+    #mp-other-communities-embed .mp_marquee_group li { font-size: 28px; line-height: 36px; gap: 44px; padding-right: 44px; }
 
-    #mp-other-communities-embed .mp_steps_section {
-      padding: 96px 0 112px 0;
-    }
-    #mp-other-communities-embed h2.mp_steps_title {
-      font-size: 42px;
-      line-height: 52px;
-    }
-    #mp-other-communities-embed .mp_steps_grid {
-      gap: 40px;
-    }
-    #mp-other-communities-embed .mp_step_card {
-      padding: 44px 34px 44px 34px;
-      border-radius: 18px;
-    }
-    #mp-other-communities-embed h3.mp_step_title {
-      font-size: 22px;
-      line-height: 30px;
-    }
-    #mp-other-communities-embed p.mp_step_desc {
-      font-size: 16px;
-      line-height: 26px;
-    }
+    #mp-other-communities-embed .mp_eco,
+    #mp-other-communities-embed .mp_caps { padding: 128px 0; }
+    #mp-other-communities-embed .mp_place,
+    #mp-other-communities-embed .mp_build { padding: 136px 0; }
+
+    #mp-other-communities-embed .mp_eco_grid { gap: 28px; }
+    #mp-other-communities-embed .mp_org { min-height: 340px; padding: 40px; }
+    #mp-other-communities-embed .mp_org_num { font-size: 120px; line-height: 120px; }
+    #mp-other-communities-embed .mp_org h3 { font-size: 24px; line-height: 32px; }
+    #mp-other-communities-embed .mp_org p { font-size: 17px; line-height: 28px; }
+    #mp-other-communities-embed .mp_eco_fit { font-size: 18px; line-height: 28px; }
+    #mp-other-communities-embed .mp_place_tag { font-size: 38px; line-height: 48px; letter-spacing: -1px !important; }
+    #mp-other-communities-embed .mp_place_list li { font-size: 20px; line-height: 30px; padding: 24px 8px; }
+    #mp-other-communities-embed .mp_caps_grid { gap: 28px; }
+    #mp-other-communities-embed .mp_cap h3 { font-size: 24px; line-height: 32px; }
+    #mp-other-communities-embed .mp_cap li { font-size: 15px; }
+    #mp-other-communities-embed .mp_ui { gap: 18px; padding: 22px; }
+    #mp-other-communities-embed .mp_ui_card { padding: 24px; }
+    #mp-other-communities-embed .mp_step h4 { font-size: 22px; line-height: 30px; }
+    #mp-other-communities-embed .mp_step p { font-size: 17px; line-height: 28px; }
   }
 
-  /* Tablet / Medium Screens (max-width: 991px) */
+  /* ==========================================================================
+     Laptop (max-width: 1199px): capabilities go 2 x 2
+     ========================================================================== */
+  @media screen and (max-width: 1199px) {
+    #mp-other-communities-embed .mp_caps_grid { grid-template-columns: repeat(2, 1fr); }
+    #mp-other-communities-embed .mp_eco_layout { grid-template-columns: 1fr; gap: 48px; }
+    #mp-other-communities-embed .mp_eco_head { max-width: 760px; }
+  }
+
+  /* ==========================================================================
+     Tablet (max-width: 991px)
+     ========================================================================== */
   @media screen and (max-width: 991px) {
-    #mp-other-communities-embed .mp_hero_section {
-      padding: 60px 0 64px 0;
+    #mp-other-communities-embed .mp_h2 { font-size: 38px; line-height: 46px; letter-spacing: -0.5px !important; }
+    #mp-other-communities-embed .mp_lead { font-size: 20px; line-height: 30px; }
+
+    #mp-other-communities-embed .mp_hero { padding: 80px 0 88px 0; }
+    #mp-other-communities-embed .mp_hero_grid { grid-template-columns: 1fr; gap: 56px; }
+    #mp-other-communities-embed .mp_hero_title { font-size: 46px; line-height: 52px; letter-spacing: -1px !important; }
+    #mp-other-communities-embed .mp_hero_tagline { font-size: 24px; line-height: 32px; margin-top: 20px; }
+    #mp-other-communities-embed .mp_net { justify-self: center; max-width: 480px; }
+
+    #mp-other-communities-embed .mp_marquee_group li { font-size: 22px; line-height: 30px; gap: 28px; padding-right: 28px; }
+
+    #mp-other-communities-embed .mp_eco,
+    #mp-other-communities-embed .mp_place,
+    #mp-other-communities-embed .mp_caps,
+    #mp-other-communities-embed .mp_build { padding: 80px 0; }
+
+    #mp-other-communities-embed .mp_eco_layout,
+    #mp-other-communities-embed .mp_place_grid,
+    #mp-other-communities-embed .mp_build_grid { grid-template-columns: 1fr; gap: 48px; }
+    #mp-other-communities-embed .mp_eco_head { max-width: 680px; }
+    #mp-other-communities-embed .mp_org { min-height: 280px; }
+
+    #mp-other-communities-embed .mp_place_tag { font-size: 28px; line-height: 38px; }
+    #mp-other-communities-embed .mp_place_list li { font-size: 18px; line-height: 28px; }
+
+    #mp-other-communities-embed .mp_caps .mp_h2 { margin-bottom: 40px; }
+    #mp-other-communities-embed .mp_caps_grid { gap: 20px; }
+
+    #mp-other-communities-embed .mp_ui { max-width: 640px; }
+    #mp-other-communities-embed .mp_build_copy { order: -1; }
+  }
+
+  /* ==========================================================================
+     Mobile (max-width: 576px)
+     ========================================================================== */
+  @media screen and (max-width: 576px) {
+    #mp-other-communities-embed .mp_container {
+      padding-left: 20px;
+      padding-right: 20px;
     }
-    #mp-other-communities-embed .mp_hero_grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      text-align: center;
+
+    #mp-other-communities-embed .mp_h2 { font-size: 30px; line-height: 38px; letter-spacing: -0.25px !important; }
+    #mp-other-communities-embed .mp_lead { font-size: 18px; line-height: 27px; }
+
+    #mp-other-communities-embed .btn-primary,
+    #mp-other-communities-embed .btn-light,
+    #mp-other-communities-embed .btn-ghost-light { width: 100%; white-space: normal; text-align: center; }
+    #mp-other-communities-embed .btn-lg { height: 56px; padding: 0 20px; font-size: 15px; }
+
+    #mp-other-communities-embed .mp_hero { padding: 64px 0 72px 0; }
+    #mp-other-communities-embed .mp_eyebrow { font-size: 11px; letter-spacing: 1px !important; }
+    #mp-other-communities-embed .mp_hero_title { font-size: 36px; line-height: 42px; letter-spacing: -0.75px !important; }
+    #mp-other-communities-embed .mp_hero_tagline { font-size: 21px; line-height: 29px; }
+    #mp-other-communities-embed .mp_hero_actions { margin-top: 32px; gap: 12px; }
+    #mp-other-communities-embed .mp_net_frame { border-width: 3px; }
+    #mp-other-communities-embed .mp_net_frame.f1,
+    #mp-other-communities-embed .mp_net_frame.f4 { border-radius: 20px; }
+    #mp-other-communities-embed .mp_chip { width: 44px; height: 44px; border-radius: 14px; }
+    #mp-other-communities-embed .mp_chip svg { width: 20px; height: 20px; }
+    #mp-other-communities-embed .mp_dots { width: 40px; height: 40px; }
+
+    #mp-other-communities-embed .mp_marquee { padding: 16px 0; }
+    #mp-other-communities-embed .mp_marquee_group li { font-size: 18px; line-height: 26px; gap: 20px; padding-right: 20px; }
+
+    #mp-other-communities-embed .mp_eco,
+    #mp-other-communities-embed .mp_place,
+    #mp-other-communities-embed .mp_caps,
+    #mp-other-communities-embed .mp_build { padding: 64px 0; }
+
+    #mp-other-communities-embed .mp_eco::before { display: none; }
+    #mp-other-communities-embed .mp_eco_fit { font-size: 16px; line-height: 24px; }
+    #mp-other-communities-embed .mp_eco_grid { grid-template-columns: 1fr; gap: 16px; }
+    #mp-other-communities-embed .mp_org { min-height: 0; padding: 28px 24px; }
+    #mp-other-communities-embed .mp_org_icon { margin-bottom: 32px; }
+    #mp-other-communities-embed .mp_org_num { font-size: 80px; line-height: 80px; top: 12px; right: 20px; }
+    #mp-other-communities-embed .mp_org h3 { font-size: 21px; line-height: 29px; }
+    #mp-other-communities-embed .mp_org p { font-size: 15px; line-height: 25px; }
+
+    #mp-other-communities-embed .mp_place_tag { font-size: 23px; line-height: 31px; padding-left: 18px; }
+    #mp-other-communities-embed .mp_place_list li { padding: 18px 4px; gap: 16px; font-size: 16px; line-height: 25px; }
+    #mp-other-communities-embed .mp_check_icon { width: 36px; height: 36px; }
+
+    #mp-other-communities-embed .mp_caps_grid { grid-template-columns: 1fr; gap: 16px; }
+    #mp-other-communities-embed .mp_cap { padding: 28px 22px 26px 22px; }
+    #mp-other-communities-embed .mp_cap h3 { font-size: 21px; line-height: 29px; }
+
+    #mp-other-communities-embed .mp_ui { gap: 10px; padding: 10px; border-radius: 22px; }
+    #mp-other-communities-embed .mp_ui_card { padding: 14px; gap: 10px; border-radius: 16px; }
+    #mp-other-communities-embed .mp_ui_bar { height: 8px; }
+    #mp-other-communities-embed .mp_ui_pill { width: 36px; height: 18px; }
+    #mp-other-communities-embed .mp_ui_av { width: 34px; height: 34px; border-width: 2px; }
+    #mp-other-communities-embed .mp_ui_react span { width: 24px; height: 24px; }
+    #mp-other-communities-embed .mp_ui_react svg { width: 12px; height: 12px; }
+    #mp-other-communities-embed .mp_ui > .mp_chip { left: -10px; }
+    #mp-other-communities-embed .mp_ui > .mp_dots { right: -6px; top: -18px; }
+
+    #mp-other-communities-embed .mp_step { grid-template-columns: 44px 1fr; gap: 16px; }
+    #mp-other-communities-embed .mp_step_num { width: 44px; height: 44px; font-size: 18px; }
+    #mp-other-communities-embed .mp_step:not(:last-child)::before { left: 21px; top: 48px; }
+    #mp-other-communities-embed .mp_step h4 { font-size: 19px; line-height: 26px; margin-top: 8px; }
+    #mp-other-communities-embed .mp_step p { font-size: 15px; line-height: 24px; }
+
+    #mp-other-communities-embed .mp_ipbox .hrip.mw50 { width: 100%; }
+    #mp-other-communities-embed .mp_splash_modal { padding: 28px 20px 24px 20px; }
+  }
+
+  /* ==========================================================================
+     Reduced Motion
+     ========================================================================== */
+  @media (prefers-reduced-motion: reduce) {
+    #mp-other-communities-embed.mp-js .mp-reveal,
+    #mp-other-communities-embed.mp-js .mp-draw path.mp_link,
+    #mp-other-communities-embed.mp-js .mp-draw .mp_node {
+      transition: none !important;
     }
-    #mp-other-communities-embed .mp_hero_content {
-      max-width: 100%;
-      align-items: center;
-      text-align: center;
+
+    #mp-other-communities-embed.mp-js .mp-reveal {
+      opacity: 1;
+      transform: none;
     }
-    #mp-other-communities-embed h1.mp_hero_title {
-      font-size: 38px;
-      line-height: 46px;
-      text-align: center;
+
+    #mp-other-communities-embed.mp-js .mp-draw path.mp_link {
+      stroke-dashoffset: 0;
     }
-    #mp-other-communities-embed p.mp_hero_subtext {
-      font-size: 18px;
-      line-height: 28px;
-      text-align: center;
+
+    #mp-other-communities-embed.mp-js .mp-draw .mp_node {
+      opacity: 1;
     }
-    #mp-other-communities-embed .mp_hero_actions {
+
+    #mp-other-communities-embed .mp_org:hover,
+    #mp-other-communities-embed .mp_cap:hover,
+    #mp-other-communities-embed .mp_ui_card:hover {
+      translate: none !important;
+    }
+
+    #mp-other-communities-embed .mp_chip,
+    #mp-other-communities-embed .mp_eyebrow::before {
+      animation: none !important;
+    }
+
+    #mp-other-communities-embed .btn-primary:hover,
+    #mp-other-communities-embed .btn-light:hover,
+    #mp-other-communities-embed .btn-ghost-light:hover,
+    #mp-other-communities-embed .btn-primary:hover svg,
+    #mp-other-communities-embed .btn-light:hover svg,
+    #mp-other-communities-embed .mp_org:hover .mp_org_num,
+    #mp-other-communities-embed .mp_org:hover .mp_org_icon,
+    #mp-other-communities-embed .mps_close:hover {
+      transform: none !important;
+    }
+
+    #mp-other-communities-embed .mp_net_frame:hover img {
+      scale: none !important;
+    }
+
+    #mp-other-communities-embed .mp_marquee_track {
+      animation: none;
+      width: auto;
       justify-content: center;
     }
-    #mp-other-communities-embed .mp_hero_visual {
-      order: 2;
-    }
-    #mp-other-communities-embed .mp_hero_img_card img {
-      max-width: 460px;
+
+    #mp-other-communities-embed .mp_marquee_group {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 8px;
     }
 
-    #mp-other-communities-embed .mp_ecosystem_section {
-      padding: 60px 0 68px 0;
-    }
-    #mp-other-communities-embed h2.mp_ecosystem_title {
-      font-size: 32px;
-      line-height: 40px;
-    }
-    #mp-other-communities-embed p.mp_ecosystem_subtitle {
-      font-size: 18px;
-      line-height: 28px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_card {
-      padding: 28px 24px;
-    }
-
-    #mp-other-communities-embed .mp_capabilities_section {
-      padding: 56px 0 64px 0;
-    }
-    #mp-other-communities-embed h2.mp_capabilities_title {
-      font-size: 32px;
-      line-height: 42px;
-      margin-bottom: 36px;
-    }
-    #mp-other-communities-embed .mp_capabilities_grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    #mp-other-communities-embed .mp_insights_section {
-      padding: 60px 0 68px 0;
-    }
-    #mp-other-communities-embed .mp_insights_header {
-      margin-bottom: 38px;
-    }
-    #mp-other-communities-embed h2.mp_insights_title {
-      font-size: 32px;
-      line-height: 42px;
-    }
-    #mp-other-communities-embed p.mp_insights_subtitle {
-      font-size: 18px;
-      line-height: 28px;
-    }
-    #mp-other-communities-embed .mp_insights_grid {
-      grid-template-columns: 1fr;
-      gap: 36px;
-    }
-    #mp-other-communities-embed p.mp_insights_lead {
-      font-size: 18px;
-      line-height: 26px;
-    }
-    #mp-other-communities-embed .mp_insights_visual {
-      order: 2;
-    }
-    #mp-other-communities-embed .mp_insights_img_card img {
-      max-width: 500px;
-    }
-
-    #mp-other-communities-embed .mp_steps_section {
-      padding: 56px 0 64px 0;
-    }
-    #mp-other-communities-embed h2.mp_steps_title {
-      font-size: 28px;
-      line-height: 38px;
-    }
-    #mp-other-communities-embed .mp_steps_grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    #mp-other-communities-embed .mp_steps_track {
+    #mp-other-communities-embed .mp_marquee_group[aria-hidden="true"] {
       display: none;
-    }
-    #mp-other-communities-embed .mp_step_card {
-      padding: 28px 24px;
-    }
-  }
-
-  /* Mobile Screens (max-width: 576px) */
-  @media screen and (max-width: 576px) {
-    #mp-other-communities-embed .mp_hero_section {
-      padding: 44px 0 44px 0;
-    }
-    #mp-other-communities-embed h1.mp_hero_title {
-      font-size: 30px;
-      line-height: 38px;
-      margin-bottom: 18px;
-    }
-    #mp-other-communities-embed p.mp_hero_subtext {
-      font-size: 16px;
-      line-height: 26px;
-      margin-bottom: 28px;
-    }
-    #mp-other-communities-embed .btn-primary {
-      width: 100%;
-      height: 48px;
-      padding: 0 20px;
-    }
-    #mp-other-communities-embed .mp_hero_img_card img {
-      max-width: 100%;
-    }
-
-    #mp-other-communities-embed .mp_ecosystem_section {
-      padding: 44px 0 48px 0;
-    }
-    #mp-other-communities-embed h2.mp_ecosystem_title {
-      font-size: 26px;
-      line-height: 34px;
-    }
-    #mp-other-communities-embed p.mp_ecosystem_subtitle {
-      font-size: 16px;
-      line-height: 26px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    #mp-other-communities-embed .mp_ecosystem_card {
-      padding: 24px 20px;
-    }
-
-    #mp-other-communities-embed .mp_capabilities_section {
-      padding: 44px 0 52px 0;
-    }
-    #mp-other-communities-embed h2.mp_capabilities_title {
-      font-size: 26px;
-      line-height: 34px;
-      margin-bottom: 28px;
-    }
-    #mp-other-communities-embed .mp_capabilities_grid {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-    #mp-other-communities-embed ul.mp_pillar_list li {
-      font-size: 14px;
-      padding: 12px 18px;
-    }
-
-    #mp-other-communities-embed .mp_insights_section {
-      padding: 44px 0 48px 0;
-    }
-    #mp-other-communities-embed .mp_insights_header {
-      margin-bottom: 28px;
-    }
-    #mp-other-communities-embed h2.mp_insights_title {
-      font-size: 26px;
-      line-height: 34px;
-    }
-    #mp-other-communities-embed p.mp_insights_subtitle {
-      font-size: 16px;
-      line-height: 25px;
-    }
-    #mp-other-communities-embed p.mp_insights_lead {
-      font-size: 17px;
-      line-height: 24px;
-      margin-bottom: 16px;
-    }
-    #mp-other-communities-embed ul.mp_insights_list {
-      gap: 14px;
-    }
-    #mp-other-communities-embed ul.mp_insights_list li {
-      font-size: 15px;
-      line-height: 24px;
-      gap: 12px;
-    }
-    #mp-other-communities-embed .mp_insights_img_card img {
-      max-width: 100%;
-    }
-
-    #mp-other-communities-embed .mp_steps_section {
-      padding: 44px 0 52px 0;
-    }
-    #mp-other-communities-embed h2.mp_steps_title {
-      font-size: 24px;
-      line-height: 32px;
-    }
-    #mp-other-communities-embed .mp_step_card {
-      padding: 24px 20px;
-    }
-
-    .mp_ipbox .hrip.mw50 {
-      width: 100%;
-    }
-    .mp_splash_modal {
-      padding: 24px 18px;
     }
   }
 </style>
 
 <!-- ========================================================================
      Root Scoping Container for WYSIWYG / CMS Embed
-     Strictly adhering to 000-myp-community Brand Tokens & Design System
      ======================================================================== -->
 <div id="mp-other-communities-embed" class="mp-other-communities-embed">
 
+  <div class="mp_scroll_bar" id="mpOcScrollBar" aria-hidden="true"></div>
+
   <!-- ======================================================================
-       Hero Section
-       First column is HTML (Communities for Associations, B2C Brands, Media & Education)
-       Second column is Image (hero people collage in the style of home page hero)
+       Section 1: Hero
        ====================================================================== -->
-  <section class="mp_hero_section">
-    <div class="mp_container">
-      <div class="mp_hero_grid">
-        
-        <!-- Column 1: HTML Content -->
-        <div class="mp_hero_content mp-reveal">
-          <h1 class="mp_hero_title">Communities for Associations, <span class="highlight_green">B2C Brands, Media &amp; Education</span></h1>
-          <p class="mp_hero_subtext">Engage Your Audience Like Never Before.</p>
-          
-          <div class="mp_hero_actions">
-            <button type="button" class="btn-primary" data-open-contact="">
-              <span>Book 30-Minute Discovery Call</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
-              </svg>
-            </button>
-          </div>
+  <section class="mp_hero">
+    <div class="mp_container mp_hero_grid">
+      <div class="mp_hero_copy mp-reveal">
+        <span class="mp_eyebrow">Community Types</span>
+        <h1 class="mp_hero_title">Communities for Associations, <span class="mp_hl">B2C Brands, Media &amp; Education</span></h1>
+        <p class="mp_hero_tagline">Engage Your Audience <span>Like Never Before.</span></p>
+        <div class="mp_hero_actions">
+          <button type="button" class="btn-primary btn-lg" data-open-contact>
+            <span>Book 30-Minute Discovery Call</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+            </svg>
+          </button>
+          <a class="btn-ghost-light btn-lg" href="https://www.myp.community/en/features/">
+            <span>Explore Features</span>
+          </a>
         </div>
+      </div>
 
-        <!-- Column 2: Visual Collage Image (Clean, No Text) -->
-        <div class="mp_hero_visual mp-reveal" data-delay="2">
-          <div class="mp_hero_img_card">
-            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/associations_hero_banner.jpg" 
-                 alt="Communities for Associations, B2C Brands, Media &amp; Education" 
-                 loading="eager" 
-                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/associations_hero_banner.jpg';}">
-          </div>
+      <!-- People network: five portrait crops joined by SVG connectors -->
+      <div class="mp_net mp-reveal" data-delay="2" role="img"
+        aria-label="Association members, educators, media creators and customers connected through one community">
+        <svg class="mp_vec mp-draw" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="mp_ring" cx="50" cy="50" r="49" />
+          <path class="mp_link" pathLength="1" d="M21 33C35 5 60 2 79 19" />
+          <path class="mp_link" pathLength="1" d="M21 33C2 48 2 66 21.5 79.5" />
+          <path class="mp_link" pathLength="1" d="M21.5 79.5C32 100 50 96 52.5 58.8" />
+          <path class="mp_link" pathLength="1" d="M21 33C40 38 46 44 52.5 58.8" />
+          <path class="mp_link" pathLength="1" d="M52.5 58.8C60 45 70 44 81 66.3" />
+          <path class="mp_link" pathLength="1" d="M79 19C100 32 100 52 81 66.3" />
+          <circle class="mp_node" cx="48.1" cy="9.1" r="1.6" />
+          <circle class="mp_node" cx="7" cy="59.2" r="1.6" />
+          <circle class="mp_node" cx="40" cy="90.8" r="1.6" />
+          <circle class="mp_node" cx="41.4" cy="42.2" r="1.6" />
+          <circle class="mp_node" cx="62.8" cy="49.1" r="1.4" />
+          <circle class="mp_node" cx="95" cy="42.2" r="1.6" />
+        </svg>
+        <div class="mp_net_frame f1">
+          <img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
         </div>
-
+        <div class="mp_net_frame f2">
+          <img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <div class="mp_net_frame f3">
+          <img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <div class="mp_net_frame f4">
+          <img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <div class="mp_net_frame f5">
+          <img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="20" cy="20" r="11" />
+          <circle cx="46" cy="20" r="11" />
+          <circle cx="33" cy="44" r="11" />
+        </svg>
+        <span class="mp_chip c1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20.5l1.6-4.6A8.4 8.4 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z" />
+          </svg>
+        </span>
+        <span class="mp_chip c2 d2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+          </svg>
+        </span>
+        <span class="mp_chip c3 d3" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M22 10 12 5 2 10l10 5 10-5z" />
+            <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+          </svg>
+        </span>
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       Section 2: Proven High-Value Ecosystem (4 Key Organizations Cards)
+       Section 2: Marquee Band (the four organization types)
        ====================================================================== -->
-  <section class="mp_ecosystem_section">
-    <div class="mp_container">
-      <div class="mp_ecosystem_header mp-reveal">
-        <h2 class="mp_ecosystem_title">A Proven High-Value Ecosystem for <span class="highlight_green">Every Organization</span></h2>
-        <p class="mp_ecosystem_subtitle">Put the platform that powers HR’s largest online community to work for you.</p>
-        <p class="mp_ecosystem_lead">MyPeople is a perfect fit for these key organizations:</p>
-      </div>
-
-      <div class="mp_ecosystem_grid">
-        
-        <!-- Card 1: Professional Associations -->
-        <div class="mp_ecosystem_card mp-reveal" data-delay="1">
-          <div class="mp_ecosystem_icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-          </div>
-          <h4>Professional Associations</h4>
-          <p>Modernize your member experience with discussion boards, personalized content, virtual events and other experiences that keep members highly engaged and paying dues.</p>
-        </div>
-
-        <!-- Card 2: Educational Institutions -->
-        <div class="mp_ecosystem_card mp-reveal" data-delay="2">
-          <div class="mp_ecosystem_icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-            </svg>
-          </div>
-          <h4>Educational Institutions</h4>
-          <p>Keep students, alumni, or course cohorts connected. Facilitate safe, structured spaces for peer-to-peer discussions, knowledge sharing and much more.</p>
-        </div>
-
-        <!-- Card 3: Media Companies -->
-        <div class="mp_ecosystem_card mp-reveal" data-delay="3">
-          <div class="mp_ecosystem_icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path>
-              <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path>
-              <circle cx="12" cy="12" r="2"></circle>
-              <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"></path>
-              <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"></path>
-            </svg>
-          </div>
-          <h4>Media Companies</h4>
-          <p>Transform passive readers, viewers, listeners and others into an active, engaged audience. Deliver exclusive content, host interactive discussions, and capture valuable first-party behavioral data to better monetize your reach.</p>
-        </div>
-
-        <!-- Card 4: B2C Companies -->
-        <div class="mp_ecosystem_card mp-reveal" data-delay="4">
-          <div class="mp_ecosystem_icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-          </div>
-          <h4>B2C Companies</h4>
-          <p>Turn casual buyers into passionate brand advocates. Create an owned, dedicated space for product discussion, direct customer feedback, and exclusive customer-loyalty initiatives.</p>
-        </div>
-
-      </div>
+  <div class="mp_marquee" role="region" aria-label="Organizations MyPeople fits">
+    <div class="mp_marquee_track">
+      <ul class="mp_marquee_group">
+        <li>Professional Associations</li>
+        <li>Educational Institutions</li>
+        <li>Media Companies</li>
+        <li>B2C Companies</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
   <!-- ======================================================================
-       Section 3: One Platform. Every Capability Your Community Needs. (4 Pillars)
+       Section 3: A Proven High-Value Ecosystem for Every Organization
        ====================================================================== -->
-  <section class="mp_capabilities_section">
-    <div class="mp_container">
-      
-      <!-- Section Title -->
-      <h2 class="mp_capabilities_title mp-reveal">
-        <strong>One Platform.</strong> <span class="highlight_green">Every Capability</span> Your Community Needs.
-      </h2>
-
-      <!-- 4-Pillar Grid -->
-      <div class="mp_capabilities_grid">
-        
-        <!-- Pillar 1: Engagement -->
-        <div class="mp_capability_pillar theme_engagement mp-reveal" data-delay="1">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Engagement</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Personalized Newsfeed</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Blogs &amp; Articles</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Virtual Events</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Forums &amp; Discussions</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Polls &amp; Surveys</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Gamification</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Pillar 2: Administration -->
-        <div class="mp_capability_pillar theme_admin mp-reveal" data-delay="2">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Administration</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Content Management System</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>LMS</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Email System</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Moderation Tools</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Site Designer</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>User Management</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Pillar 3: Intelligence/AI -->
-        <div class="mp_capability_pillar theme_ai mp-reveal" data-delay="3">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Intelligence/AI</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Member Analytics</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Trust Scores</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Customer Health Index</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Data Dashboards</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Agentic Search</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>AI Integration</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Pillar 4: Marketing/Sales -->
-        <div class="mp_capability_pillar theme_marketing mp-reveal" data-delay="4">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Marketing/Sales</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>CRM</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Lead Forms/Scoring</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Proposal Builder</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Community Store</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Advertising Tools</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Membership Tiers</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Drip Campaigns</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       Section 4: Every Community Needs a Place to Call Home (List + Visual)
-       ====================================================================== -->
-  <section class="mp_insights_section">
-    <div class="mp_container">
-      <!-- Center Aligned Title & Subtitle Header -->
-      <div class="mp_insights_header mp-reveal">
-        <h2 class="mp_insights_title">
-          Every Community Needs a <span class="highlight_green">Place to Call Home.</span>
-        </h2>
-        <p class="mp_insights_subtitle">
-          Every Community Owner Needs <span class="highlight_green">Clear Insights</span> Into Their Community.
+  <section class="mp_eco">
+    <div class="mp_container mp_eco_layout">
+      <div class="mp_eco_head mp-reveal">
+        <span class="mp_rule" aria-hidden="true"></span>
+        <h2 class="mp_h2">A Proven High-Value Ecosystem for <span class="mp_hl">Every Organization</span></h2>
+        <p class="mp_lead">Put the platform that powers HR’s largest online community to work for you.</p>
+        <p class="mp_eco_fit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+          <span>MyPeople is a perfect fit for these key organizations:</span>
         </p>
       </div>
 
-      <!-- Next Row: Two Columns (Left: List, Right: Dashboard Visual) -->
-      <div class="mp_insights_grid">
-        
-        <!-- Column 1: HTML Content & Stylized List -->
-        <div class="mp_insights_content mp-reveal" data-delay="1">
-          <p class="mp_insights_lead">With MyPeople:</p>
-
-          <ul class="mp_insights_list">
-            <li>
-              <div class="mp_insights_icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-                </svg>
-              </div>
-              <div><strong>Own a community site</strong> in your own brand</div>
-            </li>
-            <li>
-              <div class="mp_insights_icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-                </svg>
-              </div>
-              <div>Provide a <strong>unified home for members to easily engage</strong> with each other</div>
-            </li>
-            <li>
-              <div class="mp_insights_icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-                </svg>
-              </div>
-              <div>Deliver <strong>highly personalized</strong> content, virtual events, and learning experiences</div>
-            </li>
-            <li>
-              <div class="mp_insights_icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-                </svg>
-              </div>
-              <div>Capture <strong>actionable data</strong> on community-wide trends and on individual member behavior, engagement and interests.</div>
-            </li>
-            <li>
-              <div class="mp_insights_icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-                </svg>
-              </div>
-              <div>Use data insights to personalize outreach and <strong>uncover new revenue opportunities.</strong></div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Column 2: Dashboard Visual -->
-        <div class="mp_insights_visual mp-reveal" data-delay="2">
-          <div class="mp_insights_img_card">
-            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/community_insights_home.jpg" 
-                 alt="Every Community Needs a Place to Call Home. Every Community Owner Needs Clear Insights Into Their Community." 
-                 loading="lazy" 
-                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/community_insights_home.jpg';}">
+      <div class="mp_eco_grid">
+        <article class="mp_org is-green mp-reveal" data-delay="1">
+          <span class="mp_org_num" aria-hidden="true">01</span>
+          <div class="mp_org_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
           </div>
-        </div>
+          <h3>Professional Associations</h3>
+          <p>Modernize your member experience with discussion boards, personalized content, virtual events and other
+            experiences that keep members highly engaged and paying dues.</p>
+        </article>
 
+        <article class="mp_org is-white mp-reveal" data-delay="2">
+          <span class="mp_org_num" aria-hidden="true">02</span>
+          <div class="mp_org_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <h3>Educational Institutions</h3>
+          <p>Keep students, alumni, or course cohorts connected. Facilitate safe, structured spaces for peer-to-peer
+            discussions, knowledge sharing and much more.</p>
+        </article>
+
+        <article class="mp_org is-white mp-reveal" data-delay="3">
+          <span class="mp_org_num" aria-hidden="true">03</span>
+          <div class="mp_org_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+              <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+              <circle cx="12" cy="12" r="2" />
+              <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+              <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" />
+            </svg>
+          </div>
+          <h3>Media Companies</h3>
+          <p>Transform passive readers, viewers, listeners and others into an active, engaged audience. Deliver
+            exclusive content, host interactive discussions, and capture valuable first-party behavioral data to better
+            monetize your reach.</p>
+        </article>
+
+        <article class="mp_org is-slate mp-reveal" data-delay="4">
+          <span class="mp_org_num" aria-hidden="true">04</span>
+          <div class="mp_org_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <h3>B2C Companies</h3>
+          <p>Turn casual buyers into passionate brand advocates. Create an owned, dedicated space for product
+            discussion, direct customer feedback, and exclusive customer-loyalty initiatives.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       Section 5: LET’S BUILD YOUR COMMUNITY ON MYPEOPLE (Interconnected Steps)
+       Section 4: Every Community Needs a Place to Call Home
        ====================================================================== -->
-  <section class="mp_steps_section">
+  <section class="mp_place">
+    <div class="mp_container mp_place_grid">
+      <div class="mp-reveal">
+        <h2 class="mp_h2">Every Community Needs a <span class="mp_hl">Place to Call Home.</span></h2>
+        <p class="mp_place_tag">Every Community Owner Needs <span>Clear Insights</span> Into Their Community.</p>
+      </div>
+
+      <div class="mp-reveal" data-delay="2">
+        <p class="mp_place_label">With MyPeople:</p>
+        <ul class="mp_place_list">
+          <li>
+            <span class="mp_check_icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg></span>
+            <span><strong>Own a community site</strong> in your own brand</span>
+          </li>
+          <li>
+            <span class="mp_check_icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg></span>
+            <span>Provide a <strong>unified home for members to easily engage</strong> with each other</span>
+          </li>
+          <li>
+            <span class="mp_check_icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg></span>
+            <span>Deliver <strong>highly personalized</strong> content, virtual events, and learning experiences</span>
+          </li>
+          <li>
+            <span class="mp_check_icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg></span>
+            <span>Capture <strong>actionable data</strong> on community-wide trends and on individual member behavior, engagement and interests.</span>
+          </li>
+          <li>
+            <span class="mp_check_icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg></span>
+            <span>Use data insights to personalize outreach and <strong>uncover new revenue opportunities.</strong></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Section 5: One Platform. Every Capability Your Community Needs.
+       ====================================================================== -->
+  <section class="mp_caps">
     <div class="mp_container">
-      
-      <!-- Section Header -->
-      <div class="mp_steps_header mp-reveal">
-        <h2 class="mp_steps_title">LET’S BUILD YOUR COMMUNITY ON MYPEOPLE</h2>
-      </div>
+      <h2 class="mp_h2 mp-reveal">One Platform. <span class="mp_hl">Every Capability</span> Your Community Needs.</h2>
 
-      <!-- Interconnected Steps Track & Cards Grid -->
-      <div class="mp_steps_wrapper mp-reveal" data-delay="1">
-        
-        <!-- Connecting Pipeline Track (Desktop visible) -->
-        <div class="mp_steps_track" aria-hidden="true">
-          <div class="mp_track_line"></div>
-          <div class="mp_track_arrow track_arrow_1">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
+      <div class="mp_caps_grid">
+        <div class="mp_cap mp-reveal" data-delay="1">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="9" cy="7" r="3.5" />
+              <path d="M2.5 20.5v-1A5.5 5.5 0 0 1 8 14h2a5.5 5.5 0 0 1 5.5 5.5v1" />
+              <circle cx="17" cy="8" r="2.5" />
+              <path d="M17.5 13.5a4.5 4.5 0 0 1 4 4.5v1" />
             </svg>
           </div>
-          <div class="mp_track_arrow track_arrow_2">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
+          <h3>Engagement</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Personalized Newsfeed</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Blogs &amp; Articles</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Virtual Events</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Forums &amp; Discussions</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Polls &amp; Surveys</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Gamification</li>
+          </ul>
+        </div>
+
+        <div class="mp_cap mp-reveal" data-delay="2">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 21v-7" /><path d="M4 10V3" /><path d="M12 21v-9" /><path d="M12 8V3" />
+              <path d="M20 21v-5" /><path d="M20 12V3" />
+              <circle cx="4" cy="12" r="2" /><circle cx="12" cy="10" r="2" /><circle cx="20" cy="14" r="2" />
             </svg>
+          </div>
+          <h3>Administration</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Content Management System</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>LMS</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Email System</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Moderation Tools</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Site Designer</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>User Management</li>
+          </ul>
+        </div>
+
+        <div class="mp_cap mp-reveal" data-delay="3">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3z" />
+              <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z" />
+            </svg>
+          </div>
+          <h3>Intelligence/AI</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Member Analytics</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Trust Scores</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Customer Health Index</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Data Dashboards</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Agentic Search</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>AI Integration</li>
+          </ul>
+        </div>
+
+        <div class="mp_cap mp-reveal" data-delay="4">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M3 11v3a1 1 0 0 0 1 1h3l6 4.5V5.5L7 10H4a1 1 0 0 0-1 1z" />
+              <path d="M17 9a4 4 0 0 1 0 6" />
+              <path d="M19.5 6.5a7.5 7.5 0 0 1 0 11" />
+            </svg>
+          </div>
+          <h3>Marketing/Sales</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>CRM</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Lead Forms/Scoring</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Proposal Builder</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Community Store</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Advertising Tools</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Membership Tiers</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Drip Campaigns</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Section 6: Let's Build Your Community on MyPeople
+       ====================================================================== -->
+  <section class="mp_build">
+    <div class="mp_container mp_build_grid">
+      <!-- Product UI drawn in code: placeholder bars only, no words or numbers -->
+      <div class="mp_ui mp-reveal" role="img"
+        aria-label="MyPeople community dashboard with member activity, engagement and a discussion feed">
+        <div class="mp_ui_card is-wide">
+          <div class="mp_ui_head">
+            <div><i class="mp_ui_bar is-dark w45"></i><i class="mp_ui_bar w30"></i></div>
+            <span class="mp_ui_pill"></span>
+          </div>
+          <svg class="mp_ui_chart mp-draw" viewBox="0 0 320 132" aria-hidden="true">
+            <line class="mp_ui_grid" x1="0" y1="33" x2="320" y2="33" />
+            <line class="mp_ui_grid" x1="0" y1="66" x2="320" y2="66" />
+            <line class="mp_ui_grid" x1="0" y1="99" x2="320" y2="99" />
+            <path class="mp_ui_area"
+              d="M0 104C20 104 20 92 40 92S60 98 80 98S100 70 120 70S140 78 160 78S180 46 200 46S220 56 240 56S260 26 280 26S300 34 320 34L320 132L0 132Z" />
+            <path class="mp_link" pathLength="1"
+              d="M0 104C20 104 20 92 40 92S60 98 80 98S100 70 120 70S140 78 160 78S180 46 200 46S220 56 240 56S260 26 280 26S300 34 320 34" />
+            <circle class="mp_node" cx="200" cy="46" r="6" />
+            <circle class="mp_node" cx="280" cy="26" r="6" />
+          </svg>
+        </div>
+
+        <div class="mp_ui_card is-center">
+          <svg class="mp_ui_ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="mp_ui_track" cx="60" cy="60" r="46" />
+            <circle class="mp_ui_arc" cx="60" cy="60" r="46" pathLength="100" stroke-dasharray="72 100"
+              transform="rotate(-90 60 60)" />
+            <path class="mp_ui_heart" transform="translate(46 46) scale(1.17)"
+              d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+          </svg>
+          <i class="mp_ui_bar is-dark w75"></i>
+          <i class="mp_ui_bar w45"></i>
+        </div>
+
+        <div class="mp_ui_card is-center">
+          <div class="mp_ui_avs">
+            <span class="mp_ui_av a1"><img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+                alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+            <span class="mp_ui_av a2"><img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+                alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+            <span class="mp_ui_av a3"><img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+                alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+          </div>
+          <i class="mp_ui_bar is-dark w90"></i>
+          <i class="mp_ui_bar is-green w60"></i>
+        </div>
+
+        <div class="mp_ui_card is-wide">
+          <div class="mp_ui_row">
+            <span class="mp_ui_av a4"><img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+                alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+            <div><i class="mp_ui_bar is-dark w45"></i><i class="mp_ui_bar w90"></i></div>
+          </div>
+          <div class="mp_ui_row">
+            <span class="mp_ui_av a5"><img src="https://public-cdn.myp.community/images/other_hero_collage.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/other-communities/other_hero_collage.jpg';}"
+                alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+            <div><i class="mp_ui_bar is-dark w30"></i><i class="mp_ui_bar w75"></i></div>
+            <div class="mp_ui_react" aria-hidden="true">
+              <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" /></svg></span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20.5l1.6-4.6A8.4 8.4 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z" /></svg></span>
+            </div>
           </div>
         </div>
 
-        <div class="mp_steps_grid">
-          
-          <!-- Step 1 -->
-          <div class="mp_step_card step_1 mp-reveal" data-delay="1">
-            <div class="mp_step_badge_wrap">
-              <div class="mp_step_badge">01</div>
-            </div>
-            <div class="mp_step_body">
-              <h3 class="mp_step_title">1. 30-Minute Call to Discuss Your Needs</h3>
-              <p class="mp_step_desc">Walk through your goals and your current community infrastructure (if any), so we can identify the gaps.</p>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="mp_step_card step_2 mp-reveal" data-delay="2">
-            <div class="mp_step_badge_wrap">
-              <div class="mp_step_badge">02</div>
-            </div>
-            <div class="mp_step_body">
-              <h3 class="mp_step_title">2. Get a Tailored Demo</h3>
-              <p class="mp_step_desc">We will use the insights from the call to deliver a demo of MyPeople for your specific use case and audience.</p>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="mp_step_card step_3 mp-reveal" data-delay="3">
-            <div class="mp_step_badge_wrap">
-              <div class="mp_step_badge">03</div>
-            </div>
-            <div class="mp_step_body">
-              <h3 class="mp_step_title">3. Roll Out Community</h3>
-              <p class="mp_step_desc">Launch your first community and playbook to prove ROI before proceeding to a full rollout.</p>
-            </div>
-          </div>
-
-        </div>
+        <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="20" cy="20" r="11" />
+          <circle cx="46" cy="20" r="11" />
+          <circle cx="33" cy="44" r="11" />
+        </svg>
+        <span class="mp_chip" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="4.5" width="18" height="16" rx="3" />
+            <path d="M16 2.5v4M8 2.5v4M3 10h18" />
+          </svg>
+        </span>
       </div>
 
-      <!-- Action CTA -->
-      <div class="mp_steps_action mp-reveal" data-delay="2">
-        <button type="button" class="btn-primary" data-open-contact="">
+      <div class="mp_build_copy mp-reveal" data-delay="2">
+        <h2 class="mp_h2"><span class="mp_build_badge">Let’s</span> Build Your Community on MyPeople</h2>
+        <ol class="mp_steps">
+          <li class="mp_step">
+            <span class="mp_step_num" aria-hidden="true">1</span>
+            <div>
+              <h4>30-Minute Call to Discuss Your Needs</h4>
+              <p>Walk through your goals and your current community infrastructure (if any), so we can identify the
+                gaps.</p>
+            </div>
+          </li>
+          <li class="mp_step">
+            <span class="mp_step_num" aria-hidden="true">2</span>
+            <div>
+              <h4>Get a Tailored Demo</h4>
+              <p>We will use the insights from the call to deliver a demo of MyPeople for your specific use case and
+                audience.</p>
+            </div>
+          </li>
+          <li class="mp_step">
+            <span class="mp_step_num" aria-hidden="true">3</span>
+            <div>
+              <h4>Roll Out Community</h4>
+              <p>Launch your first community and playbook to prove ROI before proceeding to a full rollout.</p>
+            </div>
+          </li>
+        </ol>
+        <button type="button" class="btn-light btn-lg" data-open-contact>
           <span>Book 30-Minute Discovery Call</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
           </svg>
         </button>
       </div>
-
     </div>
   </section>
 
-</div>
+  <!-- ======================================================================
+       Contact Modal (inside the root so it stays scoped)
+       ====================================================================== -->
+  <div class="mp-oc-modal-overlay" id="mpOcModalOverlay"></div>
 
-<!-- ========================================================================
-     Modals & Dialog Overlays (Isolated Vanilla JavaScript)
-     ======================================================================== -->
-<div class="mp-community-modal-overlay" id="mpModalOverlay"></div>
-
-<!-- Splash / Contact / Book a Call Modal -->
-<div class="mp-community-modal-wrapper" id="mpSplashModal">
-  <div class="mp_splash_modal">
-    <div class="mps_close" data-close-modal="" aria-label="Close modal">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-      </svg>
-    </div>
-
-    <div id="mpSplashForm">
-      <h4>Fill out this quick form and we'll get back to you shortly</h4>
-      <form id="contactForm" onsubmit="return false;">
+  <div class="mp-oc-modal-wrapper" id="mpOcModal" role="dialog" aria-modal="true" aria-labelledby="mpOcModalTitle">
+    <div class="mp_splash_modal">
+      <button type="button" class="mps_close" data-close-modal aria-label="Close dialog">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)" />
+        </svg>
+      </button>
+      <div id="mpOcForm">
+        <h4 id="mpOcModalTitle">Fill out this quick form and we'll get back to you shortly</h4>
         <div class="mp_ipbox">
           <div class="hrip mw50">
-            <label for="mpFirstName">First Name</label>
-            <input type="text" name="firstName" id="mpFirstName" placeholder="First Name">
-            <span class="error" id="errFirstName">Please enter valid first name</span>
+            <label for="mpOcFirstName">First Name</label>
+            <input type="text" name="firstName" id="mpOcFirstName" placeholder="First Name" autocomplete="given-name">
+            <span class="error" id="mpOcErrFirstName">Please enter valid first name</span>
           </div>
           <div class="hrip mw50">
-            <label for="mpLastName">Last Name</label>
-            <input type="text" name="lastName" id="mpLastName" placeholder="Last Name">
-            <span class="error" id="errLastName">Please enter valid last name</span>
+            <label for="mpOcLastName">Last Name</label>
+            <input type="text" name="lastName" id="mpOcLastName" placeholder="Last Name" autocomplete="family-name">
+            <span class="error" id="mpOcErrLastName">Please enter valid last name</span>
           </div>
           <div class="hrip mw50">
-            <label for="mpEmailId">Email Address</label>
-            <input type="email" name="email" id="mpEmailId" placeholder="Email Address">
-            <span class="error" id="errEmail">Please enter valid email</span>
+            <label for="mpOcEmail">Email Address</label>
+            <input type="email" name="email" id="mpOcEmail" placeholder="Email Address" autocomplete="email">
+            <span class="error" id="mpOcErrEmail">Please enter valid email</span>
           </div>
           <div class="hrip mw50">
-            <label for="mpPhoneNumber">Phone Number</label>
-            <input type="tel" name="phoneNumber" id="mpPhoneNumber" placeholder="Phone Number">
-            <span class="error" id="errPhone">Please enter valid phone number</span>
+            <label for="mpOcPhone">Phone Number</label>
+            <input type="tel" name="phoneNumber" id="mpOcPhone" placeholder="Phone Number" autocomplete="tel">
+            <span class="error" id="mpOcErrPhone">Please enter valid phone number</span>
           </div>
           <div class="hrip mw100">
-            <label for="mpSubject">Subject</label>
-            <select name="subject" id="mpSubject">
-              <option value="" selected="" disabled="">Choose a subject line</option>
+            <label for="mpOcSubject">Subject</label>
+            <select name="subject" id="mpOcSubject">
+              <option value="" selected disabled>Choose a subject line</option>
               <option value="Associations">Associations Community</option>
               <option value="B2C Brands">B2C Brands Community</option>
               <option value="Media &amp; Publishing">Media &amp; Publishing Community</option>
@@ -2164,150 +2264,173 @@
               <option value="Discovery Call">Book Discovery Call</option>
               <option value="Other">Other</option>
             </select>
-            <span class="error" id="errSubject">Please select a subject</span>
+            <span class="error" id="mpOcErrSubject">Please select a subject</span>
           </div>
-          <div class="hrip fdrow">
-            <input type="checkbox" name="mptc" id="mpTc">
-            <label for="mpTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
-            <span class="error errorTickbox" id="errTc">Please check this tickbox</span>
+          <div class="hrip mw100 fdrow">
+            <input type="checkbox" name="mptc" id="mpOcTc">
+            <label for="mpOcTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
           </div>
-          <button type="button" class="btn-primary" id="mpSubmitForm" style="width: 100%; margin-top: 10px;">
-            <span>Submit</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 12.312 12" fill="currentColor">
-              <path d="M5.235,3.451l.61-.61a.657.657,0,0,1,.932,0L12.118,8.18a.657.657,0,0,1,0,.932L6.776,14.454a.657.657,0,0,1-.932,0l-.61-.61a.66.66,0,0,1,.011-.943L8.557,9.746H.659A.658.658,0,0,1,0,9.087V8.208a.658.658,0,0,1,.659-.659h7.9L5.246,4.394A.655.655,0,0,1,5.235,3.451Z" transform="translate(0 -2.647)" />
-            </svg>
-          </button>
+          <span class="errorTickbox" id="mpOcErrTc">Please check this tickbox</span>
+          <div class="hrip mw100 mp_submit_row">
+            <button type="button" class="btn-primary" id="mpOcSubmit">
+              <span>Submit</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+              </svg>
+            </button>
+          </div>
         </div>
-      </form>
-    </div>
-
-    <!-- Success message container -->
-    <div id="mpSuccessInfo" style="display: none;">
-      <div class="mps_success_info">
+      </div>
+      <div id="mpOcSuccess" hidden>
         <h4>Thank you for reaching out!</h4>
-        <p>We have received your discovery call request. One of our community architects will contact you within 24 hours.</p>
+        <div class="mps_success_info">
+          <p>We have received your discovery call request. One of our community architects will contact you within 24
+            hours.</p>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
 
 <!-- ========================================================================
-     Zero-Dependency Vanilla JavaScript
+     Vanilla JavaScript (Zero Dependencies)
      ======================================================================== -->
 <script>
   (function () {
-    // Scroll reveal observer
-    const reveals = document.querySelectorAll('#mp-other-communities-embed .mp-reveal');
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+    var root = document.getElementById('mp-other-communities-embed');
+    if (!root) return;
+    root.classList.add('mp-js');
+
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    // ── Scroll Reveal (also triggers the SVG connector draw-in) ───────────
+    (function () {
+      var els = root.querySelectorAll('.mp-reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('mp-revealed'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('mp-revealed');
-            revealObserver.unobserve(entry.target);
+            obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12 });
-      reveals.forEach((el) => revealObserver.observe(el));
-    } else {
-      reveals.forEach((el) => el.classList.add('mp-revealed'));
-    }
+      }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
 
-    // Modal Handling
-    const overlay = document.getElementById('mpModalOverlay');
-    const splashModal = document.getElementById('mpSplashModal');
+    // ── Scroll Progress Bar ────────────────────────────────────────────────
+    (function () {
+      var bar = document.getElementById('mpOcScrollBar');
+      if (!bar) return;
+      var ticking = false;
+      function update() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? (window.pageYOffset || doc.scrollTop) / max : 0;
+        bar.style.transform = 'scaleX(' + Math.min(Math.max(pct, 0), 1) + ')';
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
 
-    function openModal() {
-      if (overlay && splashModal) {
-        overlay.style.display = 'block';
-        splashModal.style.display = 'flex';
+    // ── Marquee: clone the group so the loop is seamless on wide screens ──
+    (function () {
+      var track = root.querySelector('.mp_marquee_track');
+      if (!track) return;
+      var group = track.querySelector('.mp_marquee_group');
+      for (var i = 0; i < 3; i++) {
+        var clone = group.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      }
+    })();
+
+    // ── Contact Modal ──────────────────────────────────────────────────────
+    (function () {
+      var overlay = document.getElementById('mpOcModalOverlay');
+      var modal = document.getElementById('mpOcModal');
+      if (!overlay || !modal) return;
+      var lastFocus = null;
+
+      function openModal() {
+        lastFocus = document.activeElement;
+        overlay.classList.add('active');
+        modal.classList.add('active');
         document.body.classList.add('mp-freeze-scroll');
+        var first = modal.querySelector('input, select, button');
+        if (first) first.focus();
       }
-    }
 
-    function closeModal() {
-      if (overlay && splashModal) {
-        overlay.style.display = 'none';
-        splashModal.style.display = 'none';
+      function closeModal() {
+        if (!modal.classList.contains('active')) return;
+        overlay.classList.remove('active');
+        modal.classList.remove('active');
         document.body.classList.remove('mp-freeze-scroll');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
       }
-    }
 
-    document.querySelectorAll('[data-open-contact]').forEach((btn) => {
-      btn.addEventListener('click', openModal);
-    });
-
-    document.querySelectorAll('[data-close-modal]').forEach((btn) => {
-      btn.addEventListener('click', closeModal);
-    });
-
-    if (overlay) {
-      overlay.addEventListener('click', closeModal);
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // Form Validation Logic
-    const submitBtn = document.getElementById('mpSubmitForm');
-    if (submitBtn) {
-      submitBtn.addEventListener('click', () => {
-        let hasError = false;
-        const firstName = document.getElementById('mpFirstName');
-        const lastName = document.getElementById('mpLastName');
-        const email = document.getElementById('mpEmailId');
-        const phone = document.getElementById('mpPhoneNumber');
-        const subject = document.getElementById('mpSubject');
-        const tc = document.getElementById('mpTc');
-
-        if (!firstName.value.trim()) {
-          document.getElementById('errFirstName').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errFirstName').style.display = 'none';
-        }
-
-        if (!lastName.value.trim()) {
-          document.getElementById('errLastName').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errLastName').style.display = 'none';
-        }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email.value.trim() || !emailRegex.test(email.value)) {
-          document.getElementById('errEmail').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errEmail').style.display = 'none';
-        }
-
-        if (!phone.value.trim() || phone.value.trim().length < 7) {
-          document.getElementById('errPhone').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errPhone').style.display = 'none';
-        }
-
-        if (!subject.value) {
-          document.getElementById('errSubject').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errSubject').style.display = 'none';
-        }
-
-        if (!tc.checked) {
-          document.getElementById('errTc').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errTc').style.display = 'none';
-        }
-
-        if (!hasError) {
-          document.getElementById('mpSplashForm').style.display = 'none';
-          document.getElementById('mpSuccessInfo').style.display = 'block';
-        }
+      root.querySelectorAll('[data-open-contact]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
       });
-    }
+
+      modal.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); closeModal(); });
+      });
+
+      overlay.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+
+      document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key !== 'Tab') return;
+        // Keep focus inside the open dialog
+        var items = [].filter.call(modal.querySelectorAll('input, select, button'), function (el) { return el.offsetParent !== null; });
+        if (!items.length) return;
+        var first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      function toggleError(id, show) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = show ? 'block' : 'none';
+        return show;
+      }
+
+      function validEmail(v) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).toLowerCase());
+      }
+
+      var submitBtn = document.getElementById('mpOcSubmit');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function () {
+          var email = document.getElementById('mpOcEmail').value.trim();
+          var errors = [
+            toggleError('mpOcErrFirstName', !document.getElementById('mpOcFirstName').value.trim()),
+            toggleError('mpOcErrLastName', !document.getElementById('mpOcLastName').value.trim()),
+            toggleError('mpOcErrEmail', !email || !validEmail(email)),
+            toggleError('mpOcErrPhone', document.getElementById('mpOcPhone').value.trim().length < 7),
+            toggleError('mpOcErrSubject', !document.getElementById('mpOcSubject').value),
+            toggleError('mpOcErrTc', !document.getElementById('mpOcTc').checked)
+          ];
+
+          if (errors.indexOf(true) === -1) {
+            // TODO: wire to the real lead endpoint; this currently only shows the success state.
+            document.getElementById('mpOcForm').hidden = true;
+            document.getElementById('mpOcSuccess').hidden = false;
+          }
+        });
+      }
+    })();
   })();
 </script>

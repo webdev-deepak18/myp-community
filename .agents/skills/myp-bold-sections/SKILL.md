@@ -64,6 +64,12 @@ Green-700 band, Inter 600, items separated by green-300 dots. One `<ul class="mp
 ### 4.3 Editorial Split + Photo with Vector Accents (`.mp_welcome`, `.mp_media`)
 Text left (rule bar, H2, lead, body), photo right in a 28px-radius frame, plus vector accents: dashed green-300 ring, three-dot cluster SVG, floating white badge with icon-only circles (heart, chat, calendar). Accents are decorative (`aria-hidden`) and **never contain new copy**.
 
+### 4.3b People-Network Collage + Photo Overlays (`.mp_net`, `.mp_media_frame > .mp_vec`)
+Reference: HR Tech page. Hero visual built in code: five portrait crops (circle / pill / rounded rect, 4px white border) positioned in % on a square stage, joined by an SVG bézier layer (viewBox 0 0 100 100) with nodes placed only in visible gaps, plus floating white icon chips and the three-dot cluster. Section photos get an SVG overlay in image coordinates (`xMidYMid slice`). See `myp-image-style` section 0.
+
+### 4.3c Zig-zag Numbered Rows (`.mp_row`, `.is-flip`)
+Alternating photo/text rows with a giant Inria Serif index (green-300), Inter H3, an icon chip on one photo corner and a quarter-orbit SVG arc hugging the opposite corner. Good for 2 to 4 long-copy items that each have an image.
+
 ### 4.4 Split Heading + Colour-Block Tiles (`.mp_better_layout`, `.mp_better_item.is-green / .is-white / .is-slate`)
 Green-tint band. On desktop the H2 sits in a left column (0.8fr) beside a 2×2 tile grid (1.2fr); below 992px it stacks, and below 577px the tiles go to one column. Tiles form a checkerboard (green-700 / white / white / blue-800) with 28px radius. Each tile has an icon chip at the top-left and a giant Inria Serif index (01–04) as a low-contrast watermark at the top-right (green-500 / green-100 / blue-700); the H4 and body are pushed to the bottom with `margin-top: auto`. On hover the tile lifts, the icon tilts and the index rises. A faint network motif (`--mp-network-mask`, shared with the hero) sits behind the heading. Don't use this next to the white icon cards (4.8): both are tile grids.
 
@@ -94,6 +100,6 @@ Green-700 block with outline rings, product UI image left, H2 with a tilted whit
 - Everything respects `prefers-reduced-motion`.
 
 ## 7. Verification
-1. Build a preview wrapper (fonts `<link>` + fake 78px header + the embed file) in the scratchpad.
+1. Build a preview with `platform/tools/preview/build-preview.sh <page> <out>`; for story pages (everything except the logged-out home) add `story` so the template's forced `!important` rules apply. Light text on dark/green sections must stay light (see `cms-page-embed` Rule 4b).
 2. Capture with headless Chrome. **Don't trust `--virtual-time-budget` for clip-path transitions**; drive Chrome in real time over the DevTools protocol (Node 22 has a global `WebSocket`) and check `document.documentElement.scrollWidth === viewport` at 390px.
 3. Run the `brand-auditor` agent.

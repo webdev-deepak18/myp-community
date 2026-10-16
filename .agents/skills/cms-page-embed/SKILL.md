@@ -90,6 +90,28 @@ At the top of the scoped CSS, supply a localized reset targeted exclusively insi
 }
 ```
 
+### Rule 4b: Beat Host `!important` Rules (learned live, 2026-10-15)
+Host templates force typography with `!important` on bare elements. A normal declaration loses to `!important` **regardless of specificity**, so `#root .class { color: … }` still renders the host's colour. Known offenders in the MyP story template (`00_Myp-Community-Pages.html`):
+
+| Host rule | Symptom on the live page |
+| :--- | :--- |
+| `.mp-story-content-wrap p { color: #000 !important }` | Light text on dark/green sections turns black |
+| `… h1 *, h2 * { font-family: Inria Serif; font-weight: 700; letter-spacing: -0.25px !important }` | Spans/strong inside an H2 switch to serif even when the H2 is Inter |
+| `… h3 *, h4 * { font-family: Inter; font-weight: 600; letter-spacing: 0 !important }` | Tight tracking on H3/H4 is lost |
+| `… p * { font-family: Roboto !important }`, `… li, a, label { Roboto !important }` | Styled spans inside paragraphs fall back to Roboto |
+
+Every embed must therefore:
+1. Declare **`color`, `letter-spacing` and `font-family` with `!important`** (font-weight too wherever it differs from the host). Our `#root` selectors are more specific, so ours win once both sides are `!important`, and our own hover/variant cascade still works because every rule sits at the same importance level.
+2. Add the **inheritance shield** right after the reset:
+```css
+#<root> h1 *, #<root> h2 *, #<root> h3 *, #<root> h4 *, #<root> p * {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+}
+```
+3. Preview in **story mode** before handing over: `platform/tools/preview/build-preview.sh <page> <out> story` loads the template's forced rules (`tenants/myp-community/preview-head-story.html`) and wraps the page in `.mp-story-content-wrap`, so these bugs show up locally.
+
 ### Rule 5: Wide-Screen `min-width` Tiers (Capped at 1440px Max-Width)
 The maximum container width for all desktop embeds is capped at **`1440px`**, scaling cleanly from laptops to large desktops:
 ```css

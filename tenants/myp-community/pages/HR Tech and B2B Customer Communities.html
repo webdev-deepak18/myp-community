@@ -1,26 +1,19 @@
 <style>
-  /* Import Google Fonts for standalone preview */
-  @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter:wght@600&family=Roboto:wght@400;500;700&display=swap');
-
   /* ==========================================================================
-     000-myp-community Official Design System Tokens
-     Source: 00-branding/tokens.css & 00-branding/design-system.md
+     MyPeople Design System Tokens (tenants/myp-community/brand/tokens.css)
      ========================================================================== */
   :root {
-    /* Typography Families */
-    --font-family-heading-1: 'Inria Serif', serif !important;
-    --font-family-heading-2: 'Inter', sans-serif !important;
-    --font-family-body: 'Roboto', sans-serif !important;
+    --font-family-heading-1: 'Inria Serif', serif;
+    --font-family-heading-2: 'Inter', sans-serif;
+    --font-family-body: 'Roboto', sans-serif;
 
-    /* Generic Colors */
-    --color-page-bg: #FFFCF8 !important;
-    --color-text: #000000 !important;
-    --color-text-link: #02588E !important;
-    --color-border: #CCCCCC !important;
-    --color-white: #FFFFFF !important;
-    --color-black: #000000 !important;
+    --color-page-bg: #FFFCF8;
+    --color-text: #000000;
+    --color-text-link: #02588E;
+    --color-border: #CCCCCC;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
 
-    /* Primary 1: MP-Green Scale */
     --color-mp-green-50: #F2FBF5;
     --color-mp-green-100: #E5F6E9;
     --color-mp-green-200: #CBEED5;
@@ -32,7 +25,6 @@
     --color-mp-green-800: #00651B;
     --color-mp-green-900: #004213;
 
-    /* Primary 2: MP-Blue Scale */
     --color-mp-blue-50: #F5F7F8;
     --color-mp-blue-100: #EBF0F2;
     --color-mp-blue-200: #D7E1E3;
@@ -44,24 +36,9 @@
     --color-mp-blue-800: #22404B;
     --color-mp-blue-900: #162B32;
 
-    /* Semantic Palettes */
-    --color-success-bg: #E5F6E9;
-    --color-success-border: #28C841;
-    --color-success-text: #018624;
-
-    --color-error-bg: #FFE3E3;
-    --color-error-border: #E06764;
     --color-error-text: #E13838;
-
-    --color-alert-bg: #FFF4E5;
-    --color-alert-border: #FCBE67;
-    --color-alert-text: #FB9302;
-
-    --color-edit-bg: #E8F2FD;
     --color-edit-border: #5099EC;
-    --color-edit-text: #1E66BA;
 
-    /* Black / Neutral Scale */
     --color-black-50: #F2F2F2;
     --color-black-100: #E4E4E4;
     --color-black-200: #CCCCCC;
@@ -70,23 +47,22 @@
     --color-black-500: #333333;
     --color-black-default: #000000;
 
-    /* Component Metrics */
     --radius-button: 12px;
     --radius-input: 12px;
     --radius-tag: 12px;
     --radius-card: 16px;
-    --radius-accordion: 16px;
+    --radius-panel: 28px;
     --gap-button: 12px;
   }
 
   /* ==========================================================================
-     CMS Scoped Root Container & Localized Defensive Reset
+     CMS Scoped Root & Localized Reset
      ========================================================================== */
-  #mp-community-embed {
+  #mp-hrtech-embed {
     font-family: var(--font-family-body);
     font-size: 14px;
     line-height: 22px;
-    color: var(--color-black-default);
+    color: var(--color-black-default) !important;
     text-align: left;
     background-color: var(--color-page-bg);
     width: 100%;
@@ -95,22 +71,69 @@
     box-sizing: border-box;
     padding: 0;
     overflow-x: hidden;
+    overflow-x: clip;
   }
 
-  #mp-community-embed *,
-  #mp-community-embed *::before,
-  #mp-community-embed *::after {
+  #mp-hrtech-embed *,
+  #mp-hrtech-embed *::before,
+  #mp-hrtech-embed *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
 
-  #mp-community-embed img,
-  #mp-community-embed svg {
+  /* Host CMS shield: the story template forces fonts, letter-spacing and
+     p colour with !important (see cms-page-embed skill, "Host !important rules").
+     Children of headings / paragraphs inherit ours instead; colours and
+     letter-spacing in this file are !important so the #root selectors win. */
+  #mp-hrtech-embed h1 *,
+  #mp-hrtech-embed h2 *,
+  #mp-hrtech-embed h3 *,
+  #mp-hrtech-embed h4 *,
+  #mp-hrtech-embed p * {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    letter-spacing: inherit !important;
+  }
+
+  #mp-hrtech-embed img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  #mp-hrtech-embed svg {
     vertical-align: middle;
   }
 
-  #mp-community-embed .mp_container {
+  #mp-hrtech-embed a {
+    color: inherit !important;
+    text-decoration: none;
+  }
+
+  #mp-hrtech-embed ul,
+  #mp-hrtech-embed ol {
+    list-style: none;
+  }
+
+  #mp-hrtech-embed li::before,
+  #mp-hrtech-embed li::marker {
+    content: none;
+  }
+
+  #mp-hrtech-embed button {
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  #mp-hrtech-embed :focus-visible {
+    outline: 3px solid var(--color-edit-border);
+    outline-offset: 3px;
+  }
+
+  #mp-hrtech-embed .mp_container {
     width: 100%;
     max-width: 1200px;
     padding-left: 24px;
@@ -119,1706 +142,1839 @@
     position: relative;
   }
 
-  /* ==========================================================================
-     Scroll Reveal & Micro-Animations
-     ========================================================================== */
-  #mp-community-embed .mp-reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  /* The CMS template adds a float clearfix on .mp_container; on flex/grid
+     containers those pseudo-elements become real items. */
+  #mp-hrtech-embed .mp_container::before,
+  #mp-hrtech-embed .mp_container::after {
+    content: none !important;
+    display: none !important;
   }
-  #mp-community-embed .mp-reveal.mp-revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  #mp-community-embed .mp-reveal[data-delay="1"] { transition-delay: 0.1s; }
-  #mp-community-embed .mp-reveal[data-delay="2"] { transition-delay: 0.2s; }
 
   /* ==========================================================================
-     Primary CTA Button
+     Keyframes
      ========================================================================== */
-  #mp-community-embed .btn-primary {
+  @keyframes mp-hrtech-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-25%); }
+  }
+
+  @keyframes mp-hrtech-float {
+    from { transform: translateY(-6px); }
+    to { transform: translateY(8px); }
+  }
+
+  @keyframes mp-hrtech-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0.45); }
+    70% { box-shadow: 0 0 0 12px rgba(102, 203, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0); }
+  }
+
+  /* ==========================================================================
+     Scroll Reveal (content only hides once JS has booted: .mp-js)
+     ========================================================================== */
+  #mp-hrtech-embed.mp-js .mp-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s);
+  }
+
+  #mp-hrtech-embed.mp-js .mp-reveal.mp-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  #mp-hrtech-embed.mp-js .mp-reveal[data-delay="1"] { --mp-reveal-delay: 0.08s; }
+  #mp-hrtech-embed.mp-js .mp-reveal[data-delay="2"] { --mp-reveal-delay: 0.16s; }
+  #mp-hrtech-embed.mp-js .mp-reveal[data-delay="3"] { --mp-reveal-delay: 0.24s; }
+  #mp-hrtech-embed.mp-js .mp-reveal[data-delay="4"] { --mp-reveal-delay: 0.32s; }
+
+  /* Cards that are also reveal targets lift with `translate`, so the reveal's
+     `transform` can't cancel the hover. */
+  #mp-hrtech-embed.mp-js .mp_tile.mp-reveal,
+  #mp-hrtech-embed.mp-js .mp_role.mp-reveal,
+  #mp-hrtech-embed.mp-js .mp_cap.mp-reveal {
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  /* Vector connectors draw themselves in once their block is revealed */
+  #mp-hrtech-embed.mp-js .mp-draw path.mp_link {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.35s;
+  }
+
+  #mp-hrtech-embed.mp-js .mp-revealed .mp-draw path.mp_link,
+  #mp-hrtech-embed.mp-js .mp-draw.mp-revealed path.mp_link {
+    stroke-dashoffset: 0;
+  }
+
+  #mp-hrtech-embed.mp-js .mp-draw .mp_node {
+    opacity: 0;
+    transition: opacity 0.4s ease 1.4s;
+  }
+
+  #mp-hrtech-embed.mp-js .mp-revealed .mp-draw .mp_node,
+  #mp-hrtech-embed.mp-js .mp-draw.mp-revealed .mp_node {
+    opacity: 1;
+  }
+
+  /* Scroll progress bar */
+  #mp-hrtech-embed .mp_scroll_bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
+    transform: scaleX(0);
+    transform-origin: left center;
+    z-index: 99997;
+    pointer-events: none;
+  }
+
+  /* ==========================================================================
+     Shared Typography
+     ========================================================================== */
+  #mp-hrtech-embed .mp_h2 {
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 44px;
+    font-weight: 700 !important;
+    line-height: 52px;
+    letter-spacing: -0.75px !important;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-hrtech-embed .mp_hl {
+    color: var(--color-mp-green-700) !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+  }
+
+  #mp-hrtech-embed .mp_lead {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 21px;
+    font-weight: 600 !important;
+    line-height: 31px;
+    color: var(--color-mp-blue-800) !important;
+  }
+
+  #mp-hrtech-embed .mp_rule {
+    display: block;
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
+    margin-bottom: 28px;
+  }
+
+  /* ==========================================================================
+     Buttons
+     ========================================================================== */
+  #mp-hrtech-embed .btn-primary,
+  #mp-hrtech-embed .btn-light,
+  #mp-hrtech-embed .btn-ghost-light {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--gap-button);
     height: 50px;
     padding: 0 28px;
-    background-color: var(--color-mp-green-700) !important;
-    color: var(--color-white) !important;
     border-radius: var(--radius-button) !important;
-    border: none !important;
     font-family: var(--font-family-body) !important;
     font-size: 15px;
     font-weight: 500 !important;
-    cursor: pointer;
+    line-height: 20px;
     text-decoration: none !important;
-    transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-    box-shadow: 0 4px 14px rgba(1, 134, 36, 0.22);
+    white-space: nowrap;
+    cursor: pointer;
     position: relative;
     overflow: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   }
 
-  #mp-community-embed .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.6s ease;
+  #mp-hrtech-embed .btn-lg {
+    height: 60px;
+    padding: 0 32px;
+    font-size: 16px;
   }
 
-  #mp-community-embed .btn-primary:hover::after {
-    left: 100%;
-  }
-
-  #mp-community-embed .btn-primary:hover {
-    background-color: var(--color-mp-green-800) !important;
+  #mp-hrtech-embed .btn-primary {
+    background-color: var(--color-mp-green-700) !important;
     color: var(--color-white) !important;
+    border: none !important;
+    box-shadow: 0 6px 18px rgba(1, 134, 36, 0.28);
+  }
+
+  #mp-hrtech-embed .btn-primary:hover {
+    background-color: var(--color-mp-green-800) !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(1, 134, 36, 0.32);
+    box-shadow: 0 10px 26px rgba(1, 134, 36, 0.36);
   }
 
-  #mp-community-embed .btn-primary:focus {
+  #mp-hrtech-embed .btn-primary:focus-visible,
+  #mp-hrtech-embed .btn-primary:active {
     background-color: var(--color-mp-green-default) !important;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(2, 168, 45, 0.3);
   }
 
-  #mp-community-embed .btn-primary svg {
+  #mp-hrtech-embed .btn-light {
+    background-color: var(--color-white) !important;
+    color: var(--color-black-default) !important;
+    border: none !important;
+    box-shadow: 0 6px 18px rgba(22, 43, 50, 0.18);
+  }
+
+  #mp-hrtech-embed .btn-light:hover {
+    background-color: var(--color-mp-green-50) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(22, 43, 50, 0.24);
+  }
+
+  #mp-hrtech-embed .btn-ghost-light {
+    background-color: transparent !important;
+    color: var(--color-white) !important;
+    border: 2px solid var(--color-mp-blue-500) !important;
+  }
+
+  #mp-hrtech-embed .btn-ghost-light:hover {
+    border-color: var(--color-white) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-2px);
+  }
+
+  #mp-hrtech-embed .btn-primary svg,
+  #mp-hrtech-embed .btn-light svg {
+    flex-shrink: 0;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  #mp-community-embed .btn-primary:hover svg {
+  #mp-hrtech-embed .btn-primary:hover svg,
+  #mp-hrtech-embed .btn-light:hover svg {
     transform: translateX(4px);
   }
 
   /* ==========================================================================
-     Hero Section Component
-     Two-Column Layout: Column 1 HTML Content, Column 2 Visual Collage
+     Shared Vector Accents (drawn in code: perfect curves, constant stroke)
      ========================================================================== */
-  #mp-community-embed .mp_hero_section {
-    width: 100%;
-    padding: 72px 0 80px 0;
+  #mp-hrtech-embed .mp_vec {
+    position: absolute;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  #mp-hrtech-embed .mp_vec path.mp_link {
+    fill: none;
+    stroke: var(--color-mp-green-400);
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-hrtech-embed .mp_vec path.mp_halo {
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 7px;
+    stroke-linecap: round;
+    opacity: 0.55;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-hrtech-embed .mp_vec .mp_ring {
+    fill: none;
+    stroke: var(--color-mp-blue-700);
+    stroke-width: 1.5px;
+    stroke-dasharray: 2 8;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-hrtech-embed .mp_vec .mp_node {
+    fill: var(--color-mp-green-default);
+    stroke: var(--color-white);
+    stroke-width: 3px;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-hrtech-embed .mp_dots {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    pointer-events: none;
+  }
+
+  #mp-hrtech-embed .mp_dots circle { fill: var(--color-mp-green-default); }
+  #mp-hrtech-embed .mp_dots circle:last-child { fill: var(--color-mp-green-700); }
+
+  /* Floating white icon chip */
+  #mp-hrtech-embed .mp_chip {
+    position: absolute;
+    z-index: 3;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    box-shadow: 0 14px 34px rgba(22, 43, 50, 0.22);
+    animation: mp-hrtech-float 5s ease-in-out infinite alternate;
+  }
+
+  #mp-hrtech-embed .mp_chip svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #mp-hrtech-embed .mp_chip.d2 { animation-delay: -1.6s; }
+  #mp-hrtech-embed .mp_chip.d3 { animation-delay: -3.2s; }
+
+  /* ==========================================================================
+     Section 1: Hero (slate) with a people network built in code
+     ========================================================================== */
+  #mp-hrtech-embed .mp_hero {
     position: relative;
-    background-color: var(--color-page-bg);
+    padding: 104px 0 112px 0;
+    background-color: var(--color-mp-blue-900);
+    background-image: radial-gradient(var(--color-mp-blue-800) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
+    color: var(--color-white) !important;
     overflow: hidden;
   }
 
-  /* Subtle ambient dual-glow matching home page */
-  #mp-community-embed .mp_hero_section::before {
+  #mp-hrtech-embed .mp_hero::after {
     content: '';
     position: absolute;
-    top: -12%;
-    right: -5%;
-    width: 620px;
-    height: 620px;
-    background: radial-gradient(circle, rgba(203, 238, 213, 0.45) 0%, rgba(242, 251, 245, 0.12) 60%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
+    top: 50%;
+    right: -200px;
+    width: 760px;
+    height: 760px;
+    margin-top: -380px;
     border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 185, 87, 0.2) 0%, rgba(22, 43, 50, 0) 68%);
+    pointer-events: none;
   }
 
-  #mp-community-embed .mp_hero_section::after {
-    content: '';
-    position: absolute;
-    bottom: -15%;
-    left: -8%;
-    width: 440px;
-    height: 440px;
-    background: radial-gradient(circle, rgba(175, 196, 203, 0.2) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    border-radius: 50%;
-  }
-
-  #mp-community-embed .mp_hero_grid {
-    display: grid;
-    grid-template-columns: 1.08fr 0.92fr;
-    align-items: center;
-    gap: 48px;
+  #mp-hrtech-embed .mp_hero_grid {
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: center;
+    gap: 56px;
   }
 
-  /* Column 1: HTML Content */
-  #mp-community-embed .mp_hero_content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    max-width: 580px;
+  #mp-hrtech-embed .mp_eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid var(--color-mp-blue-700);
+    border-radius: 999px;
+    background-color: var(--color-mp-blue-800);
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 13px;
+    font-weight: 600 !important;
+    line-height: 18px;
+    letter-spacing: 1.4px !important;
+    text-transform: uppercase;
+    color: var(--color-mp-green-300) !important;
   }
 
-  /* Hero Title: Inria Serif Bold 700 */
-  #mp-community-embed h1.mp_hero_title {
+  #mp-hrtech-embed .mp_eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-400);
+    animation: mp-hrtech-pulse 2.4s ease-out infinite;
+  }
+
+  #mp-hrtech-embed .mp_hero_title {
     font-family: var(--font-family-heading-1) !important;
-    font-size: 46px;
+    font-size: 60px;
     font-weight: 700 !important;
-    line-height: 54px;
-    letter-spacing: -0.3px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 22px;
-    text-align: left;
+    line-height: 66px;
+    letter-spacing: -1.5px !important;
+    color: var(--color-white) !important;
   }
 
-  #mp-community-embed h1.mp_hero_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
+  #mp-hrtech-embed .mp_hero_title .mp_hl {
+    display: block;
+    color: var(--color-mp-green-400) !important;
   }
 
-  /* Hero Subtitle / Subtext: Roboto Medium/Regular */
-  #mp-community-embed p.mp_hero_subtext {
-    font-family: var(--font-family-body) !important;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 32px;
-    color: var(--color-black-500);
-    margin-bottom: 34px;
-    text-align: left;
+  #mp-hrtech-embed .mp_hero_tagline {
+    margin-top: 28px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 28px;
+    font-weight: 600 !important;
+    line-height: 36px;
+    letter-spacing: -0.5px !important;
+    color: var(--color-mp-blue-100) !important;
   }
 
-  /* Hero Actions Row */
-  #mp-community-embed .mp_hero_actions {
+  #mp-hrtech-embed .mp_hero_tagline span {
+    color: var(--color-mp-green-300) !important;
+  }
+
+  #mp-hrtech-embed .mp_hero_actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 16px;
-    flex-wrap: wrap;
+    margin-top: 40px;
   }
 
-  /* Column 2: Image Visual Collage */
-  #mp-community-embed .mp_hero_visual {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* People network: portrait crops in circle / pill / rounded frames,
+     joined by SVG bezier connectors. Crops come from one clean collage. */
+  #mp-hrtech-embed .mp_net {
     position: relative;
-  }
-
-  #mp-community-embed .mp_hero_img_card {
+    justify-self: end;
     width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 540px;
+    aspect-ratio: 1 / 1;
   }
 
-  #mp-community-embed .mp_hero_img_card:hover {
-    transform: translateY(-4px);
-  }
-
-  #mp-community-embed .mp_hero_img_card img {
-    display: block;
+  #mp-hrtech-embed .mp_net > .mp_vec {
+    inset: 0;
     width: 100%;
-    max-width: 520px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.08));
-    border-radius: 20px;
+    height: 100%;
+    z-index: 0;
   }
 
-  /* ==========================================================================
-     Section 2: Dedicated Community Home (Editorial Statement - Zero Images)
-     ========================================================================== */
-  #mp-community-embed .mp_dedicated_section {
-    width: 100%;
-    padding: 72px 0 80px 0;
-    position: relative;
-    background: linear-gradient(180deg, var(--color-page-bg) 0%, #F5FBF7 50%, var(--color-page-bg) 100%);
-    border-top: 1px solid rgba(203, 238, 213, 0.4);
-    border-bottom: 1px solid rgba(203, 238, 213, 0.4);
+  #mp-hrtech-embed .mp_net_frame {
+    position: absolute;
+    z-index: 1;
     overflow: hidden;
+    border: 4px solid var(--color-white);
+    background-color: var(--color-mp-blue-800);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
   }
 
-  #mp-community-embed .mp_dedicated_box {
-    width: 100%;
-    max-width: 920px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
+  #mp-hrtech-embed .mp_net_frame img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: none;
+    height: auto;
+    transition: scale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Animated top accent bar */
-  #mp-community-embed .mp_dedicated_box::before {
-    content: '';
-    display: block;
-    width: 56px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 28px auto;
+  #mp-hrtech-embed .mp_net_frame:hover img {
+    scale: 1.05;
   }
 
-  /* Title: Inria Serif Bold 700 */
-  #mp-community-embed h2.mp_dedicated_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 38px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 20px;
-    text-align: center;
-  }
+  /* Frame geometry (% of the square stage) and crop of the 1024px source */
+  #mp-hrtech-embed .mp_net_frame.f1 { left: 0; top: 8%; width: 50%; aspect-ratio: 360 / 310; border-radius: 28px; }
+  #mp-hrtech-embed .mp_net_frame.f1 img { width: 284.44%; transform: translate(-11.72%, -10.74%); }
 
-  #mp-community-embed h2.mp_dedicated_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
+  #mp-hrtech-embed .mp_net_frame.f2 { left: 63%; top: 2%; width: 35%; aspect-ratio: 1 / 1; border-radius: 50%; }
+  #mp-hrtech-embed .mp_net_frame.f2 img { width: 365.71%; transform: translate(-61.04%, -11.91%); }
 
-  /* Description: Roboto Regular 400 */
-  #mp-community-embed p.mp_dedicated_desc {
-    font-family: var(--font-family-body) !important;
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 32px;
-    color: var(--color-black-500);
-    max-width: 820px;
-    margin: 0 auto;
-    text-align: center;
-  }
+  #mp-hrtech-embed .mp_net_frame.f3 { left: 39%; top: 54%; width: 17%; aspect-ratio: 168 / 420; border-radius: 999px; }
+  #mp-hrtech-embed .mp_net_frame.f3 img { width: 609.52%; transform: translate(-39.26%, -46.09%); }
+
+  #mp-hrtech-embed .mp_net_frame.f4 { left: 63%; top: 44%; width: 35%; aspect-ratio: 274 / 368; border-radius: 28px; }
+  #mp-hrtech-embed .mp_net_frame.f4 img { width: 373.72%; transform: translate(-61.52%, -46.48%); }
+
+  #mp-hrtech-embed .mp_net_frame.f5 { left: 5%; top: 60%; width: 29%; aspect-ratio: 1 / 1; border-radius: 50%; }
+  #mp-hrtech-embed .mp_net_frame.f5 img { width: 445.22%; transform: translate(-11.23%, -62.99%); }
+
+  #mp-hrtech-embed .mp_net .mp_chip.c1 { left: 51%; top: 27%; }
+  #mp-hrtech-embed .mp_net .mp_chip.c2 { left: -2%; top: 47%; }
+  #mp-hrtech-embed .mp_net .mp_chip.c3 { right: -1%; top: 86%; }
+  #mp-hrtech-embed .mp_net .mp_dots { left: 33%; top: 0; }
 
   /* ==========================================================================
-     Section 3: Unlock Powerful Business Benefits (3-Column Card Grid)
+     Section 2: Marquee Band
      ========================================================================== */
-  #mp-community-embed .mp_benefits_section {
-    width: 100%;
-    padding: 72px 0 84px 0;
-    position: relative;
-    background-color: var(--color-page-bg);
+  #mp-hrtech-embed .mp_marquee {
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+    overflow: hidden;
+    padding: 22px 0;
   }
 
-  #mp-community-embed h2.mp_benefits_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 38px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-    text-align: center;
-    margin-bottom: 48px;
-    width: 100%;
-  }
-
-  #mp-community-embed h2.mp_benefits_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  #mp-community-embed .mp_benefits_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    width: 100%;
-  }
-
-  #mp-community-embed .mp_benefits_card {
-    background-color: var(--color-white);
-    border-radius: var(--radius-card);
-    padding: 34px 28px 30px 28px;
+  #mp-hrtech-embed .mp_marquee_track {
     display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
-    position: relative;
+    width: max-content;
+    animation: mp-hrtech-marquee 40s linear infinite;
   }
 
-  #mp-community-embed .mp_benefits_card:hover {
-    transform: translateY(-4px);
+  #mp-hrtech-embed .mp_marquee:hover .mp_marquee_track {
+    animation-play-state: paused;
   }
 
-  /* Card 1 & 3: Green Theme */
-  #mp-community-embed .mp_benefits_card.theme_green {
-    border: 1px solid var(--color-mp-green-200);
-    border-top: 4px solid var(--color-mp-green-700);
-  }
-  #mp-community-embed .mp_benefits_card.theme_green:hover {
-    box-shadow: 0 16px 32px rgba(1, 134, 36, 0.09);
-    border-color: var(--color-mp-green-300);
-    border-top-color: var(--color-mp-green-700);
+  #mp-hrtech-embed .mp_marquee_group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
   }
 
-  /* Card 2: Orange / Alert Theme */
-  #mp-community-embed .mp_benefits_card.theme_orange {
-    border: 1px solid var(--color-alert-border);
-    border-top: 4px solid var(--color-alert-text);
-  }
-  #mp-community-embed .mp_benefits_card.theme_orange:hover {
-    box-shadow: 0 16px 32px rgba(251, 147, 2, 0.1);
-  }
-
-  #mp-community-embed .mp_benefits_card h3.mp_card_title {
+  #mp-hrtech-embed .mp_marquee_group li {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding-right: 36px;
     font-family: var(--font-family-heading-2) !important;
     font-size: 24px;
     font-weight: 600 !important;
     line-height: 32px;
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--color-black-100);
+    letter-spacing: -0.25px !important;
+    white-space: nowrap;
   }
 
-  #mp-community-embed .mp_benefits_card.theme_green h3.mp_card_title {
-    color: var(--color-mp-green-700) !important;
-  }
-
-  #mp-community-embed .mp_benefits_card.theme_orange h3.mp_card_title {
-    color: var(--color-alert-text) !important;
-  }
-
-  #mp-community-embed ul.mp_benefits_list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  #mp-community-embed ul.mp_benefits_list li {
-    position: relative;
-    padding-left: 20px;
-    font-family: var(--font-family-body) !important;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 24px;
-    color: var(--color-black-500);
-    text-align: left;
-  }
-
-  #mp-community-embed ul.mp_benefits_list li::before {
+  #mp-hrtech-embed .mp_marquee_group li::after {
     content: '';
-    position: absolute;
-    left: 0;
-    top: 9px;
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-  }
-
-  #mp-community-embed .mp_benefits_card.theme_green ul.mp_benefits_list li::before {
-    background-color: var(--color-mp-green-700);
-  }
-
-  #mp-community-embed .mp_benefits_card.theme_orange ul.mp_benefits_list li::before {
-    background-color: var(--color-alert-text);
-  }
-
-  #mp-community-embed ul.mp_benefits_list li strong {
-    font-weight: 700;
-    color: var(--color-black-default);
+    background-color: var(--color-mp-green-300);
   }
 
   /* ==========================================================================
-     Section 4: Executive Stakeholders & Business Outcomes (6 Columns, No Logo)
+     Section 3: Dedicated Community Home (editorial split + photo network)
      ========================================================================== */
-  #mp-community-embed .mp_stakeholders_section {
-    width: 100%;
-    padding: 72px 0 88px 0;
-    position: relative;
-    background: linear-gradient(180deg, var(--color-page-bg) 0%, #F5FBF7 50%, var(--color-page-bg) 100%);
-    border-top: 1px solid rgba(203, 238, 213, 0.4);
-    border-bottom: 1px solid rgba(203, 238, 213, 0.4);
-    overflow: hidden;
-  }
-
-  #mp-community-embed .mp_stakeholders_header {
-    width: 100%;
-    max-width: 980px;
-    margin: 0 auto 48px auto;
-    text-align: left;
-  }
-
-  #mp-community-embed h2.mp_stakeholders_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 36px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-  }
-
-  #mp-community-embed h2.mp_stakeholders_title .title_line {
-    display: block;
-  }
-
-  #mp-community-embed h2.mp_stakeholders_title strong {
-    font-weight: 700;
-  }
-
-  #mp-community-embed h2.mp_stakeholders_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  #mp-community-embed .mp_stakeholders_grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 16px;
-    width: 100%;
-    align-items: stretch;
-  }
-
-  #mp-community-embed .mp_stakeholder_col {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  #mp-community-embed .mp_stakeholder_verb {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 20px;
-    font-weight: 600 !important;
-    line-height: 28px;
-    color: var(--color-black-default);
-    margin-bottom: 14px;
-    text-align: left;
-    padding-left: 2px;
-  }
-
-  #mp-community-embed .mp_stakeholder_card {
-    background-color: var(--color-white);
-    border: 1px solid #DCE3E6;
-    border-radius: 14px;
-    padding: 24px 16px 24px 16px;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    align-items: stretch;
-    flex: 1;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-    position: relative;
-  }
-
-  #mp-community-embed .mp_stakeholder_card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    border-color: var(--color-mp-green-300);
-  }
-
-  /* Inset vertical accent line */
-  #mp-community-embed .mp_card_accent_bar {
-    width: 4px;
-    min-width: 4px;
-    border-radius: 3px;
-    background-color: var(--color-mp-green-700);
-  }
-
-  /* Role specific accent colors */
-  #mp-community-embed .theme_ceo .mp_card_accent_bar { background-color: var(--color-mp-blue-800); }
-  #mp-community-embed .theme_cro .mp_card_accent_bar { background-color: #8CB811; }
-  #mp-community-embed .theme_cmo .mp_card_accent_bar { background-color: var(--color-mp-blue-default); }
-  #mp-community-embed .theme_cpo .mp_card_accent_bar { background-color: var(--color-alert-text); }
-  #mp-community-embed .theme_cxo .mp_card_accent_bar { background-color: var(--color-mp-green-500); }
-  #mp-community-embed .theme_customer .mp_card_accent_bar { background-color: var(--color-mp-green-700); }
-
-  #mp-community-embed .mp_card_body {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex: 1;
-  }
-
-  #mp-community-embed h4.mp_role_title {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 17px;
-    font-weight: 600 !important;
-    line-height: 24px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 16px;
-    text-align: left;
-  }
-
-  #mp-community-embed p.mp_role_desc {
-    font-family: var(--font-family-body) !important;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 20px;
-    color: var(--color-black-500);
-    text-align: left;
-    margin: 0;
-  }
-
-  /* ==========================================================================
-     Section 5: One Platform. Every Capability Your Community Needs. (4 Pillars)
-     ========================================================================== */
-  #mp-community-embed .mp_capabilities_section {
-    width: 100%;
-    padding: 76px 0 88px 0;
-    position: relative;
+  #mp-hrtech-embed .mp_home {
+    padding: 96px 0;
     background-color: var(--color-page-bg);
   }
 
-  #mp-community-embed h2.mp_capabilities_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 38px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-    text-align: center;
-    margin-bottom: 48px;
-    width: 100%;
-  }
-
-  #mp-community-embed h2.mp_capabilities_title::before {
-    content: '';
-    display: block;
-    width: 56px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 28px auto;
-  }
-
-  #mp-community-embed h2.mp_capabilities_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  #mp-community-embed .mp_capabilities_grid {
+  #mp-hrtech-embed .mp_home_grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    width: 100%;
-    align-items: stretch;
-  }
-
-  #mp-community-embed .mp_capability_pillar {
-    background-color: var(--color-white);
-    border-radius: var(--radius-card);
-    border: 1px solid #DCE3E6;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  #mp-community-embed .mp_capability_pillar:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 34px rgba(1, 134, 36, 0.09);
-    border-color: var(--color-mp-green-300);
-  }
-
-  #mp-community-embed .mp_pillar_header {
-    padding: 20px 22px;
-    border-bottom: 2px solid;
-    display: flex;
+    grid-template-columns: 0.9fr 1.1fr;
     align-items: center;
+    gap: 64px;
   }
 
-  #mp-community-embed .theme_engagement .mp_pillar_header {
-    background-color: var(--color-mp-green-50);
-    border-bottom-color: var(--color-mp-green-700);
-  }
-  #mp-community-embed .theme_engagement h3.mp_pillar_title {
-    color: var(--color-mp-green-700) !important;
-  }
-  #mp-community-embed .theme_engagement .mp_pillar_icon {
-    color: var(--color-mp-green-700);
+  #mp-hrtech-embed .mp_home .mp_h2 {
+    margin-bottom: 24px;
   }
 
-  #mp-community-embed .theme_admin .mp_pillar_header {
-    background-color: var(--color-mp-blue-50);
-    border-bottom-color: var(--color-mp-blue-800);
-  }
-  #mp-community-embed .theme_admin h3.mp_pillar_title {
-    color: var(--color-mp-blue-800) !important;
-  }
-  #mp-community-embed .theme_admin .mp_pillar_icon {
-    color: var(--color-mp-blue-800);
-  }
-
-  #mp-community-embed .theme_ai .mp_pillar_header {
-    background-color: #EBF3F6;
-    border-bottom-color: var(--color-mp-blue-default);
-  }
-  #mp-community-embed .theme_ai h3.mp_pillar_title {
-    color: var(--color-mp-blue-default) !important;
-  }
-  #mp-community-embed .theme_ai .mp_pillar_icon {
-    color: var(--color-mp-blue-default);
-  }
-
-  #mp-community-embed .theme_marketing .mp_pillar_header {
-    background-color: var(--color-alert-bg);
-    border-bottom-color: var(--color-alert-text);
-  }
-  #mp-community-embed .theme_marketing h3.mp_pillar_title {
-    color: var(--color-alert-text) !important;
-  }
-  #mp-community-embed .theme_marketing .mp_pillar_icon {
-    color: var(--color-alert-text);
-  }
-
-  #mp-community-embed h3.mp_pillar_title {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 20px;
-    font-weight: 600 !important;
-    line-height: 26px;
-    margin: 0;
-  }
-
-
-  #mp-community-embed ul.mp_pillar_list {
-    list-style: none;
-    margin: 0;
-    padding: 6px 0;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  #mp-community-embed ul.mp_pillar_list li {
-    padding: 13px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid #F0F4F2;
-    font-family: var(--font-family-body) !important;
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--color-black-default);
-    text-align: left;
-    transition: background-color 0.2s ease, padding-left 0.2s ease, color 0.2s ease;
-  }
-
-  #mp-community-embed ul.mp_pillar_list li:last-child {
-    border-bottom: none;
-  }
-
-  #mp-community-embed ul.mp_pillar_list li:hover {
-    background-color: var(--color-mp-green-50);
-    color: var(--color-mp-green-700);
-    padding-left: 24px;
-  }
-
-  #mp-community-embed .mp_pillar_icon {
-    flex-shrink: 0;
-    stroke-width: 2.2;
-  }
-
-  /* ==========================================================================
-     Section 6: The Window to Build a Thriving Customer Community Is NOW
-     ========================================================================== */
-  #mp-community-embed .mp_window_section {
-    width: 100%;
-    padding: 76px 0 92px 0;
+  #mp-hrtech-embed .mp_media {
     position: relative;
-    background: linear-gradient(180deg, var(--color-page-bg) 0%, #F5FBF7 50%, var(--color-page-bg) 100%);
-    border-top: 1px solid rgba(203, 238, 213, 0.4);
-    overflow: hidden;
   }
 
-  #mp-community-embed .mp_window_header {
-    width: 100%;
-    max-width: 980px;
-    margin: 0 auto 48px auto;
-    text-align: center;
+  #mp-hrtech-embed .mp_media_ring {
+    position: absolute;
+    top: -36px;
+    right: -36px;
+    width: 160px;
+    height: 160px;
+    border: 2px dashed var(--color-mp-green-300);
+    border-radius: 50%;
   }
 
-  #mp-community-embed h2.mp_window_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 38px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -0.25px;
-    color: var(--color-black-default) !important;
-    text-align: center;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  #mp-community-embed h2.mp_window_title::before {
-    content: '';
-    display: block;
-    width: 56px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 28px auto;
-  }
-
-  #mp-community-embed h2.mp_window_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  #mp-community-embed .mp_window_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    width: 100%;
-    align-items: stretch;
-  }
-
-  #mp-community-embed .mp_window_card {
-    background-color: var(--color-white);
-    border-radius: var(--radius-card);
-    border: 1px solid #DCE3E6;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  #mp-community-embed .mp_window_card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 36px rgba(1, 134, 36, 0.1);
-    border-color: var(--color-mp-green-300);
-  }
-
-  #mp-community-embed .mp_window_card_media {
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
+  #mp-hrtech-embed .mp_media_frame {
     position: relative;
-    background-color: var(--color-mp-green-50);
+    z-index: 1;
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(22, 43, 50, 0.16);
+    aspect-ratio: 16 / 11;
   }
 
-  #mp-community-embed .mp_window_card_media img {
-    display: block;
+  #mp-hrtech-embed .mp_media_frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    object-position: 50% 50%;
   }
 
-  #mp-community-embed .mp_window_card:hover .mp_window_card_media img {
-    transform: scale(1.04);
+  /* Overlay uses the photo's own coordinates: viewBox = image size and
+     xMidYMid slice = object-fit: cover, so nodes stay on the people. */
+  #mp-hrtech-embed .mp_media_frame > .mp_vec {
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
-  #mp-community-embed .mp_window_card_content {
-    padding: 26px 24px 30px 24px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  #mp-hrtech-embed .mp_media .mp_dots {
+    z-index: 2;
+    top: 24px;
+    right: -18px;
   }
 
-  #mp-community-embed h3.mp_window_card_title {
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 19px;
-    font-weight: 600 !important;
-    line-height: 26px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 12px;
-    text-align: left;
-  }
-
-  #mp-community-embed p.mp_window_card_desc {
-    font-family: var(--font-family-body) !important;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 23px;
-    color: var(--color-black-500);
-    text-align: left;
-    margin: 0;
-  }
+  #mp-hrtech-embed .mp_media .mp_chip.c1 { left: -24px; bottom: 40px; }
+  #mp-hrtech-embed .mp_media .mp_chip.c2 { left: 52px; bottom: -22px; }
 
   /* ==========================================================================
-     Section 7: Let's Build Your Community on MyPeople (Interconnected Steps)
+     Section 4: Business Benefits (colour-block tiles on green tint)
      ========================================================================== */
-  #mp-community-embed .mp_steps_section {
-    width: 100%;
-    padding: 76px 0 92px 0;
+  #mp-hrtech-embed .mp_benefits {
     position: relative;
-    background-color: var(--color-page-bg);
+    padding: 96px 0;
+    background-color: var(--color-mp-green-50);
+    border-top: 1px solid var(--color-mp-green-200);
+    border-bottom: 1px solid var(--color-mp-green-200);
     overflow: hidden;
   }
 
-  #mp-community-embed .mp_steps_header {
-    width: 100%;
-    max-width: 860px;
-    margin: 0 auto 52px auto;
-    text-align: center;
+  #mp-hrtech-embed .mp_benefits .mp_h2 {
+    max-width: 960px;
+    margin-bottom: 56px;
   }
 
-  #mp-community-embed h2.mp_steps_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 34px;
-    font-weight: 700 !important;
-    line-height: 44px;
-    letter-spacing: 0.5px;
-    color: var(--color-mp-green-700) !important;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 18px;
+  #mp-hrtech-embed .mp_tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 
-  #mp-community-embed h2.mp_steps_title::before {
-    content: '';
-    display: block;
-    width: 56px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin: 0 auto 24px auto;
-  }
-
-  #mp-community-embed p.mp_steps_subtitle {
-    font-family: var(--font-family-body) !important;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 30px;
-    color: var(--color-black-500);
-    text-align: center;
-    margin: 0;
-  }
-
-  /* Interconnected Steps Wrapper */
-  #mp-community-embed .mp_steps_wrapper {
+  #mp-hrtech-embed .mp_tile {
     position: relative;
-    width: 100%;
-    margin-bottom: 52px;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 32px 32px 32px;
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
   }
 
-  /* Connecting Pipeline Track (Desktop) */
-  #mp-community-embed .mp_steps_track {
+  #mp-hrtech-embed .mp_tile:hover {
+    translate: 0 -6px;
+    box-shadow: 0 24px 50px rgba(22, 43, 50, 0.16);
+  }
+
+  #mp-hrtech-embed .mp_tile.is-green { background-color: var(--color-mp-green-700); }
+  #mp-hrtech-embed .mp_tile.is-white { background-color: var(--color-white); border: 1px solid var(--color-mp-green-200); }
+  #mp-hrtech-embed .mp_tile.is-slate { background-color: var(--color-mp-blue-800); }
+
+  #mp-hrtech-embed .mp_tile_num {
     position: absolute;
-    top: 60px;
-    left: 16%;
-    right: 16%;
-    height: 2px;
-    z-index: 1;
+    top: 14px;
+    right: 26px;
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 104px;
+    font-weight: 700 !important;
+    line-height: 104px;
+    letter-spacing: -3px !important;
+    pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-hrtech-embed .mp_tile:hover .mp_tile_num { transform: translateY(-6px); }
+  #mp-hrtech-embed .mp_tile.is-green .mp_tile_num { color: var(--color-mp-green-500) !important; }
+  #mp-hrtech-embed .mp_tile.is-white .mp_tile_num { color: var(--color-mp-green-100) !important; }
+  #mp-hrtech-embed .mp_tile.is-slate .mp_tile_num { color: var(--color-mp-blue-700) !important; }
+
+  #mp-hrtech-embed .mp_tile_icon {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 40px;
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  #mp-hrtech-embed .mp_tile:hover .mp_tile_icon { transform: rotate(-6deg); }
+  #mp-hrtech-embed .mp_tile.is-green .mp_tile_icon { background-color: var(--color-white); color: var(--color-mp-green-700) !important; }
+  #mp-hrtech-embed .mp_tile.is-white .mp_tile_icon { background-color: var(--color-mp-green-700); color: var(--color-white) !important; }
+  #mp-hrtech-embed .mp_tile.is-slate .mp_tile_icon { background-color: var(--color-mp-green-400); color: var(--color-mp-blue-900) !important; }
+
+  #mp-hrtech-embed .mp_tile_icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  #mp-hrtech-embed .mp_tile h3 {
+    position: relative;
+    margin-bottom: 16px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 26px;
+    font-weight: 600 !important;
+    line-height: 34px;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-hrtech-embed .mp_tile.is-green h3,
+  #mp-hrtech-embed .mp_tile.is-slate h3 {
+    color: var(--color-white) !important;
+  }
+
+  #mp-hrtech-embed .mp_tile li {
+    position: relative;
+    padding: 12px 0 12px 26px;
+    border-top: 1px solid var(--color-mp-green-200);
+    font-family: var(--font-family-body) !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: var(--color-black-500) !important;
+  }
+
+  #mp-hrtech-embed .mp_tile li::after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 21px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-500);
+  }
+
+  #mp-hrtech-embed .mp_tile li strong {
+    font-weight: 700;
+    color: var(--color-mp-green-700) !important;
+  }
+
+  #mp-hrtech-embed .mp_tile.is-green li {
+    border-top-color: var(--color-mp-green-500);
+    color: var(--color-mp-green-50) !important;
+  }
+
+  #mp-hrtech-embed .mp_tile.is-green li::after { background-color: var(--color-mp-green-300); }
+  #mp-hrtech-embed .mp_tile.is-green li strong { color: var(--color-white) !important; }
+
+  #mp-hrtech-embed .mp_tile.is-slate li {
+    border-top-color: var(--color-mp-blue-700);
+    color: var(--color-mp-blue-100) !important;
+  }
+
+  #mp-hrtech-embed .mp_tile.is-slate li::after { background-color: var(--color-mp-green-400); }
+  #mp-hrtech-embed .mp_tile.is-slate li strong { color: var(--color-mp-green-300) !important; }
+
+  /* ==========================================================================
+     Section 5: Stakeholders (full-bleed slate, 3 x 2 role grid)
+     ========================================================================== */
+  #mp-hrtech-embed .mp_roles {
+    position: relative;
+    padding: 104px 0;
+    background-color: var(--color-mp-blue-900);
+    background-image: radial-gradient(var(--color-mp-blue-700) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
+    color: var(--color-white) !important;
+    overflow: hidden;
+  }
+
+  #mp-hrtech-embed .mp_roles::after {
+    content: '';
+    position: absolute;
+    top: -160px;
+    left: -160px;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 185, 87, 0.2) 0%, rgba(22, 43, 50, 0) 70%);
     pointer-events: none;
   }
 
-  #mp-community-embed .mp_track_line {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      var(--color-mp-green-400) 0%, 
-      var(--color-mp-blue-default) 50%, 
-      var(--color-mp-green-700) 100%
-    );
-    border-radius: 2px;
-    position: relative;
+  #mp-hrtech-embed .mp_roles .mp_container {
+    z-index: 1;
   }
 
-  #mp-community-embed .mp_track_arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: var(--color-white);
-    border: 2px solid var(--color-mp-green-200);
-    color: var(--color-mp-green-700);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(1, 134, 36, 0.15);
-    z-index: 2;
+  #mp-hrtech-embed .mp_roles_title {
+    margin-bottom: 64px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 48px;
+    font-weight: 600 !important;
+    line-height: 58px;
+    letter-spacing: -1.25px !important;
+    color: var(--color-white) !important;
   }
 
-  #mp-community-embed .track_arrow_1 {
-    left: calc(33.333% - 16px);
+  #mp-hrtech-embed .mp_roles_title > span {
+    display: block;
   }
 
-  #mp-community-embed .track_arrow_2 {
-    left: calc(66.666% - 16px);
+  #mp-hrtech-embed .mp_roles_title strong {
+    font-weight: 600;
+    color: var(--color-mp-green-400) !important;
   }
 
-  /* Steps Grid */
-  #mp-community-embed .mp_steps_grid {
+  #mp-hrtech-embed .mp_roles_title .mp_hl {
+    color: var(--color-mp-green-400) !important;
+  }
+
+  #mp-hrtech-embed .mp_roles_grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-    align-items: stretch;
+    gap: 24px;
   }
 
-  #mp-community-embed .mp_step_card {
-    background-color: var(--color-white);
-    border-radius: var(--radius-card);
-    border: 1px solid #DCE3E6;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    padding: 36px 28px 36px 28px;
+  #mp-hrtech-embed .mp_role {
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    padding: 32px 32px 36px 32px;
+    border-radius: 24px;
+    border: 1px solid var(--color-mp-blue-700);
+    background-color: rgba(34, 64, 75, 0.72);
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.3s ease;
   }
 
-  #mp-community-embed .mp_step_card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 28px;
-    right: 28px;
-    height: 4px;
-    border-radius: 0 0 4px 4px;
+  #mp-hrtech-embed .mp_role:hover {
+    translate: 0 -6px;
+    border-color: var(--color-mp-green-400);
+    background-color: var(--color-mp-blue-800);
   }
 
-  #mp-community-embed .step_1::before { background-color: var(--color-mp-green-700); }
-  #mp-community-embed .step_2::before { background-color: var(--color-mp-blue-default); }
-  #mp-community-embed .step_3::before { background-color: var(--color-mp-green-500); }
+  #mp-hrtech-embed .mp_role_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
 
-  #mp-community-embed .mp_step_card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(1, 134, 36, 0.12);
+  #mp-hrtech-embed .mp_role_idx {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 14px;
+    font-weight: 600 !important;
+    line-height: 20px;
+    letter-spacing: 1px !important;
+    color: var(--color-mp-blue-400) !important;
+  }
+
+  #mp-hrtech-embed .mp_role_who {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: rgba(102, 203, 129, 0.12);
+    border: 1px solid var(--color-mp-green-800);
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 14px;
+    font-weight: 600 !important;
+    line-height: 20px;
+    color: var(--color-mp-green-300) !important;
+    text-align: right;
+  }
+
+  #mp-hrtech-embed .mp_role_verb {
+    margin-bottom: 14px;
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 52px;
+    font-weight: 700 !important;
+    line-height: 56px;
+    letter-spacing: -1.25px !important;
+    color: var(--color-white) !important;
+    transition: color 0.3s ease;
+  }
+
+  #mp-hrtech-embed .mp_role:hover .mp_role_verb {
+    color: var(--color-mp-green-400) !important;
+  }
+
+  #mp-hrtech-embed .mp_role_desc {
+    font-family: var(--font-family-body) !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--color-mp-blue-100) !important;
+  }
+
+  /* The customer sits at the centre of every outcome: bold green tile */
+  #mp-hrtech-embed .mp_role.is-customer {
+    background-color: var(--color-mp-green-700);
+    border-color: var(--color-mp-green-500);
+  }
+
+  #mp-hrtech-embed .mp_role.is-customer:hover {
+    background-color: var(--color-mp-green-800);
     border-color: var(--color-mp-green-300);
   }
 
-  #mp-community-embed .mp_step_badge_wrap {
+  #mp-hrtech-embed .mp_role.is-customer .mp_role_idx { color: var(--color-mp-green-200) !important; }
+  #mp-hrtech-embed .mp_role.is-customer .mp_role_who { background-color: var(--color-white); border-color: var(--color-white); color: var(--color-mp-green-700) !important; }
+  #mp-hrtech-embed .mp_role.is-customer:hover .mp_role_verb { color: var(--color-white) !important; }
+  #mp-hrtech-embed .mp_role.is-customer .mp_role_desc { color: var(--color-mp-green-50) !important; }
+
+  /* ==========================================================================
+     Section 6: Capabilities (4 icon cards with chip lists)
+     ========================================================================== */
+  #mp-hrtech-embed .mp_caps {
+    padding: 96px 0;
+    background-color: var(--color-page-bg);
+  }
+
+  #mp-hrtech-embed .mp_caps .mp_h2 {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 56px auto;
+  }
+
+  #mp-hrtech-embed .mp_caps_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  #mp-hrtech-embed .mp_cap {
+    padding: 32px 26px 30px 26px;
+    border-radius: 24px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-mp-blue-200);
+    box-shadow: 0 6px 24px rgba(22, 43, 50, 0.05);
+    transition: translate 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #mp-hrtech-embed .mp_cap:hover {
+    translate: 0 -6px;
+    border-color: var(--color-mp-green-300);
+    box-shadow: 0 22px 44px rgba(1, 134, 36, 0.12);
+  }
+
+  #mp-hrtech-embed .mp_cap_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 24px;
+    justify-content: center;
+    background-color: var(--color-mp-green-50);
+    border: 1px solid var(--color-mp-green-200);
+    color: var(--color-mp-green-700) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #mp-hrtech-embed .mp_cap:hover .mp_cap_icon {
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+  }
+
+  #mp-hrtech-embed .mp_cap_icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  #mp-hrtech-embed .mp_cap h3 {
+    margin-bottom: 20px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 22px;
+    font-weight: 600 !important;
+    line-height: 30px;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-hrtech-embed .mp_cap ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #mp-hrtech-embed .mp_cap li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px 7px 9px;
+    border-radius: 999px;
+    background-color: var(--color-mp-green-50);
+    border: 1px solid var(--color-mp-green-200);
+    font-family: var(--font-family-body) !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--color-black-500) !important;
+  }
+
+  #mp-hrtech-embed .mp_cap li svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--color-mp-green-700) !important;
+  }
+
+  /* ==========================================================================
+     Section 7: The Window Is NOW (zig-zag rows on green tint)
+     ========================================================================== */
+  #mp-hrtech-embed .mp_window {
+    padding: 96px 0;
+    background-color: var(--color-mp-green-50);
+    border-top: 1px solid var(--color-mp-green-200);
+    border-bottom: 1px solid var(--color-mp-green-200);
+  }
+
+  #mp-hrtech-embed .mp_window .mp_h2 {
+    max-width: 820px;
+    margin-bottom: 64px;
+  }
+
+  #mp-hrtech-embed .mp_now {
+    display: inline-block;
+    padding: 0 14px;
+    border-radius: var(--radius-tag);
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+    transform: rotate(-3deg);
+    font-family: inherit !important;
+  }
+
+  #mp-hrtech-embed .mp_rows {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+  }
+
+  #mp-hrtech-embed .mp_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  #mp-hrtech-embed .mp_row.is-flip .mp_row_media {
+    order: 2;
+  }
+
+  #mp-hrtech-embed .mp_row_media {
     position: relative;
   }
 
-  #mp-community-embed .mp_step_badge {
-    width: 48px;
-    height: 48px;
+  #mp-hrtech-embed .mp_row_frame {
+    position: relative;
+    z-index: 1;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(22, 43, 50, 0.14);
+  }
+
+  #mp-hrtech-embed .mp_row_frame img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-hrtech-embed .mp_row_frame img.is-portrait {
+    object-position: 50% 45%;
+  }
+
+  #mp-hrtech-embed .mp_row:hover .mp_row_frame img {
+    transform: scale(1.04);
+  }
+
+  #mp-hrtech-embed .mp_row_media .mp_chip {
+    top: -20px;
+    right: 28px;
+  }
+
+  #mp-hrtech-embed .mp_row.is-flip .mp_row_media .mp_chip {
+    right: auto;
+    left: 28px;
+  }
+
+  /* Precise arc + node accent behind each photo corner */
+  #mp-hrtech-embed .mp_row_media > .mp_vec {
+    z-index: 0;
+    width: 128px;
+    height: 128px;
+    left: -40px;
+    bottom: -40px;
+  }
+
+  #mp-hrtech-embed .mp_row.is-flip .mp_row_media > .mp_vec {
+    left: auto;
+    right: -40px;
+    transform: scaleX(-1);
+  }
+
+  #mp-hrtech-embed .mp_row_num {
+    display: block;
+    margin-bottom: 12px;
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 88px;
+    font-weight: 700 !important;
+    line-height: 88px;
+    letter-spacing: -3px !important;
+    color: var(--color-mp-green-300) !important;
+  }
+
+  #mp-hrtech-embed .mp_row h3 {
+    margin-bottom: 16px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 30px;
+    font-weight: 600 !important;
+    line-height: 38px;
+    letter-spacing: -0.5px !important;
+    color: var(--color-black-default) !important;
+  }
+
+  #mp-hrtech-embed .mp_row p {
+    max-width: 560px;
+    font-family: var(--font-family-body) !important;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 29px;
+    color: var(--color-black-500) !important;
+  }
+
+  /* ==========================================================================
+     Section 8: Let's Build (closing green block)
+     ========================================================================== */
+  #mp-hrtech-embed .mp_build {
+    position: relative;
+    padding: 104px 0;
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+    overflow: hidden;
+  }
+
+  #mp-hrtech-embed .mp_build::before,
+  #mp-hrtech-embed .mp_build::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--color-mp-green-500);
+    pointer-events: none;
+  }
+
+  #mp-hrtech-embed .mp_build::before {
+    width: 520px;
+    height: 520px;
+    left: -220px;
+    bottom: -260px;
+  }
+
+  #mp-hrtech-embed .mp_build::after {
+    width: 320px;
+    height: 320px;
+    right: -120px;
+    top: -140px;
+    border-style: dashed;
+  }
+
+  #mp-hrtech-embed .mp_build_grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  #mp-hrtech-embed .mp_build_media {
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    border: 1px solid var(--color-mp-green-500);
+    box-shadow: 0 30px 70px rgba(0, 66, 19, 0.45);
+  }
+
+  #mp-hrtech-embed .mp_build_media img {
+    width: 100%;
+  }
+
+  #mp-hrtech-embed .mp_build .mp_h2 {
+    color: var(--color-white) !important;
+    margin-bottom: 20px;
+  }
+
+  #mp-hrtech-embed .mp_build_badge {
+    display: inline-block;
+    padding: 0 14px;
+    margin-right: 6px;
+    border-radius: var(--radius-tag);
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    transform: rotate(-3deg);
+    font-family: inherit !important;
+  }
+
+  #mp-hrtech-embed .mp_build_sub {
+    margin-bottom: 36px;
+    font-family: var(--font-family-body) !important;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 29px;
+    color: var(--color-mp-green-50) !important;
+  }
+
+  #mp-hrtech-embed .mp_steps {
+    margin-bottom: 40px;
+  }
+
+  #mp-hrtech-embed .mp_step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 20px;
+    padding-bottom: 28px;
+  }
+
+  #mp-hrtech-embed .mp_step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 56px;
+    bottom: 4px;
+    width: 2px;
+    background-color: var(--color-mp-green-500);
+  }
+
+  #mp-hrtech-embed .mp_step_num {
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-family-heading-2) !important;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--color-white);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  #mp-community-embed .step_1 .mp_step_badge {
-    background-color: var(--color-mp-green-700);
-    box-shadow: 0 0 0 5px var(--color-mp-green-100);
-  }
-
-  #mp-community-embed .step_2 .mp_step_badge {
-    background-color: var(--color-mp-blue-default);
-    box-shadow: 0 0 0 5px var(--color-mp-blue-100);
-  }
-
-  #mp-community-embed .step_3 .mp_step_badge {
-    background-color: var(--color-mp-green-700);
-    box-shadow: 0 0 0 5px var(--color-mp-green-200);
-  }
-
-  #mp-community-embed .mp_step_card:hover .mp_step_badge {
-    transform: scale(1.1);
-  }
-
-  #mp-community-embed .mp_step_body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  #mp-community-embed h3.mp_step_title {
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
     font-family: var(--font-family-heading-2) !important;
     font-size: 20px;
     font-weight: 600 !important;
-    line-height: 28px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 14px;
-    text-align: left;
-  }
-
-  #mp-community-embed p.mp_step_desc {
-    font-family: var(--font-family-body) !important;
-    font-size: 15px;
-    font-weight: 400;
     line-height: 24px;
-    color: var(--color-black-500);
-    text-align: left;
-    margin: 0;
   }
 
-  /* Centered CTA Action */
-  #mp-community-embed .mp_steps_action {
-    display: flex;
-    justify-content: center;
+  #mp-hrtech-embed .mp_step h4 {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 21px;
+    font-weight: 600 !important;
+    line-height: 29px;
+    color: var(--color-white) !important;
+    margin: 10px 0 8px 0;
+  }
+
+  #mp-hrtech-embed .mp_step p {
+    font-family: var(--font-family-body) !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    color: var(--color-mp-green-50) !important;
+  }
+
+  /* ==========================================================================
+     Contact Modal
+     ========================================================================== */
+  #mp-hrtech-embed .mp-hrtech-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(22, 43, 50, 0.7);
+    z-index: 99998;
+    display: none;
+    backdrop-filter: blur(6px);
+  }
+
+  #mp-hrtech-embed .mp-hrtech-modal-overlay.active {
+    display: block;
+  }
+
+  #mp-hrtech-embed .mp-hrtech-modal-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
     align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  #mp-hrtech-embed .mp-hrtech-modal-wrapper.active {
+    display: flex;
+  }
+
+  #mp-hrtech-embed .mp_splash_modal {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px 32px 32px 32px;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  }
+
+  #mp-hrtech-embed .mp_splash_modal .mps_close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-black-50);
+    color: var(--color-black-400) !important;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.2s ease;
+  }
+
+  #mp-hrtech-embed .mp_splash_modal .mps_close:hover {
+    background-color: var(--color-black-100);
+    color: var(--color-black-default) !important;
+    transform: rotate(90deg);
+  }
+
+  #mp-hrtech-embed .mp_splash_modal h4 {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 24px;
+    font-weight: 600 !important;
+    line-height: 32px;
+    color: var(--color-black-default) !important;
+    margin-bottom: 22px;
+    padding-right: 40px;
+  }
+
+  #mp-hrtech-embed .mp_ipbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 16px;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip.mw50 {
+    width: calc(50% - 8px);
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip > label {
+    font-family: var(--font-family-body) !important;
+    font-size: 14px;
+    font-weight: 500 !important;
+    line-height: 24px;
+    color: var(--color-black-default) !important;
+    margin-bottom: 4px;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip > input[type="text"],
+  #mp-hrtech-embed .mp_ipbox .hrip > input[type="email"],
+  #mp-hrtech-embed .mp_ipbox .hrip > input[type="tel"],
+  #mp-hrtech-embed .mp_ipbox .hrip > select {
+    width: 100%;
+    height: 50px;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    background-color: var(--color-white);
+    color: var(--color-black-default) !important;
+    font-family: var(--font-family-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip > input::placeholder {
+    color: var(--color-black-300) !important;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip > input:focus,
+  #mp-hrtech-embed .mp_ipbox .hrip > select:focus {
+    border-color: var(--color-edit-border);
+    box-shadow: 0 0 0 3px rgba(80, 153, 236, 0.15);
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip.fdrow {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-mp-green-700);
+    cursor: pointer;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .hrip.fdrow > label {
+    margin-bottom: 0;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  #mp-hrtech-embed .mp_ipbox span.error,
+  #mp-hrtech-embed .mp_ipbox span.errorTickbox {
+    display: none;
+    width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--color-error-text) !important;
+    margin-top: 4px;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .mp_submit_row {
+    margin-top: 14px;
+  }
+
+  #mp-hrtech-embed .mp_ipbox .mp_submit_row .btn-primary {
     width: 100%;
   }
 
+  #mp-hrtech-embed .mps_success_info p {
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-black-default) !important;
+  }
 
+  body.mp-freeze-scroll {
+    overflow: hidden !important;
+  }
 
   /* ==========================================================================
-     Responsive Breakpoints & Wide-Screen Scaling (Capped at 1440px)
+     Wide-Screen Tiers (container capped at 1440px)
      ========================================================================== */
-
-  /* Medium to Large Desktop (min-width: 1200px) */
   @media screen and (min-width: 1200px) {
-    #mp-community-embed .mp_container {
+    #mp-hrtech-embed .mp_container {
       max-width: 1320px;
       padding-left: 28px;
       padding-right: 28px;
     }
-    #mp-community-embed .mp_hero_section {
-      padding: 80px 0 90px 0;
-    }
-    #mp-community-embed h1.mp_hero_title {
-      font-size: 50px;
-      line-height: 58px;
-    }
-    #mp-community-embed p.mp_hero_subtext {
-      font-size: 21px;
-      line-height: 34px;
-      margin-bottom: 38px;
-    }
-    #mp-community-embed .mp_hero_img_card img {
-      max-width: 560px;
-    }
-    #mp-community-embed .mp_dedicated_section {
-      padding: 84px 0 92px 0;
-    }
-    #mp-community-embed h2.mp_dedicated_title {
-      font-size: 42px;
-      line-height: 52px;
-    }
-    #mp-community-embed p.mp_dedicated_desc {
-      font-size: 20px;
-      line-height: 34px;
-      max-width: 860px;
-    }
-    #mp-community-embed .mp_benefits_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-community-embed h2.mp_benefits_title {
-      font-size: 42px;
-      line-height: 52px;
-      margin-bottom: 52px;
-    }
-    #mp-community-embed .mp_benefits_grid {
-      gap: 30px;
-    }
-    #mp-community-embed .mp_benefits_card {
-      padding: 38px 30px 34px 30px;
-    }
-    #mp-community-embed .mp_benefits_card h3.mp_card_title {
-      font-size: 26px;
-      line-height: 34px;
-    }
-    #mp-community-embed ul.mp_benefits_list li {
-      font-size: 16px;
-      line-height: 25px;
-    }
-    #mp-community-embed .mp_stakeholders_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-community-embed h2.mp_stakeholders_title {
-      font-size: 40px;
-      line-height: 52px;
-    }
-    #mp-community-embed .mp_stakeholders_grid {
-      gap: 18px;
-    }
-    #mp-community-embed .mp_stakeholder_card {
-      padding: 26px 18px 26px 16px;
-    }
-    #mp-community-embed h4.mp_role_title {
-      font-size: 18px;
-      line-height: 25px;
-    }
-    #mp-community-embed p.mp_role_desc {
-      font-size: 14px;
-      line-height: 21px;
-    }
-    #mp-community-embed .mp_capabilities_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-community-embed h2.mp_capabilities_title {
-      font-size: 42px;
-      line-height: 52px;
-      margin-bottom: 52px;
-    }
-    #mp-community-embed .mp_capabilities_grid {
-      gap: 24px;
-    }
-    #mp-community-embed ul.mp_pillar_list li {
-      font-size: 15px;
-      padding: 14px 22px;
-    }
-    #mp-community-embed .mp_window_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-community-embed h2.mp_window_title {
-      font-size: 42px;
-      line-height: 52px;
-      margin-bottom: 52px;
-    }
-    #mp-community-embed .mp_window_grid {
-      gap: 30px;
-    }
-    #mp-community-embed .mp_window_card_media {
-      height: 235px;
-    }
-    #mp-community-embed .mp_window_card_content {
-      padding: 30px 26px 34px 26px;
-    }
-    #mp-community-embed h3.mp_window_card_title {
-      font-size: 20px;
-      line-height: 28px;
-    }
-    #mp-community-embed p.mp_window_card_desc {
-      font-size: 15px;
-      line-height: 24px;
-    }
-    #mp-community-embed .mp_steps_section {
-      padding: 84px 0 96px 0;
-    }
-    #mp-community-embed h2.mp_steps_title {
-      font-size: 38px;
-      line-height: 48px;
-    }
-    #mp-community-embed p.mp_steps_subtitle {
-      font-size: 19px;
-      line-height: 32px;
-      margin-bottom: 56px;
-    }
-    #mp-community-embed .mp_steps_grid {
-      gap: 36px;
-    }
-    #mp-community-embed .mp_step_card {
-      padding: 40px 32px 42px 32px;
-    }
-    #mp-community-embed h3.mp_step_title {
-      font-size: 21px;
-      line-height: 30px;
-    }
-    #mp-community-embed p.mp_step_desc {
-      font-size: 15px;
-      line-height: 25px;
-    }
+
+    #mp-hrtech-embed .mp_h2 { font-size: 50px; line-height: 58px; }
+    #mp-hrtech-embed .mp_lead { font-size: 22px; line-height: 32px; }
+
+    #mp-hrtech-embed .mp_hero { padding: 120px 0 128px 0; }
+    #mp-hrtech-embed .mp_hero_title { font-size: 68px; line-height: 74px; letter-spacing: -1.75px !important; }
+    #mp-hrtech-embed .mp_hero_tagline { font-size: 30px; line-height: 38px; }
+    #mp-hrtech-embed .mp_net { max-width: 580px; }
+
+    #mp-hrtech-embed .mp_marquee_group li { font-size: 26px; line-height: 34px; }
+
+    #mp-hrtech-embed .mp_home,
+    #mp-hrtech-embed .mp_benefits,
+    #mp-hrtech-embed .mp_caps,
+    #mp-hrtech-embed .mp_window { padding: 112px 0; }
+    #mp-hrtech-embed .mp_roles,
+    #mp-hrtech-embed .mp_build { padding: 120px 0; }
+
+    #mp-hrtech-embed .mp_hero_grid,
+    #mp-hrtech-embed .mp_home_grid,
+    #mp-hrtech-embed .mp_row,
+    #mp-hrtech-embed .mp_build_grid { gap: 80px; }
+
+    #mp-hrtech-embed .mp_tile h3 { font-size: 28px; line-height: 36px; }
+    #mp-hrtech-embed .mp_roles_title { font-size: 54px; line-height: 64px; }
+    #mp-hrtech-embed .mp_role_verb { font-size: 58px; line-height: 62px; }
+    #mp-hrtech-embed .mp_cap { padding: 36px 30px 34px 30px; }
+    #mp-hrtech-embed .mp_cap h3 { font-size: 23px; line-height: 31px; }
+    #mp-hrtech-embed .mp_row h3 { font-size: 32px; line-height: 40px; }
+    #mp-hrtech-embed .mp_row p { font-size: 18px; line-height: 30px; }
+    #mp-hrtech-embed .mp_row_num { font-size: 100px; line-height: 100px; }
   }
 
-  /* Maximum Desktop Ceiling (min-width: 1440px) */
   @media screen and (min-width: 1440px) {
-    #mp-community-embed .mp_container {
+    #mp-hrtech-embed .mp_container {
       max-width: 1440px;
       padding-left: 32px;
       padding-right: 32px;
     }
-    #mp-community-embed .mp_hero_section {
-      padding: 92px 0 104px 0;
-    }
-    #mp-community-embed h1.mp_hero_title {
-      font-size: 54px;
-      line-height: 64px;
-      margin-bottom: 26px;
-    }
-    #mp-community-embed p.mp_hero_subtext {
-      font-size: 22px;
-      line-height: 36px;
-      margin-bottom: 42px;
-    }
-    #mp-community-embed .btn-primary {
-      height: 54px;
-      padding: 0 32px;
-      font-size: 16px;
-    }
-    #mp-community-embed .mp_hero_img_card img {
-      max-width: 600px;
-    }
-    #mp-community-embed .mp_dedicated_section {
-      padding: 96px 0 108px 0;
-    }
-    #mp-community-embed h2.mp_dedicated_title {
-      font-size: 44px;
-      line-height: 54px;
-      margin-bottom: 24px;
-    }
-    #mp-community-embed p.mp_dedicated_desc {
-      font-size: 21px;
-      line-height: 36px;
-      max-width: 900px;
-    }
-    #mp-community-embed .mp_benefits_section {
-      padding: 96px 0 110px 0;
-    }
-    #mp-community-embed h2.mp_benefits_title {
-      font-size: 44px;
-      line-height: 54px;
-      margin-bottom: 56px;
-    }
-    #mp-community-embed .mp_benefits_grid {
-      gap: 32px;
-    }
-    #mp-community-embed .mp_benefits_card {
-      padding: 42px 34px 38px 34px;
-    }
-    #mp-community-embed .mp_benefits_card h3.mp_card_title {
-      font-size: 27px;
-      line-height: 36px;
-    }
-    #mp-community-embed .mp_stakeholders_section {
-      padding: 96px 0 110px 0;
-    }
-    #mp-community-embed h2.mp_stakeholders_title {
-      font-size: 44px;
-      line-height: 56px;
-      margin-bottom: 56px;
-    }
-    #mp-community-embed .mp_stakeholders_grid {
-      gap: 20px;
-    }
-    #mp-community-embed .mp_stakeholder_verb {
-      font-size: 22px;
-      line-height: 30px;
-    }
-    #mp-community-embed .mp_stakeholder_card {
-      padding: 28px 20px;
-    }
-    #mp-community-embed h4.mp_role_title {
-      font-size: 19px;
-      line-height: 26px;
-    }
-    #mp-community-embed p.mp_role_desc {
-      font-size: 14px;
-      line-height: 22px;
-    }
-    #mp-community-embed .mp_capabilities_section {
-      padding: 96px 0 112px 0;
-    }
-    #mp-community-embed h2.mp_capabilities_title {
-      font-size: 44px;
-      line-height: 56px;
-      margin-bottom: 56px;
-    }
-    #mp-community-embed .mp_capabilities_grid {
-      gap: 28px;
-    }
-    #mp-community-embed h3.mp_pillar_title {
-      font-size: 22px;
-      line-height: 28px;
-    }
-    #mp-community-embed ul.mp_pillar_list li {
-      font-size: 15px;
-      padding: 14px 24px;
-    }
-    #mp-community-embed .mp_window_section {
-      padding: 96px 0 112px 0;
-    }
-    #mp-community-embed h2.mp_window_title {
-      font-size: 44px;
-      line-height: 56px;
-      margin-bottom: 56px;
-    }
-    #mp-community-embed .mp_window_grid {
-      gap: 32px;
-    }
-    #mp-community-embed .mp_window_card_media {
-      height: 250px;
-    }
-    #mp-community-embed .mp_window_card_content {
-      padding: 34px 28px 38px 28px;
-    }
-    #mp-community-embed h3.mp_window_card_title {
-      font-size: 21px;
-      line-height: 29px;
-    }
-    #mp-community-embed p.mp_window_card_desc {
-      font-size: 15px;
-      line-height: 25px;
-    }
-    #mp-community-embed .mp_steps_section {
-      padding: 96px 0 112px 0;
-    }
-    #mp-community-embed h2.mp_steps_title {
-      font-size: 40px;
-      line-height: 52px;
-    }
-    #mp-community-embed p.mp_steps_subtitle {
-      font-size: 20px;
-      line-height: 34px;
-      margin-bottom: 60px;
-    }
-    #mp-community-embed .mp_steps_grid {
-      gap: 40px;
-    }
-    #mp-community-embed .mp_step_card {
-      padding: 44px 34px 46px 34px;
-    }
-    #mp-community-embed h3.mp_step_title {
-      font-size: 22px;
-      line-height: 32px;
-    }
-    #mp-community-embed p.mp_step_desc {
-      font-size: 16px;
-      line-height: 26px;
-    }
+
+    #mp-hrtech-embed .mp_h2 { font-size: 56px; line-height: 64px; letter-spacing: -1px !important; }
+    #mp-hrtech-embed .mp_lead { font-size: 24px; line-height: 34px; }
+
+    #mp-hrtech-embed .mp_hero { padding: 136px 0 144px 0; }
+    #mp-hrtech-embed .mp_hero_title { font-size: 76px; line-height: 82px; letter-spacing: -2px !important; }
+    #mp-hrtech-embed .mp_hero_tagline { font-size: 32px; line-height: 40px; }
+    #mp-hrtech-embed .mp_net { max-width: 620px; }
+
+    #mp-hrtech-embed .mp_marquee { padding: 26px 0; }
+    #mp-hrtech-embed .mp_marquee_group li { font-size: 28px; line-height: 36px; gap: 44px; padding-right: 44px; }
+
+    #mp-hrtech-embed .mp_home,
+    #mp-hrtech-embed .mp_benefits,
+    #mp-hrtech-embed .mp_caps,
+    #mp-hrtech-embed .mp_window { padding: 128px 0; }
+    #mp-hrtech-embed .mp_roles,
+    #mp-hrtech-embed .mp_build { padding: 136px 0; }
+
+    #mp-hrtech-embed .mp_tiles { gap: 28px; }
+    #mp-hrtech-embed .mp_tile { padding: 44px 40px 40px 40px; }
+    #mp-hrtech-embed .mp_tile_num { font-size: 120px; line-height: 120px; }
+    #mp-hrtech-embed .mp_tile h3 { font-size: 30px; line-height: 38px; }
+    #mp-hrtech-embed .mp_tile li { font-size: 17px; line-height: 27px; }
+    #mp-hrtech-embed .mp_tile li::after { top: 22px; }
+    #mp-hrtech-embed .mp_roles_title { font-size: 56px; line-height: 66px; letter-spacing: -1.5px !important; }
+    #mp-hrtech-embed .mp_roles_grid { gap: 28px; }
+    #mp-hrtech-embed .mp_role { padding: 40px 40px 44px 40px; }
+    #mp-hrtech-embed .mp_role_verb { font-size: 64px; line-height: 68px; }
+    #mp-hrtech-embed .mp_role_desc { font-size: 17px; line-height: 28px; }
+    #mp-hrtech-embed .mp_caps_grid { gap: 28px; }
+    #mp-hrtech-embed .mp_cap h3 { font-size: 24px; line-height: 32px; }
+    #mp-hrtech-embed .mp_cap li { font-size: 15px; }
+    #mp-hrtech-embed .mp_row h3 { font-size: 34px; line-height: 42px; }
+    #mp-hrtech-embed .mp_build_sub { font-size: 19px; line-height: 30px; }
+    #mp-hrtech-embed .mp_step h4 { font-size: 22px; line-height: 30px; }
+    #mp-hrtech-embed .mp_step p { font-size: 17px; line-height: 28px; }
   }
 
-  /* Medium-Large Desktop / Laptop (992px to 1199px) */
-  @media screen and (min-width: 992px) and (max-width: 1199px) {
-    #mp-community-embed .mp_stakeholders_grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    #mp-community-embed .mp_capabilities_grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
+  /* ==========================================================================
+     Laptop (max-width: 1199px): capabilities go 2 x 2
+     ========================================================================== */
+  @media screen and (max-width: 1199px) {
+    #mp-hrtech-embed .mp_caps_grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* Tablet and Smaller Screens (max-width: 991px) */
+  /* ==========================================================================
+     Tablet (max-width: 991px)
+     ========================================================================== */
   @media screen and (max-width: 991px) {
-    #mp-community-embed .mp_hero_section {
-      padding: 48px 0 56px 0;
+    #mp-hrtech-embed .mp_h2 { font-size: 38px; line-height: 46px; letter-spacing: -0.5px !important; }
+    #mp-hrtech-embed .mp_lead { font-size: 20px; line-height: 30px; }
+
+    #mp-hrtech-embed .mp_hero { padding: 80px 0 88px 0; }
+    #mp-hrtech-embed .mp_hero_grid { grid-template-columns: 1fr; gap: 56px; }
+    #mp-hrtech-embed .mp_hero_title { font-size: 48px; line-height: 54px; letter-spacing: -1px !important; }
+    #mp-hrtech-embed .mp_hero_tagline { font-size: 24px; line-height: 32px; margin-top: 20px; }
+    #mp-hrtech-embed .mp_net { justify-self: center; max-width: 480px; }
+
+    #mp-hrtech-embed .mp_marquee_group li { font-size: 22px; line-height: 30px; gap: 28px; padding-right: 28px; }
+
+    #mp-hrtech-embed .mp_home,
+    #mp-hrtech-embed .mp_benefits,
+    #mp-hrtech-embed .mp_roles,
+    #mp-hrtech-embed .mp_caps,
+    #mp-hrtech-embed .mp_window,
+    #mp-hrtech-embed .mp_build { padding: 80px 0; }
+
+    #mp-hrtech-embed .mp_home_grid,
+    #mp-hrtech-embed .mp_build_grid { grid-template-columns: 1fr; gap: 56px; }
+    #mp-hrtech-embed .mp_media { max-width: 640px; }
+    #mp-hrtech-embed .mp_media_ring { right: -12px; }
+    #mp-hrtech-embed .mp_media .mp_dots { right: 8px; }
+
+    #mp-hrtech-embed .mp_benefits .mp_h2 { margin-bottom: 40px; }
+    #mp-hrtech-embed .mp_tiles { grid-template-columns: 1fr; max-width: 640px; gap: 20px; }
+
+    #mp-hrtech-embed .mp_roles_title { font-size: 40px; line-height: 48px; letter-spacing: -1px !important; margin-bottom: 48px; }
+    #mp-hrtech-embed .mp_roles_grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    #mp-hrtech-embed .mp_role_verb { font-size: 46px; line-height: 50px; }
+
+    #mp-hrtech-embed .mp_caps .mp_h2 { margin-bottom: 40px; }
+    #mp-hrtech-embed .mp_caps_grid { gap: 20px; }
+
+    #mp-hrtech-embed .mp_window .mp_h2 { margin-bottom: 48px; }
+    #mp-hrtech-embed .mp_rows { gap: 64px; }
+    #mp-hrtech-embed .mp_row { grid-template-columns: 1fr; gap: 36px; max-width: 640px; }
+    #mp-hrtech-embed .mp_row.is-flip .mp_row_media { order: 0; }
+    #mp-hrtech-embed .mp_row h3 { font-size: 26px; line-height: 34px; }
+    #mp-hrtech-embed .mp_row_num { font-size: 72px; line-height: 72px; }
+
+    #mp-hrtech-embed .mp_build_media { max-width: 640px; }
+    #mp-hrtech-embed .mp_build_copy { order: -1; }
+  }
+
+  /* ==========================================================================
+     Mobile (max-width: 576px)
+     ========================================================================== */
+  @media screen and (max-width: 576px) {
+    #mp-hrtech-embed .mp_container {
+      padding-left: 20px;
+      padding-right: 20px;
     }
-    #mp-community-embed .mp_hero_grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-      text-align: center;
+
+    #mp-hrtech-embed .mp_h2 { font-size: 30px; line-height: 38px; letter-spacing: -0.25px !important; }
+    #mp-hrtech-embed .mp_lead { font-size: 18px; line-height: 27px; }
+
+    #mp-hrtech-embed .btn-primary,
+    #mp-hrtech-embed .btn-light,
+    #mp-hrtech-embed .btn-ghost-light { width: 100%; white-space: normal; text-align: center; }
+    #mp-hrtech-embed .btn-lg { height: 56px; padding: 0 20px; font-size: 15px; }
+
+    #mp-hrtech-embed .mp_hero { padding: 64px 0 72px 0; }
+    #mp-hrtech-embed .mp_eyebrow { font-size: 11px; letter-spacing: 1px !important; }
+    #mp-hrtech-embed .mp_hero_title { font-size: 38px; line-height: 44px; letter-spacing: -0.75px !important; }
+    #mp-hrtech-embed .mp_hero_tagline { font-size: 21px; line-height: 29px; }
+    #mp-hrtech-embed .mp_hero_actions { margin-top: 32px; gap: 12px; }
+    #mp-hrtech-embed .mp_net_frame { border-width: 3px; }
+    #mp-hrtech-embed .mp_net_frame.f1,
+    #mp-hrtech-embed .mp_net_frame.f4 { border-radius: 20px; }
+    #mp-hrtech-embed .mp_chip { width: 44px; height: 44px; border-radius: 14px; }
+    #mp-hrtech-embed .mp_chip svg { width: 20px; height: 20px; }
+    #mp-hrtech-embed .mp_net .mp_chip.c2 { left: 0; }
+    #mp-hrtech-embed .mp_net .mp_chip.c3 { right: 0; }
+    #mp-hrtech-embed .mp_dots { width: 40px; height: 40px; }
+
+    #mp-hrtech-embed .mp_marquee { padding: 16px 0; }
+    #mp-hrtech-embed .mp_marquee_group li { font-size: 18px; line-height: 26px; gap: 20px; padding-right: 20px; }
+
+    #mp-hrtech-embed .mp_home,
+    #mp-hrtech-embed .mp_benefits,
+    #mp-hrtech-embed .mp_roles,
+    #mp-hrtech-embed .mp_caps,
+    #mp-hrtech-embed .mp_window,
+    #mp-hrtech-embed .mp_build { padding: 64px 0; }
+
+    #mp-hrtech-embed .mp_media_ring { display: none; }
+    #mp-hrtech-embed .mp_media_frame { aspect-ratio: 4 / 3; }
+    #mp-hrtech-embed .mp_media .mp_chip.c1 { left: 12px; bottom: -18px; }
+    #mp-hrtech-embed .mp_media .mp_chip.c2 { left: 68px; bottom: -18px; }
+
+    #mp-hrtech-embed .mp_tile { padding: 28px 24px 24px 24px; }
+    #mp-hrtech-embed .mp_tile_icon { margin-bottom: 28px; }
+    #mp-hrtech-embed .mp_tile_num { font-size: 80px; line-height: 80px; top: 12px; right: 20px; }
+    #mp-hrtech-embed .mp_tile h3 { font-size: 23px; line-height: 31px; }
+    #mp-hrtech-embed .mp_tile li { font-size: 15px; line-height: 24px; }
+    #mp-hrtech-embed .mp_tile li::after { top: 20px; }
+
+    #mp-hrtech-embed .mp_roles_title { font-size: 30px; line-height: 38px; letter-spacing: -0.5px !important; margin-bottom: 36px; }
+    #mp-hrtech-embed .mp_roles_grid { grid-template-columns: 1fr; gap: 16px; }
+    #mp-hrtech-embed .mp_role { padding: 26px 24px 28px 24px; }
+    #mp-hrtech-embed .mp_role_top { margin-bottom: 20px; }
+    #mp-hrtech-embed .mp_role_verb { font-size: 40px; line-height: 44px; }
+    #mp-hrtech-embed .mp_role_desc { font-size: 15px; line-height: 25px; }
+
+    #mp-hrtech-embed .mp_caps_grid { grid-template-columns: 1fr; gap: 16px; }
+    #mp-hrtech-embed .mp_cap { padding: 28px 22px 26px 22px; }
+    #mp-hrtech-embed .mp_cap h3 { font-size: 21px; line-height: 29px; }
+
+    #mp-hrtech-embed .mp_now { padding: 0 10px; }
+    #mp-hrtech-embed .mp_rows { gap: 56px; }
+    #mp-hrtech-embed .mp_row { gap: 28px; }
+    #mp-hrtech-embed .mp_row_media > .mp_vec { display: none; }
+    #mp-hrtech-embed .mp_row_media .mp_chip { top: -16px; right: 16px; }
+    #mp-hrtech-embed .mp_row.is-flip .mp_row_media .mp_chip { left: 16px; }
+    #mp-hrtech-embed .mp_row_num { font-size: 60px; line-height: 60px; margin-bottom: 8px; }
+    #mp-hrtech-embed .mp_row h3 { font-size: 23px; line-height: 31px; }
+    #mp-hrtech-embed .mp_row p { font-size: 16px; line-height: 26px; }
+
+    #mp-hrtech-embed .mp_build_sub { font-size: 16px; line-height: 26px; }
+    #mp-hrtech-embed .mp_step { grid-template-columns: 44px 1fr; gap: 16px; }
+    #mp-hrtech-embed .mp_step_num { width: 44px; height: 44px; font-size: 18px; }
+    #mp-hrtech-embed .mp_step:not(:last-child)::before { left: 21px; top: 48px; }
+    #mp-hrtech-embed .mp_step h4 { font-size: 19px; line-height: 26px; margin-top: 8px; }
+    #mp-hrtech-embed .mp_step p { font-size: 15px; line-height: 24px; }
+
+    #mp-hrtech-embed .mp_ipbox .hrip.mw50 { width: 100%; }
+    #mp-hrtech-embed .mp_splash_modal { padding: 28px 20px 24px 20px; }
+  }
+
+  /* ==========================================================================
+     Reduced Motion
+     ========================================================================== */
+  @media (prefers-reduced-motion: reduce) {
+    #mp-hrtech-embed.mp-js .mp-reveal,
+    #mp-hrtech-embed.mp-js .mp-draw path.mp_link,
+    #mp-hrtech-embed.mp-js .mp-draw .mp_node {
+      transition: none !important;
     }
-    #mp-community-embed .mp_hero_content {
-      align-items: center;
-      text-align: center;
-      max-width: 100%;
-      margin: 0 auto;
+
+    #mp-hrtech-embed.mp-js .mp-reveal {
+      opacity: 1;
+      transform: none;
     }
-    #mp-community-embed h1.mp_hero_title {
-      font-size: 38px;
-      line-height: 46px;
-      text-align: center;
-      margin-bottom: 18px;
+
+    #mp-hrtech-embed.mp-js .mp-draw path.mp_link {
+      stroke-dashoffset: 0;
     }
-    #mp-community-embed p.mp_hero_subtext {
-      font-size: 19px;
-      line-height: 30px;
-      text-align: center;
-      margin-bottom: 28px;
+
+    #mp-hrtech-embed.mp-js .mp-draw .mp_node {
+      opacity: 1;
     }
-    #mp-community-embed .mp_hero_actions {
+
+    #mp-hrtech-embed .mp_tile:hover,
+    #mp-hrtech-embed .mp_role:hover,
+    #mp-hrtech-embed .mp_cap:hover {
+      translate: none !important;
+    }
+
+    #mp-hrtech-embed .mp_chip,
+    #mp-hrtech-embed .mp_eyebrow::before {
+      animation: none !important;
+    }
+
+    #mp-hrtech-embed .mp_marquee_track {
+      animation: none;
+      width: auto;
       justify-content: center;
-      width: 100%;
     }
-    #mp-community-embed .mp_hero_img_card img {
-      max-width: 460px;
+
+    #mp-hrtech-embed .mp_marquee_group {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 8px;
     }
-    #mp-community-embed .mp_dedicated_section {
-      padding: 56px 0 60px 0;
-    }
-    #mp-community-embed h2.mp_dedicated_title {
-      font-size: 32px;
-      line-height: 40px;
-      margin-bottom: 16px;
-    }
-    #mp-community-embed p.mp_dedicated_desc {
-      font-size: 17px;
-      line-height: 28px;
-    }
-    #mp-community-embed .mp_benefits_section {
-      padding: 56px 0 64px 0;
-    }
-    #mp-community-embed h2.mp_benefits_title {
-      font-size: 32px;
-      line-height: 40px;
-      margin-bottom: 36px;
-    }
-    #mp-community-embed .mp_benefits_grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    #mp-community-embed .mp_benefits_card {
-      padding: 28px 24px;
-    }
-    #mp-community-embed .mp_stakeholders_section {
-      padding: 56px 0 64px 0;
-    }
-    #mp-community-embed h2.mp_stakeholders_title {
-      font-size: 30px;
-      line-height: 40px;
-      margin-bottom: 36px;
-    }
-    #mp-community-embed .mp_stakeholders_grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    #mp-community-embed .mp_stakeholder_card {
-      min-height: auto;
-    }
-    #mp-community-embed .mp_capabilities_section {
-      padding: 56px 0 64px 0;
-    }
-    #mp-community-embed h2.mp_capabilities_title {
-      font-size: 32px;
-      line-height: 42px;
-      margin-bottom: 36px;
-    }
-    #mp-community-embed .mp_capabilities_grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    #mp-community-embed .mp_window_section {
-      padding: 56px 0 64px 0;
-    }
-    #mp-community-embed h2.mp_window_title {
-      font-size: 32px;
-      line-height: 42px;
-      margin-bottom: 36px;
-    }
-    #mp-community-embed .mp_window_grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    #mp-community-embed .mp_window_card_media {
-      height: 240px;
-    }
-    #mp-community-embed .mp_steps_section {
-      padding: 56px 0 64px 0;
-    }
-    #mp-community-embed h2.mp_steps_title {
-      font-size: 28px;
-      line-height: 38px;
-    }
-    #mp-community-embed p.mp_steps_subtitle {
-      font-size: 16px;
-      line-height: 26px;
-      margin-bottom: 40px;
-    }
-    #mp-community-embed .mp_steps_track {
+
+    #mp-hrtech-embed .mp_marquee_group[aria-hidden="true"] {
       display: none;
     }
-    #mp-community-embed .mp_steps_grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-    #mp-community-embed .mp_step_card {
-      padding: 28px 24px;
-    }
-  }
-
-  /* Mobile Devices (max-width: 600px) */
-  @media screen and (max-width: 600px) {
-    #mp-community-embed .mp_hero_section {
-      padding: 36px 0 44px 0;
-    }
-    #mp-community-embed .mp_hero_grid {
-      gap: 32px;
-    }
-    #mp-community-embed h1.mp_hero_title {
-      font-size: 30px;
-      line-height: 38px;
-    }
-    #mp-community-embed p.mp_hero_subtext {
-      font-size: 17px;
-      line-height: 26px;
-      margin-bottom: 24px;
-    }
-    #mp-community-embed .btn-primary {
-      width: 100%;
-      height: 48px;
-      padding: 0 20px;
-      font-size: 14px;
-    }
-    #mp-community-embed .mp_hero_img_card img {
-      max-width: 100%;
-    }
-    #mp-community-embed .mp_dedicated_section {
-      padding: 44px 0 48px 0;
-    }
-    #mp-community-embed h2.mp_dedicated_title {
-      font-size: 26px;
-      line-height: 34px;
-    }
-    #mp-community-embed p.mp_dedicated_desc {
-      font-size: 15px;
-      line-height: 24px;
-    }
-    #mp-community-embed .mp_benefits_section {
-      padding: 44px 0 52px 0;
-    }
-    #mp-community-embed h2.mp_benefits_title {
-      font-size: 26px;
-      line-height: 34px;
-      margin-bottom: 28px;
-    }
-    #mp-community-embed .mp_benefits_card {
-      padding: 24px 20px;
-    }
-    #mp-community-embed .mp_benefits_card h3.mp_card_title {
-      font-size: 22px;
-      line-height: 30px;
-    }
-    #mp-community-embed ul.mp_benefits_list li {
-      font-size: 14px;
-      line-height: 22px;
-    }
-    #mp-community-embed .mp_stakeholders_section {
-      padding: 44px 0 52px 0;
-    }
-    #mp-community-embed h2.mp_stakeholders_title {
-      font-size: 24px;
-      line-height: 32px;
-      margin-bottom: 28px;
-    }
-    #mp-community-embed .mp_stakeholders_grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    #mp-community-embed .mp_stakeholder_verb {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-    #mp-community-embed .mp_stakeholder_card {
-      padding: 20px 16px;
-    }
-    #mp-community-embed .mp_capabilities_section {
-      padding: 44px 0 52px 0;
-    }
-    #mp-community-embed h2.mp_capabilities_title {
-      font-size: 26px;
-      line-height: 34px;
-      margin-bottom: 28px;
-    }
-    #mp-community-embed .mp_capabilities_grid {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-    #mp-community-embed ul.mp_pillar_list li {
-      padding: 11px 16px;
-      font-size: 13px;
-    }
-    #mp-community-embed .mp_window_section {
-      padding: 44px 0 52px 0;
-    }
-    #mp-community-embed h2.mp_window_title {
-      font-size: 26px;
-      line-height: 34px;
-      margin-bottom: 28px;
-    }
-    #mp-community-embed .mp_window_grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    #mp-community-embed .mp_window_card_media {
-      height: 190px;
-    }
-    #mp-community-embed .mp_window_card_content {
-      padding: 22px 18px 24px 18px;
-    }
-    #mp-community-embed h3.mp_window_card_title {
-      font-size: 17px;
-      line-height: 24px;
-      margin-bottom: 10px;
-    }
-    #mp-community-embed p.mp_window_card_desc {
-      font-size: 13px;
-      line-height: 21px;
-    }
-    #mp-community-embed .mp_steps_section {
-      padding: 44px 0 52px 0;
-    }
-    #mp-community-embed h2.mp_steps_title {
-      font-size: 24px;
-      line-height: 32px;
-    }
-    #mp-community-embed p.mp_steps_subtitle {
-      font-size: 15px;
-      line-height: 24px;
-      margin-bottom: 32px;
-    }
-    #mp-community-embed .mp_step_card {
-      padding: 24px 20px;
-    }
-    #mp-community-embed h3.mp_step_title {
-      font-size: 18px;
-      line-height: 26px;
-    }
-    #mp-community-embed p.mp_step_desc {
-      font-size: 14px;
-      line-height: 22px;
-    }
-    #mp-community-embed .mp_steps_action .btn-primary {
-      width: 100%;
-    }
-
   }
 </style>
 
 <!-- ========================================================================
      Root Scoping Container for WYSIWYG / CMS Embed
-     Strictly adhering to 000-myp-community Brand Tokens & Design System
      ======================================================================== -->
-<div id="mp-community-embed" class="mp-community-embed">
+<div id="mp-hrtech-embed" class="mp-hrtech-embed">
+
+  <div class="mp_scroll_bar" id="mpHtScrollBar" aria-hidden="true"></div>
 
   <!-- ======================================================================
-       Hero Section
-       First column is HTML (HR Tech & B2B Customer Communities)
-       Second column is Image (hero people collage in the style of home page hero)
+       Section 1: Hero
        ====================================================================== -->
-  <section class="mp_hero_section">
-    <div class="mp_container">
-      <div class="mp_hero_grid">
-        
-        <!-- Column 1: HTML Content -->
-        <div class="mp_hero_content mp-reveal">
-          <h1 class="mp_hero_title">HR Tech &amp; B2B <span class="highlight_green">Customer Communities</span></h1>
-          <p class="mp_hero_subtext">Everyone wins. Especially you.</p>
-          
-          <div class="mp_hero_actions">
-            <button type="button" class="btn-primary">
-              <span>Book 30-Minute Discovery Call</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
-              </svg>
-            </button>
-          </div>
+  <section class="mp_hero">
+    <div class="mp_container mp_hero_grid">
+      <div class="mp_hero_copy mp-reveal">
+        <span class="mp_eyebrow">Community Types</span>
+        <h1 class="mp_hero_title">HR Tech &amp; B2B <span class="mp_hl">Customer Communities</span></h1>
+        <p class="mp_hero_tagline">Everyone wins. <span>Especially you.</span></p>
+        <div class="mp_hero_actions">
+          <button type="button" class="btn-primary btn-lg" data-open-contact>
+            <span>Book 30-Minute Discovery Call</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+            </svg>
+          </button>
+          <a class="btn-ghost-light btn-lg" href="https://www.myp.community/en/features/">
+            <span>Explore Features</span>
+          </a>
         </div>
+      </div>
 
-        <!-- Column 2: Visual Collage Image (Clean, No Text) -->
-        <div class="mp_hero_visual mp-reveal" data-delay="2">
-          <div class="mp_hero_img_card">
-            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/community_hero_banner.jpg" 
-                 alt="HR Tech &amp; B2B Customer Communities" 
-                 loading="eager" 
-                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='../images/community_hero_banner.jpg';}">
-          </div>
+      <!-- People network: five portrait crops joined by SVG connectors -->
+      <div class="mp_net mp-reveal" data-delay="2" role="img"
+        aria-label="A network of HR tech and B2B customers connected through one community">
+        <svg class="mp_vec mp-draw" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="mp_ring" cx="50" cy="50" r="49" />
+          <path class="mp_link" pathLength="1" d="M25 29.5C45 2 62 4 80.5 19.5" />
+          <path class="mp_link" pathLength="1" d="M19.5 74.5C12 60 14 45 25 29.5" />
+          <path class="mp_link" pathLength="1" d="M19.5 74.5C28 98 40 98 47.5 75" />
+          <path class="mp_link" pathLength="1" d="M47.5 75C56 60 60 50 80.5 67.5" />
+          <path class="mp_link" pathLength="1" d="M80.5 19.5C100 30 100 55 80.5 67.5" />
+          <circle class="mp_node" cx="53.3" cy="8.4" r="1.6" />
+          <circle class="mp_node" cx="15.3" cy="52.4" r="1.6" />
+          <circle class="mp_node" cx="33.9" cy="92.2" r="1.6" />
+          <circle class="mp_node" cx="59.5" cy="59.1" r="1.6" />
+          <circle class="mp_node" cx="95.1" cy="42.7" r="1.6" />
+        </svg>
+        <div class="mp_net_frame f1">
+          <img src="https://public-cdn.myp.community/images/hrtech_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
         </div>
-
+        <div class="mp_net_frame f2">
+          <img src="https://public-cdn.myp.community/images/hrtech_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <div class="mp_net_frame f3">
+          <img src="https://public-cdn.myp.community/images/hrtech_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <div class="mp_net_frame f4">
+          <img src="https://public-cdn.myp.community/images/hrtech_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <div class="mp_net_frame f5">
+          <img src="https://public-cdn.myp.community/images/hrtech_hero_collage.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_hero_collage.jpg';}"
+            alt="" width="1024" height="1024" loading="eager" decoding="async">
+        </div>
+        <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="20" cy="20" r="11" />
+          <circle cx="46" cy="20" r="11" />
+          <circle cx="33" cy="44" r="11" />
+        </svg>
+        <span class="mp_chip c1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20.5l1.6-4.6A8.4 8.4 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z" />
+          </svg>
+        </span>
+        <span class="mp_chip c2 d2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+          </svg>
+        </span>
+        <span class="mp_chip c3 d3" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </span>
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       Section 2: Build a Dedicated Community Home for Every Customer
-       (Clean Editorial Statement, Zero Images)
+       Section 2: Marquee Band (the six stakeholder outcomes)
        ====================================================================== -->
-  <section class="mp_dedicated_section">
-    <div class="mp_container">
-      <div class="mp_dedicated_box mp-reveal">
-        <h2 class="mp_dedicated_title">Build a Dedicated Community Home for <span class="highlight_green">Every Customer</span></h2>
-        <p class="mp_dedicated_desc">Empower your clients to connect, collaborate, and learn, and your team to deliver personalized content and experiences at scale.</p>
+  <div class="mp_marquee" aria-label="Six business outcomes">
+    <div class="mp_marquee_track">
+      <ul class="mp_marquee_group">
+        <li>Align</li>
+        <li>Grow</li>
+        <li>Amplify</li>
+        <li>Innovate</li>
+        <li>Enable</li>
+        <li>Empower</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Section 3: Build a Dedicated Community Home for Every Customer
+       ====================================================================== -->
+  <section class="mp_home">
+    <div class="mp_container mp_home_grid">
+      <div class="mp-reveal">
+        <span class="mp_rule" aria-hidden="true"></span>
+        <h2 class="mp_h2">Build a Dedicated Community Home for <span class="mp_hl">Every Customer</span></h2>
+        <p class="mp_lead">Empower your clients to connect, collaborate, and learn, and your team to deliver
+          personalized content and experiences at scale.</p>
+      </div>
+      <div class="mp_media mp-reveal" data-delay="2">
+        <span class="mp_media_ring" aria-hidden="true"></span>
+        <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="20" cy="20" r="11" />
+          <circle cx="46" cy="20" r="11" />
+          <circle cx="33" cy="44" r="11" />
+        </svg>
+        <div class="mp_media_frame">
+          <img src="https://public-cdn.myp.community/images/hrtech_dedicated_home.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_dedicated_home.jpg';}"
+            alt="Customers and a client team talking together around a table" width="1376" height="768"
+            loading="lazy" decoding="async">
+          <svg class="mp_vec mp-draw" viewBox="0 0 1376 768" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="mp_halo" d="M370 172Q485 64 600 184M600 184Q768 70 935 214M935 214Q1030 116 1125 208" />
+            <path class="mp_link" pathLength="1" d="M370 172Q485 64 600 184" />
+            <path class="mp_link" pathLength="1" d="M600 184Q768 70 935 214" />
+            <path class="mp_link" pathLength="1" d="M935 214Q1030 116 1125 208" />
+            <circle class="mp_node" cx="370" cy="172" r="11" />
+            <circle class="mp_node" cx="600" cy="184" r="11" />
+            <circle class="mp_node" cx="935" cy="214" r="11" />
+            <circle class="mp_node" cx="1125" cy="208" r="11" />
+          </svg>
+        </div>
+        <span class="mp_chip c1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20.5l1.6-4.6A8.4 8.4 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z" />
+          </svg>
+        </span>
+        <span class="mp_chip c2 d2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M22 10 12 5 2 10l10 5 10-5z" />
+            <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+          </svg>
+        </span>
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       Section 3: Unlock Powerful Business Benefits 10X goes here
-       (3-Column Business Benefits Grid)
+       Section 4: Unlock Powerful Business Benefits
        ====================================================================== -->
-  <section class="mp_benefits_section">
+  <section class="mp_benefits">
     <div class="mp_container">
-      <h2 class="mp_benefits_title mp-reveal">Unlock Powerful Business Benefits <span class="highlight_green">10X goes here</span></h2>
-      
-      <div class="mp_benefits_grid">
-        
-        <!-- Column 1: Increase Revenue -->
-        <div class="mp_benefits_card theme_green mp-reveal" data-delay="1">
-          <h3 class="mp_card_title">Increase Revenue</h3>
-          <ul class="mp_benefits_list">
+      <h2 class="mp_h2 mp-reveal">Unlock Powerful <span class="mp_hl">Business Benefits</span></h2>
+
+      <div class="mp_tiles">
+        <div class="mp_tile is-green mp-reveal" data-delay="1">
+          <span class="mp_tile_num" aria-hidden="true">01</span>
+          <div class="mp_tile_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
+          </div>
+          <h3>Increase Revenue</h3>
+          <ul>
             <li><strong>Build</strong> stronger, more authentic relationships</li>
             <li><strong>Decrease</strong> churn</li>
             <li><strong>Identify</strong> cross-sell opportunities</li>
@@ -1827,20 +1983,32 @@
           </ul>
         </div>
 
-        <!-- Column 2: Decrease Costs -->
-        <div class="mp_benefits_card theme_orange mp-reveal" data-delay="2">
-          <h3 class="mp_card_title">Decrease Costs</h3>
-          <ul class="mp_benefits_list">
+        <div class="mp_tile is-white mp-reveal" data-delay="2">
+          <span class="mp_tile_num" aria-hidden="true">02</span>
+          <div class="mp_tile_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
+              <polyline points="17 18 23 18 23 12" />
+            </svg>
+          </div>
+          <h3>Decrease Costs</h3>
+          <ul>
             <li><strong>Reduce</strong> customer support costs by empowering customers to support each other</li>
             <li><strong>Quicken the</strong> implementation process.</li>
             <li><strong>Shorten</strong> the sales cycle</li>
           </ul>
         </div>
 
-        <!-- Column 3: Delight Customers -->
-        <div class="mp_benefits_card theme_green mp-reveal" data-delay="3">
-          <h3 class="mp_card_title">Delight Customers</h3>
-          <ul class="mp_benefits_list">
+        <div class="mp_tile is-slate mp-reveal" data-delay="3">
+          <span class="mp_tile_num" aria-hidden="true">03</span>
+          <div class="mp_tile_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+            </svg>
+          </div>
+          <h3>Delight Customers</h3>
+          <ul>
             <li><strong>Deliver</strong> personalized experiences that drive loyalty</li>
             <li><strong>Provide</strong> a trusted space for networking and sharing ideas</li>
             <li><strong>Support</strong> client success</li>
@@ -1848,501 +2016,512 @@
             <li><strong>Poll</strong> clients to build better products.</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       Section 4: Executive Stakeholders & Business Outcomes (6 Columns, No Logo)
+       Section 5: Six Executive Stakeholders, Six Business Outcomes
        ====================================================================== -->
-  <section class="mp_stakeholders_section">
+  <section class="mp_roles">
     <div class="mp_container">
-      
-      <!-- Section Header (Exact Copy, No Logo) -->
-      <div class="mp_stakeholders_header mp-reveal">
-        <h2 class="mp_stakeholders_title">
-          <span class="title_line"><strong>One</strong> platform. <strong>One</strong> shared source of truth.</span>
-          <span class="title_line"><strong>Six</strong> executive stakeholders. <span class="highlight_green"><strong>Six</strong> business outcomes.</span></span>
-        </h2>
-      </div>
-
-      <!-- 6-Column Stakeholder Grid -->
-      <div class="mp_stakeholders_grid">
-        
-        <!-- 1. CEO -->
-        <div class="mp_stakeholder_col mp-reveal" data-delay="1">
-          <div class="mp_stakeholder_verb">Align</div>
-          <div class="mp_stakeholder_card theme_ceo">
-            <div class="mp_card_accent_bar"></div>
-            <div class="mp_card_body">
-              <h4 class="mp_role_title">CEO</h4>
-              <p class="mp_role_desc">Achieve strategic alignment, operational efficiency, and profitable growth.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Chief Revenue Officer -->
-        <div class="mp_stakeholder_col mp-reveal" data-delay="2">
-          <div class="mp_stakeholder_verb">Grow</div>
-          <div class="mp_stakeholder_card theme_cro">
-            <div class="mp_card_accent_bar"></div>
-            <div class="mp_card_body">
-              <h4 class="mp_role_title">Chief Revenue Officer</h4>
-              <p class="mp_role_desc">Generate pipeline, expansion signals, and partner growth.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Chief Marketing Officer -->
-        <div class="mp_stakeholder_col mp-reveal" data-delay="3">
-          <div class="mp_stakeholder_verb">Amplify</div>
-          <div class="mp_stakeholder_card theme_cmo">
-            <div class="mp_card_accent_bar"></div>
-            <div class="mp_card_body">
-              <h4 class="mp_role_title">Chief Marketing Officer</h4>
-              <p class="mp_role_desc">Turn customers into visible advocates and trusted content.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Chief Product Officer -->
-        <div class="mp_stakeholder_col mp-reveal" data-delay="4">
-          <div class="mp_stakeholder_verb">Innovate</div>
-          <div class="mp_stakeholder_card theme_cpo">
-            <div class="mp_card_accent_bar"></div>
-            <div class="mp_card_body">
-              <h4 class="mp_role_title">Chief Product Officer</h4>
-              <p class="mp_role_desc">Validate roadmap decisions with always-on customer input.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Chief Experience Officer -->
-        <div class="mp_stakeholder_col mp-reveal" data-delay="1">
-          <div class="mp_stakeholder_verb">Enable</div>
-          <div class="mp_stakeholder_card theme_cxo">
-            <div class="mp_card_accent_bar"></div>
-            <div class="mp_card_body">
-              <h4 class="mp_role_title">Chief Experience Officer</h4>
-              <p class="mp_role_desc">Reduce churn, support cost, and adoption friction.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Customer -->
-        <div class="mp_stakeholder_col mp-reveal" data-delay="2">
-          <div class="mp_stakeholder_verb">Empower</div>
-          <div class="mp_stakeholder_card theme_customer">
-            <div class="mp_card_accent_bar"></div>
-            <div class="mp_card_body">
-              <h4 class="mp_role_title">Customer</h4>
-              <p class="mp_role_desc">Create a destination for peer-led expertise and learning that provides value to the customer while driving measurable competitive advantage for your business.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================================
-       Section 5: One Platform. Every Capability Your Community Needs. (4 Pillars)
-       ====================================================================== -->
-  <section class="mp_capabilities_section">
-    <div class="mp_container">
-      
-      <!-- Section Title -->
-      <h2 class="mp_capabilities_title mp-reveal">
-        <strong>One Platform.</strong> <span class="highlight_green">Every Capability</span> Your Community Needs.
+      <h2 class="mp_roles_title mp-reveal">
+        <span><strong>One</strong> platform. <strong>One</strong> shared source of truth.</span>
+        <span><strong>Six</strong> executive stakeholders. <span class="mp_hl">Six business outcomes.</span></span>
       </h2>
 
-      <!-- 4-Pillar Grid -->
-      <div class="mp_capabilities_grid">
-        
-        <!-- Pillar 1: Engagement -->
-        <div class="mp_capability_pillar theme_engagement mp-reveal" data-delay="1">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Engagement</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Personalized Newsfeed</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Blogs &amp; Articles</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Virtual Events</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Forums &amp; Discussions</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Polls &amp; Surveys</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Gamification</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>LMS (personalized career paths and education )</span>
-            </li>
-          </ul>
-        </div>
+      <div class="mp_roles_grid">
+        <article class="mp_role mp-reveal" data-delay="1">
+          <div class="mp_role_top"><span class="mp_role_idx" aria-hidden="true">01</span><h3 class="mp_role_who">CEO</h3></div>
+          <p class="mp_role_verb">Align</p>
+          <p class="mp_role_desc">Achieve strategic alignment, operational efficiency, and profitable growth.</p>
+        </article>
 
-        <!-- Pillar 2: Administration -->
-        <div class="mp_capability_pillar theme_admin mp-reveal" data-delay="2">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Administration</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Content Management System</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Drive and File Manager</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Messaging (Text, Email, WhatsApp, In-system)</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Moderation Tools</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Site Designer</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>User Management</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Brand / BYOC / Augmented Data</span>
-            </li>
-          </ul>
-        </div>
+        <article class="mp_role mp-reveal" data-delay="2">
+          <div class="mp_role_top"><span class="mp_role_idx" aria-hidden="true">02</span><h3 class="mp_role_who">Chief Revenue Officer</h3></div>
+          <p class="mp_role_verb">Grow</p>
+          <p class="mp_role_desc">Generate pipeline, expansion signals, and partner growth.</p>
+        </article>
 
-        <!-- Pillar 3: Intelligence/AI -->
-        <div class="mp_capability_pillar theme_ai mp-reveal" data-delay="3">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Intelligence/AI</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Member Analytics</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Trust Scores</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Customer Health Index</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Data Dashboards</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Agentic Search</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>AI Integration</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>API first</span>
-            </li>
-          </ul>
-        </div>
+        <article class="mp_role mp-reveal" data-delay="3">
+          <div class="mp_role_top"><span class="mp_role_idx" aria-hidden="true">03</span><h3 class="mp_role_who">Chief Marketing Officer</h3></div>
+          <p class="mp_role_verb">Amplify</p>
+          <p class="mp_role_desc">Turn customers into visible advocates and trusted content.</p>
+        </article>
 
-        <!-- Pillar 4: Marketing/Sales -->
-        <div class="mp_capability_pillar theme_marketing mp-reveal" data-delay="4">
-          <div class="mp_pillar_header">
-            <h3 class="mp_pillar_title">Marketing/Sales</h3>
-          </div>
-          <ul class="mp_pillar_list">
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>CRM</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Lead Forms/Scoring</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Proposal Builder</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Ecommerce</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Advertising Tools</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Membership Tiers</span>
-            </li>
-            <li>
-              <svg class="mp_pillar_icon" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Drip Campaigns</span>
-            </li>
-          </ul>
-        </div>
+        <article class="mp_role mp-reveal" data-delay="1">
+          <div class="mp_role_top"><span class="mp_role_idx" aria-hidden="true">04</span><h3 class="mp_role_who">Chief Product Officer</h3></div>
+          <p class="mp_role_verb">Innovate</p>
+          <p class="mp_role_desc">Validate roadmap decisions with always-on customer input.</p>
+        </article>
 
+        <article class="mp_role mp-reveal" data-delay="2">
+          <div class="mp_role_top"><span class="mp_role_idx" aria-hidden="true">05</span><h3 class="mp_role_who">Chief Experience Officer</h3></div>
+          <p class="mp_role_verb">Enable</p>
+          <p class="mp_role_desc">Reduce churn, support cost, and adoption friction.</p>
+        </article>
+
+        <article class="mp_role is-customer mp-reveal" data-delay="3">
+          <div class="mp_role_top"><span class="mp_role_idx" aria-hidden="true">06</span><h3 class="mp_role_who">Customer</h3></div>
+          <p class="mp_role_verb">Empower</p>
+          <p class="mp_role_desc">Create a destination for peer-led expertise and learning that provides value to the customer while
+            driving measurable competitive advantage for your business.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- ======================================================================
-       Section 6: The Window to Build a Thriving Customer Community Is NOW
-       (3-Column Strategic Advantage Cards with Editorial Images)
+       Section 6: One Platform. Every Capability Your Community Needs.
        ====================================================================== -->
-  <section class="mp_window_section">
+  <section class="mp_caps">
     <div class="mp_container">
-      
-      <!-- Section Title -->
-      <div class="mp_window_header mp-reveal">
-        <h2 class="mp_window_title">
-          The Window to Build a Thriving Customer Community <span class="highlight_green">Is NOW</span>
-        </h2>
+      <h2 class="mp_h2 mp-reveal">One Platform. <span class="mp_hl">Every Capability</span> Your Community Needs.</h2>
+
+      <div class="mp_caps_grid">
+        <div class="mp_cap mp-reveal" data-delay="1">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="9" cy="7" r="3.5" />
+              <path d="M2.5 20.5v-1A5.5 5.5 0 0 1 8 14h2a5.5 5.5 0 0 1 5.5 5.5v1" />
+              <circle cx="17" cy="8" r="2.5" />
+              <path d="M17.5 13.5a4.5 4.5 0 0 1 4 4.5v1" />
+            </svg>
+          </div>
+          <h3>Engagement</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Personalized Newsfeed</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Blogs &amp; Articles</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Virtual Events</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Forums &amp; Discussions</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Polls &amp; Surveys</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Gamification</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>LMS (personalized career paths and education )</li>
+          </ul>
+        </div>
+
+        <div class="mp_cap mp-reveal" data-delay="2">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 21v-7" /><path d="M4 10V3" /><path d="M12 21v-9" /><path d="M12 8V3" />
+              <path d="M20 21v-5" /><path d="M20 12V3" />
+              <circle cx="4" cy="12" r="2" /><circle cx="12" cy="10" r="2" /><circle cx="20" cy="14" r="2" />
+            </svg>
+          </div>
+          <h3>Administration</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Content Management System</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Drive and File Manager</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Messaging (Text, Email, WhatsApp, In-system)</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Moderation Tools</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Site Designer</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>User Management</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Brand / BYOC / Augmented Data</li>
+          </ul>
+        </div>
+
+        <div class="mp_cap mp-reveal" data-delay="3">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3z" />
+              <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z" />
+            </svg>
+          </div>
+          <h3>Intelligence/AI</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Member Analytics</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Trust Scores</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Customer Health Index</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Data Dashboards</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Agentic Search</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>AI Integration</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>API first</li>
+          </ul>
+        </div>
+
+        <div class="mp_cap mp-reveal" data-delay="4">
+          <div class="mp_cap_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M3 11v3a1 1 0 0 0 1 1h3l6 4.5V5.5L7 10H4a1 1 0 0 0-1 1z" />
+              <path d="M17 9a4 4 0 0 1 0 6" />
+              <path d="M19.5 6.5a7.5 7.5 0 0 1 0 11" />
+            </svg>
+          </div>
+          <h3>Marketing/Sales</h3>
+          <ul>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>CRM</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Lead Forms/Scoring</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Proposal Builder</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Ecommerce</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Advertising Tools</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Membership Tiers</li>
+            <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3.5 8.5 6.5 11.5 12.5 5.5" /></svg>Drip Campaigns</li>
+          </ul>
+        </div>
       </div>
-
-      <!-- 3-Column Advantage Cards -->
-      <div class="mp_window_grid">
-        
-        <!-- Card 1: Trusted Human Communities Are Becoming the Differentiator -->
-        <div class="mp_window_card mp-reveal" data-delay="1">
-          <div class="mp_window_card_media">
-            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/community_human_connection.jpg" 
-                 alt="Trusted Human Communities Are Becoming the Differentiator" 
-                 loading="lazy" 
-                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='../images/community_human_connection.jpg';}">
-          </div>
-          <div class="mp_window_card_content">
-            <h3 class="mp_window_card_title">1. Trusted Human Communities Are Becoming the Differentiator</h3>
-            <p class="mp_window_card_desc">As content becomes commoditized, verified peer knowledge becomes more appreciated and valuable. Advance from disparate tools and disconnected customer experiences to a more unified and measurable approach.</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Acquire a Data Advantage -->
-        <div class="mp_window_card mp-reveal" data-delay="2">
-          <div class="mp_window_card_media">
-            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/community_data_advantage.jpg" 
-                 alt="Acquire a Data Advantage" 
-                 loading="lazy" 
-                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='../images/community_data_advantage.jpg';}">
-          </div>
-          <div class="mp_window_card_content">
-            <h3 class="mp_window_card_title">2. Acquire a Data Advantage</h3>
-            <p class="mp_window_card_desc">Third-party data is disappearing. Actionable first-party behavioral, firmographic, and engagement data becomes a strategic advantage.</p>
-          </div>
-        </div>
-
-        <!-- Card 3: The Early Adopter Advantage -->
-        <div class="mp_window_card mp-reveal" data-delay="3">
-          <div class="mp_window_card_media">
-            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/community_early_adopter.jpg" 
-                 alt="The Early Adopter Advantage" 
-                 loading="lazy" 
-                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='../images/community_early_adopter.jpg';}">
-          </div>
-          <div class="mp_window_card_content">
-            <h3 class="mp_window_card_title">3. The Early Adopter Advantage</h3>
-            <p class="mp_window_card_desc">The companies that create trusted communities today will establish deeper customer relationships, own valuable engagement data, and build ecosystems that competitors will find increasingly difficult to replicate.</p>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </section>
 
   <!-- ======================================================================
-       Section 7: LET’S BUILD YOUR COMMUNITY ON MYPEOPLE (Interconnected Steps)
+       Section 7: The Window to Build a Thriving Customer Community Is NOW
        ====================================================================== -->
-  <section class="mp_steps_section">
+  <section class="mp_window">
     <div class="mp_container">
-      
-      <!-- Section Header -->
-      <div class="mp_steps_header mp-reveal">
-        <h2 class="mp_steps_title">LET’S BUILD YOUR COMMUNITY ON MYPEOPLE</h2>
-        <p class="mp_steps_subtitle">Join the high-growth B2B and HR tech leaders who are securing their audience, protecting their data, and engineering predictable retention.</p>
-      </div>
+      <h2 class="mp_h2 mp-reveal">The Window to Build a Thriving Customer Community <span class="mp_now">Is NOW</span></h2>
 
-      <!-- Interconnected Steps Track & Cards Grid -->
-      <div class="mp_steps_wrapper mp-reveal" data-delay="1">
-        
-        <!-- Connecting Pipeline Track (Desktop visible) -->
-        <div class="mp_steps_track" aria-hidden="true">
-          <div class="mp_track_line"></div>
-          <div class="mp_track_arrow track_arrow_1">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
+      <div class="mp_rows">
+        <article class="mp_row mp-reveal">
+          <div class="mp_row_media">
+            <svg class="mp_vec mp-draw" viewBox="0 0 180 180" aria-hidden="true">
+              <path class="mp_link" pathLength="1" d="M18 64A80 80 0 0 0 116 162" />
+              <circle class="mp_node" cx="18" cy="64" r="6" />
+              <circle class="mp_node" cx="116" cy="162" r="6" />
+              <circle class="mp_node" cx="39" cy="141" r="4" />
             </svg>
+            <div class="mp_row_frame">
+              <img class="is-portrait" src="https://public-cdn.myp.community/images/contact_consultation.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/contact-us/contact_consultation.jpg';}"
+                alt="Peers sharing knowledge in a warm, trusted conversation" width="500" height="670"
+                loading="lazy" decoding="async">
+            </div>
+            <span class="mp_chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </span>
           </div>
-          <div class="mp_track_arrow track_arrow_2">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
+          <div>
+            <span class="mp_row_num" aria-hidden="true">01</span>
+            <h3>Trusted Human Communities Are Becoming the Differentiator</h3>
+            <p>As content becomes commoditized, verified peer knowledge becomes more appreciated and valuable. Advance
+              from disparate tools and disconnected customer experiences to a more unified and measurable approach.</p>
+          </div>
+        </article>
+
+        <article class="mp_row is-flip mp-reveal">
+          <div class="mp_row_media">
+            <svg class="mp_vec mp-draw" viewBox="0 0 180 180" aria-hidden="true">
+              <path class="mp_link" pathLength="1" d="M18 64A80 80 0 0 0 116 162" />
+              <circle class="mp_node" cx="18" cy="64" r="6" />
+              <circle class="mp_node" cx="116" cy="162" r="6" />
+              <circle class="mp_node" cx="39" cy="141" r="4" />
             </svg>
+            <div class="mp_row_frame">
+              <img src="https://public-cdn.myp.community/images/hrtech_data_advantage.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_data_advantage.jpg';}"
+                alt="A team reviewing community engagement data on screens" width="1376" height="768"
+                loading="lazy" decoding="async">
+            </div>
+            <span class="mp_chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+              </svg>
+            </span>
           </div>
-        </div>
-
-        <div class="mp_steps_grid">
-          
-          <!-- Step 1 -->
-          <div class="mp_step_card step_1 mp-reveal" data-delay="1">
-            <div class="mp_step_badge_wrap">
-              <div class="mp_step_badge">01</div>
-            </div>
-            <div class="mp_step_body">
-              <h3 class="mp_step_title">1. 30-Minute Call to Discuss Your Needs</h3>
-              <p class="mp_step_desc">Walk through your goals and your current community infrastructure (if any), so we can identify the gaps.</p>
-            </div>
+          <div>
+            <span class="mp_row_num" aria-hidden="true">02</span>
+            <h3>Acquire a Data Advantage</h3>
+            <p>Third-party data is disappearing. Actionable first-party behavioral, firmographic, and engagement data
+              becomes a strategic advantage.</p>
           </div>
+        </article>
 
-          <!-- Step 2 -->
-          <div class="mp_step_card step_2 mp-reveal" data-delay="2">
-            <div class="mp_step_badge_wrap">
-              <div class="mp_step_badge">02</div>
+        <article class="mp_row mp-reveal">
+          <div class="mp_row_media">
+            <svg class="mp_vec mp-draw" viewBox="0 0 180 180" aria-hidden="true">
+              <path class="mp_link" pathLength="1" d="M18 64A80 80 0 0 0 116 162" />
+              <circle class="mp_node" cx="18" cy="64" r="6" />
+              <circle class="mp_node" cx="116" cy="162" r="6" />
+              <circle class="mp_node" cx="39" cy="141" r="4" />
+            </svg>
+            <div class="mp_row_frame">
+              <img src="https://public-cdn.myp.community/images/hrtech_early_adopter.jpg"
+                onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/hr-tech-b2b/hrtech_early_adopter.jpg';}"
+                alt="Business leaders meeting on a city rooftop terrace" width="1376" height="768"
+                loading="lazy" decoding="async">
             </div>
-            <div class="mp_step_body">
-              <h3 class="mp_step_title">2. Get a Tailored Demo</h3>
-              <p class="mp_step_desc">We will use the insights from the call to deliver a demo of MyPeople for your specific use case and audience.</p>
-            </div>
+            <span class="mp_chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 22V4" />
+                <path d="M4 4h13l-2.5 4L17 12H4" />
+              </svg>
+            </span>
           </div>
-
-          <!-- Step 3 -->
-          <div class="mp_step_card step_3 mp-reveal" data-delay="3">
-            <div class="mp_step_badge_wrap">
-              <div class="mp_step_badge">03</div>
-            </div>
-            <div class="mp_step_body">
-              <h3 class="mp_step_title">3. Roll Out Community</h3>
-              <p class="mp_step_desc">Launch your first community and playbook to prove ROI before proceeding to a full rollout.</p>
-            </div>
+          <div>
+            <span class="mp_row_num" aria-hidden="true">03</span>
+            <h3>The Early Adopter Advantage</h3>
+            <p>The companies that create trusted communities today will establish deeper customer relationships, own
+              valuable engagement data, and build ecosystems that competitors will find increasingly difficult to
+              replicate.</p>
           </div>
-
-        </div>
+        </article>
       </div>
+    </div>
+  </section>
 
-      <!-- Action CTA -->
-      <div class="mp_steps_action mp-reveal" data-delay="2">
-        <button type="button" class="btn-primary">
+  <!-- ======================================================================
+       Section 8: Let's Build Your Community on MyPeople
+       ====================================================================== -->
+  <section class="mp_build">
+    <div class="mp_container mp_build_grid">
+      <div class="mp_build_media mp-reveal">
+        <img src="https://public-cdn.myp.community/images/home_platform_ui.jpg"
+          onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_platform_ui.jpg';}"
+          alt="MyPeople community platform with discussion feed, events, learning and member directory" width="1264"
+          height="848" loading="lazy" decoding="async">
+      </div>
+      <div class="mp_build_copy mp-reveal" data-delay="2">
+        <h2 class="mp_h2"><span class="mp_build_badge">Let’s</span> Build Your Community on MyPeople</h2>
+        <p class="mp_build_sub">Join the high-growth B2B and HR tech leaders who are securing their audience,
+          protecting their data, and engineering predictable retention.</p>
+        <ol class="mp_steps">
+          <li class="mp_step">
+            <span class="mp_step_num" aria-hidden="true">1</span>
+            <div>
+              <h4>30-Minute Call to Discuss Your Needs</h4>
+              <p>Walk through your goals and your current community infrastructure (if any), so we can identify the
+                gaps.</p>
+            </div>
+          </li>
+          <li class="mp_step">
+            <span class="mp_step_num" aria-hidden="true">2</span>
+            <div>
+              <h4>Get a Tailored Demo</h4>
+              <p>We will use the insights from the call to deliver a demo of MyPeople for your specific use case and
+                audience.</p>
+            </div>
+          </li>
+          <li class="mp_step">
+            <span class="mp_step_num" aria-hidden="true">3</span>
+            <div>
+              <h4>Roll Out Community</h4>
+              <p>Launch your first community and playbook to prove ROI before proceeding to a full rollout.</p>
+            </div>
+          </li>
+        </ol>
+        <button type="button" class="btn-light btn-lg" data-open-contact>
           <span>Book 30-Minute Discovery Call</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
           </svg>
         </button>
       </div>
-
     </div>
   </section>
+
+  <!-- ======================================================================
+       Contact Modal
+       ====================================================================== -->
+  <div class="mp-hrtech-modal-overlay" id="mpHtModalOverlay"></div>
+
+  <div class="mp-hrtech-modal-wrapper" id="mpHtModal" role="dialog" aria-modal="true" aria-labelledby="mpHtModalTitle">
+    <div class="mp_splash_modal">
+      <button type="button" class="mps_close" data-close-modal aria-label="Close dialog">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)" />
+        </svg>
+      </button>
+      <div id="mpHtForm">
+        <h4 id="mpHtModalTitle">Get Started with MyPeople</h4>
+        <div class="mp_ipbox">
+          <div class="hrip mw50">
+            <label for="mpHtFirstName">First Name</label>
+            <input type="text" name="firstName" id="mpHtFirstName" placeholder="First Name" autocomplete="given-name">
+            <span class="error" id="mpHtErrFirstName">Please enter valid first name</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpHtLastName">Last Name</label>
+            <input type="text" name="lastName" id="mpHtLastName" placeholder="Last Name" autocomplete="family-name">
+            <span class="error" id="mpHtErrLastName">Please enter valid last name</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpHtEmail">Email Address</label>
+            <input type="email" name="emailId" id="mpHtEmail" placeholder="Email Address" autocomplete="email">
+            <span class="error" id="mpHtErrEmail">Please enter valid email address</span>
+          </div>
+          <div class="hrip mw50">
+            <label for="mpHtPhone">Phone Number</label>
+            <input type="tel" name="phoneNumber" id="mpHtPhone" placeholder="Phone Number" autocomplete="tel">
+            <span class="error" id="mpHtErrPhone">Please enter valid phone number</span>
+          </div>
+          <div class="hrip mw100">
+            <label for="mpHtSubject">Subject</label>
+            <select name="subject" id="mpHtSubject">
+              <option value="" disabled>Choose a subject</option>
+              <option value="Get Started">Get Started with MyPeople</option>
+              <option value="Discovery" selected>Book a 30-Minute Discovery Call</option>
+              <option value="Pricing">Platform Pricing &amp; Plans</option>
+              <option value="General">General Inquiry</option>
+            </select>
+            <span class="error" id="mpHtErrSubject">Please select a subject</span>
+          </div>
+          <div class="hrip mw100 fdrow">
+            <input type="checkbox" name="tc" id="mpHtTc">
+            <label for="mpHtTc">I agree to receive communications from MyPeople.</label>
+          </div>
+          <span class="errorTickbox" id="mpHtErrTc">Please accept the terms to proceed.</span>
+          <div class="hrip mw100 mp_submit_row">
+            <button type="button" class="btn-primary" id="mpHtSubmit">
+              <span>Submit Request</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mpHtSuccess" hidden>
+        <h4>Thank You!</h4>
+        <div class="mps_success_info">
+          <p>Your request has been received successfully. A MyPeople specialist will get in touch with you shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 <!-- ========================================================================
-     Vanilla JavaScript Interactions (Zero Dependencies)
+     Vanilla JavaScript (Zero Dependencies)
      ======================================================================== -->
 <script>
   (function () {
-    // ── Reveal Animation: Above-fold immediate, below-fold on scroll ─────────
-    var heroEls = document.querySelectorAll('#mp-community-embed .mp_hero_section .mp-reveal');
-    heroEls.forEach(function (el) { el.classList.add('mp-revealed'); });
+    var root = document.getElementById('mp-hrtech-embed');
+    if (!root) return;
+    root.classList.add('mp-js');
 
-    if ('IntersectionObserver' in window) {
-      var revealObs = new IntersectionObserver(function (entries) {
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    // ── Scroll Reveal (also triggers the SVG connector draw-in) ───────────
+    (function () {
+      var els = root.querySelectorAll('.mp-reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('mp-revealed'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('mp-revealed');
-            revealObs.unobserve(entry.target);
+            obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
 
-      document.querySelectorAll('#mp-community-embed .mp-reveal').forEach(function (el) {
-        if (!el.classList.contains('mp-revealed')) {
-          revealObs.observe(el);
-        }
+    // ── Scroll Progress Bar ────────────────────────────────────────────────
+    (function () {
+      var bar = document.getElementById('mpHtScrollBar');
+      if (!bar) return;
+      var ticking = false;
+      function update() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? (window.pageYOffset || doc.scrollTop) / max : 0;
+        bar.style.transform = 'scaleX(' + Math.min(Math.max(pct, 0), 1) + ')';
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+      }, { passive: true });
+      update();
+    })();
+
+    // ── Marquee: clone the group so the loop is seamless on wide screens ──
+    (function () {
+      var track = root.querySelector('.mp_marquee_track');
+      if (!track) return;
+      var group = track.querySelector('.mp_marquee_group');
+      for (var i = 0; i < 3; i++) {
+        var clone = group.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      }
+    })();
+
+    // ── Contact Modal ──────────────────────────────────────────────────────
+    (function () {
+      var overlay = document.getElementById('mpHtModalOverlay');
+      var modal = document.getElementById('mpHtModal');
+      if (!overlay || !modal) return;
+      var lastFocus = null;
+
+      function openModal() {
+        lastFocus = document.activeElement;
+        overlay.classList.add('active');
+        modal.classList.add('active');
+        document.body.classList.add('mp-freeze-scroll');
+        var first = modal.querySelector('input, select, button');
+        if (first) first.focus();
+      }
+
+      function closeModal() {
+        if (!modal.classList.contains('active')) return;
+        overlay.classList.remove('active');
+        modal.classList.remove('active');
+        document.body.classList.remove('mp-freeze-scroll');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      root.querySelectorAll('[data-open-contact]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
       });
-    } else {
-      document.querySelectorAll('#mp-community-embed .mp-reveal').forEach(function (el) {
-        el.classList.add('mp-revealed');
+
+      modal.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); closeModal(); });
       });
-    }
+
+      overlay.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      function toggleError(id, show) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = show ? 'block' : 'none';
+        return show;
+      }
+
+      function validEmail(v) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).toLowerCase());
+      }
+
+      var submitBtn = document.getElementById('mpHtSubmit');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function () {
+          var email = document.getElementById('mpHtEmail').value.trim();
+          var errors = [
+            toggleError('mpHtErrFirstName', !document.getElementById('mpHtFirstName').value.trim()),
+            toggleError('mpHtErrLastName', !document.getElementById('mpHtLastName').value.trim()),
+            toggleError('mpHtErrEmail', !email || !validEmail(email)),
+            toggleError('mpHtErrPhone', document.getElementById('mpHtPhone').value.trim().length < 7),
+            toggleError('mpHtErrSubject', !document.getElementById('mpHtSubject').value),
+            toggleError('mpHtErrTc', !document.getElementById('mpHtTc').checked)
+          ];
+
+          if (errors.indexOf(true) === -1) {
+            // TODO: wire to the real lead endpoint; this currently only shows the success state.
+            document.getElementById('mpHtForm').hidden = true;
+            document.getElementById('mpHtSuccess').hidden = false;
+          }
+        });
+      }
+    })();
   })();
 </script>

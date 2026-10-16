@@ -1,23 +1,19 @@
 <style>
   /* ==========================================================================
-     000-myp-community Official Design System Tokens
-     Source: 00-branding/tokens.css & 00-branding/design-system.md
+     MyPeople Design System Tokens (tenants/myp-community/brand/tokens.css)
      ========================================================================== */
   :root {
-    /* Typography Families */
-    --font-family-heading-1: 'Inria Serif', serif !important;
-    --font-family-heading-2: 'Inter', sans-serif !important;
-    --font-family-body: 'Roboto', sans-serif !important;
+    --font-family-heading-1: 'Inria Serif', serif;
+    --font-family-heading-2: 'Inter', sans-serif;
+    --font-family-body: 'Roboto', sans-serif;
 
-    /* Generic Colors */
-    --color-page-bg: #FFFCF8 !important;
-    --color-text: #000000 !important;
-    --color-text-link: #02588E !important;
-    --color-border: #CCCCCC !important;
-    --color-white: #FFFFFF !important;
-    --color-black: #000000 !important;
+    --color-page-bg: #FFFCF8;
+    --color-text: #000000;
+    --color-text-link: #02588E;
+    --color-border: #CCCCCC;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
 
-    /* Primary 1: MP-Green Scale */
     --color-mp-green-50: #F2FBF5;
     --color-mp-green-100: #E5F6E9;
     --color-mp-green-200: #CBEED5;
@@ -29,7 +25,6 @@
     --color-mp-green-800: #00651B;
     --color-mp-green-900: #004213;
 
-    /* Primary 2: MP-Blue Scale */
     --color-mp-blue-50: #F5F7F8;
     --color-mp-blue-100: #EBF0F2;
     --color-mp-blue-200: #D7E1E3;
@@ -41,24 +36,9 @@
     --color-mp-blue-800: #22404B;
     --color-mp-blue-900: #162B32;
 
-    /* Semantic Palettes */
-    --color-success-bg: #E5F6E9;
-    --color-success-border: #28C841;
-    --color-success-text: #018624;
-
-    --color-error-bg: #FFE3E3;
-    --color-error-border: #E06764;
     --color-error-text: #E13838;
-
-    --color-alert-bg: #FFF4E5;
-    --color-alert-border: #FCBE67;
-    --color-alert-text: #FB9302;
-
-    --color-edit-bg: #E8F2FD;
     --color-edit-border: #5099EC;
-    --color-edit-text: #1E66BA;
 
-    /* Black / Neutral Scale */
     --color-black-50: #F2F2F2;
     --color-black-100: #E4E4E4;
     --color-black-200: #CCCCCC;
@@ -67,23 +47,22 @@
     --color-black-500: #333333;
     --color-black-default: #000000;
 
-    /* Component Metrics */
     --radius-button: 12px;
-    --radius-card: 16px;
     --radius-input: 12px;
     --radius-tag: 12px;
-    --radius-accordion: 16px;
+    --radius-card: 16px;
+    --radius-panel: 28px;
     --gap-button: 12px;
   }
 
   /* ==========================================================================
-     CMS Scoped Root Container & Localized Defensive Reset
+     CMS Scoped Root & Localized Reset
      ========================================================================== */
   #mp-contact-us-embed {
     font-family: var(--font-family-body);
     font-size: 14px;
     line-height: 22px;
-    color: var(--color-black-default);
+    color: var(--color-black-default) !important;
     text-align: left;
     background-color: var(--color-page-bg);
     width: 100%;
@@ -92,6 +71,7 @@
     box-sizing: border-box;
     padding: 0;
     overflow-x: hidden;
+    overflow-x: clip;
   }
 
   #mp-contact-us-embed *,
@@ -102,9 +82,54 @@
     padding: 0;
   }
 
-  #mp-contact-us-embed img,
+  /* Host CMS shield: the story template forces fonts, letter-spacing and
+     p colour with !important (see cms-page-embed skill, Rule 4b).
+     Children of headings / paragraphs inherit ours instead; colours and
+     letter-spacing in this file are !important so the #root selectors win. */
+  #mp-contact-us-embed h1 *,
+  #mp-contact-us-embed h2 *,
+  #mp-contact-us-embed h3 *,
+  #mp-contact-us-embed h4 *,
+  #mp-contact-us-embed p * {
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    letter-spacing: inherit !important;
+  }
+
+  #mp-contact-us-embed img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
   #mp-contact-us-embed svg {
     vertical-align: middle;
+  }
+
+  #mp-contact-us-embed ul,
+  #mp-contact-us-embed ol {
+    list-style: none;
+  }
+
+  #mp-contact-us-embed li::before,
+  #mp-contact-us-embed li::marker {
+    content: none;
+  }
+
+  #mp-contact-us-embed button {
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  #mp-contact-us-embed [hidden] {
+    display: none !important;
+  }
+
+  #mp-contact-us-embed :focus-visible {
+    outline: 3px solid var(--color-edit-border);
+    outline-offset: 3px;
   }
 
   #mp-contact-us-embed .mp_container {
@@ -116,76 +141,112 @@
     position: relative;
   }
 
-  /* ==========================================================================
-     Scroll Reveal & Micro-Animations
-     ========================================================================== */
-  #mp-contact-us-embed .mp-reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  /* The CMS template adds a float clearfix on .mp_container; on flex/grid
+     containers those pseudo-elements become real items. */
+  #mp-contact-us-embed .mp_container::before,
+  #mp-contact-us-embed .mp_container::after {
+    content: none !important;
+    display: none !important;
   }
-  #mp-contact-us-embed .mp-reveal.mp-revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  #mp-contact-us-embed .mp-reveal[data-delay="1"] { transition-delay: 0.1s; }
-  #mp-contact-us-embed .mp-reveal[data-delay="2"] { transition-delay: 0.2s; }
 
   /* ==========================================================================
-     Primary CTA Button
+     Keyframes
+     ========================================================================== */
+  @keyframes mp-ct-float {
+    from { transform: translateY(-6px); }
+    to { transform: translateY(8px); }
+  }
+
+  @keyframes mp-ct-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0.45); }
+    70% { box-shadow: 0 0 0 12px rgba(102, 203, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0); }
+  }
+
+  /* ==========================================================================
+     Scroll Reveal (content only hides once JS has booted: .mp-js)
+     ========================================================================== */
+  #mp-contact-us-embed.mp-js .mp-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--mp-reveal-delay, 0s);
+  }
+
+  #mp-contact-us-embed.mp-js .mp-reveal.mp-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  #mp-contact-us-embed.mp-js .mp-reveal[data-delay="1"] { --mp-reveal-delay: 0.08s; }
+  #mp-contact-us-embed.mp-js .mp-reveal[data-delay="2"] { --mp-reveal-delay: 0.16s; }
+  #mp-contact-us-embed.mp-js .mp-reveal[data-delay="3"] { --mp-reveal-delay: 0.24s; }
+
+  /* Connectors draw themselves in once their block is revealed */
+  #mp-contact-us-embed.mp-js .mp-draw path.mp_link {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.5s;
+  }
+
+  #mp-contact-us-embed.mp-js .mp-revealed .mp-draw path.mp_link {
+    stroke-dashoffset: 0;
+  }
+
+  #mp-contact-us-embed.mp-js .mp-draw .mp_node {
+    opacity: 0;
+    transition: opacity 0.4s ease 1.6s;
+  }
+
+  #mp-contact-us-embed.mp-js .mp-revealed .mp-draw .mp_node {
+    opacity: 1;
+  }
+
+  /* ==========================================================================
+     Buttons
      ========================================================================== */
   #mp-contact-us-embed .btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--gap-button);
-    height: 52px;
-    padding: 0 32px;
-    background-color: var(--color-mp-green-700) !important;
-    color: var(--color-white) !important;
+    height: 50px;
+    padding: 0 28px;
     border-radius: var(--radius-button) !important;
     border: none !important;
+    background-color: var(--color-mp-green-700) !important;
+    color: var(--color-white) !important;
+    box-shadow: 0 6px 18px rgba(1, 134, 36, 0.28);
     font-family: var(--font-family-body) !important;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500 !important;
-    cursor: pointer;
+    line-height: 20px;
+    letter-spacing: 0 !important;
     text-decoration: none !important;
-    transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-    box-shadow: 0 4px 14px rgba(1, 134, 36, 0.22);
-    position: relative;
-    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   }
 
-  #mp-contact-us-embed .btn-primary::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.6s ease;
-  }
-
-  #mp-contact-us-embed .btn-primary:hover::after {
-    left: 100%;
+  #mp-contact-us-embed .btn-lg {
+    height: 60px;
+    padding: 0 32px;
+    font-size: 16px;
   }
 
   #mp-contact-us-embed .btn-primary:hover {
     background-color: var(--color-mp-green-800) !important;
-    color: var(--color-white) !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(1, 134, 36, 0.32);
+    box-shadow: 0 10px 26px rgba(1, 134, 36, 0.36);
   }
 
-  #mp-contact-us-embed .btn-primary:focus {
+  #mp-contact-us-embed .btn-primary:focus,
+  #mp-contact-us-embed .btn-primary:focus-visible,
+  #mp-contact-us-embed .btn-primary:active {
     background-color: var(--color-mp-green-default) !important;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(2, 168, 45, 0.3);
   }
 
   #mp-contact-us-embed .btn-primary svg {
+    flex-shrink: 0;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -194,764 +255,969 @@
   }
 
   /* ==========================================================================
-     Contact Us: 2-Column Equal Layout (Min-Height 70vh)
-     Column 1: Full Image
-     Column 2: Heading, Description, CTA, Trust Checklist
+     Shared Vector Accents (drawn in code)
      ========================================================================== */
-  #mp-contact-us-embed .mp_contact_section {
-    width: 100%;
-    min-height: 70vh;
+  #mp-contact-us-embed .mp_dots {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    pointer-events: none;
+  }
+
+  #mp-contact-us-embed .mp_dots circle { fill: var(--color-mp-green-default); }
+  #mp-contact-us-embed .mp_dots circle:last-child { fill: var(--color-mp-green-700); }
+
+  #mp-contact-us-embed .mp_chip {
+    position: absolute;
+    z-index: 3;
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 72px 0;
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    box-shadow: 0 14px 34px rgba(22, 43, 50, 0.22);
+    animation: mp-ct-float 5s ease-in-out infinite alternate;
+  }
+
+  #mp-contact-us-embed .mp_chip svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #mp-contact-us-embed .mp_chip.d2 { animation-delay: -1.6s; }
+
+  /* ==========================================================================
+     Section 1: Hero (slate): copy + CTA left, photo with code-drawn overlay right
+     ========================================================================== */
+  #mp-contact-us-embed .ct_hero {
     position: relative;
-    background-color: var(--color-page-bg);
+    padding: 96px 0 104px 0;
+    background-color: var(--color-mp-blue-900);
+    background-image: radial-gradient(var(--color-mp-blue-800) 1.2px, transparent 1.6px);
+    background-size: 28px 28px;
     overflow: hidden;
   }
 
-  /* Subtle ambient dual-glow */
-  #mp-contact-us-embed .mp_contact_section::before {
+  #mp-contact-us-embed .ct_hero::after {
     content: '';
     position: absolute;
-    top: -10%;
-    left: -5%;
-    width: 540px;
-    height: 540px;
-    background: radial-gradient(circle, rgba(203, 238, 213, 0.45) 0%, rgba(242, 251, 245, 0.12) 60%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
+    top: 50%;
+    right: -220px;
+    width: 780px;
+    height: 780px;
+    margin-top: -390px;
     border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 185, 87, 0.22) 0%, rgba(22, 43, 50, 0) 68%);
+    pointer-events: none;
   }
 
-  #mp-contact-us-embed .mp_contact_section::after {
-    content: '';
-    position: absolute;
-    bottom: -15%;
-    right: -8%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(175, 196, 203, 0.22) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    border-radius: 50%;
-  }
-
-  #mp-contact-us-embed .mp_contact_grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: stretch;
-    min-height: 70vh;
+  #mp-contact-us-embed .ct_hero_grid {
     position: relative;
     z-index: 1;
-    width: 100%;
-  }
-
-  /* Column 1: Full Image */
-  #mp-contact-us-embed .mp_contact_visual {
-    width: 100%;
-    height: 100%;
-    min-height: 520px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-
-  #mp-contact-us-embed .mp_contact_img_box {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(203, 238, 213, 0.6);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-  }
-
-  #mp-contact-us-embed .mp_contact_img_box:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 22px 48px rgba(1, 134, 36, 0.12);
-  }
-
-  #mp-contact-us-embed .mp_contact_img_box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(1.01);
-  }
-
-  /* Column 2: Content, CTA, and Perks */
-  #mp-contact-us-embed .mp_contact_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 24px 0;
-  }
-
-  /* Heading: Inria Serif Bold 700 */
-  #mp-contact-us-embed h1.mp_contact_title {
-    font-family: var(--font-family-heading-1) !important;
-    font-size: 44px;
-    font-weight: 700 !important;
-    line-height: 52px;
-    letter-spacing: -0.3px;
-    color: var(--color-black-default) !important;
-    margin-bottom: 22px;
-    text-align: left;
-  }
-
-  #mp-contact-us-embed h1.mp_contact_title::before {
-    content: '';
-    display: block;
-    width: 52px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-mp-green-700), var(--color-mp-green-400));
-    border-radius: 2px;
-    margin-bottom: 20px;
-  }
-
-  #mp-contact-us-embed h1.mp_contact_title span.highlight_green {
-    color: var(--color-mp-green-700) !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-  }
-
-  /* Description: Roboto Regular 400 */
-  #mp-contact-us-embed p.mp_contact_desc {
-    font-family: var(--font-family-body) !important;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 30px;
-    color: var(--color-black-500);
-    margin-bottom: 34px;
-    text-align: left;
-  }
-
-  /* Action Area */
-  #mp-contact-us-embed .mp_contact_action {
-    margin-bottom: 30px;
-    width: 100%;
-  }
-
-  /* Trust Perks Checklist Grid */
-  #mp-contact-us-embed .mp_contact_perks {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px 28px;
-    width: 100%;
-    padding-top: 10px;
-    border-top: 1px solid #ECEFEF;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 64px;
   }
 
-  #mp-contact-us-embed .mp_perk_item {
+  #mp-contact-us-embed .mp_eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid var(--color-mp-blue-700);
+    border-radius: 999px;
+    background-color: var(--color-mp-blue-800);
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 13px;
+    font-weight: 600 !important;
+    line-height: 18px;
+    letter-spacing: 1.4px !important;
+    text-transform: uppercase;
+    color: var(--color-mp-green-300) !important;
+  }
+
+  #mp-contact-us-embed .mp_eyebrow::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-mp-green-400);
+    animation: mp-ct-pulse 2.4s ease-out infinite;
+  }
+
+  #mp-contact-us-embed .ct_title {
+    font-family: var(--font-family-heading-1) !important;
+    font-size: 60px;
+    font-weight: 700 !important;
+    line-height: 66px;
+    letter-spacing: -1.5px !important;
+    color: var(--color-white) !important;
+  }
+
+  #mp-contact-us-embed .ct_title span {
+    display: block;
+    color: var(--color-mp-green-400) !important;
+  }
+
+  #mp-contact-us-embed .ct_desc {
+    max-width: 600px;
+    margin-top: 28px;
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 21px;
+    font-weight: 600 !important;
+    line-height: 31px;
+    letter-spacing: -0.25px !important;
+    color: var(--color-mp-blue-100) !important;
+  }
+
+  #mp-contact-us-embed .ct_action {
+    margin-top: 40px;
+  }
+
+  /* Photo with SVG overlay in image coordinates (500 x 670) */
+  #mp-contact-us-embed .ct_media {
+    position: relative;
+    justify-self: end;
+    width: 100%;
+    max-width: 470px;
+  }
+
+  #mp-contact-us-embed .ct_media::before {
+    content: '';
+    position: absolute;
+    left: -90px;
+    bottom: -70px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px dashed var(--color-mp-blue-700);
+    pointer-events: none;
+  }
+
+  #mp-contact-us-embed .ct_frame {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 500 / 670;
+    border-radius: var(--radius-panel);
+    overflow: hidden;
+    border: 4px solid var(--color-white);
+    background-color: var(--color-mp-blue-800);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+  }
+
+  #mp-contact-us-embed .ct_frame img,
+  #mp-contact-us-embed .ct_frame svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #mp-contact-us-embed .ct_frame img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #mp-contact-us-embed .ct_frame svg {
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  #mp-contact-us-embed .ct_frame path.mp_link {
+    fill: none;
+    stroke: var(--color-mp-green-400);
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-contact-us-embed .ct_frame .mp_node {
+    fill: var(--color-mp-green-default);
+    stroke: var(--color-white);
+    stroke-width: 3px;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Floating calendar card drawn in code (placeholder bars, no words or numbers) */
+  #mp-contact-us-embed .ct_card {
+    position: absolute;
+    z-index: 3;
+    left: -56px;
+    bottom: 64px;
+    width: 196px;
+    padding: 16px;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.3);
+    animation: mp-ct-float 6s ease-in-out infinite alternate;
+    animation-delay: -2.4s;
+  }
+
+  #mp-contact-us-embed .ct_card_head {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--font-family-body) !important;
-    font-size: 15px;
-    line-height: 22px;
-    color: var(--color-black-default);
-    transition: transform 0.2s ease, color 0.2s ease;
+    margin-bottom: 14px;
   }
 
-  #mp-contact-us-embed .mp_perk_item:hover {
-    transform: translateX(3px);
-    color: var(--color-mp-green-700);
-  }
-
-  #mp-contact-us-embed .mp_perk_icon {
-    width: 18px;
-    height: 18px;
+  #mp-contact-us-embed .ct_card_icon {
     flex-shrink: 0;
-    stroke: var(--color-mp-green-700);
-  }
-
-  /* ==========================================================================
-     Modals & Overlay Styles (Brand Compliant Inputs & Radii)
-     ========================================================================== */
-  .mp-community-modal-overlay {
-    display: none;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.65);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99998;
-    backdrop-filter: blur(3px);
-  }
-
-  .mp-community-modal-wrapper {
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 99999;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow-y: auto;
-  }
-
-  .mp_splash_modal {
-    width: 100%;
-    max-width: 620px;
-    background: var(--color-white);
-    border-radius: 18px;
-    border: 1px solid var(--color-border);
-    position: relative;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
-    padding: 34px 32px;
-    font-family: var(--font-family-body);
-    box-sizing: border-box;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .mp_splash_modal .mps_close {
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    z-index: 2;
-    cursor: pointer;
-    user-select: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--color-mp-green-700);
+    color: var(--color-white) !important;
+  }
+
+  #mp-contact-us-embed .ct_card_icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  #mp-contact-us-embed .ct_card_bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  #mp-contact-us-embed .ct_bar {
+    display: block;
+    height: 8px;
+    border-radius: 4px;
+    background-color: var(--color-black-100);
+  }
+
+  #mp-contact-us-embed .ct_bar.is-dark { background-color: var(--color-mp-blue-200); }
+  #mp-contact-us-embed .ct_bar.w50 { width: 50%; }
+  #mp-contact-us-embed .ct_bar.w80 { width: 80%; }
+
+  #mp-contact-us-embed .ct_slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  #mp-contact-us-embed .ct_slots span {
+    height: 22px;
+    border-radius: 7px;
+    background-color: var(--color-mp-green-50);
+    border: 1px solid var(--color-mp-green-100);
+  }
+
+  #mp-contact-us-embed .ct_slots span.is-on {
+    background-color: var(--color-mp-green-700);
+    border-color: var(--color-mp-green-700);
+  }
+
+  #mp-contact-us-embed .ct_media .mp_chip.c1 { right: -24px; top: 12%; }
+  #mp-contact-us-embed .ct_media .mp_chip.c2 { right: 18%; bottom: -24px; }
+  #mp-contact-us-embed .ct_media .mp_dots { right: -30px; top: 52%; z-index: 2; }
+
+  /* ==========================================================================
+     Section 2: Perks (green band, four columns)
+     ========================================================================== */
+  #mp-contact-us-embed .ct_perks {
+    position: relative;
+    padding: 72px 0;
+    background-color: var(--color-mp-green-700);
+    overflow: hidden;
+  }
+
+  #mp-contact-us-embed .ct_perks::before,
+  #mp-contact-us-embed .ct_perks::after {
+    content: '';
+    position: absolute;
     border-radius: 50%;
-    background: var(--color-black-50);
-    color: var(--color-black-500);
-    transition: background 0.15s ease, color 0.15s ease;
+    border: 2px solid var(--color-mp-green-500);
+    pointer-events: none;
   }
 
-  .mp_splash_modal .mps_close:hover {
-    background: var(--color-black-100);
-    color: var(--color-black-default);
+  /* Rings sit in the band's margins, clear of the perk text */
+  #mp-contact-us-embed .ct_perks::before {
+    width: 320px;
+    height: 320px;
+    right: 30%;
+    top: -260px;
   }
 
-  .mp_splash_modal h4 {
+  #mp-contact-us-embed .ct_perks::after {
+    width: 280px;
+    height: 280px;
+    right: -90px;
+    bottom: -230px;
+    border-style: dashed;
+  }
+
+  #mp-contact-us-embed .ct_perk_list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #mp-contact-us-embed .ct_perk {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 8px 28px;
+    border-left: 1px solid var(--color-mp-green-500);
+  }
+
+  #mp-contact-us-embed .ct_perk:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  #mp-contact-us-embed .ct_perk_icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    color: var(--color-mp-green-700) !important;
+    transition: transform 0.3s ease;
+  }
+
+  #mp-contact-us-embed .ct_perk:hover .ct_perk_icon {
+    transform: rotate(-6deg);
+  }
+
+  #mp-contact-us-embed .ct_perk_icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  #mp-contact-us-embed .ct_perk p {
     font-family: var(--font-family-heading-2) !important;
     font-size: 22px;
     font-weight: 600 !important;
-    color: var(--color-black-default) !important;
     line-height: 30px;
-    margin: 0 0 20px 0;
-    padding-right: 40px;
-    text-transform: none !important;
+    letter-spacing: -0.25px !important;
+    color: var(--color-white) !important;
   }
 
-  .mp_ipbox {
-    width: 100%;
+  /* ==========================================================================
+     Contact Modal
+     ========================================================================== */
+  #mp-contact-us-embed .mp-ct-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(22, 43, 50, 0.7);
+    z-index: 99998;
+    display: none;
+    backdrop-filter: blur(6px);
+  }
+
+  #mp-contact-us-embed .mp-ct-modal-overlay.active {
+    display: block;
+  }
+
+  #mp-contact-us-embed .mp-ct-modal-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  #mp-contact-us-embed .mp-ct-modal-wrapper.active {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
   }
 
-  .mp_ipbox .hrip {
+  #mp-contact-us-embed .mp_splash_modal {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 36px 32px 32px 32px;
+    border-radius: 20px;
+    background-color: var(--color-white);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  }
+
+  #mp-contact-us-embed .mps_close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-black-50);
+    color: var(--color-black-400) !important;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.2s ease;
+  }
+
+  #mp-contact-us-embed .mps_close:hover {
+    background-color: var(--color-black-100);
+    color: var(--color-black-default) !important;
+    transform: rotate(90deg);
+  }
+
+  #mp-contact-us-embed .mp_splash_modal h4 {
+    font-family: var(--font-family-heading-2) !important;
+    font-size: 24px;
+    font-weight: 600 !important;
+    line-height: 32px;
+    letter-spacing: 0 !important;
+    color: var(--color-black-default) !important;
+    margin-bottom: 22px;
+    padding-right: 40px;
+  }
+
+  #mp-contact-us-embed .mp_ipbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 16px;
+  }
+
+  #mp-contact-us-embed .mp_ipbox .hrip {
     width: 100%;
     margin-bottom: 16px;
     display: flex;
     flex-direction: column;
-    position: relative;
   }
 
-  .mp_ipbox .hrip.mw50 {
+  #mp-contact-us-embed .mp_ipbox .hrip.mw50 {
     width: calc(50% - 8px);
   }
 
-  .mp_ipbox .hrip.mw100 {
-    width: 100%;
-  }
-
-  .mp_ipbox .hrip > label {
+  #mp-contact-us-embed .mp_ipbox .hrip > label {
     font-family: var(--font-family-body) !important;
     font-size: 14px;
     font-weight: 500 !important;
+    line-height: 24px;
     color: var(--color-black-default) !important;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
-  .mp_ipbox .hrip > input[type="text"],
-  .mp_ipbox .hrip > input[type="email"],
-  .mp_ipbox .hrip > input[type="tel"],
-  .mp_ipbox .hrip > select {
+  #mp-contact-us-embed .mp_ipbox .hrip > input[type="text"],
+  #mp-contact-us-embed .mp_ipbox .hrip > input[type="email"],
+  #mp-contact-us-embed .mp_ipbox .hrip > input[type="tel"],
+  #mp-contact-us-embed .mp_ipbox .hrip > select {
     width: 100%;
     height: 50px;
-    padding: 12px 14px;
+    padding: 12px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-input);
-    background: var(--color-white);
-    color: var(--color-black-default);
+    background-color: var(--color-white);
+    color: var(--color-black-default) !important;
+    font-family: var(--font-family-body);
     font-size: 14px;
-    font-family: inherit;
     outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.15s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .mp_ipbox .hrip > input:focus,
-  .mp_ipbox .hrip > select:focus {
+  #mp-contact-us-embed .mp_ipbox .hrip > input::placeholder {
+    color: var(--color-black-300) !important;
+  }
+
+  #mp-contact-us-embed .mp_ipbox .hrip > input:focus,
+  #mp-contact-us-embed .mp_ipbox .hrip > select:focus {
     border-color: var(--color-edit-border);
+    box-shadow: 0 0 0 3px rgba(80, 153, 236, 0.15);
   }
 
-  .mp_ipbox .hrip.fdrow {
+  #mp-contact-us-embed .mp_ipbox .hrip.fdrow {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    margin-top: 5px;
+    margin-bottom: 4px;
   }
 
-  .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+  #mp-contact-us-embed .mp_ipbox .hrip.fdrow > input[type="checkbox"] {
+    flex-shrink: 0;
     width: 18px;
     height: 18px;
     accent-color: var(--color-mp-green-700);
     cursor: pointer;
   }
 
-  .mp_ipbox .hrip.fdrow > label {
+  #mp-contact-us-embed .mp_ipbox .hrip.fdrow > label {
     margin-bottom: 0;
     font-size: 13px;
     cursor: pointer;
   }
 
-  .mp_ipbox .hrip span.error,
-  .mp_ipbox .hrip span.errorTickbox {
+  #mp-contact-us-embed .mp_ipbox span.error,
+  #mp-contact-us-embed .mp_ipbox span.errorTickbox {
     display: none;
+    width: 100%;
     font-size: 12px;
-    color: var(--color-error-text);
+    line-height: 16px;
+    color: var(--color-error-text) !important;
     margin-top: 4px;
   }
 
-  .mp_splash_modal .mps_success_info {
-    padding: 15px 0;
+  #mp-contact-us-embed .mp_ipbox .mp_submit_row {
+    margin-top: 14px;
+  }
+
+  #mp-contact-us-embed .mp_ipbox .mp_submit_row .btn-primary {
+    width: 100%;
+  }
+
+  #mp-contact-us-embed .mps_success_info p {
     font-size: 15px;
     line-height: 24px;
-    color: var(--color-black-default);
+    color: var(--color-black-default) !important;
   }
 
   body.mp-freeze-scroll {
     overflow: hidden !important;
-    height: 100vh !important;
   }
 
   /* ==========================================================================
-     Wide-Screen & Min-Width Responsive Breakpoints (Capped at 1440px)
+     Wide-Screen Tiers (container capped at 1440px)
      ========================================================================== */
-
-  /* Medium to Large Desktop (min-width: 1200px) */
   @media screen and (min-width: 1200px) {
     #mp-contact-us-embed .mp_container {
       max-width: 1320px;
       padding-left: 28px;
       padding-right: 28px;
     }
-    #mp-contact-us-embed .mp_contact_grid {
-      gap: 64px;
-    }
-    #mp-contact-us-embed h1.mp_contact_title {
-      font-size: 48px;
-      line-height: 56px;
-    }
-    #mp-contact-us-embed p.mp_contact_desc {
-      font-size: 19px;
-      line-height: 32px;
-    }
-    #mp-contact-us-embed .mp_perk_item {
-      font-size: 16px;
-      line-height: 24px;
-    }
+
+    #mp-contact-us-embed .ct_hero { padding: 112px 0 120px 0; }
+    #mp-contact-us-embed .ct_hero_grid { gap: 80px; }
+    #mp-contact-us-embed .ct_title { font-size: 68px; line-height: 74px; letter-spacing: -1.75px !important; }
+    #mp-contact-us-embed .ct_desc { font-size: 22px; line-height: 32px; }
+    #mp-contact-us-embed .ct_media { max-width: 500px; }
+    #mp-contact-us-embed .ct_perks { padding: 80px 0; }
+    #mp-contact-us-embed .ct_perk p { font-size: 23px; line-height: 31px; }
   }
 
-  /* Large Desktop - Maximum Width Ceiling (min-width: 1440px) */
   @media screen and (min-width: 1440px) {
     #mp-contact-us-embed .mp_container {
       max-width: 1440px;
       padding-left: 32px;
       padding-right: 32px;
     }
-    #mp-contact-us-embed .mp_contact_section {
-      padding: 92px 0;
-    }
-    #mp-contact-us-embed .mp_contact_grid {
-      gap: 72px;
-    }
-    #mp-contact-us-embed h1.mp_contact_title {
-      font-size: 52px;
-      line-height: 60px;
-    }
-    #mp-contact-us-embed p.mp_contact_desc {
-      font-size: 20px;
-      line-height: 34px;
-      margin-bottom: 38px;
-    }
-    #mp-contact-us-embed .btn-primary {
-      height: 54px;
-      padding: 0 34px;
-      font-size: 17px;
-    }
-    #mp-contact-us-embed .mp_contact_perks {
-      gap: 16px 36px;
-    }
-    #mp-contact-us-embed .mp_perk_item {
-      font-size: 16px;
-      line-height: 25px;
-    }
+
+    #mp-contact-us-embed .ct_hero { padding: 128px 0 136px 0; }
+    #mp-contact-us-embed .ct_title { font-size: 76px; line-height: 82px; letter-spacing: -2px !important; }
+    #mp-contact-us-embed .ct_desc { font-size: 24px; line-height: 34px; max-width: 660px; }
+    #mp-contact-us-embed .ct_media { max-width: 540px; }
+    #mp-contact-us-embed .ct_perks { padding: 88px 0; }
+    #mp-contact-us-embed .ct_perk { padding-left: 36px; padding-right: 36px; }
+    #mp-contact-us-embed .ct_perk p { font-size: 24px; line-height: 32px; }
   }
 
-  /* Tablet / Medium Screens (max-width: 991px) */
+  /* ==========================================================================
+     Tablet (max-width: 991px)
+     ========================================================================== */
   @media screen and (max-width: 991px) {
-    #mp-contact-us-embed .mp_contact_section {
-      min-height: auto;
-      padding: 56px 0;
-    }
-    #mp-contact-us-embed .mp_contact_grid {
-      grid-template-columns: 1fr;
-      min-height: auto;
-      gap: 40px;
-    }
-    #mp-contact-us-embed .mp_contact_visual {
-      order: 2;
-      height: 420px;
-      min-height: 420px;
-    }
-    #mp-contact-us-embed .mp_contact_content {
-      order: 1;
-      padding: 0;
-      align-items: flex-start;
-      text-align: left;
-    }
-    #mp-contact-us-embed h1.mp_contact_title {
-      font-size: 38px;
-      line-height: 46px;
-    }
-    #mp-contact-us-embed p.mp_contact_desc {
-      font-size: 17px;
-      line-height: 28px;
-      margin-bottom: 28px;
-    }
+    #mp-contact-us-embed .ct_hero { padding: 80px 0 96px 0; }
+    #mp-contact-us-embed .ct_hero_grid { grid-template-columns: 1fr; gap: 64px; }
+    #mp-contact-us-embed .ct_title { font-size: 48px; line-height: 54px; letter-spacing: -1.25px !important; }
+    #mp-contact-us-embed .ct_desc { font-size: 20px; line-height: 30px; }
+    #mp-contact-us-embed .ct_media { justify-self: center; max-width: 440px; }
+
+    #mp-contact-us-embed .ct_perks { padding: 64px 0; }
+    #mp-contact-us-embed .ct_perk_list { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
+    #mp-contact-us-embed .ct_perk:nth-child(3) { padding-left: 0; border-left: none; }
   }
 
-  /* Mobile Screens (max-width: 576px) */
+  /* ==========================================================================
+     Mobile (max-width: 576px)
+     ========================================================================== */
   @media screen and (max-width: 576px) {
-    #mp-contact-us-embed .mp_contact_section {
-      padding: 44px 0;
+    #mp-contact-us-embed .mp_container {
+      padding-left: 20px;
+      padding-right: 20px;
     }
-    #mp-contact-us-embed .mp_contact_visual {
-      height: 300px;
-      min-height: 300px;
+
+    #mp-contact-us-embed .btn-primary { width: 100%; white-space: normal; text-align: center; }
+    #mp-contact-us-embed .btn-lg { height: 56px; padding: 0 20px; font-size: 15px; }
+
+    #mp-contact-us-embed .ct_hero { padding: 64px 0 80px 0; }
+    #mp-contact-us-embed .mp_eyebrow { font-size: 11px; letter-spacing: 1px !important; }
+    #mp-contact-us-embed .ct_title { font-size: 38px; line-height: 44px; letter-spacing: -1px !important; }
+    #mp-contact-us-embed .ct_desc { margin-top: 20px; font-size: 18px; line-height: 27px; }
+    #mp-contact-us-embed .ct_action { margin-top: 32px; }
+    #mp-contact-us-embed .ct_media { max-width: 320px; }
+    #mp-contact-us-embed .ct_media::before { width: 200px; height: 200px; left: -70px; bottom: -50px; }
+    #mp-contact-us-embed .ct_frame { border-width: 3px; border-radius: 22px; }
+    #mp-contact-us-embed .ct_card { left: -16px; bottom: 40px; width: 160px; padding: 12px; border-radius: 16px; }
+    #mp-contact-us-embed .ct_card_icon { width: 30px; height: 30px; border-radius: 10px; }
+    #mp-contact-us-embed .ct_slots span { height: 18px; }
+    #mp-contact-us-embed .mp_chip { width: 44px; height: 44px; border-radius: 14px; }
+    #mp-contact-us-embed .mp_chip svg { width: 20px; height: 20px; }
+    #mp-contact-us-embed .ct_media .mp_chip.c1 { right: -14px; }
+    #mp-contact-us-embed .ct_media .mp_dots { right: -16px; width: 40px; height: 40px; }
+
+    #mp-contact-us-embed .ct_perks { padding: 56px 0; }
+    #mp-contact-us-embed .ct_perks::before,
+    #mp-contact-us-embed .ct_perks::after { display: none; }
+    #mp-contact-us-embed .ct_perk_list { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+    #mp-contact-us-embed .ct_perk { flex-direction: row; align-items: center; gap: 16px; padding: 18px 0; border-left: none; border-top: 1px solid var(--color-mp-green-500); }
+    #mp-contact-us-embed .ct_perk:first-child { border-top: none; }
+    #mp-contact-us-embed .ct_perk_icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: 15px; }
+    #mp-contact-us-embed .ct_perk_icon svg { width: 22px; height: 22px; }
+    #mp-contact-us-embed .ct_perk p { font-size: 19px; line-height: 26px; }
+
+    #mp-contact-us-embed .mp-ct-modal-wrapper { padding: 12px; }
+    #mp-contact-us-embed .mp_ipbox .hrip.mw50 { width: 100%; }
+    #mp-contact-us-embed .mp_splash_modal { padding: 28px 20px 24px 20px; }
+  }
+
+  /* ==========================================================================
+     Reduced Motion
+     ========================================================================== */
+  @media (prefers-reduced-motion: reduce) {
+    #mp-contact-us-embed.mp-js .mp-reveal,
+    #mp-contact-us-embed.mp-js .mp-draw path.mp_link,
+    #mp-contact-us-embed.mp-js .mp-draw .mp_node {
+      transition: none !important;
     }
-    #mp-contact-us-embed h1.mp_contact_title {
-      font-size: 30px;
-      line-height: 38px;
-      margin-bottom: 16px;
+
+    #mp-contact-us-embed.mp-js .mp-reveal { opacity: 1; transform: none; }
+    #mp-contact-us-embed.mp-js .mp-draw path.mp_link { stroke-dashoffset: 0; }
+    #mp-contact-us-embed.mp-js .mp-draw .mp_node { opacity: 1; }
+
+    #mp-contact-us-embed .mp_chip,
+    #mp-contact-us-embed .ct_card,
+    #mp-contact-us-embed .mp_eyebrow::before {
+      animation: none !important;
     }
-    #mp-contact-us-embed h1.mp_contact_title::before {
-      margin-bottom: 16px;
-    }
-    #mp-contact-us-embed p.mp_contact_desc {
-      font-size: 16px;
-      line-height: 26px;
-      margin-bottom: 24px;
-    }
-    #mp-contact-us-embed .btn-primary {
-      width: 100%;
-      height: 48px;
-      padding: 0 20px;
-      font-size: 15px;
-    }
-    #mp-contact-us-embed .mp_contact_perks {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .mp_ipbox .hrip.mw50 {
-      width: 100%;
-    }
-    .mp_splash_modal {
-      padding: 24px 18px;
+
+    #mp-contact-us-embed .btn-primary:hover,
+    #mp-contact-us-embed .btn-primary:hover svg,
+    #mp-contact-us-embed .ct_perk:hover .ct_perk_icon,
+    #mp-contact-us-embed .mps_close:hover {
+      transform: none !important;
     }
   }
 </style>
 
 <!-- ========================================================================
      Root Scoping Container for WYSIWYG / CMS Embed
-     Strictly adhering to 000-myp-community Brand Tokens & Design System
      ======================================================================== -->
 <div id="mp-contact-us-embed" class="mp-contact-us-embed">
 
   <!-- ======================================================================
-       Contact Us / Free Community Consultation Section
-       Two Equal Columns (Min-Height 70vh)
-       Column 1: Full Image
-       Column 2: Title, Description, CTA, and Perks Checklist
+       Section 1: Hero (Ready to Build a Better Community?)
        ====================================================================== -->
-  <section class="mp_contact_section">
-    <div class="mp_container">
-      <div class="mp_contact_grid">
-        
-        <!-- Column 1: Full Image -->
-        <div class="mp_contact_visual mp-reveal" data-delay="1">
-          <div class="mp_contact_img_box">
-            <img src="https://public-cdn.hr.com/remoteimages/website-images/myp-community/contact_community_consultation.jpg" 
-                 alt="Ready to Build a Better Community? Book My Free Community Consultation" 
-                 loading="eager" 
-                 onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/contact_community_consultation.jpg';}">
-          </div>
+  <section class="ct_hero">
+    <div class="mp_container ct_hero_grid">
+      <div class="mp-reveal">
+        <span class="mp_eyebrow">Contact Us</span>
+        <h1 class="ct_title">Ready to Build a <span>Better Community?</span></h1>
+        <p class="ct_desc">Start with a 30-minute conversation. We’ll review your current community setup (if you have one), uncover opportunities, and show you how MyPeople can help you create a more connected, valuable member experience.</p>
+        <div class="ct_action">
+          <button type="button" class="btn-primary btn-lg" data-open-contact>
+            <span>Book My Free Community Consultation</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="ct_media mp-reveal" data-delay="2">
+        <div class="ct_frame">
+          <img src="https://public-cdn.myp.community/images/contact_consultation.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/contact-us/contact_consultation.jpg';}"
+            alt="Ready to Build a Better Community? Book My Free Community Consultation" width="500" height="670"
+            loading="eager" decoding="async">
+          <!-- Connectors above the four people's heads (image coordinates) -->
+          <svg class="mp-draw" viewBox="0 0 500 670" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="mp_link" pathLength="1" d="M92 252C108 220 128 208 150 222S290 168 345 236S430 222 455 254" />
+            <circle class="mp_node" cx="92" cy="252" r="7" />
+            <circle class="mp_node" cx="150" cy="222" r="7" />
+            <circle class="mp_node" cx="345" cy="236" r="7" />
+            <circle class="mp_node" cx="455" cy="254" r="7" />
+          </svg>
         </div>
 
-        <!-- Column 2: Content & CTA -->
-        <div class="mp_contact_content mp-reveal" data-delay="2">
-          <h1 class="mp_contact_title">Ready to Build a <span class="highlight_green">Better Community?</span></h1>
-          
-          <p class="mp_contact_desc">
-            Start with a 30-minute conversation. We’ll review your current community setup (if you have one), uncover opportunities, and show you how MyPeople can help you create a more connected, valuable member experience.
-          </p>
-
-          <div class="mp_contact_action">
-            <button type="button" class="btn-primary" data-open-contact="">
-              <span>Book My Free Community Consultation</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+        <div class="ct_card" aria-hidden="true">
+          <div class="ct_card_head">
+            <span class="ct_card_icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="4.5" width="18" height="16" rx="3" />
+                <path d="M16 2.5v4M8 2.5v4M3 10h18" />
               </svg>
-            </button>
+            </span>
+            <span class="ct_card_bars"><i class="ct_bar is-dark w80"></i><i class="ct_bar w50"></i></span>
           </div>
-
-          <div class="mp_contact_perks">
-            <div class="mp_perk_item">
-              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>30 minutes</span>
-            </div>
-            <div class="mp_perk_item">
-              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>Personalized recommendations</span>
-            </div>
-            <div class="mp_perk_item">
-              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>No obligation</span>
-            </div>
-            <div class="mp_perk_item">
-              <svg class="mp_perk_icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3.5 8.5 6.5 11.5 12.5 5.5"></polyline>
-              </svg>
-              <span>See MyPeople in action if it’s a fit</span>
-            </div>
-          </div>
+          <div class="ct_slots"><span></span><span class="is-on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
 
+        <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="20" cy="20" r="11" />
+          <circle cx="46" cy="20" r="11" />
+          <circle cx="33" cy="44" r="11" />
+        </svg>
+        <span class="mp_chip c1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20.5l1.6-4.6A8.4 8.4 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z" />
+          </svg>
+        </span>
+        <span class="mp_chip c2 d2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+          </svg>
+        </span>
       </div>
     </div>
   </section>
 
-</div>
-
-<!-- ========================================================================
-     Modals & Dialog Overlays (Isolated Vanilla JavaScript)
-     ======================================================================== -->
-<div class="mp-community-modal-overlay" id="mpModalOverlay"></div>
-
-<!-- Splash / Contact / Book Consultation Modal -->
-<div class="mp-community-modal-wrapper" id="mpSplashModal">
-  <div class="mp_splash_modal">
-    <div class="mps_close" data-close-modal="" aria-label="Close modal">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)"/>
-      </svg>
+  <!-- ======================================================================
+       Section 2: Perks
+       ====================================================================== -->
+  <section class="ct_perks">
+    <div class="mp_container">
+      <ul class="ct_perk_list">
+        <li class="ct_perk mp-reveal">
+          <span class="ct_perk_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round"><circle cx="12" cy="13" r="8" /><path d="M12 9v4l2.5 2.5M9.5 2.5h5" /></svg>
+          </span>
+          <p>30 minutes</p>
+        </li>
+        <li class="ct_perk mp-reveal" data-delay="1">
+          <span class="ct_perk_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" /></svg>
+          </span>
+          <p>Personalized recommendations</p>
+        </li>
+        <li class="ct_perk mp-reveal" data-delay="2">
+          <span class="ct_perk_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" /><path d="M8.5 12l2.5 2.5 4.5-4.5" /></svg>
+          </span>
+          <p>No obligation</p>
+        </li>
+        <li class="ct_perk mp-reveal" data-delay="3">
+          <span class="ct_perk_icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="13" rx="2.5" /><path d="M8 21h8M12 17v4" /><path d="M10 8.5v5l4-2.5z" /></svg>
+          </span>
+          <p>See MyPeople in action if it’s a fit</p>
+        </li>
+      </ul>
     </div>
+  </section>
 
-    <div id="mpSplashForm">
-      <h4>Fill out this quick form and we'll get back to you shortly</h4>
-      <form id="contactForm" onsubmit="return false;">
+  <!-- ======================================================================
+       Contact Modal (inside the root so it stays scoped)
+       ====================================================================== -->
+  <div class="mp-ct-modal-overlay" id="mpCtOverlay"></div>
+
+  <div class="mp-ct-modal-wrapper" id="mpCtModal" role="dialog" aria-modal="true" aria-labelledby="mpCtTitle">
+    <div class="mp_splash_modal">
+      <button type="button" class="mps_close" data-close-modal aria-label="Close dialog">
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M27.523,9.523l-2-2-8,8-8-8-2,2,8,8-8,8,2,2,8-8,8,8,2-2-8-8Z" transform="translate(-7.523 -7.523)" />
+        </svg>
+      </button>
+      <div id="mpCtForm">
+        <h4 id="mpCtTitle">Fill out this quick form and we'll get back to you shortly</h4>
         <div class="mp_ipbox">
           <div class="hrip mw50">
-            <label for="mpFirstName">First Name</label>
-            <input type="text" name="firstName" id="mpFirstName" placeholder="First Name">
-            <span class="error" id="errFirstName">Please enter valid first name</span>
+            <label for="mpCtFirstName">First Name</label>
+            <input type="text" name="firstName" id="mpCtFirstName" aria-describedby="mpCtErrFirstName" placeholder="First Name" autocomplete="given-name">
+            <span class="error" id="mpCtErrFirstName">Please enter valid first name</span>
           </div>
           <div class="hrip mw50">
-            <label for="mpLastName">Last Name</label>
-            <input type="text" name="lastName" id="mpLastName" placeholder="Last Name">
-            <span class="error" id="errLastName">Please enter valid last name</span>
+            <label for="mpCtLastName">Last Name</label>
+            <input type="text" name="lastName" id="mpCtLastName" aria-describedby="mpCtErrLastName" placeholder="Last Name" autocomplete="family-name">
+            <span class="error" id="mpCtErrLastName">Please enter valid last name</span>
           </div>
           <div class="hrip mw50">
-            <label for="mpEmailId">Email Address</label>
-            <input type="email" name="email" id="mpEmailId" placeholder="Email Address">
-            <span class="error" id="errEmail">Please enter valid email</span>
+            <label for="mpCtEmail">Email Address</label>
+            <input type="email" name="email" id="mpCtEmail" aria-describedby="mpCtErrEmail" placeholder="Email Address" autocomplete="email">
+            <span class="error" id="mpCtErrEmail">Please enter valid email</span>
           </div>
           <div class="hrip mw50">
-            <label for="mpPhoneNumber">Phone Number</label>
-            <input type="tel" name="phoneNumber" id="mpPhoneNumber" placeholder="Phone Number">
-            <span class="error" id="errPhone">Please enter valid phone number</span>
+            <label for="mpCtPhone">Phone Number</label>
+            <input type="tel" name="phoneNumber" id="mpCtPhone" aria-describedby="mpCtErrPhone" placeholder="Phone Number" autocomplete="tel">
+            <span class="error" id="mpCtErrPhone">Please enter valid phone number</span>
           </div>
           <div class="hrip mw100">
-            <label for="mpSubject">Subject</label>
-            <select name="subject" id="mpSubject">
-              <option value="" disabled="">Choose a subject line</option>
-              <option value="Free Community Consultation" selected="">Book Free Community Consultation</option>
+            <label for="mpCtSubject">Subject</label>
+            <select name="subject" id="mpCtSubject" aria-describedby="mpCtErrSubject">
+              <option value="" disabled>Choose a subject line</option>
+              <option value="Free Community Consultation" selected>Book Free Community Consultation</option>
               <option value="Associations">Associations Community</option>
               <option value="B2C Brands">B2C Brands Community</option>
               <option value="Media &amp; Publishing">Media &amp; Publishing Community</option>
               <option value="Education">Education Community</option>
               <option value="Other">Other</option>
             </select>
-            <span class="error" id="errSubject">Please select a subject</span>
+            <span class="error" id="mpCtErrSubject">Please select a subject</span>
           </div>
-          <div class="hrip fdrow">
-            <input type="checkbox" name="mptc" id="mpTc">
-            <label for="mpTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
-            <span class="error errorTickbox" id="errTc">Please check this tickbox</span>
+          <div class="hrip mw100 fdrow">
+            <input type="checkbox" name="mptc" id="mpCtTc" aria-describedby="mpCtErrTc">
+            <label for="mpCtTc">I acknowledge the receipt of MyPeople's Privacy Policy.*</label>
           </div>
-          <button type="button" class="btn-primary" id="mpSubmitForm" style="width: 100%; margin-top: 10px;">
-            <span>Submit</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 12.312 12" fill="currentColor">
-              <path d="M5.235,3.451l.61-.61a.657.657,0,0,1,.932,0L12.118,8.18a.657.657,0,0,1,0,.932L6.776,14.454a.657.657,0,0,1-.932,0l-.61-.61a.66.66,0,0,1,.011-.943L8.557,9.746H.659A.658.658,0,0,1,0,9.087V8.208a.658.658,0,0,1,.659-.659h7.9L5.246,4.394A.655.655,0,0,1,5.235,3.451Z" transform="translate(0 -2.647)" />
-            </svg>
-          </button>
+          <span class="errorTickbox" id="mpCtErrTc">Please check this tickbox</span>
+          <div class="hrip mw100 mp_submit_row">
+            <button type="button" class="btn-primary" id="mpCtSubmit">
+              <span>Submit</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M4 12.5h12.857m-5-5 5 5-5 5" transform="translate(-3 -6.086)" />
+              </svg>
+            </button>
+          </div>
         </div>
-      </form>
-    </div>
-
-    <!-- Success message container -->
-    <div id="mpSuccessInfo" style="display: none;">
-      <div class="mps_success_info">
-        <h4>Thank you for reaching out!</h4>
-        <p>We have received your consultation request. One of our community architects will contact you within 24 hours.</p>
+      </div>
+      <div id="mpCtSuccess" hidden>
+        <h4 id="mpCtSuccessTitle">Thank you for reaching out!</h4>
+        <div class="mps_success_info">
+          <p>We have received your consultation request. One of our community architects will contact you within 24 hours.</p>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
 
 <!-- ========================================================================
-     Zero-Dependency Vanilla JavaScript
+     Vanilla JavaScript (Zero Dependencies)
      ======================================================================== -->
 <script>
   (function () {
-    // Scroll reveal observer
-    const reveals = document.querySelectorAll('#mp-contact-us-embed .mp-reveal');
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+    var root = document.getElementById('mp-contact-us-embed');
+    if (!root) return;
+    root.classList.add('mp-js');
+
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    // ── Scroll Reveal (also triggers the SVG connector draw-in) ───────────
+    (function () {
+      var els = root.querySelectorAll('.mp-reveal');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        [].forEach.call(els, function (el) { el.classList.add('mp-revealed'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('mp-revealed');
-            revealObserver.unobserve(entry.target);
+            obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12 });
-      reveals.forEach((el) => revealObserver.observe(el));
-    } else {
-      reveals.forEach((el) => el.classList.add('mp-revealed'));
-    }
+      }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+      [].forEach.call(els, function (el) { obs.observe(el); });
+    })();
 
-    // Modal Handling
-    const overlay = document.getElementById('mpModalOverlay');
-    const splashModal = document.getElementById('mpSplashModal');
+    // ── Contact Modal ──────────────────────────────────────────────────────
+    (function () {
+      var overlay = document.getElementById('mpCtOverlay');
+      var modal = document.getElementById('mpCtModal');
+      if (!overlay || !modal) return;
+      var lastFocus = null;
 
-    function openModal() {
-      if (overlay && splashModal) {
-        overlay.style.display = 'block';
-        splashModal.style.display = 'flex';
+      function focusables() {
+        return [].filter.call(modal.querySelectorAll('input, select, button'), function (el) { return el.offsetParent !== null; });
+      }
+
+      function openModal() {
+        lastFocus = document.activeElement;
+        // Fresh form each time (the success state from an earlier submit is cleared)
+        document.getElementById('mpCtForm').hidden = false;
+        document.getElementById('mpCtSuccess').hidden = true;
+        modal.setAttribute('aria-labelledby', 'mpCtTitle');
+        overlay.classList.add('active');
+        modal.classList.add('active');
         document.body.classList.add('mp-freeze-scroll');
+        var first = focusables()[0];
+        if (first) first.focus();
       }
-    }
 
-    function closeModal() {
-      if (overlay && splashModal) {
-        overlay.style.display = 'none';
-        splashModal.style.display = 'none';
+      function closeModal() {
+        if (!modal.classList.contains('active')) return;
+        overlay.classList.remove('active');
+        modal.classList.remove('active');
         document.body.classList.remove('mp-freeze-scroll');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
       }
-    }
 
-    document.querySelectorAll('[data-open-contact]').forEach((btn) => {
-      btn.addEventListener('click', openModal);
-    });
-
-    document.querySelectorAll('[data-close-modal]').forEach((btn) => {
-      btn.addEventListener('click', closeModal);
-    });
-
-    if (overlay) {
-      overlay.addEventListener('click', closeModal);
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    // Form Validation Logic
-    const submitBtn = document.getElementById('mpSubmitForm');
-    if (submitBtn) {
-      submitBtn.addEventListener('click', () => {
-        let hasError = false;
-        const firstName = document.getElementById('mpFirstName');
-        const lastName = document.getElementById('mpLastName');
-        const email = document.getElementById('mpEmailId');
-        const phone = document.getElementById('mpPhoneNumber');
-        const subject = document.getElementById('mpSubject');
-        const tc = document.getElementById('mpTc');
-
-        if (!firstName.value.trim()) {
-          document.getElementById('errFirstName').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errFirstName').style.display = 'none';
-        }
-
-        if (!lastName.value.trim()) {
-          document.getElementById('errLastName').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errLastName').style.display = 'none';
-        }
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email.value.trim() || !emailRegex.test(email.value)) {
-          document.getElementById('errEmail').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errEmail').style.display = 'none';
-        }
-
-        if (!phone.value.trim() || phone.value.trim().length < 7) {
-          document.getElementById('errPhone').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errPhone').style.display = 'none';
-        }
-
-        if (!subject.value) {
-          document.getElementById('errSubject').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errSubject').style.display = 'none';
-        }
-
-        if (!tc.checked) {
-          document.getElementById('errTc').style.display = 'block';
-          hasError = true;
-        } else {
-          document.getElementById('errTc').style.display = 'none';
-        }
-
-        if (!hasError) {
-          document.getElementById('mpSplashForm').style.display = 'none';
-          document.getElementById('mpSuccessInfo').style.display = 'block';
-        }
+      [].forEach.call(root.querySelectorAll('[data-open-contact]'), function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
       });
-    }
+
+      [].forEach.call(modal.querySelectorAll('[data-close-modal]'), function (btn) {
+        btn.addEventListener('click', function (e) { e.preventDefault(); closeModal(); });
+      });
+
+      overlay.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+
+      document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key !== 'Tab') return;
+        // Keep focus inside the open dialog
+        var items = focusables();
+        if (!items.length) return;
+        var first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      // Shows/hides an error and flags its input for screen readers
+      function toggleError(id, show) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = show ? 'block' : 'none';
+        var input = modal.querySelector('[aria-describedby="' + id + '"]');
+        if (input) {
+          if (show) input.setAttribute('aria-invalid', 'true');
+          else input.removeAttribute('aria-invalid');
+        }
+        return show;
+      }
+
+      function validEmail(v) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).toLowerCase());
+      }
+
+      var submitBtn = document.getElementById('mpCtSubmit');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function () {
+          var email = document.getElementById('mpCtEmail').value.trim();
+          var errors = [
+            toggleError('mpCtErrFirstName', !document.getElementById('mpCtFirstName').value.trim()),
+            toggleError('mpCtErrLastName', !document.getElementById('mpCtLastName').value.trim()),
+            toggleError('mpCtErrEmail', !email || !validEmail(email)),
+            toggleError('mpCtErrPhone', document.getElementById('mpCtPhone').value.trim().length < 7),
+            toggleError('mpCtErrSubject', !document.getElementById('mpCtSubject').value),
+            toggleError('mpCtErrTc', !document.getElementById('mpCtTc').checked)
+          ];
+
+          if (errors.indexOf(true) === -1) {
+            // TODO: wire to the real lead endpoint (team decision pending); this only shows the success state.
+            document.getElementById('mpCtForm').hidden = true;
+            document.getElementById('mpCtSuccess').hidden = false;
+            modal.setAttribute('aria-labelledby', 'mpCtSuccessTitle');
+            var close = modal.querySelector('.mps_close');
+            if (close) close.focus();
+          }
+        });
+      }
+    })();
   })();
 </script>

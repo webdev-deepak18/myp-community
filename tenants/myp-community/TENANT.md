@@ -10,7 +10,7 @@ The platform's own marketing site. Platform rules in the root `AGENTS.md` apply;
 | Skills | `myp-brand-tokens`, `myp-bold-sections`, `myp-image-style` (+ platform `cms-page-embed`) |
 | CMS templates | `pages/templates/00_Myp-Community-Pages.html` (story pages), `pages/templates/myp-community-logout-home-template.html` (logged-out home). Keep templates under ~60 KB (`wc -c`): the CMS silently truncates around 64 KB. |
 | Fonts (loaded by the templates) | Inria Serif 700, Inter 500/600/700, Roboto 400/500/700 |
-| Images | Local `pages/images/<page>/`, CDN `https://public-cdn.myp.community/images/<page>/`. Originals in `images/`. Style: real people + mint-green vector network accents (`myp-image-style`). |
+| Images | **One folder only:** `pages/images/<page>/` (`home/`, `hr-tech-b2b/`, `contact-us/`, `other-communities/`, `features/`), for local work only. On the server every file sits flat in one folder: `https://public-cdn.myp.community/images/<file>` (filenames carry a page prefix, so they stay unique). Exception: client/partner logos go in `https://public-cdn.myp.community/images/client-logos/<file>`. Each image is stored once, in the folder of the page that owns it; other pages link to that URL. Web-size: longest side ≤ 1400px, JPEG, ≤ 220 KB. Style: clean real-people photos + vector accents drawn in code (`myp-image-style`). |
 | Status / next steps | [docs/session-handoff.md](docs/session-handoff.md), decision log [docs/home-redesign-decisions.md](docs/home-redesign-decisions.md) |
 | Old site | `archive/` (HTML, CSS, CMS theme, screenshots), concepts in `research/` |
 
@@ -41,5 +41,6 @@ The platform's own marketing site. Platform rules in the root `AGENTS.md` apply;
 ## Prohibited
 - Legacy colours (`#2B323C`, random hexes), legacy fonts (Poppins, Quicksand, Open Sans, Arial).
 
-## Known CMS Issue
-Top-level CMS navigation may not work across embed views; open story URLs directly from [page-urls.md](page-urls.md) to validate.
+## Known CMS Issues
+- **Story template forces typography with `!important`** (`p` colour black, fonts and letter-spacing on h1–h4 children, Roboto on `p *`). Every story embed needs `!important` on color / letter-spacing / font-family plus the inheritance shield: `cms-page-embed` Rule 4b. Preview with `build-preview.sh … story`.
+- Top-level CMS navigation may not work across embed views; open story URLs directly from [page-urls.md](page-urls.md) to validate.
