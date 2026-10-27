@@ -20,6 +20,7 @@ Platform rules in the root `AGENTS.md` apply; this file adds the SVK brand. **Ne
 | Page | File | Status |
 | :--- | :--- | :--- |
 | Home | [pages/home.html](pages/home.html) | Built 2026-10-14, previewed at 1440 and 390px; not yet deployed |
+| Sample Webcast | [pages/sample-webcast.html](pages/sample-webcast.html) | Built 2026-10-27; landing page with purchase flow & filler |
 
 Old-site navigation (pages still to build): About `/about/`, Services `/services/` (Executive Coaching, Go To Market (GTM) Advisory, Revenue Flywheel, Fractional Leadership), Get Started `/get-started/`, Book Now `/book-now/`, Our Team `/our-team/`, Resources `/resources/`, Contact `/contact/`.
 

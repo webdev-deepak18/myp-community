@@ -28,8 +28,8 @@ There are three approved image families. Pick one per slot; do not mix within on
 
 | Family | Look | Reference files | Typical use |
 | :--- | :--- | :--- | :--- |
-| **A. People Network Collage** | Real candid portrait photos inside circles, rounded rectangles and tall pills, linked by thin mint-green curved vector lines with small solid green dots. Flat background (white, cream `#FFFCF8`, or dark slate `#162B32`). | `hr-tech-b2b/hrtech_hero_collage.jpg`, `other-communities/other_hero_collage.jpg`, `home/home_hero_collage.jpg` | Hero visuals, "community" moments |
-| **B. Editorial Photo + Vector Overlay** | Natural window light, warm cream/oak interiors, plants, diverse people genuinely laughing or working together. Vector overlay is added **in code** (section 0), never generated. | `hr-tech-b2b/hrtech_dedicated_home.jpg`, `hr-tech-b2b/hrtech_data_advantage.jpg`, `home/home_welcome_connected.jpg`, `home/home_b2b_customers.jpg`, `home/home_public_media.jpg` | Section imagery, community-type cards |
+| **A. People Network Collage** | Real candid portrait photos inside circles, rounded rectangles and tall pills, linked by thin mint-green curved vector lines with small solid green dots. Flat background (white, cream `#FFFCF8`, or dark slate `#162B32`). | `hr-tech-b2b/hrtech_hero_collage.jpg`, `other-communities/other_hero_collage.jpg`, `home/home_hero_people.jpg` | Hero visuals, "community" moments |
+| **B. Editorial Photo + Vector Overlay** | Natural window light, warm cream/oak interiors, plants, diverse people genuinely laughing or working together. Vector overlay is added **in code** (section 0), never generated. | `hr-tech-b2b/hrtech_dedicated_home.jpg`, `hr-tech-b2b/hrtech_data_advantage.jpg`, `home/home_welcome_v2.jpg`, `home/home_b2b_v2.jpg`, `home/home_public_v2.jpg` | Section imagery, community-type cards |
 | **C. Soft-Glass Product UI** | Isometric frosted white cards on cream `#FFFCF8`, brand-green accents, soft shadows, placeholder bars instead of real words. | `other-communities/other_insights_ui.jpg`, `home/home_platform_ui.jpg` | "Platform" / "build" / features moments |
 
 ### Always
@@ -90,10 +90,10 @@ Images ship CDN-first with a local fallback, the same pattern as the other pages
 
 | File | Family | Used in |
 | :--- | :--- | :--- |
-| `home/home_hero_collage.jpg` (1024×1024, slate bg) | A | Home hero, final scene |
-| `home/home_welcome_connected.jpg` (1200×896) | B | Home welcome section |
-| `home/home_b2b_customers.jpg` (1200×896) | B | Home community types: B2B panel |
-| `home/home_public_media.jpg` (1200×896) | B | Home community types: Media/Govt/B2C panel |
+| `home/home_hero_people.jpg` (1024×1024, 3×2 portrait sheet, clean) | A (source) | Home hero final scene: five portrait crops in `.mp_net` (crop maths assume 1024px; tiles x 48–337 / 369–655 / 687–976, y 218–497 / 527–806). Replaces `home_hero_collage.jpg` (retired 2026-10-16: baked lines, one face repeated 3×) |
+| `home/home_welcome_v2.jpg` (1200×896) | B, clean | Home welcome + SVG overlay (5 nodes above the heads; coordinates assume 1200×896). Replaces `home_welcome_connected.jpg` (retired 2026-10-16) |
+| `home/home_b2b_v2.jpg` (1200×896) | B, clean | Home B2B panel + SVG fan + 3 HTML avatars (face crops of `home_hero_people.jpg`; coordinates assume 1200×896, 16:10 crop). Replaces `home_b2b_customers.jpg` (retired 2026-10-16) |
+| `home/home_public_v2.jpg` (1200×896) | B, clean | Home Media/Govt/B2C panel + SVG overlay (4 nodes above the adults; coordinates assume 1200×896, 16:10 crop). Replaces `home_public_media.jpg` (retired 2026-10-16) |
 | `home/home_platform_ui.jpg` (1264×848) | C | HR Tech closing section only (home "Let's build" uses the code-drawn `.mp_ui` bento since 2026-10-15) |
 | `hr-tech-b2b/hrtech_hero_collage.jpg` (1024×1024) | A (source) | HR Tech hero: five portrait crops in `.mp_net` (crop maths assume 1024px) |
 | `hr-tech-b2b/hrtech_dedicated_home.jpg` (1376×768) | B, clean | HR Tech "dedicated home" + SVG overlay (coordinates assume 1376×768) |
@@ -105,6 +105,6 @@ Images ship CDN-first with a local fallback, the same pattern as the other pages
 | `mp_features_banner-2.jpg` (1920×847, CMS `$public` path, not stored locally) | Product screens + people | Features hero banner (kept unchanged) |
 | _no file_: Features feature pictures | Code-drawn SVG | 17 animated SVGs in `features.html` (`.ft_pic`); the old `mypeople.ai/images/mp_features_*.png` are retired |
 
-**Needs replacing (baked-in scribbled vectors):** `home/home_hero_collage.jpg` (also one face repeated 3×), `home/home_welcome_connected.jpg`, `home/home_b2b_customers.jpg`, `home/home_public_media.jpg` (the last three also show icon cards and/or Apple logos). Clean replacements briefed 2026-10-15 in `tenants/myp-community/docs/handoffs/2026-10-15-home-images.md`.
+**Home images all clean since 2026-10-16.** Retired home files (`home_hero_collage.jpg`, `home_welcome_connected.jpg`, `home_b2b_customers.jpg`, and `home_platform_ui.jpg` once HR Tech drops it) are kept only as the section-0 examples of bad AI vectors.
 
 Update this table whenever an image is added.

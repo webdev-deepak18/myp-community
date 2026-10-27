@@ -193,6 +193,47 @@
     to { transform: translateY(10px); }
   }
 
+  @keyframes mp-home-sweep {
+    0%, 45% { transform: translateX(-120%); }
+    75%, 100% { transform: translateX(320%); }
+  }
+
+  @keyframes mp-home-chip-glow {
+    0%, 100% { border-color: var(--color-mp-blue-700); box-shadow: 0 0 0 0 rgba(102, 203, 129, 0); }
+    50% { border-color: var(--color-mp-green-500); box-shadow: 0 0 36px 0 rgba(102, 203, 129, 0.22); }
+  }
+
+  @keyframes mp-home-pulse-run {
+    from { stroke-dashoffset: 100; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes mp-home-node-beat {
+    0%, 60%, 100% { transform: scale(1); }
+    75% { transform: scale(1.45); }
+  }
+
+  @keyframes mp-home-ping {
+    from { transform: scale(1); opacity: 0.9; }
+    to { transform: scale(3.2); opacity: 0; }
+  }
+
+  @keyframes mp-home-br-l {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-3px); }
+  }
+
+  @keyframes mp-home-br-r {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+  }
+
+  @keyframes mp-home-slash {
+    0% { stroke-dashoffset: 1; }
+    45%, 70% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: -1; }
+  }
+
   @keyframes mp-home-pulse {
     0% { box-shadow: 0 0 0 0 rgba(102, 203, 129, 0.45); }
     70% { box-shadow: 0 0 0 12px rgba(102, 203, 129, 0); }
@@ -247,6 +288,16 @@
   #mp-home-embed.mp-js .mp-revealed .mp-draw .mp_node,
   #mp-home-embed.mp-js .mp-draw.mp-revealed .mp_node {
     opacity: 1;
+  }
+
+  /* Photo halos fade in with the nodes, so no white arcs show before the draw */
+  #mp-home-embed.mp-js .mp-draw path.mp_halo {
+    opacity: 0;
+    transition: opacity 0.6s ease 1.2s;
+  }
+
+  #mp-home-embed.mp-js .mp-revealed .mp-draw path.mp_halo {
+    opacity: 0.55;
   }
 
   #mp-home-embed .mp_dots {
@@ -713,16 +764,98 @@
     z-index: 0;
   }
 
-  #mp-home-embed .mp_hero_collage img {
+  /* People network (same pattern as the HR Tech hero): portrait crops in
+     circle / pill / rounded frames, joined by SVG bezier connectors.
+     Crops come from home_hero_people.jpg (1024px sheet, 3 x 2 tiles). */
+  #mp-home-embed .mp_net {
     position: relative;
     z-index: 1;
     width: 100%;
-    animation: mp-home-float 6s ease-in-out infinite alternate;
-    -webkit-mask-image: linear-gradient(to right, transparent 0, black 7%, black 93%, transparent 100%), linear-gradient(to bottom, transparent 0, black 7%, black 93%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to right, transparent 0, black 7%, black 93%, transparent 100%), linear-gradient(to bottom, transparent 0, black 7%, black 93%, transparent 100%);
-    mask-composite: intersect;
+    aspect-ratio: 1 / 1;
   }
+
+  #mp-home-embed .mp_vec {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  #mp-home-embed .mp_vec path.mp_link {
+    fill: none;
+    stroke: var(--color-mp-green-400);
+    stroke-width: 2.5px;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-home-embed .mp_vec .mp_ring {
+    fill: none;
+    stroke: var(--color-mp-blue-700);
+    stroke-width: 1.5px;
+    stroke-dasharray: 2 8;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  #mp-home-embed .mp_vec .mp_node {
+    fill: var(--color-mp-green-default);
+    stroke: var(--color-white);
+    stroke-width: 3px;
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* The hero isn't a scroll-reveal block: its connectors draw in when the
+     final scene turns on, after the collage has faded in (d5). */
+  #mp-home-embed.mp-js .mp_hero .mp-draw path.mp_link { transition-delay: 1.3s; }
+  #mp-home-embed.mp-js .mp_hero .mp-draw .mp_node { transition-delay: 2.4s; }
+  #mp-home-embed.mp-js .mp_hero_scene.is-on .mp-draw path.mp_link { stroke-dashoffset: 0; }
+  #mp-home-embed.mp-js .mp_hero_scene.is-on .mp-draw .mp_node { opacity: 1; }
+
+  #mp-home-embed .mp_net_frame {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    border: 4px solid var(--color-white);
+    background-color: var(--color-mp-blue-800);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  #mp-home-embed .mp_net_frame img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: none;
+    height: auto;
+    transition: scale 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-home-embed .mp_net_frame:hover img { scale: 1.05; }
+
+  /* Frame geometry (% of the square stage) and crop of the 1024px sheet:
+     img width = 1024 / crop width; translate = crop origin / 1024 */
+  #mp-home-embed .mp_net_frame.f1 { left: 0; top: 8%; width: 50%; aspect-ratio: 360 / 310; border-radius: 28px; }
+  #mp-home-embed .mp_net_frame.f1 img { width: 365.71%; transform: translate(-67.58%, -22.27%); transform-origin: 13.67% 11.77%; }
+
+  #mp-home-embed .mp_net_frame.f2 { left: 63%; top: 2%; width: 35%; aspect-ratio: 1 / 1; border-radius: 50%; }
+  #mp-home-embed .mp_net_frame.f2 img { width: 445.22%; transform: translate(-39.06%, -21.97%); transform-origin: 11.23% 11.23%; }
+
+  #mp-home-embed .mp_net_frame.f3 { left: 39%; top: 54%; width: 17%; aspect-ratio: 168 / 420; border-radius: 999px; }
+  #mp-home-embed .mp_net_frame.f3 img { width: 930.91%; transform: translate(-46.09%, -51.76%); transform-origin: 5.37% 13.43%; }
+
+  #mp-home-embed .mp_net_frame.f4 { left: 63%; top: 44%; width: 35%; aspect-ratio: 274 / 368; border-radius: 28px; }
+  #mp-home-embed .mp_net_frame.f4 img { width: 512%; transform: translate(-9.77%, -51.95%); transform-origin: 9.77% 13.12%; }
+
+  #mp-home-embed .mp_net_frame.f5 { left: 5%; top: 60%; width: 29%; aspect-ratio: 1 / 1; border-radius: 50%; }
+  #mp-home-embed .mp_net_frame.f5 img { width: 393.85%; transform: translate(-69.53%, -52.25%); transform-origin: 12.70% 12.70%; }
+
+  #mp-home-embed .mp_net .mp_chip.c1 { left: 51%; top: 27%; }
+  #mp-home-embed .mp_net .mp_chip.c2 { left: -2%; top: 47%; }
+  #mp-home-embed .mp_net .mp_chip.c3 { right: -1%; top: 86%; }
+  #mp-home-embed .mp_net .mp_dots { left: 33%; top: 0; }
 
   /* Hero control bar */
   #mp-home-embed .mp_hero_bar {
@@ -923,6 +1056,31 @@
 
   #mp-home-embed .mp_media:hover .mp_media_frame img {
     transform: scale(1.03);
+  }
+
+  /* Overlays use the photo's own coordinates: viewBox = image size and
+     xMidYMid slice = object-fit: cover, so nodes stay on the people.
+     They zoom with the photo on hover so nothing drifts. */
+  #mp-home-embed .mp_media_frame > .mp_vec,
+  #mp-home-embed .mp_type_layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-home-embed .mp_media:hover .mp_media_frame > .mp_vec { transform: scale(1.03); }
+
+  #mp-home-embed .mp_vec path.mp_halo {
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 7px;
+    stroke-linecap: round;
+    opacity: 0.55;
+    vector-effect: non-scaling-stroke;
   }
 
   /* Vector accents around photos */
@@ -1200,12 +1358,147 @@
     color: var(--color-white);
   }
 
-  #mp-home-embed .mp_arch_tag span {
-    display: block;
+  /* "AI-first. API-first." as two animated cards; glyphs drawn in code */
+  #mp-home-embed .mp_arch_tag {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
-  #mp-home-embed .mp_arch_tag span + span {
-    color: var(--color-mp-green-400);
+  #mp-home-embed .mp_arch_chip {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 14px 32px 14px 14px;
+    border-radius: 26px;
+    border: 1px solid var(--color-mp-blue-700);
+    background-color: rgba(34, 64, 75, 0.6);
+    overflow: hidden;
+    animation: mp-home-chip-glow 6s ease-in-out infinite;
+    transition: translate 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-home-embed .mp_arch_chip.is-api { animation-delay: -3s; }
+  #mp-home-embed .mp_arch_chip:hover { translate: 8px 0; }
+
+  /* Light sweep across the card */
+  #mp-home-embed .mp_arch_chip::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: translateX(-120%);
+    animation: mp-home-sweep 6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    pointer-events: none;
+  }
+
+  #mp-home-embed .mp_arch_chip.is-api::after { animation-delay: -3s; }
+
+  #mp-home-embed .mp_arch_word {
+    position: relative;
+    z-index: 1;
+    color: var(--color-white);
+  }
+
+  #mp-home-embed .mp_arch_chip.is-api .mp_arch_word { color: var(--color-mp-green-400); }
+
+  #mp-home-embed .mp_arch_glyph {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-mp-green-700);
+    box-shadow: 0 10px 26px rgba(0, 66, 19, 0.45);
+  }
+
+  #mp-home-embed .mp_arch_chip.is-api .mp_arch_glyph {
+    background-color: var(--color-white);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+  }
+
+  #mp-home-embed .mp_arch_glyph svg {
+    width: 64%;
+    height: 64%;
+    overflow: visible;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* AI: neural network with pulses running out from the core */
+  #mp-home-embed .mp_ai_link { stroke: rgba(255, 255, 255, 0.4); stroke-width: 2px; }
+
+  #mp-home-embed .mp_ai_pulse {
+    stroke: var(--color-mp-green-200);
+    stroke-width: 3px;
+    stroke-dasharray: 18 82;
+    stroke-dashoffset: 100;
+    animation: mp-home-pulse-run 2.4s linear infinite;
+  }
+
+  #mp-home-embed .mp_ai_pulse.p2 { animation-delay: -0.6s; }
+  #mp-home-embed .mp_ai_pulse.p3 { animation-delay: -1.2s; }
+  #mp-home-embed .mp_ai_pulse.p4 { animation-delay: -1.8s; }
+
+  #mp-home-embed .mp_ai_node {
+    fill: var(--color-white);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: mp-home-node-beat 2.4s ease-in-out infinite;
+  }
+
+  #mp-home-embed .mp_ai_node.n2 { animation-delay: -0.6s; }
+  #mp-home-embed .mp_ai_node.n3 { animation-delay: -1.2s; }
+  #mp-home-embed .mp_ai_node.n4 { animation-delay: -1.8s; }
+
+  #mp-home-embed .mp_ai_core { fill: var(--color-white); }
+
+  #mp-home-embed .mp_ai_ping {
+    stroke: var(--color-white);
+    stroke-width: 2px;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: mp-home-ping 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  /* API: code brackets breathe, the slash redraws */
+  #mp-home-embed .mp_api_br,
+  #mp-home-embed .mp_api_slash {
+    stroke: var(--color-mp-green-700);
+    stroke-width: 4px;
+  }
+
+  #mp-home-embed .mp_api_br.l { animation: mp-home-br-l 2.4s ease-in-out infinite; }
+  #mp-home-embed .mp_api_br.r { animation: mp-home-br-r 2.4s ease-in-out infinite; }
+
+  #mp-home-embed .mp_api_slash {
+    stroke: var(--color-mp-green-default);
+    stroke-dasharray: 1;
+    animation: mp-home-slash 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  /* Cards slide in one after the other once the block is revealed */
+  #mp-home-embed.mp-js .mp_arch_tag .mp_arch_chip {
+    opacity: 0;
+    transform: translateX(-28px);
+    transition: opacity 0.7s ease 0.35s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s, translate 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #mp-home-embed.mp-js .mp_arch_tag .mp_arch_chip.is-api { transition-delay: 0.55s, 0.55s, 0s; }
+
+  #mp-home-embed.mp-js .mp-revealed .mp_arch_tag .mp_arch_chip {
+    opacity: 1;
+    transform: none;
   }
 
   #mp-home-embed .mp_arch_list li {
@@ -1304,18 +1597,52 @@
     border-radius: 20px;
     overflow: hidden;
     margin-bottom: 32px;
+    position: relative;
   }
 
-  #mp-home-embed .mp_type_img img {
+  #mp-home-embed .mp_type_img > img {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  #mp-home-embed .mp_type_panel:hover .mp_type_img img {
+  #mp-home-embed .mp_type_panel:hover .mp_type_img > img,
+  #mp-home-embed .mp_type_panel:hover .mp_type_layer {
     transform: scale(1.04);
   }
+
+  #mp-home-embed .mp_type_layer > .mp_vec { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* Customer avatars on the B2B photo: face crops of home_hero_people.jpg.
+     Placed in image coordinates (1200 x 896, 16:10 cover crop shows y 73-823):
+     left = (cx - r) / 1200, top = (cy - r - 73) / 750, width = 2r / 1200. */
+  #mp-home-embed .mp_type_av {
+    position: absolute;
+    width: 10.33%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--color-white);
+    background-color: var(--color-mp-green-100);
+    box-shadow: 0 10px 24px rgba(22, 43, 50, 0.22);
+  }
+
+  #mp-home-embed .mp_type_av img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: none;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  #mp-home-embed .mp_type_av.v1 { left: 66.5%; top: 12.67%; }
+  #mp-home-embed .mp_type_av.v2 { left: 79%; top: 38%; }
+  #mp-home-embed .mp_type_av.v3 { left: 67.33%; top: 67.33%; }
+  #mp-home-embed .mp_type_av.v1 img { width: 731.43%; transform: translate(-10.25%, -22.95%); }
+  #mp-home-embed .mp_type_av.v2 img { width: 787.69%; transform: translate(-45.12%, -52.25%); }
+  #mp-home-embed .mp_type_av.v3 img { width: 706.21%; transform: translate(-76.17%, -54.20%); }
 
   #mp-home-embed .mp_type_body {
     display: flex;
@@ -1917,6 +2244,7 @@
     #mp-home-embed .mp_better_layout { gap: 80px; }
     #mp-home-embed .mp_better_item h4 { font-size: 23px; line-height: 31px; }
     #mp-home-embed .mp_arch_tag { font-size: 58px; line-height: 66px; }
+    #mp-home-embed .mp_arch_glyph { width: 76px; height: 76px; }
     #mp-home-embed .mp_arch_list span { font-size: 20px; line-height: 28px; }
     #mp-home-embed .mp_type_panel h3 { font-size: 28px; line-height: 36px; }
     #mp-home-embed .mp_quote_text { font-size: 36px; line-height: 50px; }
@@ -1958,6 +2286,8 @@
     #mp-home-embed .mp_better_item h4 { font-size: 24px; line-height: 32px; }
     #mp-home-embed .mp_better_item p { font-size: 17px; line-height: 28px; }
     #mp-home-embed .mp_arch_tag { font-size: 64px; line-height: 72px; letter-spacing: -2px; }
+    #mp-home-embed .mp_arch_glyph { width: 80px; height: 80px; border-radius: 22px; }
+    #mp-home-embed .mp_arch_chip { padding-right: 36px; }
     #mp-home-embed .mp_type_panel h3 { font-size: 30px; line-height: 38px; }
     #mp-home-embed .mp_type_panel p { font-size: 17px; line-height: 28px; }
     #mp-home-embed .mp_types_grid { gap: 40px; }
@@ -2012,6 +2342,7 @@
     #mp-home-embed .mp_better_item { min-height: 260px; }
 
     #mp-home-embed .mp_arch_tag { font-size: 44px; line-height: 52px; letter-spacing: -1px; }
+    #mp-home-embed .mp_arch_glyph { width: 64px; height: 64px; border-radius: 18px; }
     #mp-home-embed .mp_arch_list span { font-size: 18px; line-height: 26px; }
 
     #mp-home-embed .mp_types .mp_h2 { margin-bottom: 40px; }
@@ -2060,6 +2391,11 @@
     #mp-home-embed .mp_hero_cred { font-size: 14px; }
     #mp-home-embed .mp_hero_actions { margin-top: 28px; gap: 12px; }
     #mp-home-embed .mp_hero_collage { max-width: 340px; }
+    #mp-home-embed .mp_net_frame { border-width: 3px; }
+    #mp-home-embed .mp_net_frame.f1,
+    #mp-home-embed .mp_net_frame.f4 { border-radius: 20px; }
+    #mp-home-embed .mp_net .mp_chip.c2 { left: 0; }
+    #mp-home-embed .mp_net .mp_chip.c3 { right: 0; }
 
     #mp-home-embed .mp_marquee { padding: 16px 0; }
     #mp-home-embed .mp_marquee_group li { font-size: 18px; line-height: 26px; gap: 20px; padding-right: 20px; }
@@ -2096,11 +2432,15 @@
     #mp-home-embed .mp_better_num { font-size: 80px; line-height: 80px; top: 12px; right: 20px; }
 
     #mp-home-embed .mp_arch_tag { font-size: 34px; line-height: 42px; }
+    #mp-home-embed .mp_arch_tag { gap: 12px; }
+    #mp-home-embed .mp_arch_chip { gap: 14px; padding: 10px 22px 10px 10px; border-radius: 20px; }
+    #mp-home-embed .mp_arch_glyph { width: 52px; height: 52px; border-radius: 15px; }
     #mp-home-embed .mp_arch_list li { padding: 18px 4px; gap: 16px; }
     #mp-home-embed .mp_arch_list span { font-size: 16px; line-height: 24px; }
 
     #mp-home-embed .mp_type_panel { padding: 12px 12px 28px 12px; border-radius: 22px; }
     #mp-home-embed .mp_type_img { margin-bottom: 24px; border-radius: 16px; }
+    #mp-home-embed .mp_type_av { border-width: 2px; }
     #mp-home-embed .mp_type_body { padding: 0 12px; }
     #mp-home-embed .mp_type_panel h3 { font-size: 22px; line-height: 30px; }
     #mp-home-embed .mp_type_panel p { font-size: 15px; line-height: 25px; }
@@ -2148,7 +2488,6 @@
       transform: none !important;
     }
 
-    #mp-home-embed .mp_hero_collage img,
     #mp-home-embed .mp_media_badge,
     #mp-home-embed .mp_chip,
     #mp-home-embed .mp_hero_eyebrow::before {
@@ -2178,6 +2517,20 @@
 
     #mp-home-embed.mp-js .mp-draw path.mp_link { stroke-dashoffset: 0; }
     #mp-home-embed.mp-js .mp-draw .mp_node { opacity: 1; }
+    #mp-home-embed.mp-js .mp-draw path.mp_halo { opacity: 0.55; transition: none !important; }
+
+    #mp-home-embed.mp-js .mp_arch_tag .mp_arch_chip { opacity: 1; transform: none; transition: none !important; }
+    #mp-home-embed .mp_arch_chip:hover { translate: none !important; }
+    #mp-home-embed .mp_arch_chip::after { display: none; }
+
+    #mp-home-embed .mp_arch_chip,
+    #mp-home-embed .mp_arch_glyph svg * {
+      animation: none !important;
+    }
+
+    #mp-home-embed .mp_ai_pulse,
+    #mp-home-embed .mp_ai_ping { display: none; }
+    #mp-home-embed .mp_api_slash { stroke-dashoffset: 0; }
   }
 </style>
 
@@ -2243,7 +2596,7 @@
 
       <div class="mp_hero_scene mp_scene_q3" data-tone="light">
         <div class="mp_container">
-          <p class="mp_hero_q" data-mp-split>Do you want events, discussions and learning under one roof?</p>
+          <p class="mp_hero_q" data-mp-split>Do you want them to engage with you more?</p>
           <span class="mp_hero_yes" aria-hidden="true">Yes.</span>
         </div>
       </div>
@@ -2262,8 +2615,8 @@
               <span class="mp_hero_eyebrow mp_hero_item d1">The Trusted People Engagement Platform</span>
               <span class="mp_hero_display mp_hero_item d2">You need to see <span class="mp_hl">MyPeople.</span></span>
             </h1>
-            <p class="mp_hero_text mp_hero_item d3">A better kind of website: one branded home where your audience
-              connects, learns, joins events and gets a personalized experience.</p>
+            <p class="mp_hero_text mp_hero_item d3">Own a branded home where you can engage with your audience, build
+              meaningful connections, and deliver personalized experiences they’ll love.</p>
             <p class="mp_hero_cred mp_hero_item d3">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" aria-hidden="true">
@@ -2286,10 +2639,68 @@
             </div>
           </div>
           <figure class="mp_hero_collage mp_hero_item d5">
-            <img src="https://public-cdn.myp.community/images/home_hero_collage.jpg"
-              onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_collage.jpg';}"
-              alt="A network of smiling community members connected to each other" width="1024" height="1024"
-              loading="eager" decoding="async">
+            <div class="mp_net" role="img" aria-label="A network of smiling community members connected to each other">
+              <svg class="mp_vec mp-draw" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="mp_ring" cx="50" cy="50" r="49" />
+                <path class="mp_link" pathLength="1" d="M25 29.5C45 2 62 4 80.5 19.5" />
+                <path class="mp_link" pathLength="1" d="M19.5 74.5C12 60 14 45 25 29.5" />
+                <path class="mp_link" pathLength="1" d="M19.5 74.5C28 98 40 98 47.5 75" />
+                <path class="mp_link" pathLength="1" d="M47.5 75C56 60 60 50 80.5 67.5" />
+                <path class="mp_link" pathLength="1" d="M80.5 19.5C100 30 100 55 80.5 67.5" />
+                <circle class="mp_node" cx="53.3" cy="8.4" r="1.6" />
+                <circle class="mp_node" cx="15.3" cy="52.4" r="1.6" />
+                <circle class="mp_node" cx="33.9" cy="92.2" r="1.6" />
+                <circle class="mp_node" cx="59.5" cy="59.1" r="1.6" />
+                <circle class="mp_node" cx="95.1" cy="42.7" r="1.6" />
+              </svg>
+              <div class="mp_net_frame f1">
+                <img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="eager" decoding="async">
+              </div>
+              <div class="mp_net_frame f2">
+                <img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="eager" decoding="async">
+              </div>
+              <div class="mp_net_frame f3">
+                <img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="eager" decoding="async">
+              </div>
+              <div class="mp_net_frame f4">
+                <img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="eager" decoding="async">
+              </div>
+              <div class="mp_net_frame f5">
+                <img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="eager" decoding="async">
+              </div>
+              <svg class="mp_dots" viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="20" cy="20" r="11" />
+                <circle cx="46" cy="20" r="11" />
+                <circle cx="33" cy="44" r="11" />
+              </svg>
+              <span class="mp_chip c1" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20.5l1.6-4.6A8.4 8.4 0 0 1 3 11.5a8.5 8.5 0 0 1 9-8.4 8.4 8.4 0 0 1 9 8.4z" />
+                </svg>
+              </span>
+              <span class="mp_chip c2 d2" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.4-2.5 4.4-2.5 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" />
+                </svg>
+              </span>
+              <span class="mp_chip c3 d3" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+            </div>
           </figure>
         </div>
       </div>
@@ -2336,10 +2747,23 @@
           <circle cx="33" cy="44" r="12" fill="var(--color-mp-green-700)" />
         </svg>
         <div class="mp_media_frame">
-          <img src="https://public-cdn.myp.community/images/home_welcome_connected.jpg"
-            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_welcome_connected.jpg';}"
+          <img src="https://public-cdn.myp.community/images/home_welcome_v2.jpg"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_welcome_v2.jpg';}"
             alt="Community members laughing and connecting around a shared table" width="1200" height="896"
             loading="lazy" decoding="async">
+          <!-- Connectors above the five people's heads (image coordinates) -->
+          <svg class="mp_vec mp-draw" viewBox="0 0 1200 896" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path class="mp_halo" d="M180 318Q300 190 420 290M420 290Q522 190 625 325M625 325Q740 185 855 295M855 295Q958 195 1060 318" />
+            <path class="mp_link" pathLength="1" d="M180 318Q300 190 420 290" />
+            <path class="mp_link" pathLength="1" d="M420 290Q522 190 625 325" />
+            <path class="mp_link" pathLength="1" d="M625 325Q740 185 855 295" />
+            <path class="mp_link" pathLength="1" d="M855 295Q958 195 1060 318" />
+            <circle class="mp_node" cx="180" cy="318" r="11" />
+            <circle class="mp_node" cx="420" cy="290" r="11" />
+            <circle class="mp_node" cx="625" cy="325" r="11" />
+            <circle class="mp_node" cx="855" cy="295" r="11" />
+            <circle class="mp_node" cx="1060" cy="318" r="11" />
+          </svg>
         </div>
         <div class="mp_media_badge" aria-hidden="true">
           <span>
@@ -2443,7 +2867,36 @@
     <div class="mp_container mp_arch_grid">
       <div class="mp-reveal">
         <h2 class="mp_h2">Cutting-Edge, <span class="mp_hl">Enterprise-Ready Architecture</span></h2>
-        <p class="mp_arch_tag"><span>AI-first.</span> <span>API-first.</span></p>
+        <p class="mp_arch_tag">
+          <span class="mp_arch_chip is-ai">
+            <span class="mp_arch_glyph" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path class="mp_ai_link" d="M24 24L9 11M24 24L39 9M24 24L41 35M24 24L11 39" />
+                <path class="mp_ai_pulse" pathLength="100" d="M24 24L9 11" />
+                <path class="mp_ai_pulse p2" pathLength="100" d="M24 24L39 9" />
+                <path class="mp_ai_pulse p3" pathLength="100" d="M24 24L41 35" />
+                <path class="mp_ai_pulse p4" pathLength="100" d="M24 24L11 39" />
+                <circle class="mp_ai_node" cx="9" cy="11" r="3.5" />
+                <circle class="mp_ai_node n2" cx="39" cy="9" r="3.5" />
+                <circle class="mp_ai_node n3" cx="41" cy="35" r="3.5" />
+                <circle class="mp_ai_node n4" cx="11" cy="39" r="3.5" />
+                <circle class="mp_ai_ping" cx="24" cy="24" r="6" />
+                <circle class="mp_ai_core" cx="24" cy="24" r="6" />
+              </svg>
+            </span>
+            <span class="mp_arch_word">AI-first.</span>
+          </span>
+          <span class="mp_arch_chip is-api">
+            <span class="mp_arch_glyph" aria-hidden="true">
+              <svg viewBox="0 0 48 48">
+                <path class="mp_api_br l" d="M16 13L6 24l10 11" />
+                <path class="mp_api_br r" d="M32 13l10 11-10 11" />
+                <path class="mp_api_slash" pathLength="1" d="M28 9L20 39" />
+              </svg>
+            </span>
+            <span class="mp_arch_word">API-first.</span>
+          </span>
+        </p>
       </div>
       <ul class="mp_arch_list mp-reveal" data-delay="2">
         <li>
@@ -2491,15 +2944,34 @@
        ====================================================================== -->
   <section class="mp_types">
     <div class="mp_container">
-      <h2 class="mp_h2 mp-reveal">Community Types That <span class="mp_hl">MyPeople Is Perfect For</span></h2>
+      <h2 class="mp_h2 mp-reveal">Community Types That<br/> <span class="mp_hl">MyPeople Is Perfect For</span></h2>
 
       <div class="mp_types_grid">
         <article class="mp_type_panel is-green mp-reveal" data-delay="1">
           <div class="mp_type_img">
-            <img src="https://public-cdn.myp.community/images/home_b2b_customers.jpg"
-              onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_b2b_customers.jpg';}"
+            <img src="https://public-cdn.myp.community/images/home_b2b_v2.jpg"
+              onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_b2b_v2.jpg';}"
               alt="Customer success manager connecting with customers on a video call" width="1200" height="896"
               loading="lazy" decoding="async">
+            <!-- Connectors fan out from beside her to the customers on the call (image coordinates) -->
+            <div class="mp_type_layer" aria-hidden="true">
+              <svg class="mp_vec mp-draw" viewBox="0 0 1200 896" preserveAspectRatio="xMidYMid slice">
+                <path class="mp_halo" d="M690 470Q720 260 860 230M690 470Q860 400 1010 420M690 470Q730 640 870 640" />
+                <path class="mp_link" pathLength="1" d="M690 470Q720 260 860 230" />
+                <path class="mp_link" pathLength="1" d="M690 470Q860 400 1010 420" />
+                <path class="mp_link" pathLength="1" d="M690 470Q730 640 870 640" />
+                <circle class="mp_node" cx="690" cy="470" r="11" />
+              </svg>
+              <span class="mp_type_av v1"><img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+              <span class="mp_type_av v2"><img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+              <span class="mp_type_av v3"><img src="https://public-cdn.myp.community/images/home_hero_people.jpg"
+                  onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_hero_people.jpg';}"
+                  alt="" width="1024" height="1024" loading="lazy" decoding="async"></span>
+            </div>
           </div>
           <div class="mp_type_body">
             <h3>B2B Software and HR Tech Customer Communities</h3>
@@ -2508,7 +2980,7 @@
               features and tools that no customer community should do without.</p>
             <div class="mp_type_action">
               <a class="btn-light" href="https://www.myp.community/en/community-type/hr-tech-b2b">
-                <span>See the Benefits</span>
+                <span>Learn More</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 14.857 12.828" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   aria-hidden="true">
@@ -2521,15 +2993,30 @@
 
         <article class="mp_type_panel is-slate mp-reveal" data-delay="2">
           <div class="mp_type_img">
-            <img src="https://public-cdn.myp.community/images/home_public_media.jpg"
-              onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_public_media.jpg';}"
+            <img src="https://public-cdn.myp.community/images/home_public_v2.jpg"
+              onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='images/home/home_public_v2.jpg';}"
               alt="Local community members of all ages gathering in a public library" width="1200" height="896"
               loading="lazy" decoding="async">
+            <!-- Connectors above the four adults' heads (image coordinates) -->
+            <div class="mp_type_layer" aria-hidden="true">
+              <svg class="mp_vec mp-draw" viewBox="0 0 1200 896" preserveAspectRatio="xMidYMid slice">
+                <path class="mp_halo" d="M225 310Q332 200 440 325M440 325Q575 190 710 300M710 300Q860 185 1010 310" />
+                <path class="mp_link" pathLength="1" d="M225 310Q332 200 440 325" />
+                <path class="mp_link" pathLength="1" d="M440 325Q575 190 710 300" />
+                <path class="mp_link" pathLength="1" d="M710 300Q860 185 1010 310" />
+                <circle class="mp_node" cx="225" cy="310" r="11" />
+                <circle class="mp_node" cx="440" cy="325" r="11" />
+                <circle class="mp_node" cx="710" cy="300" r="11" />
+                <circle class="mp_node" cx="1010" cy="310" r="11" />
+              </svg>
+            </div>
           </div>
           <div class="mp_type_body">
-            <h3>Media, State/Local Govts and B2C Brands</h3>
-            <p>MyPeople is the platform of choice for organizations seeking an active online home that provides an
-              elite experience to members and offers you valuable insights.</p>
+            <h3>Communities for Media, State/Local Governments and B2C Brands</h3>
+            <p>Are you ready to build an active, growing online home that your audience visits again and again?</p>
+            <p>You’ll enjoy complete control over your site and rich data on your community, while every member benefits
+              from personalized content and a variety of ways to build stronger connections with fellow members and your
+              organization.</p>
             <div class="mp_type_action">
               <a class="btn-light" href="https://www.myp.community/en/community-type/other-communities/">
                 <span>Learn More</span>
@@ -2728,8 +3215,8 @@
           <li class="mp_step">
             <span class="mp_step_num" aria-hidden="true">3</span>
             <div>
-              <h4>Roll Out Community</h4>
-              <p>With personalized assistance from our team, launch your first community.</p>
+              <h4>Launch Your Community</h4>
+              <p>With personalized assistance from our team, roll out your first community.</p>
             </div>
           </li>
         </ol>

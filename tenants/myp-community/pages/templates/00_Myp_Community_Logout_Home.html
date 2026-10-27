@@ -1,7 +1,9 @@
 <!-- @format -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Inter:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
 <link rel="stylesheet" type="text/css" media="screen"
     href="$public/remoteimages/website-images/2017_SiteRedesign/css/bootstrap.css" />
 <style>
@@ -411,6 +413,7 @@
     }
 
     @media screen and (max-width: 576px) {
+
         .whitebgbox .hr_container,
         .hr_header_container {
             padding-left: 15px;
@@ -441,344 +444,6 @@
             font-size: 13px !important;
             min-height: 38px !important;
         }
-    }
-
-    .hr-navbar-toggle {
-        width: 22px;
-        height: 100%;
-        padding: 0px;
-        background: rgba(0, 0, 0, 0);
-        border: 0px solid #fff;
-        box-shadow: none;
-        outline: none;
-        display: none;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .hr-navbar-toggle>span {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background: #c3c3c3;
-        border-radius: 3px;
-    }
-
-    .hr-navbar-toggle>span:nth-child(2) {
-        margin: 5px auto 5px 0;
-        width: 80%;
-    }
-
-    .hr-navbar-collapse {
-        width: 100%;
-        position: relative;
-    }
-
-    .hr-navbar {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        font-size: 13px;
-    }
-
-    .hr-navbar>li {
-        position: relative;
-        display: list-item;
-        text-align: -webkit-match-parent;
-        height: 50px;
-    }
-
-    .hr-navbar>li>a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
-        padding: 0px 15px 0px 15px;
-        white-space: nowrap;
-        font-size: 13px;
-        font-weight: 500;
-        color: #333;
-        text-decoration: none;
-        position: relative;
-        cursor: pointer;
-        user-select: none;
-        transition: all 0.3s ease;
-    }
-
-    .hr-navbar>li>a>svg.adv_srch_btn {
-        width: 21px;
-        height: 20px;
-        fill: #2A343E;
-        transition: all .3s ease;
-        opacity: 0.50;
-    }
-
-    .hr-navbar>li>a>svg.TopBar-Icon {
-        width: 22px;
-        height: 22px;
-        fill: #2A343E;
-        transition: all .3s ease;
-        opacity: 0.50;
-    }
-
-    .hr-navbar>li>a>svg.TopBar-Icon_24 {
-        width: 27px;
-        height: 27px;
-        fill: #2A343E;
-        transition: all .3s ease;
-    }
-
-    .hr-navbar>li>a>svg.TopBar-SrchIcon {
-        width: 20px;
-        height: 20px;
-        fill: #2A343E;
-        transition: all .3s ease;
-        opacity: 0.50;
-    }
-
-    .hr-navbar>li>a:hover>svg {
-        opacity: 1;
-        transition: all 0.3s ease;
-    }
-
-    .hr-navbar>li>a>img.TopBar-Icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        display: block;
-    }
-
-    .hr-navbar>li>a .TopNo {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: #D81F49;
-        color: #fff;
-        font-size: 9px;
-        font-weight: 400;
-        display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 12px;
-        right: 8px;
-        z-index: 1;
-    }
-
-    .hr-navbar>li>a>.hrcaret {
-        border-top-color: #fbb416;
-        margin-left: 5px;
-        position: relative;
-        top: 1px;
-    }
-
-    .hrcaret {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        margin-left: 2px;
-        vertical-align: middle;
-        border-top: 4px solid;
-        border-right: 4px solid rgba(0, 0, 0, 0);
-        border-left: 4px solid rgba(0, 0, 0, 0);
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu {
-        width: 100%;
-        min-width: 188px;
-        list-style: none;
-        background: #fff;
-        padding: 0px;
-        position: absolute;
-        left: 0;
-        top: 0px;
-        z-index: 11;
-        margin-top: 58px;
-        border: 0px solid #fff;
-        border-radius: 2px;
-        max-height: 0px;
-        overflow: hidden;
-        transform: perspective(0) rotate3d(1, 0, 0, -90deg);
-        transform-style: preserve-3d;
-        transform-origin: 50% 0;
-        -webkit-transform: perspective(400) rotate3d(1, 0, 0, -90deg);
-        -webkit-transform-style: preserve-3d;
-        -webkit-transform-origin: 50% 0;
-        -webkit-transition: 350ms;
-        -moz-transition: 350ms;
-        -o-transition: 350ms;
-        transition: 350ms;
-        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 3px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .hr-navbar>li:hover ul.custom-dropdown-menu {
-        max-height: 1000px;
-        overflow: visible;
-        transform: perspective(0) rotate3d(0, 0, 0, 0deg);
-        -webkit-transform: perspective(400) rotate3d(0, 0, 0, 0deg);
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu {
-        display: block;
-        position: relative;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu::after {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        margin-left: 2px;
-        vertical-align: middle;
-        border-top: 4px solid rgba(0, 0, 0, 0);
-        border-bottom: 4px solid rgba(0, 0, 0, 0);
-        border-left: 4px solid #fbb416;
-        content: "";
-        position: absolute;
-        right: 8px;
-        top: 16px;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu>a::after {
-        display: none;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu li>a {
-        display: block;
-        color: #454F5B;
-        padding: 12px 13px 12px 13px;
-        font-size: 13px;
-        line-height: 1.3;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-weight: 500;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu li>a:hover {
-        background-color: #f4f4f4;
-        color: #333;
-        border-radius: 2px;
-        text-decoration: none;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu li>a>sup.Red {
-        font-size: 9px;
-        color: #B30000 !important;
-        font-weight: 500;
-        padding-left: 2px;
-        position: relative;
-        top: -4px;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu>ul.dropdown-menu {
-        display: none;
-        background: #fff;
-        min-width: 220px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        border: 0px;
-        position: absolute;
-        left: 100%;
-        top: 0px;
-        border-radius: 2px;
-        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 3px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu>ul.dropdown-menu>li {
-        display: block;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu>ul.dropdown-menu>li>a {
-        border-left: 3px solid #fbb416;
-        text-decoration: none;
-        background-color: #fff !important;
-        box-shadow: none;
-        outline: none;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu>ul.dropdown-menu>li>a:hover {
-        background-color: #f2f2f2 !important;
-        text-decoration: none;
-        transition: all 0.2s ease;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu:hover>ul.dropdown-menu {
-        display: inline-block;
-    }
-
-    .hr-navbar>li>ul.custom-dropdown-menu>li.dropdown-submenu:hover>a {
-        background-color: #f2f2f2;
-        text-decoration: none;
-        transition: all 0.2s ease;
-    }
-
-    .hr-navbar-collapse .hr-navbar>li:first-child>a {
-        padding-left: 0px;
-    }
-
-    .hr-navbar.navbar_right>li:hover>a {
-        background: #444f5b;
-    }
-
-    .hr-navbar.navbar_right>li:nth-child(2)>a>svg.TopBar-Icon,
-    .hr-navbar.navbar_right>li:nth-child(3)>a>svg.TopBar-Icon {
-        position: relative;
-        top: 1px;
-    }
-
-    .header_search_bar {
-        min-width: 192px;
-        background-color: #f5f5f5 !important;
-        font-size: 13px !important;
-        color: #2A343E !important;
-        border: none !important;
-        margin: 0px !important;
-        padding: 6px 35px 8px 10px !important;
-        height: 32px;
-        border: 1px solid #C3C3C3 !important;
-        border-radius: 20px !important;
-        box-shadow: none;
-        outline: none;
-    }
-
-    .btn.header_search_btn {
-        padding: 8px 10px 4px 10px;
-        height: 32px;
-        margin: 0px;
-        position: absolute;
-        top: 0px !important;
-        right: 0px;
-        background-color: rgba(0, 0, 0, 0);
-        border-radius: 0px 20px 20px 0px;
-        cursor: pointer;
-        transition: all .3s ease;
-    }
-
-    .btn.header_search_btn:before {
-        width: 1px;
-        height: 24px;
-        background: #c3c3c3;
-        position: absolute;
-        left: 0px;
-        top: 3px;
-        content: "";
-    }
-
-    .btn.header_search_btn>svg {
-        fill: #EF483B;
-        width: 14px;
-        height: 14px;
-    }
-
-    .btn.header_search_btn:hover>svg {
-        fill: #2A343E;
-        transition: all .3s ease;
     }
 
     /*Custom Header / Navbar End Here */
@@ -1660,113 +1325,362 @@
         color: rgba(255, 255, 255, 0.9);
     }
 
-    .foot_middle_link {
-        width: 100%;
-        height: auto;
-        min-height: 77px;
-        background: #454F5B;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+    /* ==========================================================================
+       Footer (matches the logged-out home "big, bold" design)
+       Colours / fonts copied from 00-branding/tokens.css and scoped to .mp_footer
+       so they never leak into the CMS host.
+       ========================================================================== */
+    .mp_footer {
+        --color-white: #FFFFFF;
+        --color-mp-green-300: #98DCAB;
+        --color-mp-green-400: #66CB81;
+        --color-mp-blue-200: #D7E1E3;
+        --color-mp-blue-300: #AFC4CB;
+        --color-mp-blue-700: #2D5564;
+        --color-mp-blue-800: #22404B;
+        --color-mp-blue-900: #162B32;
+        --color-edit-border: #5099EC;
+        --radius-card: 16px;
+        --font-family-heading-2: 'Inter', sans-serif;
+        --font-family-body: 'Roboto', sans-serif;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--color-mp-blue-900);
+        background-image: radial-gradient(var(--color-mp-blue-800) 1.2px, transparent 1.6px);
+        background-size: 28px 28px;
+        color: var(--color-mp-blue-200);
+        font-family: var(--font-family-body);
+        font-size: 15px;
+        line-height: 24px;
+        text-align: left;
     }
 
-    .foot_social_cnct {
+    /* Soft green glow, same as the page's dark architecture band */
+    .mp_footer::after {
+        content: '';
+        position: absolute;
+        top: -220px;
+        right: -180px;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(102, 203, 129, 0.16) 0%, rgba(22, 43, 50, 0) 70%);
+        pointer-events: none;
+    }
+
+    .mp_footer *,
+    .mp_footer *::before,
+    .mp_footer *::after {
+        box-sizing: border-box;
+    }
+
+    .mp_footer a:focus-visible {
+        outline: 3px solid var(--color-edit-border);
+        outline-offset: 3px;
+    }
+
+    .mp_footer .mp_footer_sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .mp_footer_inner {
+        position: relative;
+        z-index: 1;
         width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    /* Top row: contact (left) + social (right) */
+    .mp_footer_top {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 64px 0 48px 0;
+    }
+
+    .mp_footer .mp_footer_label {
+        display: flex;
+        width: max-content;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 16px 0;
+        font-family: var(--font-family-heading-2);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: var(--color-mp-green-300);
+    }
+
+    .mp_footer .mp_footer_label::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--color-mp-green-400);
+    }
+
+    .mp_footer a.mp_footer_email,
+    .mp_footer a.mp_footer_email:hover,
+    .mp_footer a.mp_footer_email:focus {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        font-family: var(--font-family-heading-2);
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 36px;
+        letter-spacing: -0.5px;
+        color: var(--color-white);
+        text-decoration: none;
+    }
+
+    .mp_footer_email_icon {
+        width: 52px;
+        height: 52px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--color-mp-green-400);
+        border-radius: var(--radius-card);
+        background-color: rgba(102, 203, 129, 0.12);
+        color: var(--color-mp-green-400);
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .mp_footer_email_icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .mp_footer_email_text {
+        background-image: linear-gradient(var(--color-mp-green-400), var(--color-mp-green-400));
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        background-size: 0 2px;
+        transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mp_footer a.mp_footer_email:hover .mp_footer_email_icon {
+        background-color: var(--color-mp-green-400);
+        color: var(--color-mp-blue-900);
+        transform: rotate(-6deg);
+    }
+
+    .mp_footer a.mp_footer_email:hover .mp_footer_email_text {
+        background-size: 100% 2px;
+    }
+
+    .mp_footer .mp_footer_meta {
+        margin: 18px 0 0 0;
+        font-size: 15px;
+        line-height: 24px;
+        color: var(--color-mp-blue-300);
+    }
+
+    .mp_footer .mp_footer_meta a,
+    .mp_footer .mp_footer_meta a:focus {
+        color: var(--color-mp-blue-200);
+        text-decoration: underline;
+        text-decoration-color: var(--color-mp-blue-700);
+        text-underline-offset: 4px;
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+
+    .mp_footer .mp_footer_meta a:hover {
+        color: var(--color-white);
+        text-decoration: underline;
+        text-decoration-color: var(--color-mp-green-400);
+    }
+
+    .mp_footer .mp_footer_social {
+        display: none;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mp_footer .mp_footer_social li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mp_footer .mp_footer_social a {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--color-mp-blue-700);
+        border-radius: 50%;
+        background-color: var(--color-mp-blue-800);
+        text-decoration: none;
+        transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mp_footer .mp_footer_social svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--color-mp-blue-200);
+        transition: fill 0.25s ease;
+    }
+
+    .mp_footer .mp_footer_social a:hover {
+        background-color: var(--color-mp-green-400);
+        border-color: var(--color-mp-green-400);
+        transform: translateY(-3px);
+    }
+
+    .mp_footer .mp_footer_social a:hover svg {
+        fill: var(--color-mp-blue-900);
+    }
+
+    /* Bottom row: site links (left) + copyright (right) */
+    .mp_footer_bottom {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 24px;
+        padding: 24px 0 28px 0;
+        border-top: 1px solid var(--color-mp-blue-700);
     }
 
-    .foot_cnct {
-        width: auto;
-        font-size: 13px;
+    .mp_footer .mp_footer_links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 28px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mp_footer .mp_footer_links li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mp_footer .mp_footer_links a,
+    .mp_footer .mp_footer_links a:focus {
+        font-size: 14px;
         font-weight: 500;
-        color: rgba(255, 255, 255, 0.6);
+        line-height: 22px;
+        color: var(--color-mp-blue-200);
+        text-decoration: none;
+        transition: color 0.2s ease;
     }
 
-    .foot_cnct>span {
-        display: block;
-        width: auto;
-        font-size: 12px;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.6);
-        margin-top: 5px;
-    }
-
-    .foot_cnct>span>a {
-        color: inherit;
+    .mp_footer .mp_footer_links a:hover {
+        color: var(--color-mp-green-300);
         text-decoration: none;
     }
 
-    .foot_cnct>span>a:hover {
-        color: rgba(255, 255, 255, 0.9);
+    .mp_footer .mp_footer_copy {
+        margin: 0;
+        font-size: 13px;
+        line-height: 20px;
+        color: var(--color-mp-blue-300);
     }
 
-    .foot_social {
-        width: auto;
-        position: relative;
+    @media screen and (min-width: 1200px) {
+        .mp_footer_inner {
+            max-width: 1320px;
+            padding: 0 28px;
+        }
     }
 
-    .foot_social_list {
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 10px;
+    @media screen and (min-width: 1440px) {
+        .mp_footer_inner {
+            max-width: 1440px;
+            padding: 0 32px;
+        }
+
+        .mp_footer a.mp_footer_email,
+        .mp_footer a.mp_footer_email:hover,
+        .mp_footer a.mp_footer_email:focus {
+            font-size: 32px;
+            line-height: 40px;
+        }
     }
 
-    .foot_social_list>li {
-        list-style: none;
+    @media screen and (max-width: 991px) {
+        .mp_footer_top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 32px;
+            padding: 56px 0 40px 0;
+        }
+
+        .mp_footer_bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
     }
 
-    .foot_social_list>li>a {
-        width: 30px;
-        height: 30px;
-        border: 2px solid rgba(255, 255, 255, 0.6);
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all .3s ease;
-        text-decoration: none;
-        cursor: pointer;
+    @media screen and (max-width: 576px) {
+        .mp_footer_inner {
+            padding: 0 20px;
+        }
+
+        .mp_footer_top {
+            padding: 48px 0 36px 0;
+        }
+
+        .mp_footer a.mp_footer_email,
+        .mp_footer a.mp_footer_email:hover,
+        .mp_footer a.mp_footer_email:focus {
+            gap: 12px;
+            font-size: 21px;
+            line-height: 28px;
+        }
+
+        .mp_footer_email_icon {
+            width: 44px;
+            height: 44px;
+        }
+
+        .mp_footer .mp_footer_social {
+            gap: 10px;
+        }
+
+        .mp_footer .mp_footer_social a {
+            width: 42px;
+            height: 42px;
+        }
+
+        .mp_footer .mp_footer_links {
+            gap: 8px 20px;
+        }
     }
 
-    .foot_social_list>li>a>svg {
-        width: 13px;
-        height: 13px;
-        fill: rgba(255, 255, 255, 0.6);
-        transition: all .3s ease;
-    }
+    @media (prefers-reduced-motion: reduce) {
 
-    .foot_social_list>li>a:hover {
-        border: 2px solid rgba(255, 255, 255, 0.9);
-        transition: all .3s ease;
-    }
+        .mp_footer_email_icon,
+        .mp_footer_email_text,
+        .mp_footer .mp_footer_social a {
+            transition: none;
+        }
 
-    .foot_social_list>li>a:hover>svg {
-        fill: rgba(255, 255, 255, 0.9);
-        transition: all .3s ease;
-    }
-
-    .foot_bottom_link {
-        width: 100%;
-        height: auto;
-        min-height: 43px;
-        background: #5E6672;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .foot_bottom_link>p {
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1.4;
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0px;
+        .mp_footer a.mp_footer_email:hover .mp_footer_email_icon,
+        .mp_footer .mp_footer_social a:hover {
+            transform: none;
+        }
     }
 
     .newlogin_blue_btn {
@@ -1790,18 +1704,22 @@
                     <li class="mp_nav_item mp_has_dropdown">
                         <a href="javascript:void(0);" class="mp_nav_link" aria-expanded="false" aria-haspopup="true">
                             <span>Community Types</span>
-                            <svg class="mp_nav_chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.5 1.75L6 6.25L10.5 1.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg class="mp_nav_chevron" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 1.75L6 6.25L10.5 1.75" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </a>
                         <ul class="mp_dropdown_menu">
                             <li>
-                                <a href="https://www.myp.community/en/community-type/hr-tech-b2b" class="mp_dropdown_link">
+                                <a href="https://www.myp.community/en/community-type/hr-tech-b2b"
+                                    class="mp_dropdown_link">
                                     HR Tech &amp; B2B
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.myp.community/en/community-type/other-communities/" class="mp_dropdown_link">
+                                <a href="https://www.myp.community/en/community-type/other-communities/"
+                                    class="mp_dropdown_link">
                                     Other Communities
                                 </a>
                             </li>
@@ -1810,9 +1728,11 @@
                     <li class="mp_nav_item">
                         <a href="https://www.myp.community/en/features/" class="mp_nav_link">Features</a>
                     </li>
+                    <!-- Hidden until page is ready
                     <li class="mp_nav_item">
                         <a href="https://www.myp.community/en/getting-started/" class="mp_nav_link">Getting Started</a>
                     </li>
+                    -->
                     <li class="mp_nav_item">
                         <a href="https://www.myp.community/en/contact-us/" class="mp_nav_link">Contact Us</a>
                     </li>
@@ -1826,7 +1746,8 @@
                     Login / Sign Up
                 </button>
                 <!-- Mobile Hamburger Toggle -->
-                <button type="button" class="mp_mobile_toggle" id="mpNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <button type="button" class="mp_mobile_toggle" id="mpNavToggle" aria-label="Toggle navigation menu"
+                    aria-expanded="false">
                     <span class="mp_hamburger_bar"></span>
                     <span class="mp_hamburger_bar"></span>
                     <span class="mp_hamburger_bar"></span>
@@ -1838,7 +1759,7 @@
 
 $desc_long
 
-<footer class="hr_foot_section">
+<footer class="hr_foot_section mp_footer">
     <!--<div class="foot_top_link">
     <div class="hr_container">
       <ul class="foot_imp_link">
@@ -1867,57 +1788,79 @@ $desc_long
       </ul>
     </div>
   </div>-->
-    <div class="foot_middle_link">
-        <div class="hr_container">
-            <div class="foot_social_cnct">
-                <div class="foot_cnct">
-                    Contact Us:
-                    <span>Email: <a href="mailto:info@mypeople.ai">info@mypeople.ai</a> | <a
-                            href="/en/about-us/privacy-information/">Privacy &amp; Terms</a></span>
-                </div>
-                <div class="foot_social">
-                    <ul class="foot_social_list">
-                        <li>
-                            <a href="#" target="_blank" alt="Facebook link" title="Facebook link"
-                                aria-label="Facebook"><svg>
-                                    <use xlink:href="#hr-facebook-icon"></use>
-                                </svg></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" alt="LinkedIn link" aria-label="LinkedIn"><svg>
-                                    <use xlink:href="#hr-linkedin-icon"></use>
-                                </svg></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" alt="Twitter link" aria-label="Twitter"><svg>
-                                    <use xlink:href="#hr-twitter-icon"></use>
-                                </svg></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" alt="YouTube link" aria-label="YouTube"><svg>
-                                    <use xlink:href="#hr-youtube-icon"></use>
-                                </svg></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" alt="Instagram link" aria-label="Instagram"><svg>
-                                    <use xlink:href="#hr-instagram-icon"></use>
-                                </svg></a>
-                        </li>
-                        <li>
-                            <a href="https://www.myp.community/en/app/my/subscription?abo_part=rss" alt="RSS Feed"
-                                aria-label="RSS"><svg>
-                                    <use xlink:href="#hr-rss-icon"></use>
-                                </svg></a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="mp_footer_inner">
+        <div class="mp_footer_top">
+            <div class="mp_footer_contact">
+                <p class="mp_footer_label">Contact Us</p>
+                <a class="mp_footer_email" href="mailto:info@myp.community ">
+                    <span class="mp_footer_email_icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
+                            <path d="m3.5 7 8.5 6 8.5-6" />
+                        </svg>
+                    </span>
+                    <span class="mp_footer_email_text"><span class="mp_footer_sr">Email: </span>info@myp.community </span>
+                </a>
+                <p class="mp_footer_meta"><a href="/en/about-us/privacy-information/">Privacy &amp; Terms</a></p>
             </div>
+            <!-- Social links hidden
+            <ul class="mp_footer_social">
+                <li>
+                    <a href="#" target="_blank" rel="noopener" title="Facebook link" aria-label="Facebook"><svg
+                            aria-hidden="true">
+                            <use xlink:href="#hr-facebook-icon"></use>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><svg aria-hidden="true">
+                            <use xlink:href="#hr-linkedin-icon"></use>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Twitter"><svg aria-hidden="true">
+                            <use xlink:href="#hr-twitter-icon"></use>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><svg aria-hidden="true">
+                            <use xlink:href="#hr-youtube-icon"></use>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true">
+                            <use xlink:href="#hr-instagram-icon"></use>
+                        </svg></a>
+                </li>
+                <li>
+                    <a href="https://www.myp.community/en/app/my/subscription?abo_part=rss" aria-label="RSS"><svg
+                            aria-hidden="true">
+                            <use xlink:href="#hr-rss-icon"></use>
+                        </svg></a>
+                </li>
+            </ul>
+            -->
+        </div>
+        <div class="mp_footer_bottom">
+            <ul class="mp_footer_links" aria-label="Footer navigation">
+                <li><a href="https://www.myp.community/en/community-type/hr-tech-b2b">HR Tech &amp; B2B</a></li>
+                <li><a href="https://www.myp.community/en/community-type/other-communities/">Other Communities</a></li>
+                <li><a href="https://www.myp.community/en/features/">Features</a></li>
+                <li><a href="https://www.myp.community/en/getting-started/">Getting Started</a></li>
+                <li><a href="https://www.myp.community/en/contact-us/">Contact Us</a></li>
+            </ul>
+            <p class="mp_footer_copy">&copy; Copyright <span id="mpFooterYear">2025</span> mypeople.ai. All rights
+                reserved.</p>
         </div>
     </div>
-    <div class="foot_bottom_link">
-        <p>&copy; Copyright 2025 mypeople.ai. All rights reserved.</p>
-    </div>
 </footer>
+<script>
+    // Keep the copyright year current (the 2025 in the markup is the no-JS fallback)
+    (function () {
+        var year = document.getElementById('mpFooterYear');
+        if (year) year.textContent = new Date().getFullYear();
+    })();
+</script>
 
 <svg width="0" height="0" display="none">
     <symbol id="hr-search-icon" viewBox="0 0 56.966 56.966">
@@ -2044,55 +1987,55 @@ $designAttribute:story_edit_Meta
 $designAttribute:masterD_no_sidebar
 <script src="$public/Certifications/scripts/menu/index.js"></script>
 <script>
-(function() {
-    function initHeaderNav() {
-        var toggleBtn = document.getElementById('mpNavToggle');
-        var navMenu = document.getElementById('mpHeaderNav');
-        var dropdownItems = document.querySelectorAll('.mp_has_dropdown');
+    (function () {
+        function initHeaderNav() {
+            var toggleBtn = document.getElementById('mpNavToggle');
+            var navMenu = document.getElementById('mpHeaderNav');
+            var dropdownItems = document.querySelectorAll('.mp_has_dropdown');
 
-        if (toggleBtn && navMenu) {
-            toggleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                var isOpen = navMenu.classList.toggle('mp_nav_open');
-                toggleBtn.classList.toggle('mp_is_active', isOpen);
-                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            if (toggleBtn && navMenu) {
+                toggleBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var isOpen = navMenu.classList.toggle('mp_nav_open');
+                    toggleBtn.classList.toggle('mp_is_active', isOpen);
+                    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            }
+
+            dropdownItems.forEach(function (item) {
+                var link = item.querySelector('.mp_nav_link');
+                if (link) {
+                    link.addEventListener('click', function (e) {
+                        if (window.innerWidth <= 991) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            var isOpen = item.classList.toggle('mp_dropdown_open');
+                            link.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                        }
+                    });
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (navMenu && !navMenu.contains(e.target) && toggleBtn && !toggleBtn.contains(e.target)) {
+                    navMenu.classList.remove('mp_nav_open');
+                    toggleBtn.classList.remove('mp_is_active');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                }
+                dropdownItems.forEach(function (item) {
+                    if (!item.contains(e.target)) {
+                        item.classList.remove('mp_dropdown_open');
+                        var link = item.querySelector('.mp_nav_link');
+                        if (link) link.setAttribute('aria-expanded', 'false');
+                    }
+                });
             });
         }
 
-        dropdownItems.forEach(function(item) {
-            var link = item.querySelector('.mp_nav_link');
-            if (link) {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 991) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        var isOpen = item.classList.toggle('mp_dropdown_open');
-                        link.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                    }
-                });
-            }
-        });
-
-        document.addEventListener('click', function(e) {
-            if (navMenu && !navMenu.contains(e.target) && toggleBtn && !toggleBtn.contains(e.target)) {
-                navMenu.classList.remove('mp_nav_open');
-                toggleBtn.classList.remove('mp_is_active');
-                toggleBtn.setAttribute('aria-expanded', 'false');
-            }
-            dropdownItems.forEach(function(item) {
-                if (!item.contains(e.target)) {
-                    item.classList.remove('mp_dropdown_open');
-                    var link = item.querySelector('.mp_nav_link');
-                    if (link) link.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initHeaderNav);
-    } else {
-        initHeaderNav();
-    }
-})();
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeaderNav);
+        } else {
+            initHeaderNav();
+        }
+    })();
 </script>
