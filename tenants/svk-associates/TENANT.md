@@ -21,6 +21,7 @@ Platform rules in the root `AGENTS.md` apply; this file adds the SVK brand. **Ne
 | :--- | :--- | :--- |
 | Home | [pages/home.html](pages/home.html) | Built 2026-10-14, previewed at 1440 and 390px; not yet deployed |
 | Sample Webcast | [pages/sample-webcast.html](pages/sample-webcast.html) | Built 2026-10-27; landing page with purchase flow & filler |
+| Growth Workshops Registration | [pages/growth-register.html](pages/growth-register.html) | Built 2026-10-29; checkout page for visitors from the Lovable microsite ([source/lovable-registration-page.html](source/lovable-registration-page.html)). 4 products; product IDs (`PRODUCT_ID_*`) and prices (US$1,500 placeholder) still to fill in |
 
 Old-site navigation (pages still to build): About `/about/`, Services `/services/` (Executive Coaching, Go To Market (GTM) Advisory, Revenue Flywheel, Fractional Leadership), Get Started `/get-started/`, Book Now `/book-now/`, Our Team `/our-team/`, Resources `/resources/`, Contact `/contact/`.
 
